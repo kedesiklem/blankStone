@@ -1,0 +1,34 @@
+<Entity>
+  <Base file="mods/blankStone/files/entities/abstract_stone.xml">
+      <PhysicsImageShapeComponent 
+      image_file="mods/blankStone/files/items_gfx/blank_stone.png"
+  ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+    image_file="mods/blankStone/files/items_gfx/blank_stone.png"
+  ></SpriteComponent>
+
+    <ItemComponent
+    item_name="Blank Stone"
+    ui_description="This rock is thirsty."
+    ui_sprite="mods/blankStone/files/ui_gfx/blank_stone.png"
+  ></ItemComponent>
+
+    <UIInfoComponent
+    name="Blank Stone">
+  </UIInfoComponent>
+
+  	<AbilityComponent
+		ui_name="Blank Stone"
+		throw_as_item="1"
+		>
+	</AbilityComponent>
+  
+  </Base>
+
+  <LuaComponent
+    script_kick = "mods/blankStone/files/scripts/infuse_stone.lua"
+  >
+  </LuaComponent>
+
+</Entity>
