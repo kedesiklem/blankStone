@@ -22,23 +22,23 @@ for _,id in pairs(EntityGetInRadiusWithTag(pos_x, pos_y, 70, "item_pickup")) do
         for key, value in pairs(potions) do
             print("Found potion [" .. key .. "] entity with ID: " .. value)
         end
-        -- if(potions) then
-        --     local potion = pairs(potions)[1]
-        --     local _,material = GetMaterialInventoryMainMaterial(potion)
-        --     if (material) then
-        --         local material_name = CellFactory_GetName( material )
-        --         print("Material name: " .. material_name )
+        if(potions) then
+            local potion = pairs(potions)[1]
+            local _,material = GetMaterialInventoryMainMaterial(potion)
+            if (material) then
+                local material_name = CellFactory_GetName( material )
+                print("Material name: " .. material_name )
 
-        --         local stone_name = material_to_stone_tbl[material_name]
-        --         if (stone_name) then
-        --             EntityLoad(elemental_stone_path .. stone_name .. ".xml", x, y - 5)
-        --             EntityLoad("data/entities/projectiles/explosion.xml", x, y - 10)
-        --             EntityKill(id)
-        --             converted = true
+                local stone_name = material_to_stone_tbl[material_name]
+                if (stone_name) then
+                    EntityLoad(elemental_stone_path .. stone_name .. ".xml", x, y - 5)
+                    EntityLoad("data/entities/projectiles/explosion.xml", x, y - 10)
+                    EntityKill(id)
+                    converted = true
 
-        --         end
-        --     end
-        -- end
+                end
+            end
+        end
     end
 end
 print("Infusion complete.")
