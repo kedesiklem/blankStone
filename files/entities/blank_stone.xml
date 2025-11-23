@@ -1,31 +1,79 @@
-<Entity>
-  <Base file="mods/blankStone/files/entities/abstract_stone.xml">
-      <PhysicsImageShapeComponent 
-      image_file="mods/blankStone/files/items_gfx/blank_stone.png"
+<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup" >
+  <Base file="data/entities/base_item_projectile.xml">
+      <ProjectileComponent>
+      <damage_by_type
+        melee="0.5"
+        >
+      </damage_by_type>
+    </ProjectileComponent>
+  </Base>
+ <!-- physical presence -->
+  
+  <PhysicsBodyComponent 
+    _tags="enabled_in_world"
+    uid="1" 
+    allow_sleep="1" 
+    angular_damping="0" 
+    fixed_rotation="0" 
+    is_bullet="1" 
+    linear_damping="0"
+    auto_clean="0"
+    on_death_leave_physics_body="1"
+    hax_fix_going_through_ground="1"
+  ></PhysicsBodyComponent>
+  
+  <PhysicsImageShapeComponent 
+    body_id="1"
+    centered="1"
+    material="rock_box2d_hard"
+    image_file="mods/blankStone/files/items_gfx/blank_stone.png"
   ></PhysicsImageShapeComponent>
+  
+  <PhysicsThrowableComponent
+    max_throw_speed="180"
+    throw_force_coeff="1.5"
+  ></PhysicsThrowableComponent>
 
-    <SpriteComponent
+  <VelocityComponent
+    _tags="enabled_in_world"
+  ></VelocityComponent>
+
+    <!-- item -->
+
+  <SpriteComponent
+    _tags="enabled_in_hand"
+    _enabled="0"
+    offset_x="4"
+    offset_y="4"
     image_file="mods/blankStone/files/items_gfx/blank_stone.png"
   ></SpriteComponent>
 
-    <ItemComponent
+  <ItemComponent
+    _tags="enabled_in_world"
+    max_child_items="0"
+    is_pickable="1"
+    is_equipable_forced="1"
+    preferred_inventory="QUICK"
     item_name="Blank Stone"
     ui_description="This rock is thirsty."
     ui_sprite="mods/blankStone/files/ui_gfx/blank_stone.png"
   ></ItemComponent>
 
-    <UIInfoComponent
-    name="Blank Stone">
+  <UIInfoComponent
+    _tags="enabled_in_world"
+    name="Blank Stone"
+    >
   </UIInfoComponent>
-
-  	<AbilityComponent
-		ui_name="Blank Stone"
-		throw_as_item="1"
-		>
-	</AbilityComponent>
   
-  </Base>
+	<AbilityComponent
+		throw_as_item="1"
+		ui_name="Blank Stone"
+		><gun_config
+			deck_capacity="0"
+		></gun_config>
+	</AbilityComponent>
 
+    <!-- Infusion process -->
 
     <MaterialAreaCheckerComponent 
         _tags="enabled_in_world"

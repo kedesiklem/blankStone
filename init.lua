@@ -1,10 +1,10 @@
+-- local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 function OnModPreInit() 
 
 end
 
 function OnModInit() 
-
 end
 
 function OnModPostInit() 
@@ -12,10 +12,8 @@ function OnModPostInit()
 end
 
 function OnPlayerSpawned( player_entity ) 
-    local pos_x, pos_y = EntityGetTransform( player_entity )
-    EntityLoad( "mods/blankStone/files/entities/stone_toxic.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
-    print( "blankStone: spawned stone_fire for player" )
+    -- local pos_x, pos_y = EntityGetTransform( player_entity )
+    -- EntityLoad( "mods/blankstone/files/entities/stone_toxic.xml", pos_x, pos_y )
 end
 
 function OnPlayerDied( player_entity ) 
@@ -55,5 +53,7 @@ function OnPausePreUpdate()
 end
 	
 
-ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scripts/inject_stones.lua")
-print( "blankStone: injected stones into item spawnlists" )
+-- ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scripts/inject_stones.lua")
+
+-- based on Apotheosis
+dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")

@@ -1,30 +1,29 @@
 <Entity>
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
-      <PhysicsImageShapeComponent 
+    <PhysicsImageShapeComponent 
       image_file="mods/blankStone/files/items_gfx/stone_toxic.png"
-  ></PhysicsImageShapeComponent>
+    ></PhysicsImageShapeComponent>
 
     <SpriteComponent
-    image_file="mods/blankStone/files/items_gfx/stone_toxic.png"
-  ></SpriteComponent>
+      image_file="mods/blankStone/files/items_gfx/stone_toxic.png"
+    ></SpriteComponent>
 
     <ItemComponent
-    item_name="Toxic Stone"
-    ui_description="A stone infused with toxic properties."
-    ui_sprite="mods/blankStone/files/ui_gfx/stone_toxic.png"
-  ></ItemComponent>
+      item_name="Toxic Stone"
+      ui_description="A stone infused with toxic properties."
+      ui_sprite="mods/blankStone/files/ui_gfx/stone_toxic.png"
+    ></ItemComponent>
 
     <UIInfoComponent
-    name="Toxic Stone">
-  </UIInfoComponent>
+      name="Toxic Stone">
+    </UIInfoComponent>
 
   	<AbilityComponent
-		ui_name="Toxic Stone"
-		throw_as_item="1"
-		>
-	</AbilityComponent>
-  
+      ui_name="Toxic Stone"
+      throw_as_item="1"
+      >
+    </AbilityComponent>
   </Base>
 
   <!-- protection -->
@@ -39,8 +38,8 @@
 
   <MagicConvertMaterialComponent
     _tags= "enabled_in_world, enabled_in_hand"
-    from_material_array="water, water_ice, water_swamp"
-    to_material_array="radioactive_liquid, radioactive_liquid, radioactive_liquid"
+    from_material_array="water, water_ice, water_swamp, water_salt"
+    to_material_array="radioactive_liquid, radioactive_liquid, radioactive_liquid, radioactive_liquid"
     is_circle = "1"
     radius = "30"
     min_radius = "20"

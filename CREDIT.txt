@@ -1,0 +1,3 @@
+Most of the code is written by me, based on reverse-engineering Noita or a few mods. Whenever I use code directly from someone else, I credit the original creators here.
+
+Evasia - Creating the item list appends script

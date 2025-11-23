@@ -1,23 +1,41 @@
-local entity_path = "mods/blankStone/files/entities"
+local entity_path = "mods/blankStone/files/entities/"
 
-local add_list = {
+--Thank you Eba
+local function register_item(listname, weight, entity, offset)
+    if ( type( listname ) == "string" ) then
+        local newmin = spawnlists[listname].rnd_max + 1
+        local newmax = newmin + weight
+        local tbl = {
+            value_min = newmin,
+            value_max = newmax,
+            offset_y = offset,
+            load_entity = entity
+        }
+        table.insert(spawnlists[listname].spawns, tbl)
+        spawnlists[listname].rnd_max = newmax
+    elseif ( type( listname ) == "table" ) then
+        local newmin = listname.rnd_max + 1
+        local newmax = newmin + weight
+        local tbl = {
+            value_min = newmin,
+            value_max = newmax,
+            offset_y = offset,
+            load_entity = entity
+        }
+        table.insert(listname.spawns, tbl)
+        listname.rnd_max = newmax
+    end
+end
+
+
+local items = {
     {
-        load_entity = entity_path .. "blank_stone.xml",
-        value_min = 80,
-        value_max = 95
-    },{
-        load_entity = entity_path .. "stone_toxic.xml",
-        value_min = 85,
-        value_max = 90
+        weight = 3,
+        entity = "blank_stone",
+        offset = -2
     }
 }
 
-local function register_item(spawn_list)
-	return function(add)
-		for _, item in ipairs(add) do
-			spawn_list[#spawn_list + 1] = item
-		end
-	end
+for _, v in ipairs(items) do
+    register_item("potion_spawnlist", v.weight, entity_path .. v.entity .. ".xml", v.offset)
 end
-
-register_item(spawnlists.potion_spawnlist.spawns)(add_list)
