@@ -1,0 +1,632 @@
+=== Début de la génération dim. 23 nov. 2025 15:54:44 CET ===
+🎯 Début du traitement batch...
+Sprites: 2, Matériaux: 157
+Traitement: ./sprites/blank_stone_item.png avec ./materials/aluminium_oxide.png -> ./output/blank_stone_item_aluminium_oxide.png
+✓ Succès: ./output/blank_stone_item_aluminium_oxide.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/badroot.png -> ./output/blank_stone_item_badroot.png
+✓ Succès: ./output/blank_stone_item_badroot.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/blueblood.png -> ./output/blank_stone_item_blueblood.png
+✓ Succès: ./output/blank_stone_item_blueblood.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/bluefungi.png -> ./output/blank_stone_item_bluefungi.png
+✓ Succès: ./output/blank_stone_item_bluefungi.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/bone.png -> ./output/blank_stone_item_bone.png
+✓ Succès: ./output/blank_stone_item_bone.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/brass.png -> ./output/blank_stone_item_brass.png
+✓ Succès: ./output/blank_stone_item_brass.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/brick.png -> ./output/blank_stone_item_brick.png
+✓ Succès: ./output/blank_stone_item_brick.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/cement.png -> ./output/blank_stone_item_cement.png
+✓ Succès: ./output/blank_stone_item_cement.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/cloth.png -> ./output/blank_stone_item_cloth.png
+✓ Succès: ./output/blank_stone_item_cloth.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/coal.png -> ./output/blank_stone_item_coal.png
+✓ Succès: ./output/blank_stone_item_coal.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/coal_static.png -> ./output/blank_stone_item_coal_static.png
+✓ Succès: ./output/blank_stone_item_coal_static.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/colors_fire_glow.png -> ./output/blank_stone_item_colors_fire_glow.png
+✓ Succès: ./output/blank_stone_item_colors_fire_glow.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/colors_fire.png -> ./output/blank_stone_item_colors_fire.png
+✓ Succès: ./output/blank_stone_item_colors_fire.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/concrete.png -> ./output/blank_stone_item_concrete.png
+✓ Succès: ./output/blank_stone_item_concrete.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/concrete_wet.png -> ./output/blank_stone_item_concrete_wet.png
+✓ Succès: ./output/blank_stone_item_concrete_wet.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/confusion.png -> ./output/blank_stone_item_confusion.png
+✓ Succès: ./output/blank_stone_item_confusion.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/copper.png -> ./output/blank_stone_item_copper.png
+✓ Succès: ./output/blank_stone_item_copper.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/corruption.png -> ./output/blank_stone_item_corruption.png
+✓ Succès: ./output/blank_stone_item_corruption.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/crystal.png -> ./output/blank_stone_item_crystal.png
+✓ Succès: ./output/blank_stone_item_crystal.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/crystal_purple.png -> ./output/blank_stone_item_crystal_purple.png
+✓ Succès: ./output/blank_stone_item_crystal_purple.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/darkness.png -> ./output/blank_stone_item_darkness.png
+✓ Succès: ./output/blank_stone_item_darkness.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/desert.png -> ./output/blank_stone_item_desert.png
+✓ Succès: ./output/blank_stone_item_desert.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/desert_surface.png -> ./output/blank_stone_item_desert_surface.png
+✓ Succès: ./output/blank_stone_item_desert_surface.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/diamond.png -> ./output/blank_stone_item_diamond.png
+✓ Succès: ./output/blank_stone_item_diamond.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/dirt.png -> ./output/blank_stone_item_dirt.png
+✓ Succès: ./output/blank_stone_item_dirt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/dust.png -> ./output/blank_stone_item_dust.png
+✓ Succès: ./output/blank_stone_item_dust.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth_alt2.png -> ./output/blank_stone_item_earth_alt2.png
+✓ Succès: ./output/blank_stone_item_earth_alt2.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth_alt.png -> ./output/blank_stone_item_earth_alt.png
+✓ Succès: ./output/blank_stone_item_earth_alt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth_bright.png -> ./output/blank_stone_item_earth_bright.png
+✓ Succès: ./output/blank_stone_item_earth_bright.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth_bright_red.png -> ./output/blank_stone_item_earth_bright_red.png
+✓ Succès: ./output/blank_stone_item_earth_bright_red.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth.png -> ./output/blank_stone_item_earth.png
+✓ Succès: ./output/blank_stone_item_earth.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth_rainforest_dark.png -> ./output/blank_stone_item_earth_rainforest_dark.png
+✓ Succès: ./output/blank_stone_item_earth_rainforest_dark.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/earth_rainforest.png -> ./output/blank_stone_item_earth_rainforest.png
+✓ Succès: ./output/blank_stone_item_earth_rainforest.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/endslime.png -> ./output/blank_stone_item_endslime.png
+✓ Succès: ./output/blank_stone_item_endslime.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/fungi.png -> ./output/blank_stone_item_fungi.png
+✓ Succès: ./output/blank_stone_item_fungi.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/fun.png -> ./output/blank_stone_item_fun.png
+✓ Succès: ./output/blank_stone_item_fun.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/glass.png -> ./output/blank_stone_item_glass.png
+✓ Succès: ./output/blank_stone_item_glass.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/glowrock.png -> ./output/blank_stone_item_glowrock.png
+✓ Succès: ./output/blank_stone_item_glowrock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/gold_dark.png -> ./output/blank_stone_item_gold_dark.png
+✓ Succès: ./output/blank_stone_item_gold_dark.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/gold.png -> ./output/blank_stone_item_gold.png
+✓ Succès: ./output/blank_stone_item_gold.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/grass_dark.png -> ./output/blank_stone_item_grass_dark.png
+✓ Succès: ./output/blank_stone_item_grass_dark.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/grass_dry.png -> ./output/blank_stone_item_grass_dry.png
+✓ Succès: ./output/blank_stone_item_grass_dry.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/grass_frozen.png -> ./output/blank_stone_item_grass_frozen.png
+✓ Succès: ./output/blank_stone_item_grass_frozen.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/grass.png -> ./output/blank_stone_item_grass.png
+✓ Succès: ./output/blank_stone_item_grass.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/gravel.png -> ./output/blank_stone_item_gravel.png
+✓ Succès: ./output/blank_stone_item_gravel.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/gunpowder.png -> ./output/blank_stone_item_gunpowder.png
+✓ Succès: ./output/blank_stone_item_gunpowder.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/gunpowder_tnt.png -> ./output/blank_stone_item_gunpowder_tnt.png
+✓ Succès: ./output/blank_stone_item_gunpowder_tnt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/honey.png -> ./output/blank_stone_item_honey.png
+✓ Succès: ./output/blank_stone_item_honey.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice_acid.png -> ./output/blank_stone_item_ice_acid.png
+✓ Succès: ./output/blank_stone_item_ice_acid.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice_blood.png -> ./output/blank_stone_item_ice_blood.png
+✓ Succès: ./output/blank_stone_item_ice_blood.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice_cold.png -> ./output/blank_stone_item_ice_cold.png
+✓ Succès: ./output/blank_stone_item_ice_cold.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice.png -> ./output/blank_stone_item_ice.png
+✓ Succès: ./output/blank_stone_item_ice.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice_poison.png -> ./output/blank_stone_item_ice_poison.png
+✓ Succès: ./output/blank_stone_item_ice_poison.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice_radioactive.png -> ./output/blank_stone_item_ice_radioactive.png
+✓ Succès: ./output/blank_stone_item_ice_radioactive.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/ice_slime.png -> ./output/blank_stone_item_ice_slime.png
+✓ Succès: ./output/blank_stone_item_ice_slime.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/iron.png -> ./output/blank_stone_item_iron.png
+✓ Succès: ./output/blank_stone_item_iron.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/jade.png -> ./output/blank_stone_item_jade.png
+✓ Succès: ./output/blank_stone_item_jade.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/lavarock.png -> ./output/blank_stone_item_lavarock.png
+✓ Succès: ./output/blank_stone_item_lavarock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/lsd.png -> ./output/blank_stone_item_lsd.png
+✓ Succès: ./output/blank_stone_item_lsd.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/magic_gate.png -> ./output/blank_stone_item_magic_gate.png
+✓ Succès: ./output/blank_stone_item_magic_gate.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/magic_liquid_unstable_telep.png -> ./output/blank_stone_item_magic_liquid_unstable_telep.png
+✓ Succès: ./output/blank_stone_item_magic_liquid_unstable_telep.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/magic_liquid_weakness.png -> ./output/blank_stone_item_magic_liquid_weakness.png
+✓ Succès: ./output/blank_stone_item_magic_liquid_weakness.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat_burned.png -> ./output/blank_stone_item_meat_burned.png
+✓ Succès: ./output/blank_stone_item_meat_burned.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat_done.png -> ./output/blank_stone_item_meat_done.png
+✓ Succès: ./output/blank_stone_item_meat_done.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat_hot.png -> ./output/blank_stone_item_meat_hot.png
+✓ Succès: ./output/blank_stone_item_meat_hot.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat.png -> ./output/blank_stone_item_meat.png
+✓ Succès: ./output/blank_stone_item_meat.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat_rotten.png -> ./output/blank_stone_item_meat_rotten.png
+✓ Succès: ./output/blank_stone_item_meat_rotten.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat_static.png -> ./output/blank_stone_item_meat_static.png
+✓ Succès: ./output/blank_stone_item_meat_static.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meat_warm.png -> ./output/blank_stone_item_meat_warm.png
+✓ Succès: ./output/blank_stone_item_meat_warm.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/meteor.png -> ./output/blank_stone_item_meteor.png
+✓ Succès: ./output/blank_stone_item_meteor.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/midas_precursor.png -> ./output/blank_stone_item_midas_precursor.png
+✓ Succès: ./output/blank_stone_item_midas_precursor.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/mimic_liquid.png -> ./output/blank_stone_item_mimic_liquid.png
+✓ Succès: ./output/blank_stone_item_mimic_liquid.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/moss_dark.png -> ./output/blank_stone_item_moss_dark.png
+✓ Succès: ./output/blank_stone_item_moss_dark.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/moss.png -> ./output/blank_stone_item_moss.png
+✓ Succès: ./output/blank_stone_item_moss.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/moss_rust.png -> ./output/blank_stone_item_moss_rust.png
+✓ Succès: ./output/blank_stone_item_moss_rust.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/mud.png -> ./output/blank_stone_item_mud.png
+✓ Succès: ./output/blank_stone_item_mud.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/neon_tube_blood_red.png -> ./output/blank_stone_item_neon_tube_blood_red.png
+✓ Succès: ./output/blank_stone_item_neon_tube_blood_red.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/neon_tube_cyan.png -> ./output/blank_stone_item_neon_tube_cyan.png
+✓ Succès: ./output/blank_stone_item_neon_tube_cyan.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/neon_tube_purple.png -> ./output/blank_stone_item_neon_tube_purple.png
+✓ Succès: ./output/blank_stone_item_neon_tube_purple.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/nest.png -> ./output/blank_stone_item_nest.png
+✓ Succès: ./output/blank_stone_item_nest.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/polymorph_unstable.png -> ./output/blank_stone_item_polymorph_unstable.png
+✓ Succès: ./output/blank_stone_item_polymorph_unstable.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/porridge.png -> ./output/blank_stone_item_porridge.png
+✓ Succès: ./output/blank_stone_item_porridge.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/pus.png -> ./output/blank_stone_item_pus.png
+✓ Succès: ./output/blank_stone_item_pus.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rainbow_gas.png -> ./output/blank_stone_item_rainbow_gas.png
+✓ Succès: ./output/blank_stone_item_rainbow_gas.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rainbow.png -> ./output/blank_stone_item_rainbow.png
+✓ Succès: ./output/blank_stone_item_rainbow.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_alt2.png -> ./output/blank_stone_item_rock_alt2.png
+✓ Succès: ./output/blank_stone_item_rock_alt2.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_alt3.png -> ./output/blank_stone_item_rock_alt3.png
+✓ Succès: ./output/blank_stone_item_rock_alt3.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_alt4.png -> ./output/blank_stone_item_rock_alt4.png
+✓ Succès: ./output/blank_stone_item_rock_alt4.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_alt5.png -> ./output/blank_stone_item_rock_alt5.png
+✓ Succès: ./output/blank_stone_item_rock_alt5.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_alt6.png -> ./output/blank_stone_item_rock_alt6.png
+✓ Succès: ./output/blank_stone_item_rock_alt6.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_alt.png -> ./output/blank_stone_item_rock_alt.png
+✓ Succès: ./output/blank_stone_item_rock_alt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_cursed_green.png -> ./output/blank_stone_item_rock_cursed_green.png
+✓ Succès: ./output/blank_stone_item_rock_cursed_green.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_cursed.png -> ./output/blank_stone_item_rock_cursed.png
+✓ Succès: ./output/blank_stone_item_rock_cursed.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_glow.png -> ./output/blank_stone_item_rock_glow.png
+✓ Succès: ./output/blank_stone_item_rock_glow.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_grey.png -> ./output/blank_stone_item_rock_grey.png
+✓ Succès: ./output/blank_stone_item_rock_grey.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_hard_alt.png -> ./output/blank_stone_item_rock_hard_alt.png
+✓ Succès: ./output/blank_stone_item_rock_hard_alt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_hard_border.png -> ./output/blank_stone_item_rock_hard_border.png
+✓ Succès: ./output/blank_stone_item_rock_hard_border.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_hard.png -> ./output/blank_stone_item_rock_hard.png
+✓ Succès: ./output/blank_stone_item_rock_hard.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock.png -> ./output/blank_stone_item_rock.png
+✓ Succès: ./output/blank_stone_item_rock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_poison.png -> ./output/blank_stone_item_rock_poison.png
+✓ Succès: ./output/blank_stone_item_rock_poison.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_radioactive.png -> ./output/blank_stone_item_rock_radioactive.png
+✓ Succès: ./output/blank_stone_item_rock_radioactive.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rock_static_purple.png -> ./output/blank_stone_item_rock_static_purple.png
+✓ Succès: ./output/blank_stone_item_rock_static_purple.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/root_growth.png -> ./output/blank_stone_item_root_growth.png
+✓ Succès: ./output/blank_stone_item_root_growth.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/root.png -> ./output/blank_stone_item_root.png
+✓ Succès: ./output/blank_stone_item_root.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/rust.png -> ./output/blank_stone_item_rust.png
+✓ Succès: ./output/blank_stone_item_rust.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/salt.png -> ./output/blank_stone_item_salt.png
+✓ Succès: ./output/blank_stone_item_salt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/sand_blue.png -> ./output/blank_stone_item_sand_blue.png
+✓ Succès: ./output/blank_stone_item_sand_blue.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/sand_petrify.png -> ./output/blank_stone_item_sand_petrify.png
+✓ Succès: ./output/blank_stone_item_sand_petrify.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/sand.png -> ./output/blank_stone_item_sand.png
+✓ Succès: ./output/blank_stone_item_sand.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/sand_surface.png -> ./output/blank_stone_item_sand_surface.png
+✓ Succès: ./output/blank_stone_item_sand_surface.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/silver.png -> ./output/blank_stone_item_silver.png
+✓ Succès: ./output/blank_stone_item_silver.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/skullrock.png -> ./output/blank_stone_item_skullrock.png
+✓ Succès: ./output/blank_stone_item_skullrock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/slime_green.png -> ./output/blank_stone_item_slime_green.png
+✓ Succès: ./output/blank_stone_item_slime_green.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/slime.png -> ./output/blank_stone_item_slime.png
+✓ Succès: ./output/blank_stone_item_slime.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/slush.png -> ./output/blank_stone_item_slush.png
+✓ Succès: ./output/blank_stone_item_slush.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/snow.png -> ./output/blank_stone_item_snow.png
+✓ Succès: ./output/blank_stone_item_snow.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/snowrock_bright.png -> ./output/blank_stone_item_snowrock_bright.png
+✓ Succès: ./output/blank_stone_item_snowrock_bright.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/snowrock.png -> ./output/blank_stone_item_snowrock.png
+✓ Succès: ./output/blank_stone_item_snowrock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/soil_dead.png -> ./output/blank_stone_item_soil_dead.png
+✓ Succès: ./output/blank_stone_item_soil_dead.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/soil_lush_dark.png -> ./output/blank_stone_item_soil_lush_dark.png
+✓ Succès: ./output/blank_stone_item_soil_lush_dark.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/soil_lush.png -> ./output/blank_stone_item_soil_lush.png
+✓ Succès: ./output/blank_stone_item_soil_lush.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/soil.png -> ./output/blank_stone_item_soil.png
+✓ Succès: ./output/blank_stone_item_soil.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/static_magic_material.png -> ./output/blank_stone_item_static_magic_material.png
+✓ Succès: ./output/blank_stone_item_static_magic_material.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steelpanelfrost.png -> ./output/blank_stone_item_steelpanelfrost.png
+✓ Succès: ./output/blank_stone_item_steelpanelfrost.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steelpanel_grey.png -> ./output/blank_stone_item_steelpanel_grey.png
+✓ Succès: ./output/blank_stone_item_steelpanel_grey.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steelpanelmoss.png -> ./output/blank_stone_item_steelpanelmoss.png
+✓ Succès: ./output/blank_stone_item_steelpanelmoss.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steelpanel.png -> ./output/blank_stone_item_steelpanel.png
+✓ Succès: ./output/blank_stone_item_steelpanel.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steelpanel_red.png -> ./output/blank_stone_item_steelpanel_red.png
+✓ Succès: ./output/blank_stone_item_steelpanel_red.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steel.png -> ./output/blank_stone_item_steel.png
+✓ Succès: ./output/blank_stone_item_steel.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/steel_rusted.png -> ./output/blank_stone_item_steel_rusted.png
+✓ Succès: ./output/blank_stone_item_steel_rusted.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/sulphur.png -> ./output/blank_stone_item_sulphur.png
+✓ Succès: ./output/blank_stone_item_sulphur.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/swamp.png -> ./output/blank_stone_item_swamp.png
+✓ Succès: ./output/blank_stone_item_swamp.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick_alt.png -> ./output/blank_stone_item_templebrick_alt.png
+✓ Succès: ./output/blank_stone_item_templebrick_alt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick_broken.png -> ./output/blank_stone_item_templebrick_broken.png
+✓ Succès: ./output/blank_stone_item_templebrick_broken.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick_diamond.png -> ./output/blank_stone_item_templebrick_diamond.png
+✓ Succès: ./output/blank_stone_item_templebrick_diamond.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick_golden.png -> ./output/blank_stone_item_templebrick_golden.png
+✓ Succès: ./output/blank_stone_item_templebrick_golden.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick.png -> ./output/blank_stone_item_templebrick.png
+✓ Succès: ./output/blank_stone_item_templebrick.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick_red.png -> ./output/blank_stone_item_templebrick_red.png
+✓ Succès: ./output/blank_stone_item_templebrick_red.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templebrick_ruined.png -> ./output/blank_stone_item_templebrick_ruined.png
+✓ Succès: ./output/blank_stone_item_templebrick_ruined.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templerock.png -> ./output/blank_stone_item_templerock.png
+✓ Succès: ./output/blank_stone_item_templerock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/templeslab.png -> ./output/blank_stone_item_templeslab.png
+✓ Succès: ./output/blank_stone_item_templeslab.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/test_vine.png -> ./output/blank_stone_item_test_vine.png
+✓ Succès: ./output/blank_stone_item_test_vine.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/the_end.png -> ./output/blank_stone_item_the_end.png
+✓ Succès: ./output/blank_stone_item_the_end.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/tnt_1.png -> ./output/blank_stone_item_tnt_1.png
+✓ Succès: ./output/blank_stone_item_tnt_1.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/tntl.png -> ./output/blank_stone_item_tntl.png
+✓ Succès: ./output/blank_stone_item_tntl.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/tnt.png -> ./output/blank_stone_item_tnt.png
+✓ Succès: ./output/blank_stone_item_tnt.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/vaultrock.png -> ./output/blank_stone_item_vaultrock.png
+✓ Succès: ./output/blank_stone_item_vaultrock.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/vomit.png -> ./output/blank_stone_item_vomit.png
+✓ Succès: ./output/blank_stone_item_vomit.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/waterstone.png -> ./output/blank_stone_item_waterstone.png
+✓ Succès: ./output/blank_stone_item_waterstone.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/wax.png -> ./output/blank_stone_item_wax.png
+✓ Succès: ./output/blank_stone_item_wax.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/wetwood.png -> ./output/blank_stone_item_wetwood.png
+✓ Succès: ./output/blank_stone_item_wetwood.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/wizardstone.png -> ./output/blank_stone_item_wizardstone.png
+✓ Succès: ./output/blank_stone_item_wizardstone.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/wood.png -> ./output/blank_stone_item_wood.png
+✓ Succès: ./output/blank_stone_item_wood.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/wood_vertical.png -> ./output/blank_stone_item_wood_vertical.png
+✓ Succès: ./output/blank_stone_item_wood_vertical.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/wormmeat.png -> ./output/blank_stone_item_wormmeat.png
+✓ Succès: ./output/blank_stone_item_wormmeat.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/yellowblood_gas.png -> ./output/blank_stone_item_yellowblood_gas.png
+✓ Succès: ./output/blank_stone_item_yellowblood_gas.png
+Traitement: ./sprites/blank_stone_item.png avec ./materials/yellowblood.png -> ./output/blank_stone_item_yellowblood.png
+✓ Succès: ./output/blank_stone_item_yellowblood.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/aluminium_oxide.png -> ./output/blank_stone_ui_aluminium_oxide.png
+✓ Succès: ./output/blank_stone_ui_aluminium_oxide.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/badroot.png -> ./output/blank_stone_ui_badroot.png
+✓ Succès: ./output/blank_stone_ui_badroot.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/blueblood.png -> ./output/blank_stone_ui_blueblood.png
+✓ Succès: ./output/blank_stone_ui_blueblood.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/bluefungi.png -> ./output/blank_stone_ui_bluefungi.png
+✓ Succès: ./output/blank_stone_ui_bluefungi.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/bone.png -> ./output/blank_stone_ui_bone.png
+✓ Succès: ./output/blank_stone_ui_bone.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/brass.png -> ./output/blank_stone_ui_brass.png
+✓ Succès: ./output/blank_stone_ui_brass.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/brick.png -> ./output/blank_stone_ui_brick.png
+✓ Succès: ./output/blank_stone_ui_brick.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/cement.png -> ./output/blank_stone_ui_cement.png
+✓ Succès: ./output/blank_stone_ui_cement.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/cloth.png -> ./output/blank_stone_ui_cloth.png
+✓ Succès: ./output/blank_stone_ui_cloth.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/coal.png -> ./output/blank_stone_ui_coal.png
+✓ Succès: ./output/blank_stone_ui_coal.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/coal_static.png -> ./output/blank_stone_ui_coal_static.png
+✓ Succès: ./output/blank_stone_ui_coal_static.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/colors_fire_glow.png -> ./output/blank_stone_ui_colors_fire_glow.png
+✓ Succès: ./output/blank_stone_ui_colors_fire_glow.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/colors_fire.png -> ./output/blank_stone_ui_colors_fire.png
+✓ Succès: ./output/blank_stone_ui_colors_fire.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/concrete.png -> ./output/blank_stone_ui_concrete.png
+✓ Succès: ./output/blank_stone_ui_concrete.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/concrete_wet.png -> ./output/blank_stone_ui_concrete_wet.png
+✓ Succès: ./output/blank_stone_ui_concrete_wet.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/confusion.png -> ./output/blank_stone_ui_confusion.png
+✓ Succès: ./output/blank_stone_ui_confusion.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/copper.png -> ./output/blank_stone_ui_copper.png
+✓ Succès: ./output/blank_stone_ui_copper.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/corruption.png -> ./output/blank_stone_ui_corruption.png
+✓ Succès: ./output/blank_stone_ui_corruption.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/crystal.png -> ./output/blank_stone_ui_crystal.png
+✓ Succès: ./output/blank_stone_ui_crystal.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/crystal_purple.png -> ./output/blank_stone_ui_crystal_purple.png
+✓ Succès: ./output/blank_stone_ui_crystal_purple.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/darkness.png -> ./output/blank_stone_ui_darkness.png
+✓ Succès: ./output/blank_stone_ui_darkness.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/desert.png -> ./output/blank_stone_ui_desert.png
+✓ Succès: ./output/blank_stone_ui_desert.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/desert_surface.png -> ./output/blank_stone_ui_desert_surface.png
+✓ Succès: ./output/blank_stone_ui_desert_surface.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/diamond.png -> ./output/blank_stone_ui_diamond.png
+✓ Succès: ./output/blank_stone_ui_diamond.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/dirt.png -> ./output/blank_stone_ui_dirt.png
+✓ Succès: ./output/blank_stone_ui_dirt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/dust.png -> ./output/blank_stone_ui_dust.png
+✓ Succès: ./output/blank_stone_ui_dust.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth_alt2.png -> ./output/blank_stone_ui_earth_alt2.png
+✓ Succès: ./output/blank_stone_ui_earth_alt2.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth_alt.png -> ./output/blank_stone_ui_earth_alt.png
+✓ Succès: ./output/blank_stone_ui_earth_alt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth_bright.png -> ./output/blank_stone_ui_earth_bright.png
+✓ Succès: ./output/blank_stone_ui_earth_bright.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth_bright_red.png -> ./output/blank_stone_ui_earth_bright_red.png
+✓ Succès: ./output/blank_stone_ui_earth_bright_red.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth.png -> ./output/blank_stone_ui_earth.png
+✓ Succès: ./output/blank_stone_ui_earth.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth_rainforest_dark.png -> ./output/blank_stone_ui_earth_rainforest_dark.png
+✓ Succès: ./output/blank_stone_ui_earth_rainforest_dark.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/earth_rainforest.png -> ./output/blank_stone_ui_earth_rainforest.png
+✓ Succès: ./output/blank_stone_ui_earth_rainforest.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/endslime.png -> ./output/blank_stone_ui_endslime.png
+✓ Succès: ./output/blank_stone_ui_endslime.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/fungi.png -> ./output/blank_stone_ui_fungi.png
+✓ Succès: ./output/blank_stone_ui_fungi.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/fun.png -> ./output/blank_stone_ui_fun.png
+✓ Succès: ./output/blank_stone_ui_fun.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/glass.png -> ./output/blank_stone_ui_glass.png
+✓ Succès: ./output/blank_stone_ui_glass.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/glowrock.png -> ./output/blank_stone_ui_glowrock.png
+✓ Succès: ./output/blank_stone_ui_glowrock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/gold_dark.png -> ./output/blank_stone_ui_gold_dark.png
+✓ Succès: ./output/blank_stone_ui_gold_dark.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/gold.png -> ./output/blank_stone_ui_gold.png
+✓ Succès: ./output/blank_stone_ui_gold.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/grass_dark.png -> ./output/blank_stone_ui_grass_dark.png
+✓ Succès: ./output/blank_stone_ui_grass_dark.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/grass_dry.png -> ./output/blank_stone_ui_grass_dry.png
+✓ Succès: ./output/blank_stone_ui_grass_dry.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/grass_frozen.png -> ./output/blank_stone_ui_grass_frozen.png
+✓ Succès: ./output/blank_stone_ui_grass_frozen.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/grass.png -> ./output/blank_stone_ui_grass.png
+✓ Succès: ./output/blank_stone_ui_grass.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/gravel.png -> ./output/blank_stone_ui_gravel.png
+✓ Succès: ./output/blank_stone_ui_gravel.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/gunpowder.png -> ./output/blank_stone_ui_gunpowder.png
+✓ Succès: ./output/blank_stone_ui_gunpowder.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/gunpowder_tnt.png -> ./output/blank_stone_ui_gunpowder_tnt.png
+✓ Succès: ./output/blank_stone_ui_gunpowder_tnt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/honey.png -> ./output/blank_stone_ui_honey.png
+✓ Succès: ./output/blank_stone_ui_honey.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice_acid.png -> ./output/blank_stone_ui_ice_acid.png
+✓ Succès: ./output/blank_stone_ui_ice_acid.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice_blood.png -> ./output/blank_stone_ui_ice_blood.png
+✓ Succès: ./output/blank_stone_ui_ice_blood.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice_cold.png -> ./output/blank_stone_ui_ice_cold.png
+✓ Succès: ./output/blank_stone_ui_ice_cold.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice.png -> ./output/blank_stone_ui_ice.png
+✓ Succès: ./output/blank_stone_ui_ice.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice_poison.png -> ./output/blank_stone_ui_ice_poison.png
+✓ Succès: ./output/blank_stone_ui_ice_poison.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice_radioactive.png -> ./output/blank_stone_ui_ice_radioactive.png
+✓ Succès: ./output/blank_stone_ui_ice_radioactive.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/ice_slime.png -> ./output/blank_stone_ui_ice_slime.png
+✓ Succès: ./output/blank_stone_ui_ice_slime.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/iron.png -> ./output/blank_stone_ui_iron.png
+✓ Succès: ./output/blank_stone_ui_iron.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/jade.png -> ./output/blank_stone_ui_jade.png
+✓ Succès: ./output/blank_stone_ui_jade.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/lavarock.png -> ./output/blank_stone_ui_lavarock.png
+✓ Succès: ./output/blank_stone_ui_lavarock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/lsd.png -> ./output/blank_stone_ui_lsd.png
+✓ Succès: ./output/blank_stone_ui_lsd.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/magic_gate.png -> ./output/blank_stone_ui_magic_gate.png
+✓ Succès: ./output/blank_stone_ui_magic_gate.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/magic_liquid_unstable_telep.png -> ./output/blank_stone_ui_magic_liquid_unstable_telep.png
+✓ Succès: ./output/blank_stone_ui_magic_liquid_unstable_telep.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/magic_liquid_weakness.png -> ./output/blank_stone_ui_magic_liquid_weakness.png
+✓ Succès: ./output/blank_stone_ui_magic_liquid_weakness.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat_burned.png -> ./output/blank_stone_ui_meat_burned.png
+✓ Succès: ./output/blank_stone_ui_meat_burned.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat_done.png -> ./output/blank_stone_ui_meat_done.png
+✓ Succès: ./output/blank_stone_ui_meat_done.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat_hot.png -> ./output/blank_stone_ui_meat_hot.png
+✓ Succès: ./output/blank_stone_ui_meat_hot.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat.png -> ./output/blank_stone_ui_meat.png
+✓ Succès: ./output/blank_stone_ui_meat.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat_rotten.png -> ./output/blank_stone_ui_meat_rotten.png
+✓ Succès: ./output/blank_stone_ui_meat_rotten.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat_static.png -> ./output/blank_stone_ui_meat_static.png
+✓ Succès: ./output/blank_stone_ui_meat_static.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meat_warm.png -> ./output/blank_stone_ui_meat_warm.png
+✓ Succès: ./output/blank_stone_ui_meat_warm.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/meteor.png -> ./output/blank_stone_ui_meteor.png
+✓ Succès: ./output/blank_stone_ui_meteor.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/midas_precursor.png -> ./output/blank_stone_ui_midas_precursor.png
+✓ Succès: ./output/blank_stone_ui_midas_precursor.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/mimic_liquid.png -> ./output/blank_stone_ui_mimic_liquid.png
+✓ Succès: ./output/blank_stone_ui_mimic_liquid.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/moss_dark.png -> ./output/blank_stone_ui_moss_dark.png
+✓ Succès: ./output/blank_stone_ui_moss_dark.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/moss.png -> ./output/blank_stone_ui_moss.png
+✓ Succès: ./output/blank_stone_ui_moss.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/moss_rust.png -> ./output/blank_stone_ui_moss_rust.png
+✓ Succès: ./output/blank_stone_ui_moss_rust.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/mud.png -> ./output/blank_stone_ui_mud.png
+✓ Succès: ./output/blank_stone_ui_mud.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/neon_tube_blood_red.png -> ./output/blank_stone_ui_neon_tube_blood_red.png
+✓ Succès: ./output/blank_stone_ui_neon_tube_blood_red.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/neon_tube_cyan.png -> ./output/blank_stone_ui_neon_tube_cyan.png
+✓ Succès: ./output/blank_stone_ui_neon_tube_cyan.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/neon_tube_purple.png -> ./output/blank_stone_ui_neon_tube_purple.png
+✓ Succès: ./output/blank_stone_ui_neon_tube_purple.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/nest.png -> ./output/blank_stone_ui_nest.png
+✓ Succès: ./output/blank_stone_ui_nest.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/polymorph_unstable.png -> ./output/blank_stone_ui_polymorph_unstable.png
+✓ Succès: ./output/blank_stone_ui_polymorph_unstable.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/porridge.png -> ./output/blank_stone_ui_porridge.png
+✓ Succès: ./output/blank_stone_ui_porridge.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/pus.png -> ./output/blank_stone_ui_pus.png
+✓ Succès: ./output/blank_stone_ui_pus.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rainbow_gas.png -> ./output/blank_stone_ui_rainbow_gas.png
+✓ Succès: ./output/blank_stone_ui_rainbow_gas.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rainbow.png -> ./output/blank_stone_ui_rainbow.png
+✓ Succès: ./output/blank_stone_ui_rainbow.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_alt2.png -> ./output/blank_stone_ui_rock_alt2.png
+✓ Succès: ./output/blank_stone_ui_rock_alt2.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_alt3.png -> ./output/blank_stone_ui_rock_alt3.png
+✓ Succès: ./output/blank_stone_ui_rock_alt3.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_alt4.png -> ./output/blank_stone_ui_rock_alt4.png
+✓ Succès: ./output/blank_stone_ui_rock_alt4.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_alt5.png -> ./output/blank_stone_ui_rock_alt5.png
+✓ Succès: ./output/blank_stone_ui_rock_alt5.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_alt6.png -> ./output/blank_stone_ui_rock_alt6.png
+✓ Succès: ./output/blank_stone_ui_rock_alt6.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_alt.png -> ./output/blank_stone_ui_rock_alt.png
+✓ Succès: ./output/blank_stone_ui_rock_alt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_cursed_green.png -> ./output/blank_stone_ui_rock_cursed_green.png
+✓ Succès: ./output/blank_stone_ui_rock_cursed_green.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_cursed.png -> ./output/blank_stone_ui_rock_cursed.png
+✓ Succès: ./output/blank_stone_ui_rock_cursed.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_glow.png -> ./output/blank_stone_ui_rock_glow.png
+✓ Succès: ./output/blank_stone_ui_rock_glow.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_grey.png -> ./output/blank_stone_ui_rock_grey.png
+✓ Succès: ./output/blank_stone_ui_rock_grey.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_hard_alt.png -> ./output/blank_stone_ui_rock_hard_alt.png
+✓ Succès: ./output/blank_stone_ui_rock_hard_alt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_hard_border.png -> ./output/blank_stone_ui_rock_hard_border.png
+✓ Succès: ./output/blank_stone_ui_rock_hard_border.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_hard.png -> ./output/blank_stone_ui_rock_hard.png
+✓ Succès: ./output/blank_stone_ui_rock_hard.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock.png -> ./output/blank_stone_ui_rock.png
+✓ Succès: ./output/blank_stone_ui_rock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_poison.png -> ./output/blank_stone_ui_rock_poison.png
+✓ Succès: ./output/blank_stone_ui_rock_poison.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_radioactive.png -> ./output/blank_stone_ui_rock_radioactive.png
+✓ Succès: ./output/blank_stone_ui_rock_radioactive.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rock_static_purple.png -> ./output/blank_stone_ui_rock_static_purple.png
+✓ Succès: ./output/blank_stone_ui_rock_static_purple.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/root_growth.png -> ./output/blank_stone_ui_root_growth.png
+✓ Succès: ./output/blank_stone_ui_root_growth.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/root.png -> ./output/blank_stone_ui_root.png
+✓ Succès: ./output/blank_stone_ui_root.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/rust.png -> ./output/blank_stone_ui_rust.png
+✓ Succès: ./output/blank_stone_ui_rust.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/salt.png -> ./output/blank_stone_ui_salt.png
+✓ Succès: ./output/blank_stone_ui_salt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/sand_blue.png -> ./output/blank_stone_ui_sand_blue.png
+✓ Succès: ./output/blank_stone_ui_sand_blue.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/sand_petrify.png -> ./output/blank_stone_ui_sand_petrify.png
+✓ Succès: ./output/blank_stone_ui_sand_petrify.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/sand.png -> ./output/blank_stone_ui_sand.png
+✓ Succès: ./output/blank_stone_ui_sand.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/sand_surface.png -> ./output/blank_stone_ui_sand_surface.png
+✓ Succès: ./output/blank_stone_ui_sand_surface.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/silver.png -> ./output/blank_stone_ui_silver.png
+✓ Succès: ./output/blank_stone_ui_silver.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/skullrock.png -> ./output/blank_stone_ui_skullrock.png
+✓ Succès: ./output/blank_stone_ui_skullrock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/slime_green.png -> ./output/blank_stone_ui_slime_green.png
+✓ Succès: ./output/blank_stone_ui_slime_green.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/slime.png -> ./output/blank_stone_ui_slime.png
+✓ Succès: ./output/blank_stone_ui_slime.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/slush.png -> ./output/blank_stone_ui_slush.png
+✓ Succès: ./output/blank_stone_ui_slush.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/snow.png -> ./output/blank_stone_ui_snow.png
+✓ Succès: ./output/blank_stone_ui_snow.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/snowrock_bright.png -> ./output/blank_stone_ui_snowrock_bright.png
+✓ Succès: ./output/blank_stone_ui_snowrock_bright.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/snowrock.png -> ./output/blank_stone_ui_snowrock.png
+✓ Succès: ./output/blank_stone_ui_snowrock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/soil_dead.png -> ./output/blank_stone_ui_soil_dead.png
+✓ Succès: ./output/blank_stone_ui_soil_dead.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/soil_lush_dark.png -> ./output/blank_stone_ui_soil_lush_dark.png
+✓ Succès: ./output/blank_stone_ui_soil_lush_dark.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/soil_lush.png -> ./output/blank_stone_ui_soil_lush.png
+✓ Succès: ./output/blank_stone_ui_soil_lush.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/soil.png -> ./output/blank_stone_ui_soil.png
+✓ Succès: ./output/blank_stone_ui_soil.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/static_magic_material.png -> ./output/blank_stone_ui_static_magic_material.png
+✓ Succès: ./output/blank_stone_ui_static_magic_material.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steelpanelfrost.png -> ./output/blank_stone_ui_steelpanelfrost.png
+✓ Succès: ./output/blank_stone_ui_steelpanelfrost.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steelpanel_grey.png -> ./output/blank_stone_ui_steelpanel_grey.png
+✓ Succès: ./output/blank_stone_ui_steelpanel_grey.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steelpanelmoss.png -> ./output/blank_stone_ui_steelpanelmoss.png
+✓ Succès: ./output/blank_stone_ui_steelpanelmoss.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steelpanel.png -> ./output/blank_stone_ui_steelpanel.png
+✓ Succès: ./output/blank_stone_ui_steelpanel.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steelpanel_red.png -> ./output/blank_stone_ui_steelpanel_red.png
+✓ Succès: ./output/blank_stone_ui_steelpanel_red.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steel.png -> ./output/blank_stone_ui_steel.png
+✓ Succès: ./output/blank_stone_ui_steel.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/steel_rusted.png -> ./output/blank_stone_ui_steel_rusted.png
+✓ Succès: ./output/blank_stone_ui_steel_rusted.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/sulphur.png -> ./output/blank_stone_ui_sulphur.png
+✓ Succès: ./output/blank_stone_ui_sulphur.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/swamp.png -> ./output/blank_stone_ui_swamp.png
+✓ Succès: ./output/blank_stone_ui_swamp.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick_alt.png -> ./output/blank_stone_ui_templebrick_alt.png
+✓ Succès: ./output/blank_stone_ui_templebrick_alt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick_broken.png -> ./output/blank_stone_ui_templebrick_broken.png
+✓ Succès: ./output/blank_stone_ui_templebrick_broken.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick_diamond.png -> ./output/blank_stone_ui_templebrick_diamond.png
+✓ Succès: ./output/blank_stone_ui_templebrick_diamond.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick_golden.png -> ./output/blank_stone_ui_templebrick_golden.png
+✓ Succès: ./output/blank_stone_ui_templebrick_golden.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick.png -> ./output/blank_stone_ui_templebrick.png
+✓ Succès: ./output/blank_stone_ui_templebrick.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick_red.png -> ./output/blank_stone_ui_templebrick_red.png
+✓ Succès: ./output/blank_stone_ui_templebrick_red.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templebrick_ruined.png -> ./output/blank_stone_ui_templebrick_ruined.png
+✓ Succès: ./output/blank_stone_ui_templebrick_ruined.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templerock.png -> ./output/blank_stone_ui_templerock.png
+✓ Succès: ./output/blank_stone_ui_templerock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/templeslab.png -> ./output/blank_stone_ui_templeslab.png
+✓ Succès: ./output/blank_stone_ui_templeslab.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/test_vine.png -> ./output/blank_stone_ui_test_vine.png
+✓ Succès: ./output/blank_stone_ui_test_vine.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/the_end.png -> ./output/blank_stone_ui_the_end.png
+✓ Succès: ./output/blank_stone_ui_the_end.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/tnt_1.png -> ./output/blank_stone_ui_tnt_1.png
+✓ Succès: ./output/blank_stone_ui_tnt_1.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/tntl.png -> ./output/blank_stone_ui_tntl.png
+✓ Succès: ./output/blank_stone_ui_tntl.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/tnt.png -> ./output/blank_stone_ui_tnt.png
+✓ Succès: ./output/blank_stone_ui_tnt.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/vaultrock.png -> ./output/blank_stone_ui_vaultrock.png
+✓ Succès: ./output/blank_stone_ui_vaultrock.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/vomit.png -> ./output/blank_stone_ui_vomit.png
+✓ Succès: ./output/blank_stone_ui_vomit.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/waterstone.png -> ./output/blank_stone_ui_waterstone.png
+✓ Succès: ./output/blank_stone_ui_waterstone.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/wax.png -> ./output/blank_stone_ui_wax.png
+✓ Succès: ./output/blank_stone_ui_wax.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/wetwood.png -> ./output/blank_stone_ui_wetwood.png
+✓ Succès: ./output/blank_stone_ui_wetwood.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/wizardstone.png -> ./output/blank_stone_ui_wizardstone.png
+✓ Succès: ./output/blank_stone_ui_wizardstone.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/wood.png -> ./output/blank_stone_ui_wood.png
+✓ Succès: ./output/blank_stone_ui_wood.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/wood_vertical.png -> ./output/blank_stone_ui_wood_vertical.png
+✓ Succès: ./output/blank_stone_ui_wood_vertical.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/wormmeat.png -> ./output/blank_stone_ui_wormmeat.png
+✓ Succès: ./output/blank_stone_ui_wormmeat.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/yellowblood_gas.png -> ./output/blank_stone_ui_yellowblood_gas.png
+✓ Succès: ./output/blank_stone_ui_yellowblood_gas.png
+Traitement: ./sprites/blank_stone_ui.png avec ./materials/yellowblood.png -> ./output/blank_stone_ui_yellowblood.png
+✓ Succès: ./output/blank_stone_ui_yellowblood.png
+✅ Génération terminée: 314 images créées dans ./output
