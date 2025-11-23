@@ -27,12 +27,20 @@
   
   </Base>
 
+  <!-- protection -->
+
+  <GameEffectComponent 
+    _tags="enabled_in_hand"
+    effect="PROTECTION_RADIOACTIVITY"
+    frames="-1"
+  ></GameEffectComponent>
+
   <!-- magical properties -->
 
   <MagicConvertMaterialComponent
     _tags= "enabled_in_world, enabled_in_hand"
-    from_material="water"
-    to_material="radioactive_liquid"
+    from_material_array="water, water_ice, water_swamp"
+    to_material_array="radioactive_liquid, radioactive_liquid, radioactive_liquid"
     is_circle = "1"
     radius = "30"
     min_radius = "20"

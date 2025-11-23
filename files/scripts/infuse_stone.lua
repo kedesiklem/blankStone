@@ -1,4 +1,4 @@
-local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+-- local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local reaction_distance_max = 10 -- maybe change to entity variable
 local elemental_stone_path = "mods/blankStone/files/entities/"
@@ -6,11 +6,22 @@ local material_to_stone_tbl =
 {
   ["radioactive_liquid"] = "stone_toxic",
 }
--- TODO:
--- [Get nearby flask -> get main material] -> check table -> convert blank_stone
+
+
 function material_area_checker_success(pos_x, pos_y)
   local entity_id    = GetUpdatedEntityID()
-  log.info("infuse")
+
+
+  -- Debug: dessiner le cercle de détection
+    local segments = 32
+    for i = 0, segments - 1 do
+        local angle = (i / segments) * 2 * math.pi
+        local x = pos_x + math.cos(angle) * reaction_distance_max
+        local y = pos_y + math.sin(angle) * reaction_distance_max
+        GameCreateParticle("spark_white_bright", x, y, 1, 0, 0, false, false, false)
+    end
+
+  -- log.info("infuse")
   local potion_id = EntityGetClosestWithTag(pos_x,pos_y,"potion")
   local potion_x,potion_y = EntityGetTransform(potion_id)
 
@@ -18,24 +29,24 @@ function material_area_checker_success(pos_x, pos_y)
   if(distance < reaction_distance_max) then
     local material_id = GetMaterialInventoryMainMaterial(potion_id)
     if(material_id == 0) then
-      log.debug("No material found in potion")
+      -- log.debug("No material found in potion")
     else
       local material = CellFactory_GetName(material_id)
-      log.debug("Main material in potion : " .. material)
+      -- log.debug("Main material in potion : " .. material)
       local stone = material_to_stone_tbl[material]
       if(stone) then
-        log.debug("Linked stone : " .. stone)
+        -- log.debug("Linked stone : " .. stone)
         EntityLoad(elemental_stone_path .. stone ..".xml", pos_x, pos_y - 5)
         EntityLoad("data/entities/projectiles/explosion.xml", pos_x, pos_y - 10)
         EntityKill(entity_id)
         EntityKill(potion_id)
-        log.info("A transformation happend")
+        -- log.info("A transformation happend")
       else
-        log.debug("No linked stone.")
+        -- log.debug("No linked stone.")
       end
     end
   else
-    log.debug("No potion close enough")
+    -- log.debug("No potion close enough")
   end
   
 end
