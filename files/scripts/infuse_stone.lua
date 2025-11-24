@@ -6,6 +6,7 @@ local elemental_stone_path = "mods/blankStone/files/entities/"
 local material_to_stone_tbl =
 {
   -- Vanilla Stone
+  ["magic_liquid_mana_regeneration"] = vanilla_stone_path .. "wandstone",
   ["liquid_fire"] = vanilla_stone_path .. "brimstone",
   ["spark_electric"] = vanilla_stone_path .. "thunderstone",
   ["rock_static"] = vanilla_stone_path .. "stonestone",
