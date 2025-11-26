@@ -1,4 +1,4 @@
-<Entity>
-    <Base file="mods/blankStone/files/entities/base_stone.xml" />
-    <Base file="mods/blankStone/files/entities/purifiable.xml" />
+<Entity tags = "hittable,teleportable_NOT,item_physics,item_pickup">
+    <Base file="mods/blankStone/files/entities/base_stone.xml"/>
+    <Base file="mods/blankStone/files/entities/purifiable.xml"/>  
 </Entity> 

@@ -1,5 +1,5 @@
 <Entity tags="hittable,teleportable_NOT,item_physics,item_pickup" >
-  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+  <Base file="mods/blankStone/files/entities/base_stone.xml">
 
  <!-- physical presence -->
   
