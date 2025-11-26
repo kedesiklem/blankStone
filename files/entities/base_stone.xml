@@ -1,32 +1,31 @@
 <Entity>
-  <Base file="data/entities/base_item_projectile.xml">
+    <Base file="data/entities/base_item_projectile.xml">
         <ProjectileComponent>
             <damage_by_type
                 melee="0.5"
-                >
-            </damage_by_type>
+            ></damage_by_type>
         </ProjectileComponent>
     </Base>
-    
-    <PhysicsBodyComponent 
+
+    <PhysicsBodyComponent
         _tags="enabled_in_world"
-        uid="1" 
-        allow_sleep="1" 
-        angular_damping="0" 
-        fixed_rotation="0" 
-        is_bullet="1" 
+        uid="1"
+        allow_sleep="1"
+        angular_damping="0"
+        fixed_rotation="0"
+        is_bullet="1"
         linear_damping="0"
         auto_clean="0"
         on_death_leave_physics_body="1"
         hax_fix_going_through_ground="1"
     ></PhysicsBodyComponent>
-  
-    <PhysicsImageShapeComponent 
+
+    <PhysicsImageShapeComponent
         body_id="1"
         centered="1"
         material="rock_box2d_hard"
     ></PhysicsImageShapeComponent>
-  
+
     <PhysicsThrowableComponent
         max_throw_speed="180"
         throw_force_coeff="1.5"
@@ -36,7 +35,7 @@
         _tags="enabled_in_world"
     ></VelocityComponent>
 
-  <!-- item -->
+    <!-- item -->
 
     <SpriteComponent
         _tags="enabled_in_hand"
@@ -54,12 +53,12 @@
     ></ItemComponent>
 
     <UIInfoComponent
-        _tags="enabled_in_world">
-    </UIInfoComponent>
-  
+        _tags="enabled_in_world"
+    ></UIInfoComponent>
+
     <AbilityComponent
-        throw_as_item="1"
-        ><gun_config
+        throw_as_item="1">
+        <gun_config
             deck_capacity="0"
         ></gun_config>
     </AbilityComponent>

@@ -1,7 +1,7 @@
 <Entity>
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
-    <PhysicsImageShapeComponent 
+    <PhysicsImageShapeComponent
       image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_toxic.png"
     ></PhysicsImageShapeComponent>
 
@@ -16,19 +16,18 @@
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Toxic Stone">
-    </UIInfoComponent>
+      name="Toxic Stone"
+    ></UIInfoComponent>
 
-  	<AbilityComponent
+    <AbilityComponent
       ui_name="Toxic Stone"
       throw_as_item="1"
-      >
-    </AbilityComponent>
+    ></AbilityComponent>
   </Base>
 
   <!-- protection -->
 
-  <GameEffectComponent 
+  <GameEffectComponent
     _tags="enabled_in_hand"
     effect="PROTECTION_RADIOACTIVITY"
     frames="-1"
@@ -37,14 +36,14 @@
   <!-- magical properties -->
 
   <MagicConvertMaterialComponent
-    _tags= "enabled_in_world, enabled_in_hand"
+    _tags="enabled_in_world,enabled_in_hand"
     from_material_array="water, water_ice, water_swamp, water_salt"
     to_material_array="radioactive_liquid, radioactive_liquid, radioactive_liquid, radioactive_liquid"
-    is_circle = "1"
-    radius = "30"
-    min_radius = "20"
-    kill_when_finished  = "0"
-    loop = "1"
+    is_circle="1"
+    radius="30"
+    min_radius="20"
+    kill_when_finished="0"
+    loop="1"
   ></MagicConvertMaterialComponent>
 
 </Entity>

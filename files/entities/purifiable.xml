@@ -1,20 +1,20 @@
 <Entity>
-    <MaterialAreaCheckerComponent 
+    <MaterialAreaCheckerComponent
         _tags="enabled_in_world"
         update_every_x_frame="20"
         look_for_failure="0"
-        area_aabb.min_x="-2" 
-        area_aabb.min_y="-4"        
-        area_aabb.max_x="2" 
-        area_aabb.max_y="0"      
+        area_aabb.min_x="-2"
+        area_aabb.min_y="-4"
+        area_aabb.max_x="2"
+        area_aabb.max_y="0"
         material="purifying_powder"
         material2="purifying_powder"
         kill_after_message="0"
-    />
+    ></MaterialAreaCheckerComponent>
 
     <LuaComponent
         _tags="enabled_in_world"
-        script_material_area_checker_success="mods/blankStone/files/scripts/purify_stone.lua" >
-    </LuaComponent>
-    
+        script_material_area_checker_success="mods/blankStone/files/scripts/purify_stone.lua"
+    ></LuaComponent>
+
 </Entity>

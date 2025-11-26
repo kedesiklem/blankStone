@@ -1,7 +1,7 @@
 <Entity>
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
-    <PhysicsImageShapeComponent 
+    <PhysicsImageShapeComponent
       image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_health.png"
     ></PhysicsImageShapeComponent>
 
@@ -16,29 +16,21 @@
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Healthy Stone">
-    </UIInfoComponent>
+      name="Healthy Stone"> </UIInfoComponent>
 
-  	<AbilityComponent
+    <AbilityComponent
       ui_name="Healthy Stone"
       throw_as_item="1"
-      >
-    </AbilityComponent>
+    ></AbilityComponent>
   </Base>
 
   <!-- Stain effect -->
-
+  <Base file="mods/blankStone/files/entities/staining.xml">
     <VariableStorageComponent
-        _tags="enabled_in_world,enabled_in_hand"
-        name = "stain_effect"
-        value_string = "magic_liquid_hp_regeneration"
-        value_int="32"
+      name="stain_effect"
+      value_string="magic_liquid_hp_regeneration"
+      value_int="32"
     ></VariableStorageComponent>
-
-    <LuaComponent
-        _tags="enabled_in_world,enabled_in_hand"
-        script_source_file="mods/blankStone/files/scripts/stain_effect.lua"
-        execute_every_n_frame="5"
-    ></LuaComponent>
+  </Base>
 
 </Entity>

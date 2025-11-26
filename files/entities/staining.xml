@@ -1,0 +1,12 @@
+<Entity>
+  <LuaComponent _tags="enabled_in_world,enabled_in_hand"
+    script_source_file="mods/blankStone/files/scripts/stain_effect.lua"
+    execute_every_n_frame="5"
+  ></LuaComponent>
+
+  <VariableStorageComponent _tags="enabled_in_world,enabled_in_hand"
+    name="stain_effect"
+    value_string="water"
+    value_int="64"
+  ></VariableStorageComponent>
+</Entity>

@@ -9,7 +9,8 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 ├── files
 │   ├── entities
 │   │   ├── base_stone.xml              # Base for every stone (define basic physical property)
-│   │   ├── purifiable.xml              # Base for every stone that can be purify
+│   │   ├── purifiable.xml              # Interface
+│   │   ├── staining.xml                # Interface
 │   │   ├── blank_stone.xml
 │   │   ├── elemental_stone.xml         # Base for every elemental stone other than vanilla ones
 │   │   └── elemental_stone
@@ -48,7 +49,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - purifying stone into blank_stone
 - infusing stone with liquid
 - compatibility with vanilla stone
-- stain_effect.lua (GrahamBurger)
+- stain_effect.lua (thanks GrahamBurger)
 
 
 ## TODO
