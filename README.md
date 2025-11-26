@@ -8,7 +8,8 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 ├── CREDIT.txt
 ├── files
 │   ├── entities
-│   │   ├── abstract_stone.xml          # Base for every stone that can be purify
+│   │   ├── base_stone.xml              # Base for every stone (define basic physical property)
+│   │   ├── purifiable.xml              # Base for every stone that can be purify
 │   │   ├── blank_stone.xml
 │   │   ├── elemental_stone.xml         # Base for every elemental stone other than vanilla ones
 │   │   └── elemental_stone

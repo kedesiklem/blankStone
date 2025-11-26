@@ -1,6 +1,4 @@
 <Entity>
-    <Base file="data/entities/base_item_projectile.xml">
-    </Base>
   
     <MaterialAreaCheckerComponent 
         _tags="enabled_in_world"
