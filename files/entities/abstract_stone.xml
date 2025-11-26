@@ -19,4 +19,5 @@
         _tags="enabled_in_world"
         script_material_area_checker_success="mods/blankStone/files/scripts/purify_stone.lua" >
     </LuaComponent>
+    
 </Entity>

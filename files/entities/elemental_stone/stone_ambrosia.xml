@@ -1,0 +1,52 @@
+<Entity>
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent 
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_ambrosia.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_ambrosia.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="Ambrosia Stone"
+      ui_description="A stone infused with gods gift."
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_ambrosia.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="Ambrosia Stone">
+    </UIInfoComponent>
+
+  	<AbilityComponent
+      ui_name="Ambrosia Stone"
+      throw_as_item="1"
+      >
+    </AbilityComponent>
+  </Base>
+
+  <!-- protection -->
+
+  <GameEffectComponent 
+    _tags="enabled_in_hand"
+    effect="PROTECTION_ALL"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- Stain effect -->
+
+  <VariableStorageComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    name = "stain_effect"
+    value_string = "magic_liquid_protection_all"
+    value_int="32"
+  ></VariableStorageComponent>
+
+  <LuaComponent
+		_tags="enabled_in_world,enabled_in_hand"
+		script_source_file="mods/blankStone/files/scripts/stain_effect.lua"
+		execute_every_n_frame="5"
+	></LuaComponent>
+
+</Entity>

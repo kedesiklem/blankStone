@@ -2,17 +2,17 @@
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
     <PhysicsImageShapeComponent 
-      image_file="mods/blankStone/files/items_gfx/stone_toxic.png"
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_toxic.png"
     ></PhysicsImageShapeComponent>
 
     <SpriteComponent
-      image_file="mods/blankStone/files/items_gfx/stone_toxic.png"
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_toxic.png"
     ></SpriteComponent>
 
     <ItemComponent
       item_name="Toxic Stone"
       ui_description="A stone infused with toxic properties."
-      ui_sprite="mods/blankStone/files/ui_gfx/stone_toxic.png"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_toxic.png"
     ></ItemComponent>
 
     <UIInfoComponent

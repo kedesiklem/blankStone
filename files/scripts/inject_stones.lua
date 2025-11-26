@@ -30,7 +30,7 @@ end
 
 local items = {
     {
-        weight = 3,
+        weight = 1,
         entity = "blank_stone",
         offset = -2
     }

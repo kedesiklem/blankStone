@@ -1,0 +1,53 @@
+<Entity>
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent 
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_love.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_love.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="Love Stone"
+      ui_description="A stone infused with the power of love."
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_love.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="Love Stone">
+    </UIInfoComponent>
+
+  	<AbilityComponent
+      ui_name="Love Stone"
+      throw_as_item="1"
+      >
+    </AbilityComponent>
+  </Base>
+
+  <!-- Stain effect -->
+
+    <VariableStorageComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        name = "stain_effect"
+        value_string = "magic_liquid_charm"
+        value_int="256"
+    ></VariableStorageComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        script_source_file="mods/blankStone/files/scripts/stain_effect.lua"
+        execute_every_n_frame="5"
+    ></LuaComponent>
+
+      <MagicConvertMaterialComponent
+    _tags= "enabled_in_world, enabled_in_hand"
+    from_material_tag = "[liquid]"
+    to_material="magic_liquid_charm"
+    radius = "64"
+    kill_when_finished  = "0"
+    loop = "1"
+  ></MagicConvertMaterialComponent>
+
+</Entity>

@@ -12,8 +12,10 @@ function OnModPostInit()
 end
 
 function OnPlayerSpawned( player_entity ) 
-    -- local pos_x, pos_y = EntityGetTransform( player_entity )
-    -- EntityLoad( "mods/blankstone/files/entities/stone_toxic.xml", pos_x, pos_y )
+    local pos_x, pos_y = EntityGetTransform( player_entity )
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_ambrosia.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_health.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_love.xml", pos_x, pos_y )
 end
 
 function OnPlayerDied( player_entity ) 
@@ -53,7 +55,7 @@ function OnPausePreUpdate()
 end
 	
 
--- ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scripts/inject_stones.lua")
+ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scripts/inject_stones.lua")
 
 -- based on Apotheosis
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
