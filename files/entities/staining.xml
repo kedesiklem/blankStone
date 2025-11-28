@@ -4,6 +4,7 @@
     execute_every_n_frame="5"
   ></LuaComponent>
 
+  <!-- Default values for waterstone -->
   <VariableStorageComponent _tags="enabled_in_world,enabled_in_hand"
     name="stain_effect"
     value_string="water"

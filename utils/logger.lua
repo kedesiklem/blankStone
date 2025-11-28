@@ -3,7 +3,7 @@ local logger = {}
 
 logger.mod_name = "BlankStone"
 
--- Obtenir le timestamp
+-- Get current timestamp in HH:MM:SS format
 local function get_timestamp()
     local year, month, day, hour, minute, second = GameGetDateAndTimeLocal()
     return string.format("%02d:%02d:%02d", hour, minute, second)
@@ -14,7 +14,7 @@ function logger.log(text)
     print("[" .. get_timestamp() .. "] [" .. logger.mod_name .. "] " .. text)
 end
 
--- Niveaux
+-- Log for different levels
 function logger.debug(text)
     logger.log("[DEBUG] " .. text)
 end

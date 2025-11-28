@@ -22,12 +22,16 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   ├── scripts
 │   │   ├── infuse_stone.lua            # Define how to turn blank stone into elemental_stone 
 │   │   ├── inject_stones.lua           # Define what stone will spawn ingame
-│   │   ├── mod_compatibility
-│   │   │   └── vanilla_appends.lua     # Add abstract_stone property to vanilla stone
 │   │   ├── stain_effect.lua            # Allow stone to apply stain (doesn't work --')
 │   │   ├── stain_effect                # Until I manage to make the stain_effect.lua work
 │   │   │   └── ...
-│   │   └── purify_stone.lua            # Define how elemental stone turn into blank stone
+│   │   ├── purify_stone.lua            # Define how elemental stone turn into blank stone
+│   │   ├── stone_factory               # Handle collective and specific stone infusion condition
+│   │   │   ├── level_requirements.lua
+│   │   │   ├── stone_factory.lua
+│   │   │   └── stone_registry.lua
+│   │   └── mod_compatibility
+│   │       └── vanilla_appends.lua     # Add abstract_stone property to vanilla stone
 │   └── ui_gfx
 │       ├── blank_stone.png
 │       └── elemental_stone
@@ -50,13 +54,15 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - infusing stone with liquid
 - compatibility with vanilla stone
 - stain_effect.lua (thanks GrahamBurger)
+- Stone factory
+    - different level stone
 
 
 ## TODO
 - MORE STONE !!!
 - more conditionnal ritual
-- different level stone
 - mixed liquid stone ?
+- hint for condition
 
 ### special thanks to
 - lamia_zamia for the help
