@@ -19,6 +19,28 @@ local STONE_REGISTRY = {
         { use_level_requirements = true }
     ),
 
+    ["bigStone"] = stone_mk(
+        elemental_stone_path .. "stone_big",
+        1,
+        { use_level_requirements = true }
+    ),
+ 
+    ["acceleratiumStone"] = stone_mk(
+        elemental_stone_path .. "stone_acceleratium",
+        1,
+        { use_level_requirements = true }
+    ),
+    ["levitatiumStone"] = stone_mk(
+        elemental_stone_path .. "stone_levitatium",
+        1,
+        { use_level_requirements = true }
+    ),
+    ["hasteStone"] = stone_mk(
+        elemental_stone_path .. "stone_haste",
+        5,
+        { use_level_requirements = true }
+    ),
+
     ["healthStone"] = stone_mk(
         elemental_stone_path .. "stone_health",
         11,
@@ -88,7 +110,6 @@ local STONE_REGISTRY = {
         9,
         { use_level_requirements = true }
     ),
-    
 }
 
 return STONE_REGISTRY

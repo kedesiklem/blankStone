@@ -1,4 +1,4 @@
-<Entity>
+<Entity name="ambrosiaStone">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
     <PhysicsImageShapeComponent
@@ -22,6 +22,42 @@
       ui_name="Ambrosia Stone"
       throw_as_item="1"
     ></AbilityComponent>
+  </Base>
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="8.0" color.g="0.72" color.b="0.0" color.a="0.35"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      randomize_position.min_x="-0.3"
+      randomize_position.max_x="0.3"
+      randomize_position.min_y="-0.3"
+      randomize_position.max_y="0.3"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="8.0" color.g="0.72" color.b="0.0" color.a="0.20"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      randomize_position.min_x="-0.3"
+      randomize_position.max_x="0.3"
+      randomize_position.min_y="-0.3"
+      randomize_position.max_y="0.3"
+      additive="1"
+      emissive="1"
+      scale.x="1.5" scale.y="1.5"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      color.r="8.0" color.g="0.72" color.b="0.0"
+      count_min="10"
+      count_max="15"
+    ></SpriteParticleEmitterComponent>
   </Base>
 
   <!-- protection -->

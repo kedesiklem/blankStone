@@ -2,7 +2,7 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 function material_area_checker_success(pos_x, pos_y)
 	log.debug("Purify stone activated")
-	local entity_id    = GetUpdatedEntityID()
+	local entity_id = GetUpdatedEntityID()
 	log.debug("Entity ID: " .. tostring(entity_id))
 	for _,id in pairs(EntityGetInRadiusWithTag(pos_x, pos_y, 10, "item_pickup")) do
 		log.debug("Found item entity ID: " .. tostring(id))

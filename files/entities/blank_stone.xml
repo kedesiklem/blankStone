@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup">
+<Entity name="blankStone" tags="hittable,teleportable_NOT,item_physics,item_pickup">
   <Base file="mods/blankStone/files/entities/base_stone.xml">
 
     <!-- physical presence -->
@@ -30,23 +30,6 @@
   </Base>
 
   <!-- Infusion process -->
-
-  <MaterialAreaCheckerComponent
-    _tags="enabled_in_world"
-    update_every_x_frame="20"
-    look_for_failure="0"
-    area_aabb.min_x="-4"
-    area_aabb.min_y="-8"
-    area_aabb.max_x="4"
-    area_aabb.max_y="-5"
-    material="mimic_liquid"
-    material2="mimic_liquid"
-    kill_after_message="0"
-  ></MaterialAreaCheckerComponent>
-
-  <LuaComponent
-    _tags="enabled_in_world"
-    script_material_area_checker_success="mods/blankStone/files/scripts/infuse_stone.lua"
-  ></LuaComponent>
+  <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
 </Entity>

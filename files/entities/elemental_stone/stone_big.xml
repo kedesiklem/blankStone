@@ -1,0 +1,44 @@
+<Entity name="bigStone">
+
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_big.png"
+        ></PhysicsImageShapeComponent>
+
+        <SpriteComponent _tags="enable_in_world"
+            has_special_scale="1"
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_big.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="Gros Caillou"
+            ui_description="It's big, and it's getting bigger"
+            ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_big.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="Gros Caillou"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="Gros Caillou"
+            throw_as_item="1"
+        ></AbilityComponent>
+    </Base>
+
+    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
+
+    <!-- Special effect -->
+    <LuaComponent _tags="enabled_in_world"
+        script_kick="mods/blankStone/files/scripts/enlarge_stone.lua"
+    ></LuaComponent>
+
+    <!-- Stain effect -->
+    <Base file="mods/blankStone/files/entities/staining.xml">
+        <VariableStorageComponent
+            name="stain_effect"
+            value_string="magic_liquid_berserk"
+            value_int="256"
+        ></VariableStorageComponent>
+    </Base>
+</Entity>

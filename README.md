@@ -20,7 +20,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   └── elemental_stone
 │   │       └── ...
 │   ├── scripts
-│   │   ├── infuse_stone.lua            # Define how to turn blank stone into elemental_stone 
+│   │   ├── infuse_stone.lua            # <--- Define wich material lead to wich stone 
 │   │   ├── inject_stones.lua           # Define what stone will spawn ingame
 │   │   ├── stain_effect.lua            # Allow stone to apply stain (doesn't work --')
 │   │   ├── stain_effect                # Until I manage to make the stain_effect.lua work
@@ -29,7 +29,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   ├── stone_factory               # Handle collective and specific stone infusion condition
 │   │   │   ├── level_requirements.lua
 │   │   │   ├── stone_factory.lua
-│   │   │   └── stone_registry.lua
+│   │   │   └── stone_registry.lua      # <--- If you want to add new stone, don't forget to put them here
 │   │   └── mod_compatibility
 │   │       └── vanilla_appends.lua     # Add abstract_stone property to vanilla stone
 │   └── ui_gfx
@@ -56,13 +56,21 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - stain_effect.lua (thanks GrahamBurger)
 - Stone factory
     - different level stone
+- VFX
+- gros caillou (ne fonctionne pas comme prevue mais fuck it)
 
+## ONGOING
 
 ## TODO
 - MORE STONE !!!
+- sur-infusion
+- gold stone
 - more conditionnal ritual
 - mixed liquid stone ?
 - hint for condition
+    - quintessence ?
+- Improve description
+- Apotheosis liquid stone
 
 ### special thanks to
 - lamia_zamia for the help

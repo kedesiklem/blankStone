@@ -1,4 +1,4 @@
-<Entity>
+<Entity name="toxicStone">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
     <PhysicsImageShapeComponent
@@ -23,6 +23,42 @@
       ui_name="Toxic Stone"
       throw_as_item="1"
     ></AbilityComponent>
+  </Base>
+
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="radioactive_liquid"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+  <ParticleEmitterComponent
+    _tags="enabled_in_world"
+    emitted_material_name="radioactive_static"
+    count_min="1"
+    count_max="2"
+    x_pos_offset_min="-4"
+    x_pos_offset_max="4"
+    y_pos_offset_min="2"
+    y_pos_offset_max="6"
+    emission_interval_min_frames="2"
+    emission_interval_max_frames="4"
+    create_real_particles="1"
+    render_on_grid="1"
+  ></ParticleEmitterComponent>
+
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.3" color.g="0.8" color.b="0.3" color.a="0.25"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
   </Base>
 
   <!-- protection -->

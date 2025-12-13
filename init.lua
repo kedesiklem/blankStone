@@ -13,8 +13,12 @@ end
 
 function OnPlayerSpawned( player_entity ) 
     local pos_x, pos_y = EntityGetTransform( player_entity )
-    EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_big.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_ambrosia.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_toxic.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_love.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_health.xml", pos_x, pos_y )
 end
 
 function OnPlayerDied( player_entity ) 

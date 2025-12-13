@@ -5,7 +5,7 @@ local T = dofile_once("mods/blankStone/files/scripts/tools.lua")
 
 local stone_base = "mods/blankStone/files/entities/purifiable.xml"
 
-local function addParent(entity, new_parent)
+local function addPurifiable(entity, new_parent)
     local xml = T.getXML(entity)
     T.addComponent(xml, "Base", { file = new_parent })
     T.setXML(entity, xml)
@@ -23,5 +23,5 @@ local vanilla_stone = {
 }
 
 for _, value in pairs(vanilla_stone) do
-    addParent(vanilla_item_path .. value .. ".xml", stone_base)
+    addPurifiable(vanilla_item_path .. value .. ".xml", stone_base)
 end

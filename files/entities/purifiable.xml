@@ -1,4 +1,5 @@
 <Entity>
+    <InheritTransformComponent></InheritTransformComponent>
     <MaterialAreaCheckerComponent
         _tags="enabled_in_world"
         update_every_x_frame="20"

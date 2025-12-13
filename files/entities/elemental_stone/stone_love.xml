@@ -1,4 +1,4 @@
-<Entity>
+<Entity name="loveStone">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
     <PhysicsImageShapeComponent
@@ -23,6 +23,18 @@
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.7" color.g="0.0" color.b="0.3" color.a="0.35"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
 
   <!-- Stain effect -->
   <Base file="mods/blankStone/files/entities/staining.xml">

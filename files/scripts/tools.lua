@@ -22,6 +22,19 @@ local function addComponent(xml, component, value_tab)
     ) .. "/>"))
 end
 
+local function addChild(xml, component, value_tab)
+    xml:add_child(nxml.parse("<Entity><" .. component .. " " .. table.concat(
+        (function()
+            local t = {}
+            for k, v in pairs(value_tab) do
+                table.insert(t, k .. '="' .. v .. '"')
+            end
+            return t
+        end)(),
+        " "
+    ) .. "/></Entity>"))
+end
+
 -- Change or add a VariableStorageComponent value
 local function changeOrAddValue(xml, name, new_value)
     local comps = xml:find_children("VariableStorageComponent")
@@ -54,6 +67,7 @@ return {
     getXML = getXML,
     setXML = setXML,
     addComponent = addComponent,
+    addChild = addChild,
     changeOrAddValue = changeOrAddValue,
     all_equal = all_equal
 }

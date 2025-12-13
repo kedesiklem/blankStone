@@ -1,0 +1,44 @@
+<Entity>
+
+    <LuaComponent _tags="enabled_in_world"
+        script_throw_item="mods/blankStone/files/scripts/enable_children.lua"
+    ></LuaComponent>
+
+    <Entity tags="enabled_in_world">
+        <InheritTransformComponent></InheritTransformComponent>
+        <MaterialAreaCheckerComponent
+            _tags="enabled_in_world"
+            update_every_x_frame="20"
+            look_for_failure="0"
+            area_aabb.min_x="-4"
+            area_aabb.min_y="-8"
+            area_aabb.max_x="4"
+            area_aabb.max_y="-6"
+            material="mimic_liquid"
+            material2="mimic_liquid"
+            kill_after_message="0"
+        ></MaterialAreaCheckerComponent>
+
+        <!-- VFX START -->
+        <Base file="mods/blankStone/files/VFX/halo.xml">
+            <SpriteParticleEmitterComponent
+                additive="1"
+                emissive="1"
+                is_emitting="0"
+            ></SpriteParticleEmitterComponent>
+        </Base>
+
+        <VariableStorageComponent
+            name="hintEnable"
+            value_bool="0"
+        ></VariableStorageComponent>
+        <!-- VFX END -->
+
+        <LuaComponent
+            _tags="enabled_in_world"
+            execute_every_n_frame="20"
+            script_source_file="mods/blankStone/files/scripts/infuse_stone.lua"
+            script_material_area_checker_success="mods/blankStone/files/scripts/infuse_stone.lua"
+        ></LuaComponent>
+    </Entity>
+</Entity>
