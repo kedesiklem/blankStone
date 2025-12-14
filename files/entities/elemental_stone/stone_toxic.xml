@@ -64,7 +64,7 @@
   <!-- protection -->
 
   <GameEffectComponent
-    _tags="enabled_in_hand"
+    _tags="enabled_in_hand,enable_in_inventory"
     effect="PROTECTION_RADIOACTIVITY"
     frames="-1"
   ></GameEffectComponent>
