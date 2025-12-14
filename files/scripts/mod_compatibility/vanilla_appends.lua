@@ -2,6 +2,7 @@
 
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local T = dofile_once("mods/blankStone/files/scripts/tools.lua")
+local nxml = dofile_once("mods/blankStone/lib/nxml.lua")
 
 local stone_base = "mods/blankStone/files/entities/purifiable.xml"
 
@@ -24,56 +25,15 @@ local vanilla_stone = {
 
 for _, value in pairs(vanilla_stone) do
     addPurifiable(vanilla_item_path .. value .. ".xml", stone_base)
-end
 
-
-
--- FROM APOTHEOSIS
--- In-inv behavior for various items
-
-do
-  local content = ModTextFileGetContent("data/entities/items/pickup/wandstone.xml")
-  local xml = nxml.parse(content)
-  local attrs = xml:first_of("GameEffectComponent").attr
-  attrs._tags = attrs._tags .. ",enabled_in_inventory"
-  ModTextFileSetContent("data/entities/items/pickup/wandstone.xml", tostring(xml))
-end
-
-do
-	local content = ModTextFileGetContent("data/entities/items/pickup/brimstone.xml")
-	local xml = nxml.parse(content)
-  xml.attr.tags = xml.attr.tags .. ",effect_protection"
-	local attrs = xml:first_of("GameEffectComponent").attr
-	attrs._tags = attrs._tags .. ",enabled_in_inventory,effect_protection"
-	ModTextFileSetContent("data/entities/items/pickup/brimstone.xml", tostring(xml))
-end
-do
-	local content = ModTextFileGetContent("data/entities/items/pickup/thunderstone.xml")
-	local xml = nxml.parse(content)
-  xml.attr.tags = xml.attr.tags .. ",effect_protection"
-	local attrs = xml:first_of("GameEffectComponent").attr
-	attrs._tags = attrs._tags .. ",enabled_in_inventory,effect_protection"
-	ModTextFileSetContent("data/entities/items/pickup/thunderstone.xml", tostring(xml))
-end
-do
-	local content = ModTextFileGetContent("data/entities/items/pickup/waterstone.xml")
-	local xml = nxml.parse(content)
-  xml.attr.tags = xml.attr.tags .. ",effect_protection"
-	local attrs = xml:first_of("GameEffectComponent").attr
-	attrs._tags = attrs._tags .. ",enabled_in_inventory,effect_protection"
-	ModTextFileSetContent("data/entities/items/pickup/waterstone.xml", tostring(xml))
-end
-do
-  local content = ModTextFileGetContent("data/entities/items/pickup/sun/sunseed.xml")
-  local xml = nxml.parse(content)
-  local attrs = xml:first_of("GameEffectComponent").attr
-  attrs._tags = attrs._tags .. ",enabled_in_inventory"
-  ModTextFileSetContent("data/entities/items/pickup/sun/sunseed.xml", tostring(xml))
-end
-do
-	local content = ModTextFileGetContent("data/entities/items/pickup/sun/sunstone.xml")
-	local xml = nxml.parse(content)
-	local attrs = xml:first_of("GameEffectComponent").attr
-	attrs._tags = attrs._tags .. ",enabled_in_inventory"
-	ModTextFileSetContent("data/entities/items/pickup/sun/sunstone.xml", tostring(xml))
+    -- FROM APOTHEOSIS
+    -- In-inv behavior for various items
+    local content = ModTextFileGetContent(vanilla_item_path .. value .. ".xml")
+    local xml = nxml.parse(content)
+    local gameEffect = xml:first_of("GameEffectComponent")
+    if gameEffect then
+        local attrs = gameEffect.attr
+        attrs._tags = attrs._tags .. ",enabled_in_inventory"
+        ModTextFileSetContent(vanilla_item_path .. value .. ".xml", tostring(xml))
+    end
 end

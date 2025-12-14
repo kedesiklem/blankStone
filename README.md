@@ -10,6 +10,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   ├── entities
 │   │   ├── base_stone.xml              # Base for every stone (define basic physical property)
 │   │   ├── purifiable.xml              # Interface
+│   │   ├── infusable.xml               # Interface
 │   │   ├── staining.xml                # Interface
 │   │   ├── blank_stone.xml
 │   │   ├── elemental_stone.xml         # Base for every elemental stone other than vanilla ones
@@ -20,18 +21,20 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   └── elemental_stone
 │   │       └── ...
 │   ├── scripts
-│   │   ├── infuse_stone.lua            # <--- Define wich material lead to wich stone 
+│   │   ├── infuse_stone.lua            # Core of the mod
 │   │   ├── inject_stones.lua           # Define what stone will spawn ingame
-│   │   ├── stain_effect.lua            # Allow stone to apply stain (doesn't work --')
-│   │   ├── stain_effect                # Until I manage to make the stain_effect.lua work
-│   │   │   └── ...
 │   │   ├── purify_stone.lua            # Define how elemental stone turn into blank stone
+│   │   ├── stain_effect.lua            # Allow stone to apply stain (doesn't work --')
+|   |   ├── enable_children.lua         # Because fuck me I guess
+│   │   ├── stain_effect.lua
+│   │   ├── stone_specific_script
+│   │   │   └── ...
 │   │   ├── stone_factory               # Handle collective and specific stone infusion condition
 │   │   │   ├── level_requirements.lua
 │   │   │   ├── stone_factory.lua
-│   │   │   └── stone_registry.lua      # <--- If you want to add new stone, don't forget to put them here
+│   │   │   └── stone_registry.lua      # <--- If you want to add new stone, don't forget to put them here / Define wich material lead to wich stone 
 │   │   └── mod_compatibility
-│   │       └── vanilla_appends.lua     # Add abstract_stone property to vanilla stone
+│   │       └── vanilla_appends.lua     # Add abstract_stone property to vanilla stone and in_inventory effect from apotheosis
 │   └── ui_gfx
 │       ├── blank_stone.png
 │       └── elemental_stone
@@ -58,19 +61,19 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
     - different level stone
 - VFX
 - gros caillou (ne fonctionne pas comme prevue mais fuck it)
+- sur-infusion/mixed liquid stone
 
 ## ONGOING
 
 ## TODO
 - MORE STONE !!!
-- sur-infusion
 - gold stone
 - more conditionnal ritual
-- mixed liquid stone ?
 - hint for condition
     - quintessence ?
 - Improve description
 - Apotheosis liquid stone
+- Animation for stone_poly eye ?
 
 ### special thanks to
 - lamia_zamia for the help

@@ -1,0 +1,66 @@
+<Entity name="polyStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_poly.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_poly.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="Polymorphe Stone"
+      ui_description="You feel observed."
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_poly.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="Polymorphe Stone"> </UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="Polymorphe Stone"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.7" color.g="0.0" color.b="0.3" color.a="0.15"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      randomize_position.min_x="-0.3"
+      randomize_position.max_x="0.3"
+      randomize_position.min_y="-0.3"
+      randomize_position.max_y="0.3"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.7" color.g="0.0" color.b="0.3" color.a="0.35"
+      count_min="2"
+      count_max="5"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <!-- protection -->
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="PROTECTION_POLYMORPH"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- Stain effect -->
+  <Base file="mods/blankStone/files/entities/staining.xml">
+    <VariableStorageComponent
+      name="stain_effect"
+      value_string="magic_liquid_random_polymorph"
+      value_int="32"
+    ></VariableStorageComponent>
+  </Base>
+
+</Entity>

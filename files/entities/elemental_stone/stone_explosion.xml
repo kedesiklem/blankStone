@@ -39,7 +39,7 @@
   <!-- effect -->
 
   <GameEffectComponent
-    _tags="enable_in_hand,enabled_in_inventory"
+    _tags="enabled_in_hand,enabled_in_inventory"
     effect="DAMAGE_MULTIPLIER"
     frames="-1"
   ></GameEffectComponent>

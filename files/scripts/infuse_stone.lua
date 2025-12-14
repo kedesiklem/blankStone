@@ -1,6 +1,7 @@
 -- infuse_stone.lua
 
 local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
+local STONE_TO_MATERIAL_TO_STONE = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local entity_id = GetUpdatedEntityID()
 local reaction_distance_max = 10
@@ -19,47 +20,6 @@ local function getValue(component, name, default)
 end
 
 local hint_variable = EntityGetFirstComponentIncludingDisabled(entity_id, "VariableStorageComponent")
-
-
--- Mapping material to keys in STONE_REGISTRY
-local STONE_TO_MATERIAL_TO_STONE = {
-    ["blankStone"] = {
-
-        -- Vanilla Stones --
-        -------------------------
-        ["blood_worm"] = "sunseed",
-        ["magic_liquid_mana_regeneration"] = "wandstone",
-        ["liquid_fire"] = "brimstone",
-        ["spark_electric"] = "thunderstone",
-        ["rock_static"] = "stonestone",
-        ["water"] = "waterstone",
-        ["poo"] = "poopstone",
-        -------------------------
-        
-        ["radioactive_liquid"] = "toxicStone",
-        ["magic_liquid_berserk"] = "bigStone",
-        ["magic_liquid_faster_levitation"] = "levitatiumStone",
-        ["magic_liquid_movement_faster"] = "acceleratiumStone",
-        ["magic_liquid_faster_levitation_and_movement"] = "hasteStone",
-        ["magic_liquid_hp_regeneration"] = "healthStone",
-        ["magic_liquid_hp_regeneration_unstable"] = "healthStone",
-        ["magic_liquid_protection_all"] = "ambrosiaStone",
-    },
-    ["hasteStone"] = {
-        ["[slime]"] = "explosionStone",
-    },
-    ["levitatiumStone"] = {
-        ["magic_liquid_movement_faster"] = "hasteStone",
-        ["[slime]"] = "explosionStone",
-    },
-    ["acceleratiumStone"] = {
-        ["magic_liquid_faster_levitation"] = "hasteStone",
-        ["[slime]"] = "explosionStone",
-    },
-    ["bigStone"] = {
-        ["material_confusion"] = "loveStone",
-    },
-}
 
 local function enableHalo(id, enable)
     local components = EntityGetComponentIncludingDisabled(id, "SpriteParticleEmitterComponent")

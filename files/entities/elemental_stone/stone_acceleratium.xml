@@ -42,7 +42,7 @@
   <!-- effect -->
 
   <GameEffectComponent
-    _tags="enabled_in_hand,enable_in_inventory"
+    _tags="enabled_in_hand,enabled_in_inventory"
     effect="MOVEMENT_FASTER"
     frames="-1"
   ></GameEffectComponent>

@@ -46,8 +46,13 @@ local STONE_REGISTRY = {
         5,
         { use_level_requirements = true }
     ),
- 
 
+    ["polyStone"] = stone_mk(
+        elemental_stone_path .. "stone_poly",
+        11,
+        { use_level_requirements = true }
+    ),
+ 
     ["healthStone"] = stone_mk(
         elemental_stone_path .. "stone_health",
         11,

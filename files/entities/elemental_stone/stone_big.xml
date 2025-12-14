@@ -5,7 +5,7 @@
             image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_big.png"
         ></PhysicsImageShapeComponent>
 
-        <SpriteComponent _tags="enable_in_world"
+        <SpriteComponent _tags="enabled_in_world"
             has_special_scale="1"
             image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_big.png"
         ></SpriteComponent>
@@ -30,7 +30,7 @@
 
     <!-- Special effect -->
     <LuaComponent _tags="enabled_in_world"
-        script_kick="mods/blankStone/files/scripts/enlarge_stone.lua"
+        script_kick="mods/blankStone/files/scripts/stone_specific_script/enlarge_stone.lua"
     ></LuaComponent>
 
     <!-- Stain effect -->
