@@ -45,11 +45,16 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_hp_regeneration_unstable"] = "healthStone",
         ["magic_liquid_protection_all"] = "ambrosiaStone",
     },
+    ["hasteStone"] = {
+        ["[slime]"] = "explosionStone",
+    },
     ["levitatiumStone"] = {
         ["magic_liquid_movement_faster"] = "hasteStone",
+        ["[slime]"] = "explosionStone",
     },
     ["acceleratiumStone"] = {
         ["magic_liquid_faster_levitation"] = "hasteStone",
+        ["[slime]"] = "explosionStone",
     },
     ["bigStone"] = {
         ["material_confusion"] = "loveStone",
@@ -84,7 +89,7 @@ local function getPotionMaterial(potion_id)
         return nil
     end
     
-    return CellFactory_GetName(material_id)
+    return CellFactory_GetName(material_id), CellFactory_GetTags(material_id)
 end
 
 function material_area_checker_success(pos_x, pos_y)
@@ -114,18 +119,35 @@ function material_area_checker_success(pos_x, pos_y)
         return
     end
     
-    local material = getPotionMaterial(potion_id)
+    local material, material_tags = getPotionMaterial(potion_id)
     if not material then
         log.info("Potion has no valid material")
         return
     end
     
     -- Let the factory do its job
-    local stone_key = STONE_TO_MATERIAL_TO_STONE[entityName][material]
+    local stone_craft_list = STONE_TO_MATERIAL_TO_STONE[entityName]
+    local stone_key = stone_craft_list[material]
+    -- Check for tag recipes
+
     if not stone_key then
-        log.info(entityName .. " has no recipies involving '" .. material .. "'.")
+        log.info(entityName .. " has no recipes involving material '" .. material .. "'.")
+        for _, value in ipairs(material_tags) do
+            stone_key = stone_craft_list[value]
+            if stone_key then
+                log.info(entityName .. " has recipes involving the tag " .. value)
+                break
+            else
+                log.debug(entityName .. " has no recipes involving the tag " .. value)
+            end
+        end
+    end
+    
+    if not stone_key then
+        log.info(entityName .. " has no recipes involving the potion")
         return
     end
+
     
     local success = stone_factory.tryCreateStone(stone_key, pos_x, pos_y, potion_id)
     

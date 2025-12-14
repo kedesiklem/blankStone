@@ -41,6 +41,13 @@ local STONE_REGISTRY = {
         { use_level_requirements = true }
     ),
 
+    ["explosionStone"] = stone_mk(
+        elemental_stone_path .. "stone_explosion",
+        5,
+        { use_level_requirements = true }
+    ),
+ 
+
     ["healthStone"] = stone_mk(
         elemental_stone_path .. "stone_health",
         11,

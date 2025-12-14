@@ -1,0 +1,47 @@
+<Entity name="explosionStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_explosion.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_explosion.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="Explosion Stone"
+      ui_description="This stone go BOOM!"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_explosion.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="Explosion Stone"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="Explosion Stone"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      color.r="8.0" color.g="0.72" color.b="0.0"
+      count_min="10"
+      count_max="15"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <!-- effect -->
+
+  <GameEffectComponent
+    _tags="enabled_in_inventory"
+    effect="DAMAGE_MULTIPLIER"
+    frames="-1"
+  ></GameEffectComponent>
+
+</Entity>
