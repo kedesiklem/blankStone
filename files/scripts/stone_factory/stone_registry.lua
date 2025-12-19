@@ -57,12 +57,12 @@ local STONE_REGISTRY = {
         elemental_stone_path .. "stone_health",
         11,
         {
-            specific = {
-                requires_catalyst = {
-                    catalyst = "gold_nugget", 
-                    amount = 3,
-                },
-            },
+            -- specific = {
+            --     requires_catalyst = {
+            --         catalyst = "gold_nugget", 
+            --         amount = 3,
+            --     },
+            -- },
             use_level_requirements = true
         }
     ),

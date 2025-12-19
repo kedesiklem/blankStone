@@ -3,13 +3,14 @@ local STONE_TO_MATERIAL_TO_STONE = {
     ["blankStone"] = {
         -- Vanilla Stones --
         -------------------------
-        ["blood_worm"] = "sunseed",
-        ["magic_liquid_mana_regeneration"] = "wandstone",
-        ["spark_electric"] = "thunderstone",
         ["[hot]"] = "brimstone",
+        ["diamond"] =           "thunderstone",
+        ["spark_electric"] =    "thunderstone",
         ["rock_static"] = "stonestone",
         ["water"] = "waterstone",
         ["poo"] = "poopstone",
+        ["blood_worm"] = "sunseed",
+        ["magic_liquid_mana_regeneration"] = "wandstone",
         -------------------------
         ["[radioactive]"] = "toxicStone",
         ["magic_liquid_berserk"] = "bigStone",
@@ -20,7 +21,6 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[regenerative]"] = "healthStone",
         ["magic_liquid_protection_all"] = "ambrosiaStone",
         ["[magic_polymorph]"] = "polyStone",
-
     },
     ["hasteStone"] = {
         ["[slime]"] = "explosionStone",

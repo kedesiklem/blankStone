@@ -16,7 +16,7 @@ local function checkLevelRequirements(all_requirements, pos_x, pos_y, potion_id)
             local cpmt = ComponentGetValue2(potion_inventory, "count_per_material_type")
 
             -- Why +1 ? Because fuck you that's why.
-            local count = cpmt[material_id + 1] or 0
+            local count = cpmt[material_id +1] or 0
             
             check = check and (count >= min_potion_count)
         else
@@ -61,7 +61,7 @@ local function createStone(stone_data, pos_x, pos_y, potion_id)
     log.info("Stone created: " .. stone_data.path)
 end
 
-local function tryCreateStone(stone_key, pos_x, pos_y, potion_id)
+local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     -- Gérer la structure custom_stone vs vanilla_stone
     local stone_data = STONE_REGISTRY[stone_key]
     
@@ -69,9 +69,9 @@ local function tryCreateStone(stone_key, pos_x, pos_y, potion_id)
     if not stone_data then
         log.warn("Stone key not found in registry: " .. tostring(stone_key))
         return false
-    else
-        log.debug("Found stone data for key: " .. tostring(stone_key))
     end
+
+    log.debug("Found stone data for key: " .. tostring(stone_key))
     
     -- Vérifier les conditions de level
     if stone_data.conditions.use_level_requirements then
@@ -97,5 +97,5 @@ local function tryCreateStone(stone_key, pos_x, pos_y, potion_id)
 end
 
 return {
-    tryCreateStone = tryCreateStone
+    tryCreateStoneFromPotion = tryCreateStoneFromPotion
 }

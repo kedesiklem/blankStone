@@ -60,17 +60,20 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - Stone factory
     - different level stone
 - VFX
-- gros caillou (ne fonctionne pas comme prevue mais fuck it)
+- infusing stone from tags
 - sur-infusion/mixed liquid stone
+- infusion with powder
+- Forgeable stone
 
 ## ONGOING
+- quintessence (forged and use for high level stone)
 
 ## TODO
 - MORE STONE !!!
 - gold stone
 - more conditionnal ritual
 - hint for condition
-    - quintessence ?
+    - 
 - Improve description
 - Apotheosis liquid stone
 - Animation for stone_poly eye ?

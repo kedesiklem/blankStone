@@ -1,7 +1,7 @@
 --- Mod Compatibility: Change vanilla stone items to be purifiable stones
 
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local T = dofile_once("mods/blankStone/files/scripts/tools.lua")
+local T = dofile_once("mods/blankStone/files/scripts/nxml_tools.lua")
 local nxml = dofile_once("mods/blankStone/lib/nxml.lua")
 
 local stone_base = "mods/blankStone/files/entities/purifiable.xml"
@@ -37,3 +37,5 @@ for _, value in pairs(vanilla_stone) do
         ModTextFileSetContent(vanilla_item_path .. value .. ".xml", tostring(xml))
     end
 end
+
+ModLuaFileAppend( "data/scripts/buildings/forge_item_convert.lua", "mods/blankStone/files/scripts/buildings/anvil_appends.lua")

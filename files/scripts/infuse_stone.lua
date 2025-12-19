@@ -1,26 +1,14 @@
 -- infuse_stone.lua
+local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
 local STONE_TO_MATERIAL_TO_STONE = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
-local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local varUtility = dofile_once("mods/blankStone/files/scripts/variableStorage_accessibility.lua")
+
 local entity_id = GetUpdatedEntityID()
-local reaction_distance_max = 10
+local reaction_distance_max = 12
 
-
-local function setValue(component, name, value)
-    if component ~= nil then
-        ComponentSetValue2(component, name, value)
-    end
-end
-local function getValue(component, name, default)
-    if component ~= nil then
-        return ComponentGetValue2(component, name)
-    end
-    return default
-end
-
-local hint_variable = EntityGetFirstComponentIncludingDisabled(entity_id, "VariableStorageComponent")
-
+--- VFX function
 local function enableHalo(id, enable)
     local components = EntityGetComponentIncludingDisabled(id, "SpriteParticleEmitterComponent")
     if components then
@@ -32,6 +20,7 @@ local function enableHalo(id, enable)
     end
 end
 
+--- Potion related function
 local function isValidPotion(potion_id, pos_x, pos_y, max_distance)
     if potion_id == 0 then
         return false
@@ -42,7 +31,6 @@ local function isValidPotion(potion_id, pos_x, pos_y, max_distance)
     
     return distance < max_distance
 end
-
 local function getPotionMaterial(potion_id)
     local material_id = GetMaterialInventoryMainMaterial(potion_id)
     if material_id == 0 then
@@ -52,30 +40,26 @@ local function getPotionMaterial(potion_id)
     return CellFactory_GetName(material_id), CellFactory_GetTags(material_id)
 end
 
+--- Main infusion function
 function material_area_checker_success(pos_x, pos_y)
     entity_id = GetUpdatedEntityID()
 
     -- Visual hint
-    
-    local stored_variable = EntityGetComponentIncludingDisabled(entity_id, "VariableStorageComponent")
-    if(stored_variable) then
-        for _, value in ipairs(stored_variable) do
-            if(ComponentGetValue2(value, "name") == "hintEnable") 
-            then
-                hint_variable = value
-            end
-        end
-    end
-
-    setValue(hint_variable, "value_bool", true)
+    varUtility.setVariable(entity_id, "hintEnable", "value_bool", true)
     enableHalo(entity_id, true)
     
     local entityName = EntityGetName(EntityGetParent(entity_id))
 
-    -- Get potion material
+    -- Get potion or powder_stash material
     local potion_id = EntityGetClosestWithTag(pos_x, pos_y, "potion")
     if not isValidPotion(potion_id, pos_x, pos_y, reaction_distance_max) then
         log.info("No valid potion found nearby")
+        
+        potion_id = EntityGetClosestWithTag(pos_x, pos_y, "powder_stash")
+    end
+
+    if not isValidPotion(potion_id, pos_x, pos_y, reaction_distance_max) then
+        log.info("No valid powder_stash found nearby")
         return
     end
     
@@ -109,7 +93,7 @@ function material_area_checker_success(pos_x, pos_y)
     end
 
     
-    local success = stone_factory.tryCreateStone(stone_key, pos_x, pos_y, potion_id)
+    local success = stone_factory.tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     
     -- Handle the result
     if success then
@@ -123,9 +107,13 @@ function material_area_checker_success(pos_x, pos_y)
 
 end
 
-if getValue(hint_variable, "value_bool", false) then
+--- File code
+
+local hint_variable = varUtility.getVariable(entity_id, "hintEnable")
+
+if varUtility.getValue(hint_variable, "value_bool", false) then
     log.info("disable halo [" .. hint_variable .. "]")
-    setValue(hint_variable, "value_bool", false)
+    varUtility.setValue(hint_variable, "value_bool", false)
 else
     enableHalo(entity_id, false)
 end

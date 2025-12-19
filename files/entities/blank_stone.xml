@@ -1,4 +1,4 @@
-<Entity name="blankStone" tags="hittable,teleportable_NOT,item_physics,item_pickup">
+<Entity name="blankStone" tags="hittable,teleportable_NOT,item_physics,item_pickup,forgeable">
   <Base file="mods/blankStone/files/entities/base_stone.xml">
 
     <!-- physical presence -->
