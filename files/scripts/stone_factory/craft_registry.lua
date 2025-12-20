@@ -35,6 +35,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
 
     ["quintessence"] = {
         ["[regenerative]"] = "healthStone",
+        ["[regenerative_gas]"] = "healthStone",
         ["magic_liquid_protection_all"] = "ambrosiaStone",
         ["[magic_polymorph]"] = "polyStone",
     }
