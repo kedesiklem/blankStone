@@ -24,7 +24,7 @@ local QuintessenceRecipe = {
     results = {
         { path = "mods/blankStone/files/entities/quintessence_stone.xml", offset_y = -10 },
         { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 },
-        { path = "mods/blankStone/files/image_emitters/quintessence_symbol_fast.xml", offset_y = -10},
+        { path = "mods/blankStone/files/image_emitters/VFX/quintessence_symbol_fast.xml", offset_y = -10},
     },
     -- Callback optionnel après craft réussi
     on_success = function()
@@ -46,7 +46,7 @@ local TestingRecipe = {
     results = {
         { path = "mods/blankStone/files/entities/quintessence_stone.xml", offset_y = -10 },
         { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 },
-        { path = "mods/blankStone/files/image_emitters/quintessence_symbol_fast.xml", offset_y = -10},
+        { path = "mods/blankStone/files/image_emitters/VFX/quintessence_symbol_fast.xml", offset_y = -10},
     },
     -- Callback optionnel après craft réussi
     on_success = function()
