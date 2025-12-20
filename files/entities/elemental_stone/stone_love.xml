@@ -11,7 +11,7 @@
 
     <ItemComponent
       item_name="Love Stone"
-      ui_description="A stone infused with the power of love."
+      ui_description="The power of love scream around you."
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_love.png"
     ></ItemComponent>
 

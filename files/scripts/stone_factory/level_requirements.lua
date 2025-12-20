@@ -4,6 +4,7 @@ local max_level = 20
 local LEVEL_REQUIREMENTS_RAW = {
     [5] = {
         min_potion_count = 100,
+        min_orb = 1,
     },
     [9] = {
         min_potion_count = 500,

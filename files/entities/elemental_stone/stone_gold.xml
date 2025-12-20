@@ -1,25 +1,26 @@
-<Entity name="ambrosiaStone">
+<Entity name="goldStone">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+
     <PhysicsImageShapeComponent
-      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_ambrosia.png"
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_gold.png"
     ></PhysicsImageShapeComponent>
 
     <SpriteComponent
-      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_ambrosia.png"
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_gold.png"
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Ambrosia Stone"
-      ui_description="A stone infused with gods gift, you feel protected"
-      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_ambrosia.png"
+      item_name="Philosopher's Stone"
+      ui_description="You did it despite what the gods told you."
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_gold.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Ambrosia Stone"> </UIInfoComponent>
+      name="Philosopher's Stone"> </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Ambrosia Stone"
+      ui_name="Philosopher's Stone"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
@@ -28,7 +29,7 @@
 
   <Base file="mods/blankStone/files/VFX/halo.xml">
     <SpriteParticleEmitterComponent
-      color.r="8.0" color.g="0.72" color.b="0.0" color.a="0.35"
+      color.r="8.0" color.g="0.72" color.b="0.0" color.a="0.75"
       color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
       randomize_position.min_x="-0.3"
       randomize_position.max_x="0.3"
@@ -40,7 +41,7 @@
   </Base>
   <Base file="mods/blankStone/files/VFX/halo.xml">
     <SpriteParticleEmitterComponent
-      color.r="8.0" color.g="0.72" color.b="0.0" color.a="0.20"
+      color.r="8.0" color.g="0.72" color.b="0.0" color.a="0.50"
       color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
       randomize_position.min_x="-0.3"
       randomize_position.max_x="0.3"
@@ -55,26 +56,39 @@
   <Base file="mods/blankStone/files/VFX/ray.xml">
     <SpriteParticleEmitterComponent
       color.r="8.0" color.g="0.72" color.b="0.0"
-      count_min="10"
-      count_max="15"
+      count_min="30"
+      count_max="45"
     ></SpriteParticleEmitterComponent>
   </Base>
 
-  <!-- protection -->
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand,enabled_in_inventory"
+    from_material_tag="[liquid]"
+    to_material="gold"
+    radius="32"
+    kill_when_finished="0"
+    loop="1"
+    is_circle="1"
+  ></MagicConvertMaterialComponent>
 
-  <GameEffectComponent
-    _tags="enabled_in_hand"
-    effect="PROTECTION_ALL"
-    frames="-1"
-  ></GameEffectComponent>
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand,enabled_in_inventory"
+    from_material_tag="[alchemy]"
+    to_material="gold"
+    radius="32"
+    kill_when_finished="0"
+    loop="1"
+    is_circle="1"
+  ></MagicConvertMaterialComponent>
 
-  <!-- Stain effect -->
-  <Base file="mods/blankStone/files/entities/staining.xml">
-    <VariableStorageComponent
-      name="stain_effect"
-      value_string="magic_liquid_protection_all"
-      value_int="32"
-    ></VariableStorageComponent>
-  </Base>
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world"
+    from_material="gold"
+    to_material="air"
+    radius="8"
+    kill_when_finished="0"
+    loop="1"
+    is_circle="1"
+  ></MagicConvertMaterialComponent>
 
 </Entity>

@@ -11,7 +11,7 @@
 
     <ItemComponent
       item_name="Haste Stone"
-      ui_description="I'm fast a fuck BOYYYY."
+      ui_description="I'm fast a fuck BOY."
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_haste.png"
     ></ItemComponent>
 

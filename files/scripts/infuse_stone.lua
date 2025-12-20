@@ -99,8 +99,6 @@ function material_area_checker_success(pos_x, pos_y)
     if success then
         EntityKill(EntityGetParent(entity_id))
         EntityKill(potion_id)
-        EntityLoad("data/entities/projectiles/explosion.xml", pos_x, pos_y - 10)
-        GamePrint("You've done something...")
     else
         GamePrint("Something's wrong...")
     end

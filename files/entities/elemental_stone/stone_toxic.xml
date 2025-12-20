@@ -11,7 +11,7 @@
 
     <ItemComponent
       item_name="Toxic Stone"
-      ui_description="A stone infused with toxic properties."
+      ui_description="It's stinky."
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_toxic.png"
     ></ItemComponent>
 

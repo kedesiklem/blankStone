@@ -12,7 +12,7 @@
 
         <ItemComponent
             item_name="Gros Caillou"
-            ui_description="It's big, and it's getting bigger"
+            ui_description="It's big, and unstable"
             ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_big.png"
         ></ItemComponent>
 

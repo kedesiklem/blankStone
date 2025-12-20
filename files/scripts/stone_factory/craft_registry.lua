@@ -1,4 +1,4 @@
--- Mapping material to keys in STONE_REGISTRY
+-- Mapping material to keys in STONE_REGISTRY for infusion
 local STONE_TO_MATERIAL_TO_STONE = {
     ["blankStone"] = {
         -- Vanilla Stones --
@@ -17,6 +17,11 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_faster_levitation"] = "levitatiumStone",
         ["magic_liquid_movement_faster"] = "acceleratiumStone",
         ["magic_liquid_faster_levitation_and_movement"] = "hasteStone",
+
+        ["midas_precursor"] = "goldStone",
+        ["magic_gas_midas"] = "goldStone",
+        ["midas"] = "goldStone",
+
     },
     ["hasteStone"] = {
         ["[slime]"] = "explosionStone",

@@ -78,16 +78,15 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - infusion with powder
 - Forgeable stone
 - quintessence (forged and use for high level stone)
+- gold stone
 
 
 ## ONGOING
+- MORE STONE !!!
+- lapis philosophorum
 
 ## TODO
-- MORE STONE !!!
 - hint for condition !!!
-- gold stone
-- more conditionnal ritual ?
-- Improve description
 - Apotheosis liquid stone
 - Animation for stone_poly eye ?
 

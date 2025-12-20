@@ -1,4 +1,7 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
+local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
+
 
 local entity_id = GetUpdatedEntityID()
 local pos_x, pos_y = EntityGetTransform(entity_id)
@@ -7,7 +10,7 @@ local pos_x, pos_y = EntityGetTransform(entity_id)
 local converted_blankStone = false
 
 local QuintessenceRecipe = {
-    -- Ingrédient central (catalyst)
+    -- Ingrédient central (using name)
     catalyst = {
         name = "blankStone",
     },
@@ -20,11 +23,9 @@ local QuintessenceRecipe = {
     },
     -- Rayon de détection
     radius = 70,
-    -- Résultats à spawner
+    -- Résultats à spawner (key for STONE_REGISTRY)
     results = {
-        { path = "mods/blankStone/files/entities/quintessence_stone.xml", offset_y = -10 },
-        { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 },
-        { path = "mods/blankStone/files/image_emitters/VFX/quintessence_symbol_fast.xml", offset_y = -10},
+        { key = "quintessence", offset_y = -10 },
     },
     -- Callback optionnel après craft réussi
     on_success = function()
@@ -32,8 +33,8 @@ local QuintessenceRecipe = {
     end
 }
 
-local TestingRecipe = {
-    -- Ingrédient central (catalyst)
+local TestRecipe = {
+    -- Ingrédient central (using name)
     catalyst = {
         name = "blankStone",
     },
@@ -42,11 +43,9 @@ local TestingRecipe = {
     },
     -- Rayon de détection
     radius = 70,
-    -- Résultats à spawner
+    -- Résultats à spawner (key for STONE_REGISTRY)
     results = {
-        { path = "mods/blankStone/files/entities/quintessence_stone.xml", offset_y = -10 },
-        { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 },
-        { path = "mods/blankStone/files/image_emitters/VFX/quintessence_symbol_fast.xml", offset_y = -10},
+        { key = "quintessence", offset_y = -10 },
     },
     -- Callback optionnel après craft réussi
     on_success = function()
@@ -130,11 +129,12 @@ local function processCatalyst(catalyst, anvil_pos_x, anvil_pos_y, recipe)
     
     log.info("All ingredients out of inventory!")
     
-    -- Spawn les résultats
+    -- Spawn handle by stone_factory
     for _, result in ipairs(recipe.results) do
+        local stone_data = STONE_REGISTRY[result.key]
         local spawn_x = anvil_pos_x + (result.offset_x or 0)
         local spawn_y = anvil_pos_y + (result.offset_y or 0)
-        EntityLoad(result.path, spawn_x, spawn_y)
+        stone_factory.createStone(stone_data, spawn_x, spawn_y)
     end
     
     -- Détruit le catalyst
@@ -172,7 +172,7 @@ local function forgeQuintessence()
 end
 
 forgeQuintessence()
--- genericCraft(pos_x, pos_y, TestingRecipe)
+genericCraft(pos_x, pos_y, TestRecipe)
 
 if converted_blankStone then
 	GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

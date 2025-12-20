@@ -11,7 +11,7 @@
 
     <ItemComponent
       item_name="Healthy Stone"
-      ui_description="A stone infused with life itself."
+      ui_description="A stone infused with life itself, it enjoy your company."
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_health.png"
     ></ItemComponent>
 

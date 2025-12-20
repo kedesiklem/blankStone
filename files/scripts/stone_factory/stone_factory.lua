@@ -55,9 +55,18 @@ local function checkSpecificConditions(specific_conditions, pos_x, pos_y)
     return true
 end
 
-local function createStone(stone_data, pos_x, pos_y, potion_id)
+local function createStone(stone_data, pos_x, pos_y)
     -- Charger l'entité de la pierre
-    EntityLoad(stone_data.path .. ".xml", pos_x, pos_y - 5)
+    EntityLoad(stone_data.path, pos_x, pos_y - 5)
+    -- Spawn VFX Entity (explosion/gliph...)
+    for i=1, #stone_data.vfx do
+        EntityLoad(stone_data.vfx[i], pos_x, pos_y - 5)
+    end
+    if stone_data.message then
+        GamePrintImportant(stone_data.message)
+    else
+        GamePrint("You've done something...")
+    end
     log.info("Stone created: " .. stone_data.path)
 end
 
@@ -92,10 +101,11 @@ local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     end
     
     -- Toutes les conditions remplies : créer la pierre
-    createStone(stone_data, pos_x, pos_y, potion_id)
+    createStone(stone_data, pos_x, pos_y)
     return true
 end
 
 return {
+    createStone = createStone,
     tryCreateStoneFromPotion = tryCreateStoneFromPotion
 }
