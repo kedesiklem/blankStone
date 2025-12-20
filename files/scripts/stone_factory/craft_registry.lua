@@ -17,10 +17,6 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_faster_levitation"] = "levitatiumStone",
         ["magic_liquid_movement_faster"] = "acceleratiumStone",
         ["magic_liquid_faster_levitation_and_movement"] = "hasteStone",
-
-        ["[regenerative]"] = "healthStone",
-        ["magic_liquid_protection_all"] = "ambrosiaStone",
-        ["[magic_polymorph]"] = "polyStone",
     },
     ["hasteStone"] = {
         ["[slime]"] = "explosionStone",
@@ -36,6 +32,12 @@ local STONE_TO_MATERIAL_TO_STONE = {
     ["bigStone"] = {
         ["material_confusion"] = "loveStone",
     },
+
+    ["quintessence"] = {
+        ["[regenerative]"] = "healthStone",
+        ["magic_liquid_protection_all"] = "ambrosiaStone",
+        ["[magic_polymorph]"] = "polyStone",
+    }
 }
 
 return STONE_TO_MATERIAL_TO_STONE

@@ -39,6 +39,7 @@
             execute_every_n_frame="20"
             script_source_file="mods/blankStone/files/scripts/infuse_stone.lua"
             script_material_area_checker_success="mods/blankStone/files/scripts/infuse_stone.lua"
+            script_item_picked_up="mods/blankStone/files/scripts/infuse_stone.lua"
         ></LuaComponent>
     </Entity>
 </Entity>

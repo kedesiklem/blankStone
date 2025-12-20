@@ -1,0 +1,82 @@
+<Entity name="quintessence" tags="hittable,teleportable_NOT,item_physics,item_pickup">
+    <Base file="mods/blankStone/files/entities/base_stone.xml">
+
+        <!-- physical presence -->
+
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/quintessence_stone.png"
+        ></PhysicsImageShapeComponent>
+
+
+        <!-- item -->
+
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/quintessence_stone.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="Quintessence"
+            ui_description="Half way."
+            ui_sprite="mods/blankStone/files/ui_gfx/quintessence_stone.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="Quintessence"
+        > </UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="Quintessence"
+        ></AbilityComponent>
+    </Base>
+
+    <!-- WATERSTONE -->
+    <GameEffectComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        effect="BREATH_UNDERWATER"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <!-- BRIMSTONE -->
+    <GameEffectComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        effect="PROTECTION_FIRE"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <GameEffectComponent
+        _tags="enabled_in_hand"
+        effect="FRIEND_FIREMAGE"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <!-- THUNDERSTONE -->
+    <GameEffectComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        effect="PROTECTION_ELECTRICITY"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <GameEffectComponent
+        _tags="enabled_in_hand"
+        effect="FRIEND_THUNDERMAGE"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <!-- STONESTONE -->
+    <!-- <MagicConvertMaterialComponent
+        _tags="enabled_in_hand,enabled_in_world"
+        _enabled="0"
+        kill_when_finished="0"
+        steps_per_frame="3"
+        from_material_tag="[earth]"
+        to_material="soil"
+        clean_stains="0"
+        is_circle="1"
+        radius="48"
+        reaction_audio_amount="0.005"
+    > </MagicConvertMaterialComponent> -->
+
+    <!-- Infusion process -->
+    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
+
+</Entity>

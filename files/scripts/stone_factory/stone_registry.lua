@@ -1,4 +1,5 @@
-local elemental_stone_path =    "mods/blankStone/files/entities/elemental_stone/"
+local blankStone_path = "mods/blankStone/files/entities/"
+local elemental_stone_path = blankStone_path .. "elemental_stone/"
 local vanilla_stone_path =      "data/entities/items/pickup/"
 
 local function stone_mk(path, level, conditions)
@@ -12,6 +13,12 @@ end
 local STONE_REGISTRY = {
 
     -- Custom Stones
+
+    ["quintessence"] = stone_mk(
+        blankStone_path .. "quintessence_stone",
+        11,
+        { use_level_requirements = true }
+    ),
 
     ["toxicStone"] = stone_mk(
         elemental_stone_path .. "stone_toxic",
@@ -57,12 +64,6 @@ local STONE_REGISTRY = {
         elemental_stone_path .. "stone_health",
         11,
         {
-            -- specific = {
-            --     requires_catalyst = {
-            --         catalyst = "gold_nugget", 
-            --         amount = 3,
-            --     },
-            -- },
             use_level_requirements = true
         }
     ),

@@ -107,6 +107,11 @@ function material_area_checker_success(pos_x, pos_y)
 
 end
 
+function item_pickup(entity_item, entity_pickupper, item_name )
+    varUtility.setVariable(entity_item, "hintEnable", "value_bool", true)
+    enableHalo(entity_item, false)
+end
+
 --- File code
 
 local hint_variable = varUtility.getVariable(entity_id, "hintEnable")

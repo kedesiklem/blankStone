@@ -22,8 +22,31 @@ local QuintessenceRecipe = {
     radius = 70,
     -- Résultats à spawner
     results = {
-        { path = "mods/blankStone/files/entities/elemental_stone/stone_ambrosia.xml", offset_y = -10 },
-        { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 }
+        { path = "mods/blankStone/files/entities/quintessence_stone.xml", offset_y = -10 },
+        { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 },
+        { path = "mods/blankStone/files/image_emitters/quintessence_symbol_fast.xml", offset_y = -10},
+    },
+    -- Callback optionnel après craft réussi
+    on_success = function()
+        converted_blankStone = true
+    end
+}
+
+local TestingRecipe = {
+    -- Ingrédient central (catalyst)
+    catalyst = {
+        name = "blankStone",
+    },
+    -- Ingrédients requis autour du catalyst
+    ingredients = {
+    },
+    -- Rayon de détection
+    radius = 70,
+    -- Résultats à spawner
+    results = {
+        { path = "mods/blankStone/files/entities/quintessence_stone.xml", offset_y = -10 },
+        { path = "data/entities/projectiles/deck/explosion_giga.xml", offset_y = -10 },
+        { path = "mods/blankStone/files/image_emitters/quintessence_symbol_fast.xml", offset_y = -10},
     },
     -- Callback optionnel après craft réussi
     on_success = function()
@@ -149,6 +172,7 @@ local function forgeQuintessence()
 end
 
 forgeQuintessence()
+genericCraft(pos_x, pos_y, TestingRecipe)
 
 if converted_blankStone then
 	GameTriggerMusicFadeOutAndDequeueAll( 3.0 )
