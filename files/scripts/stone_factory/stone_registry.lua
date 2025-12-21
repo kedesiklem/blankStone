@@ -2,11 +2,12 @@ local blankStone_path = "mods/blankStone/files/entities/"
 local elemental_stone_path = blankStone_path .. "elemental_stone/"
 local vanilla_stone_path =      "data/entities/items/pickup/"
 
-local function stone_mk(path, level, message ,vfx, conditions)
+local function stone_mk(path, level, message, message_fail ,vfx, conditions)
     return {
         path = path .. ".xml",
         level = level,
-        message = message or nil,
+        message = message or "You've done something...",
+        message_fail = message_fail or "Something's wrong",
         vfx = vfx or {"data/entities/projectiles/explosion.xml"},
         conditions = conditions or { use_level_requirements = true },
     }
@@ -19,6 +20,7 @@ local STONE_REGISTRY = {
         blankStone_path .. "quintessence_stone",
         11,
         "The Gods can't hide it anymore.",
+        nil,
         {
             "data/entities/projectiles/deck/explosion_giga.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
@@ -27,7 +29,8 @@ local STONE_REGISTRY = {
     ["goldStone"] = stone_mk(
         elemental_stone_path .. "stone_gold",
         5,
-        "The Gods pity you."
+        "The Gods pity you.",
+        "The Gods warn you not to do that."
     ),
     ["unstableTeleportStone"] = stone_mk(
         elemental_stone_path .. "stone_unstable_teleport",
@@ -35,7 +38,9 @@ local STONE_REGISTRY = {
     ),
     ["teleportStone"] = stone_mk(
         elemental_stone_path .. "stone_teleport",
-        5
+        5,
+        nil,
+        "You need more knowledge."
     ),
     ["toxicStone"] = stone_mk(
         elemental_stone_path .. "stone_toxic",
@@ -68,12 +73,14 @@ local STONE_REGISTRY = {
     ["polyStone"] = stone_mk(
         elemental_stone_path .. "stone_poly",
         11,
-        "The Gods fear this."
+        "The Gods fear this.",
+        "The Gods are afraid of what you're trying to do"
     ),
  
     ["healthStone"] = stone_mk(
         elemental_stone_path .. "stone_health",
-        11
+        11,
+        "The Gods are pleased."
     ),
 
     ["ambrosiaStone"] = stone_mk(
@@ -83,7 +90,9 @@ local STONE_REGISTRY = {
 
     ["loveStone"] = stone_mk(
         elemental_stone_path .. "stone_love",
-        10
+        10,
+        nil,
+        "You need more knowledge."
     ),
     
     -- Vanilla Stones
@@ -100,17 +109,23 @@ local STONE_REGISTRY = {
 
     ["stonestone"] = stone_mk(
         vanilla_stone_path .. "stonestone",
-        5
+        5,
+        nil,
+        "You need more knowledge."
     ),
 
     ["waterstone"] = stone_mk(
         vanilla_stone_path .. "waterstone",
-        5
+        5,
+        nil,
+        "You need more knowledge."
     ),
 
     ["poopstone"] = stone_mk(
         vanilla_stone_path .. "poopstone",
-        5
+        5,
+        nil,
+        "You need more knowledge."
     ),
 
     ["sunseed"] = stone_mk(
@@ -120,7 +135,9 @@ local STONE_REGISTRY = {
 
     ["wandstone"] = stone_mk(
         vanilla_stone_path .. "wandstone",
-        9
+        9,
+        nil,
+        "You need far more knowledge."
     ),
 }
 

@@ -1,0 +1,20 @@
+<Entity tags="tablet,normal_tablet">
+    <Base file="data/entities/items/books/base_book.xml">
+        <UIInfoComponent
+            name="Tome of infusion"
+        > </UIInfoComponent>
+
+        <!-- At Alchemist -->
+        <ItemComponent
+            item_name="Tome of infusion"
+            ui_description=" The Fluid that Mimics observes what surrounds it...
+Place the Purified within, and nearby, a Vessel filled.
+What is Near shall be Carried, what Bathes shall be Changed.
+The Imitator becomes Messenger between Container and Stone..."
+        > </ItemComponent>
+
+        <AbilityComponent
+            ui_name="Tome of infusion"
+        > </AbilityComponent>
+    </Base>
+</Entity>

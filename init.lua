@@ -83,3 +83,4 @@ ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scr
 
 -- based on Apotheosis
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
+dofile_once("mods/blankStone/files/scripts/biomes/hint_spawn_list.lua")

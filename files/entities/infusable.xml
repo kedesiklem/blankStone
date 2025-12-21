@@ -31,7 +31,6 @@
         <!-- 
             bool    : halo
             int     : message count
-            string  : fail message (TODO)
         -->
         <VariableStorageComponent
             name="hintEnable"

@@ -1,0 +1,19 @@
+<Entity tags="tablet,normal_tablet">
+    <Base file="data/entities/items/books/base_book.xml">
+        <UIInfoComponent
+            name="Tome of purity"
+        > </UIInfoComponent>
+
+        <!-- At Mimic Quest -->
+        <ItemComponent
+            item_name="Tome of purity"
+            ui_description="That which bears the Mark of Elements must return to Ashes...
+In the Bed of Sacred Powder, Corruption dissolves.
+Seek that which Purifies through its own Dissolution."
+        > </ItemComponent>
+
+        <AbilityComponent
+            ui_name="Tome of purity"
+        > </AbilityComponent>
+    </Base>
+</Entity>

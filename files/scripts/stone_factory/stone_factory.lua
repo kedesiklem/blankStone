@@ -62,12 +62,14 @@ local function createStone(stone_data, pos_x, pos_y)
     for i=1, #stone_data.vfx do
         EntityLoad(stone_data.vfx[i], pos_x, pos_y - 5)
     end
-    if stone_data.message then
-        GamePrintImportant(stone_data.message)
-    else
-        GamePrint("You've done something...")
-    end
+
+    GamePrintImportant(stone_data.message)
+
     log.info("Stone created: " .. stone_data.path)
+end
+
+local function getFailMessage(stone_data)
+    return stone_data.message_fail
 end
 
 local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
@@ -77,7 +79,7 @@ local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     -- Useless if the lookup table is done correctly
     if not stone_data then
         log.warn("Stone key not found in registry: " .. tostring(stone_key))
-        return false
+        return false, "The Gods don't understand what you're trying to do..."
     end
 
     log.debug("Found stone data for key: " .. tostring(stone_key))
@@ -86,7 +88,7 @@ local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     if stone_data.conditions.use_level_requirements then
         local all_requirements = LEVEL_REQUIREMENTS[stone_data.level]
         if not checkLevelRequirements(all_requirements, pos_x, pos_y, potion_id) then
-            return false
+            return false, getFailMessage(stone_data)
         end
     end
     
@@ -94,7 +96,7 @@ local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     if stone_data.conditions.specific then
         if not checkSpecificConditions(stone_data.conditions.specific, pos_x, pos_y) then
             log.info("Specific conditions not met for stone: " .. tostring(stone_key))
-            return false
+            return false, getFailMessage(stone_data)
         end
     else
         log.debug("No specific conditions for stone: " .. tostring(stone_key))
@@ -102,7 +104,7 @@ local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     
     -- Toutes les conditions remplies : créer la pierre
     createStone(stone_data, pos_x, pos_y)
-    return true
+    return true, "You did something..."
 end
 
 return {

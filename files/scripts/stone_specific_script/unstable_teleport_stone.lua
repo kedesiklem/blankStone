@@ -9,10 +9,11 @@ local function tp_random()
     local rand_x = Random(-30.0,30.0)
     local rand_y = Random(-30.0,30.0)
     local dice_roll = Random(30000.0)
-    
+
+    -- Very small chance to tp to PW
     if(dice_roll <= 2)
     then rand_x = rand_x + worldsize
-    elseif (dice_roll <= 4) 
+    elseif (dice_roll <= 4)
     then rand_x = rand_x - worldsize
     end
 

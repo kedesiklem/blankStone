@@ -21,16 +21,6 @@ local function enableHalo(id, enable)
 end
 
 --- Potion related function
-local function isValidPotion(potion_id, pos_x, pos_y, max_distance)
-    if potion_id == 0 then
-        return false
-    end
-    
-    local potion_x, potion_y = EntityGetTransform(potion_id)
-    local distance = math.sqrt((potion_x - pos_x) ^ 2 + (potion_y - pos_y) ^ 2)
-    
-    return distance < max_distance
-end
 local function getPotionMaterial(potion_id)
     local material_id = GetMaterialInventoryMainMaterial(potion_id)
     if material_id == 0 then
@@ -40,33 +30,12 @@ local function getPotionMaterial(potion_id)
     return CellFactory_GetName(material_id), CellFactory_GetTags(material_id)
 end
 
---- Main infusion function
-function material_area_checker_success(pos_x, pos_y)
-    entity_id = GetUpdatedEntityID()
+local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
 
-    -- Visual hint
-    varUtility.setVariable(entity_id, "hintEnable", "value_bool", true)
-    enableHalo(entity_id, true)
-    
-    local entityName = EntityGetName(EntityGetParent(entity_id))
-
-    -- Get potion or powder_stash material
-    local potion_id = EntityGetClosestWithTag(pos_x, pos_y, "potion")
-    if not isValidPotion(potion_id, pos_x, pos_y, reaction_distance_max) then
-        log.info("No valid potion found nearby")
-        
-        potion_id = EntityGetClosestWithTag(pos_x, pos_y, "powder_stash")
-    end
-
-    if not isValidPotion(potion_id, pos_x, pos_y, reaction_distance_max) then
-        log.info("No valid powder_stash found nearby")
-        return
-    end
-    
     local material, material_tags = getPotionMaterial(potion_id)
     if not material then
         log.info("Potion has no valid material")
-        return
+        return false
     end
     
     -- Let the factory do its job
@@ -89,21 +58,59 @@ function material_area_checker_success(pos_x, pos_y)
     
     if not stone_key then
         log.info(entityName .. " has no recipes involving the potion")
-        return
+        return false
     end
 
     
-    local success = stone_factory.tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
+    local is_success,fail_message = stone_factory.tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
     
     -- Handle the result
-    if success then
+    if is_success then
         EntityKill(EntityGetParent(entity_id))
         EntityKill(potion_id)
+
+        return true
     else
         local hint_id = varUtility.getVariable(entity_id, "hintEnable")
         if(varUtility.getValue(hint_id, "value_int", 1) == 0) then
-            GamePrint("Something's wrong...")
+            GamePrint(fail_message)
             varUtility.setValue(hint_id, "value_int", 1)
+        end
+
+        return false
+    end
+end
+
+--- Main infusion function
+function material_area_checker_success(pos_x, pos_y)
+    entity_id = GetUpdatedEntityID()
+
+    -- Visual hint
+    varUtility.setVariable(entity_id, "hintEnable", "value_bool", true)
+    enableHalo(entity_id, true)
+    
+    local entityName = EntityGetName(EntityGetParent(entity_id))
+
+    -- Get potion or powder_stash material
+    local potions_id = EntityGetInRadiusWithTag(pos_x, pos_y, reaction_distance_max, "potion")
+    local powder_stashs_id = EntityGetInRadiusWithTag(pos_x, pos_y, reaction_distance_max, "powder_stash")
+
+
+    if #potions_id == 0 then
+        log.info("No valid potion found nearby")
+    end
+
+    if #powder_stashs_id == 0 then
+        log.info("No valid powder_stash found nearby")
+    end
+    
+    for i=1,#powder_stashs_id do
+        potions_id[#potions_id+1] = powder_stashs_id[i]
+    end
+
+    for i=1, #potions_id do
+        if (tryCreateStone(potions_id[i], pos_x, pos_y, entityName)) then
+            return
         end
     end
 

@@ -16,7 +16,7 @@
 
     <ItemComponent
       item_name="Blank Stone"
-      ui_description="This rock is thirsty."
+      ui_description="It's trying to mimic other stones but lacks substance."
       ui_sprite="mods/blankStone/files/ui_gfx/blank_stone.png"
     ></ItemComponent>
 
