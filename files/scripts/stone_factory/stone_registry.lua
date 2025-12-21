@@ -29,7 +29,14 @@ local STONE_REGISTRY = {
         5,
         "The Gods pity you."
     ),
-
+    ["unstableTeleportStone"] = stone_mk(
+        elemental_stone_path .. "stone_unstable_teleport",
+        1
+    ),
+    ["teleportStone"] = stone_mk(
+        elemental_stone_path .. "stone_teleport",
+        5
+    ),
     ["toxicStone"] = stone_mk(
         elemental_stone_path .. "stone_toxic",
         1

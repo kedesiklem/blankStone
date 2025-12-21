@@ -65,7 +65,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 ```
 
 ## DONE
-- more stone
+- more stone !!!
 - purifying stone into blank_stone
 - infusing stone with liquid
 - compatibility with vanilla stone
@@ -78,7 +78,6 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - infusion with powder
 - Forgeable stone
 - quintessence (forged and use for high level stone)
-- gold stone
 
 
 ## ONGOING
@@ -87,6 +86,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 
 ## TODO
 - hint for condition !!!
+- hintMessage for infusion fail
 - Apotheosis liquid stone
 - Animation for stone_poly eye ?
 

@@ -100,13 +100,18 @@ function material_area_checker_success(pos_x, pos_y)
         EntityKill(EntityGetParent(entity_id))
         EntityKill(potion_id)
     else
-        GamePrint("Something's wrong...")
+        local hint_id = varUtility.getVariable(entity_id, "hintEnable")
+        if(varUtility.getValue(hint_id, "value_int", 1) == 0) then
+            GamePrint("Something's wrong...")
+            varUtility.setValue(hint_id, "value_int", 1)
+        end
     end
 
 end
 
 function item_pickup(entity_item, entity_pickupper, item_name )
     varUtility.setVariable(entity_item, "hintEnable", "value_bool", true)
+    varUtility.setVariable(entity_item, "hintEnable", "value_int", 0)
     enableHalo(entity_item, false)
 end
 
@@ -118,5 +123,6 @@ if varUtility.getValue(hint_variable, "value_bool", false) then
     log.info("disable halo [" .. hint_variable .. "]")
     varUtility.setValue(hint_variable, "value_bool", false)
 else
+    varUtility.setVariable(entity_id, "hintEnable", "value_int", 0)
     enableHalo(entity_id, false)
 end

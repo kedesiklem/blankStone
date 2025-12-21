@@ -18,10 +18,14 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_movement_faster"] = "acceleratiumStone",
         ["magic_liquid_faster_levitation_and_movement"] = "hasteStone",
 
-        ["midas_precursor"] = "goldStone",
+        ["magic_liquid_unstable_teleportation"] = "unstableTeleportStone",
+
         ["magic_gas_midas"] = "goldStone",
         ["midas"] = "goldStone",
 
+    },
+    ["unstableTeleportStone"] = {
+        ["[slime]"] = "teleportStone",
     },
     ["hasteStone"] = {
         ["[slime]"] = "explosionStone",

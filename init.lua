@@ -23,8 +23,11 @@ function OnPlayerSpawned( player_entity )
     local pos_x, pos_y = EntityGetTransform( player_entity )
     
     --- FORGE TEST
-    -- EntitySetTransform(player_entity, 1500, 6050)
-    -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", 1500, 6050 )
+    -- pos_x = 1500
+    -- pos_y = 6050
+    -- EntitySetTransform(player_entity, pos_x, pos_y)
+    -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
 
     -- spawn_all_orb(player_entity)
 

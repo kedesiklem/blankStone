@@ -29,7 +29,8 @@
     <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
     <!-- Special effect -->
-    <LuaComponent _tags="enabled_in_world"
+    <LuaComponent
+        _tags="enabled_in_world"
         script_kick="mods/blankStone/files/scripts/stone_specific_script/enlarge_stone.lua"
     ></LuaComponent>
 

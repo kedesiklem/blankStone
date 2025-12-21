@@ -28,9 +28,15 @@
             ></SpriteParticleEmitterComponent>
         </Base>
 
+        <!-- 
+            bool    : halo
+            int     : message count
+            string  : fail message (TODO)
+        -->
         <VariableStorageComponent
             name="hintEnable"
             value_bool="0"
+            value_int="0"
         ></VariableStorageComponent>
         <!-- VFX END -->
 
