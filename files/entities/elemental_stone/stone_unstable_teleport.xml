@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Unstable Teleportation Stone"
-      ui_description="The stone phases through your hands strangely."
+      item_name="$unstableTeleportStone_name"
+      ui_description="$unstableTeleportStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_unstable_teleport.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Unstable Teleportation Stone"
+      name="$unstableTeleportStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Unstable Teleportation Stone"
+      ui_name="$unstableTeleportStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

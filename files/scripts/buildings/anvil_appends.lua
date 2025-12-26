@@ -172,7 +172,7 @@ local function forgeQuintessence()
 end
 
 forgeQuintessence()
-genericCraft(pos_x, pos_y, TestRecipe)
+-- genericCraft(pos_x, pos_y, TestRecipe)
 
 if converted_blankStone then
 	GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

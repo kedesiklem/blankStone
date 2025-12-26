@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Levitatium Stone"
-      ui_description="Higher!"
+      item_name="$levitatiumStone_name"
+      ui_description="$levitatiumStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_levitatium.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Levitatium Stone"
+      name="$levitatiumStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Levitatium Stone"
+      ui_name="$levitatiumStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

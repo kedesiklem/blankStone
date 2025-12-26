@@ -15,17 +15,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Blank Stone"
-      ui_description="It's trying to mimic other stones but lacks substance."
+      item_name="$blankStone_name"
+      ui_description="$blankStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/blank_stone.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Blank Stone"
+      name="$blankStone_name"
     > </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Blank Stone"
+      ui_name="$blankStone_name"
     ></AbilityComponent>
   </Base>
 

@@ -27,7 +27,8 @@ function OnPlayerSpawned( player_entity )
     -- pos_y = 6050
     -- EntitySetTransform(player_entity, pos_x, pos_y)
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_teleport.xml", pos_x, pos_y )
 
     -- spawn_all_orb(player_entity)
 
@@ -84,3 +85,10 @@ ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scr
 -- based on Apotheosis
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
 dofile_once("mods/blankStone/files/scripts/biomes/hint_spawn_list.lua")
+
+-- Translation
+local translations = ModTextFileGetContent("data/translations/common.csv")
+local new_translations = ModTextFileGetContent("mods/blankStone/translations.csv")
+translations = translations .. "\n" .. new_translations .. "\n"
+translations = translations:gsub("\r", ""):gsub("\n\n+", "\n")
+ModTextFileSetContent("data/translations/common.csv", translations)

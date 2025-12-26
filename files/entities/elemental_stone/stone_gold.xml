@@ -11,16 +11,16 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Philosopher's Stone"
-      ui_description="You did it despite what the gods told you."
+      item_name="$goldStone_name"
+      ui_description="$goldStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_gold.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Philosopher's Stone"> </UIInfoComponent>
+      name="$goldStone_name"> </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Philosopher's Stone"
+      ui_name="$goldStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

@@ -16,6 +16,16 @@ end
 local STONE_REGISTRY = {
 
     -- Custom Stones
+    ["lapis_philosophorum"] = stone_mk(
+        blankStone_path .. "lapis_philosophorum",
+        33,
+        "The Gods applaud you.",
+        nil,
+        {
+            "data/entities/projectiles/deck/explosion_giga.xml",
+            "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
+        }
+    ),
     ["quintessence"] = stone_mk(
         blankStone_path .. "quintessence_stone",
         11,

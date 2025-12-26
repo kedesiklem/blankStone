@@ -11,12 +11,15 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   ├── base_stone.xml                          # Base for every stone (define basic physical property)
 │   │   ├── elemental_stone
 │   │   │   └── ...
+│   │   ├── items
+│   │   │   └── ...
 │   │   ├── elemental_stone.xml                     # Base for every elemental stone (make them purifiable)
 │   │   ├── infusable.xml                           # Interface
 │   │   ├── purifiable.xml                          # Interface
 │   │   ├── staining.xml                            # Interface
 │   │   ├── blank_stone.xml                         # Main Stone
-│   │   └── quintessence_stone.xml                  # For Advenced craft
+│   │   ├── lapis_philosophorum.xml                 # Final Stone
+│   │   └── quintessence_stone.xml                  # For Advanced craft
 │   ├── items_gfx
 │   │   ├── blank_stone.png
 │   │   ├── elemental_stone
@@ -31,17 +34,19 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 |   |   ├── enable_children.lua                     # Because fuck me I guess
 │   │   ├── buildings
 │   │   │   └── anvil_appends.lua                   # To fuse different stones
+│   │   ├── biomes
+│   │   │   └── hint_spawn_list.lua                 # Emerald tablets hints
 │   │   ├── mod_compatibility
 │   │   │   └── vanilla_appends.lua                 # Add abstract_stone property to vanilla stone and in_inventory effect (from apotheosis)
-│   │   ├── nxml_tools.lua
 │   │   ├── stone_factory                           # Handle collective and specific stone infusion condition
 │   │   │   ├── craft_registry.lua                  # <--- If you want to add new craft
 │   │   │   ├── level_requirements.lua
 │   │   │   ├── stone_factory.lua
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
 │   │   ├── stone_specific_script
-│   │   │   └── enlarge_stone.lua
-│   │   └── variableStorage_accessibility.lua
+│   │   │   └── ...
+│   │   ├── variableStorage_accessibility.lua
+│   │   └── nxml_tools.lua                          # For xml manipulation and injection
 │   ├── ui_gfx
 │   │   ├── blank_stone.png
 │   │   ├── elemental_stone
@@ -57,6 +62,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   └── nxml.lua
 ├── mod.xml
 ├── README.md                                       # You're reading it
+├── translations.csv
 ├── utils                                           # useful stuff for debugging / adding new stone
 │   └── ...
 └── workshop.xml
@@ -65,7 +71,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 ```
 
 ## DONE
-- MORE STONE !
+- MORE STONE !!!
 - purifying stone into blank_stone
 - infusing stone with liquid
 - compatibility with vanilla stone
@@ -80,16 +86,16 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - quintessence (forged and use for high level stone)
 - hintMessage for infusion fail
 - hint for condition
-
-
+- lapis philosophorum v1
 
 ## ONGOING
-- MORE STONE !!!
-- lapis philosophorum
 
 ## TODO
 - Apotheosis liquid stone (V2)
 - Animation for stone_poly eye ?
+- lapis philosophorum VFX
+- quintessence[ok] -> BLACK -> WHITE -> YELLOW:ambroisie[ok] -> RED -> lapis philosophorum[ok]
+
 
 ### special thanks to
 - lamia_zamia for the help

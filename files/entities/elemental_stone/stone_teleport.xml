@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Teleportation Stone"
-      ui_description="The stone phases through your hands strangely."
+      item_name="$teleportStone_name"
+      ui_description="$teleportStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_teleport.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Teleportation Stone"
+      name="$teleportStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Teleportation Stone"
+      ui_name="$teleportStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
@@ -67,8 +67,28 @@
     loop="1"
   ></MagicConvertMaterialComponent>
 
+  <MaterialSuckerComponent
+    _tags="enabled_in_hand,enabled_in_world"
+    material_type="0"
+    suck_tag="[slime]"
+    barrel_size="1000"
+    num_cells_sucked_per_frame="5"
+    randomized_position.min_x="-10"
+    randomized_position.max_x="10"
+    randomized_position.min_y="-10"
+    randomized_position.max_y="10"
+  ></MaterialSuckerComponent>
+
+  <MaterialInventoryComponent
+    _tags="enabled_in_hand,enabled_in_world"
+  >
+    <count_per_material_type>
+      <Material material="slime" count="1000" />
+    </count_per_material_type>
+  </MaterialInventoryComponent>
+
   <LuaComponent
-    _tags="enabled_in_hand"
+    _tags="enabled_in_hand,enabled_in_inventory"
     script_kick="mods/blankStone/files/scripts/stone_specific_script/teleport_stone.lua"
     execute_every_n_frame="-1"
   ></LuaComponent>

@@ -3,6 +3,13 @@ local logger = {}
 
 logger.mod_name = "BlankStone"
 
+ERROR = 0
+WARN = 1
+INFO = 2
+DEBUG = 3
+
+CURRENT = DEBUG
+
 -- Get current timestamp in HH:MM:SS format
 local function get_timestamp()
     local year, month, day, hour, minute, second = GameGetDateAndTimeLocal()
@@ -16,19 +23,27 @@ end
 
 -- Log for different levels
 function logger.debug(text)
-    logger.log("[DEBUG] " .. text)
+    if(CURRENT >= DEBUG) then
+        logger.log("[DEBUG] " .. text)
+    end
 end
 
 function logger.info(text)
-    logger.log("[INFO] " .. text)
+    if(CURRENT >= INFO) then
+        logger.log("[INFO] " .. text)
+    end
 end
 
 function logger.warn(text)
-    logger.log("[WARN] " .. text)
+    if(CURRENT >= WARN) then
+        logger.log("[WARN] " .. text)
+    end
 end
 
 function logger.error(text)
-    print_error("[" .. get_timestamp() .. "] [" .. logger.mod_name .. "] [ERROR] " .. text)
+    if(CURRENT >= ERROR) then
+        print_error("[" .. get_timestamp() .. "] [" .. logger.mod_name .. "] [ERROR] " .. text)
+    end
 end
 
 return logger

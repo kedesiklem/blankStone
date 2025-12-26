@@ -10,16 +10,16 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Healthy Stone"
-      ui_description="A stone infused with life itself, it enjoy your company."
+      item_name="$healthStone_name"
+      ui_description="$healthStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_health.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Healthy Stone"> </UIInfoComponent>
-
+      name="$healthStone_name"
+    ></UIInfoComponent>
     <AbilityComponent
-      ui_name="Healthy Stone"
+      ui_name="$healthStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

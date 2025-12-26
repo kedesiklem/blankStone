@@ -2,3 +2,5 @@ Most of the code is written by me, based on reverse-engineering Noita or a few m
 
 Conga Lyne - Writing most of the code of Apotheosis wich I use as a guide line
 Evasia - Creating the item list appends script
+Copis - Extracting liquid from potion (use for stone_tp)
+Lamia - Translation insert script

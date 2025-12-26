@@ -10,16 +10,16 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Love Stone"
-      ui_description="The power of love scream around you."
+      item_name="$loveStone_name"
+      ui_description="$loveStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_love.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Love Stone"> </UIInfoComponent>
+      name="$loveStone_name"> </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Love Stone"
+      ui_name="$loveStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

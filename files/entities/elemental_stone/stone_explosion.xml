@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="Explosion Stone"
-      ui_description="This stone go BOOM!"
+      item_name="$explosionStone_name"
+      ui_description="$explosionStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_explosion.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="Explosion Stone"
+      name="$explosionStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="Explosion Stone"
+      ui_name="$explosionStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
