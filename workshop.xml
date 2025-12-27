@@ -1,10 +1,8 @@
-
 <Mod
 	name="Blank Stone"
-	description="Infuse stone witth alchemical properties"
-	tags=""
-	dont_upload_folders=""
-	dont_upload_files=""
-> 
-</Mod>	
+	description="Infuse stone with alchemical properties"
+	tags="alchemy,items"
+	dont_upload_folders=".vscode"
+	dont_upload_files=".gitignore"
+> </Mod>	
 	
