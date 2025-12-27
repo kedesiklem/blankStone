@@ -27,12 +27,16 @@ function OnPlayerSpawned( player_entity )
     -- pos_y = 6050
     -- EntitySetTransform(player_entity, pos_x, pos_y)
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_teleport.xml", pos_x, pos_y )
 
     -- spawn_all_orb(player_entity)
 
+    -- OPUS MAGNUM 
+    -- EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
+
     --- STONE TEST
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_teleport.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_gold.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_ambrosia.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_toxic.xml", pos_x, pos_y )

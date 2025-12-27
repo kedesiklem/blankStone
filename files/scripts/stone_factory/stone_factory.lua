@@ -6,6 +6,8 @@ local log = dofile_once("mods/blankStone/utils/logger.lua")
 
 local function checkLevelRequirements(all_requirements, pos_x, pos_y, potion_id)
     local check = true
+
+    if (not all_requirements) then return true end
     
     -- Material quantity check
     local min_potion_count = all_requirements.min_potion_count or 0

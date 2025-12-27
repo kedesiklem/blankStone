@@ -47,7 +47,23 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[regenerative_gas]"] = "healthStone",
         ["magic_liquid_protection_all"] = "ambrosiaStone",
         ["[magic_polymorph]"] = "polyStone",
-    }
+        ["void_liquid"] = "nigredo",
+    },
+
+    -- Chemin vers le Grand OEuvre
+
+    ["nigredo"] = {
+        ["milk"] = "albedo",
+    },
+    ["albedo"] = {
+        ["[gold]"] = "citrinitas",
+    },
+    ["citrinitas"] = {
+        ["material_confusion"] = "rubedo",
+    },
+    ["rubedo"] = {
+        ["material_rainbow"] = "lapis_philosophorum",
+    },
 }
 
 return STONE_TO_MATERIAL_TO_STONE

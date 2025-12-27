@@ -1,6 +1,8 @@
 local blankStone_path = "mods/blankStone/files/entities/"
 local elemental_stone_path = blankStone_path .. "elemental_stone/"
-local vanilla_stone_path =      "data/entities/items/pickup/"
+local opus_magnum_path = blankStone_path .. "opus_magnum/"
+
+local vanilla_stone_path = "data/entities/items/pickup/"
 
 local function stone_mk(path, level, message, message_fail ,vfx, conditions)
     return {
@@ -17,15 +19,57 @@ local STONE_REGISTRY = {
 
     -- Custom Stones
     ["lapis_philosophorum"] = stone_mk(
-        blankStone_path .. "lapis_philosophorum",
-        33,
-        "The Gods applaud you.",
-        nil,
+        opus_magnum_path .. "lapis_philosophorum",
+        34,
+       "The Gods applaud you. You have achieved the Opus Magnum.",
+        "The ultimate transmutation requires absolute perfection.",
         {
             "data/entities/projectiles/deck/explosion_giga.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
         }
     ),
+
+    ["nigredo"]= stone_mk(
+        opus_magnum_path .. "nigredo",
+        11,
+        "The Black Work is complete. Matter dissolves into void.",
+        "The void rejects your offering.",
+        {
+            "data/entities/projectiles/deck/explosion_giga.xml",
+            "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
+        }
+    ),
+    ["albedo"]= stone_mk(
+        opus_magnum_path .. "albedo",
+        11,
+        "The White Work is complete. Purity achieved.",
+        "Your soul is not yet pure enough.",
+        {
+            "data/entities/projectiles/deck/explosion_giga.xml",
+            "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
+        }
+    ),
+    ["citrinitas"]= stone_mk(
+        opus_magnum_path .. "citrinitas",
+        11,
+        "The Yellow Work is complete. The awakening achieved.",
+        "The sun has not yet risen for you.",
+        {
+            "data/entities/projectiles/deck/explosion_giga.xml",
+            "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
+        }
+    ),
+    ["rubedo"]= stone_mk(
+        opus_magnum_path .. "rubedo",
+        33,
+        "The Red Work is complete. The marriage of opposites achieved.",
+        "Perfection requires the union of all knowledge.",
+        {
+            "data/entities/projectiles/deck/explosion_giga.xml",
+            "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
+        }
+    ),
+
     ["quintessence"] = stone_mk(
         blankStone_path .. "quintessence_stone",
         11,

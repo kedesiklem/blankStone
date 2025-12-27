@@ -11,6 +11,8 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   ├── base_stone.xml                          # Base for every stone (define basic physical property)
 │   │   ├── elemental_stone
 │   │   │   └── ...
+│   │   ├── opus_magnum
+│   │   │   └── ...
 │   │   ├── items
 │   │   │   └── ...
 │   │   ├── elemental_stone.xml                     # Base for every elemental stone (make them purifiable)
@@ -18,7 +20,6 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   ├── purifiable.xml                          # Interface
 │   │   ├── staining.xml                            # Interface
 │   │   ├── blank_stone.xml                         # Main Stone
-│   │   ├── lapis_philosophorum.xml                 # Final Stone
 │   │   └── quintessence_stone.xml                  # For Advanced craft
 │   ├── items_gfx
 │   │   ├── blank_stone.png
@@ -86,15 +87,13 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - quintessence (forged and use for high level stone)
 - hintMessage for infusion fail
 - hint for condition
-- lapis philosophorum v1
+- opus magnum
 
 ## ONGOING
 
 ## TODO
 - Apotheosis liquid stone (V2)
 - Animation for stone_poly eye ?
-- lapis philosophorum VFX
-- quintessence[ok] -> BLACK -> WHITE -> YELLOW:ambroisie[ok] -> RED -> lapis philosophorum[ok]
 
 
 ### special thanks to

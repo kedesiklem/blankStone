@@ -47,7 +47,6 @@
   </Base>
 
   <!-- protection -->
-
   <GameEffectComponent
     _tags="enabled_in_hand,enabled_in_inventory"
     effect="PROTECTION_POLYMORPH"

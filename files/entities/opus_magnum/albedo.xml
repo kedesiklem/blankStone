@@ -1,0 +1,62 @@
+<Entity name="albedo" tags="hittable,teleportable_NOT,item_physics,item_pickup">
+    <Base file="mods/blankStone/files/entities/base_stone.xml">
+
+        <!-- physical presence -->
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/opus_magnum/albedo_stone.png"
+        ></PhysicsImageShapeComponent>
+
+        <!-- item -->
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/opus_magnum/albedo_stone.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$albedo_name"
+            ui_description="$albedo_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/albedo_stone.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$albedo_name"
+        > </UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$albedo_name"
+        ></AbilityComponent>
+    </Base>
+
+    <!-- PURE -->
+    <MagicConvertMaterialComponent
+        _tags="enabled_in_hand,enabled_in_world"
+        _enabled="0"
+        kill_when_finished="0"
+        from_material_tag="[impure]"
+        to_material="water"
+        clean_stains="1"
+        is_circle="1"
+        loop="1"
+        radius="48"
+        reaction_audio_amount="0.005"
+    ></MagicConvertMaterialComponent>
+
+
+    <!-- VFX -->
+    <Base file="mods/blankStone/files/VFX/halo.xml">
+        <SpriteParticleEmitterComponent
+            color.r="1.0" color.g="1.0" color.b="1.0" color.a="0.20"
+            color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+            randomize_position.min_x="-0.3"
+            randomize_position.max_x="0.3"
+            randomize_position.min_y="-0.3"
+            randomize_position.max_y="0.3"
+            additive="1"
+            emissive="1"
+            scale.x="1.5" scale.y="1.5"
+        ></SpriteParticleEmitterComponent>
+    </Base>
+
+    <!-- Infusion process -->
+    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
+
+</Entity>

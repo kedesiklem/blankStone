@@ -1,0 +1,64 @@
+<Entity name="rubedo" tags="hittable,teleportable_NOT,item_physics,item_pickup">
+    <Base file="mods/blankStone/files/entities/base_stone.xml">
+
+        <!-- physical presence -->
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/opus_magnum/rubedo_stone.png"
+        ></PhysicsImageShapeComponent>
+
+        <!-- item -->
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/opus_magnum/rubedo_stone.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$rubedo_name"
+            ui_description="$rubedo_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/rubedo_stone.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$rubedo_name"
+        > </UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$rubedo_name"
+        ></AbilityComponent>
+    </Base>
+
+
+    <!-- CONFUSED -->
+    <MagicConvertMaterialComponent
+        _tags="enabled_in_hand,enabled_in_world"
+        _enabled="0"
+        kill_when_finished="0"
+        from_material_array="magic_liquid_berserk,magic_liquid_charm,magic_liquid_unstable_teleportation"
+        to_material_array="magic_liquid_charm,magic_liquid_berserk,orb_powder"
+        clean_stains="0"
+        is_circle="1"
+        loop="1"
+        radius="64"
+        reaction_audio_amount="0.005"
+    ></MagicConvertMaterialComponent>
+
+    <!-- VFX -->
+    <Base
+        file="mods/blankStone/files/VFX/halo.xml">
+        <SpriteParticleEmitterComponent
+            color.r="1.0" color.g="0.0" color.b="0.0" color.a="0.50"
+            color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+            randomize_position.min_x="-0.3"
+            randomize_position.max_x="0.3"
+            randomize_position.min_y="-0.3"
+            randomize_position.max_y="0.3"
+            additive="1"
+            emissive="1"
+            scale.x="1.5" scale.y="1.5"
+        ></SpriteParticleEmitterComponent>
+    </Base>
+
+    <!-- Infusion process -->
+    <Base
+        file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
+
+</Entity>
