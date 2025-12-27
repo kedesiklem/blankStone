@@ -1,5 +1,8 @@
 # Blank Stone by Kedesiklem
 
+![BlankStone Preview Image](workshop_preview_image.png)
+
+
 This mod add the possibility to purify and infuse stone to use the liquid at there maximum potential.
 
 
