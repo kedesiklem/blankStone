@@ -1,6 +1,6 @@
 <Mod
 	name="Blank Stone"
-	description="Infuse stone with alchemical properties"
+	description="BlankStone : a journey to the magnum opus\nThis mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. Discover how to craft blankStone, how to infuse teleportation into a rock, and many other secrets."
 	tags="alchemy,items"
 	dont_upload_folders=".vscode"
 	dont_upload_files=".gitignore"
