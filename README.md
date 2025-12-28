@@ -91,10 +91,15 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - hintMessage for infusion fail
 - hint for condition
 - opus magnum
+- purify into anything
+
 
 ## ONGOING
 
 ## TODO
+- Quintessence can replace the forge to make other quintessence
+
+--- V2
 - Apotheosis liquid stone (V2)
 - Animation for stone_poly eye ?
 

@@ -36,20 +36,13 @@
     ></ParticleEmitterComponent>
   </Base>
 
-  <ParticleEmitterComponent
-    _tags="enabled_in_world"
-    emitted_material_name="radioactive_static"
-    count_min="1"
-    count_max="2"
-    x_pos_offset_min="-4"
-    x_pos_offset_max="4"
-    y_pos_offset_min="2"
-    y_pos_offset_max="6"
-    emission_interval_min_frames="2"
-    emission_interval_max_frames="4"
-    create_real_particles="1"
-    render_on_grid="1"
-  ></ParticleEmitterComponent>
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="rock_static_radioactive"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
 
 
   <Base file="mods/blankStone/files/VFX/halo.xml">

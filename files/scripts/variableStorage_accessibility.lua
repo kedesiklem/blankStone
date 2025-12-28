@@ -2,9 +2,10 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local function getVariable(entity_id, variable_name)
 
-    local variables = EntityGetComponent( entity_id,"VariableStorageComponent")
+    local variables = EntityGetComponentIncludingDisabled( entity_id,"VariableStorageComponent")
 
     if ( not variables ) then
+        log.warn("No VariableStorageComponent found")
         return nil
     end
 

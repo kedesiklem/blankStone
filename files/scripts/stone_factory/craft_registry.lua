@@ -7,6 +7,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["diamond"] =           "thunderstone",
         ["spark_electric"] =    "thunderstone",
         ["rock_static"] = "stonestone",
+        ["[grows_grass]"] = "stonestone",
         ["water"] = "waterstone",
         ["poo"] = "poopstone",
         ["blood_worm"] = "sunseed",

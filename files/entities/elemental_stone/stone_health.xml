@@ -18,10 +18,16 @@
     <UIInfoComponent
       name="$healthStone_name"
     ></UIInfoComponent>
+
     <AbilityComponent
       ui_name="$healthStone_name"
       throw_as_item="1"
     ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="mods/blankStone/files/entities/quintessence_stone.xml"
+    ></VariableStorageComponent>
   </Base>
 
   <!-- VFX -->

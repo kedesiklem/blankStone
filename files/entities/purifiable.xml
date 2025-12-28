@@ -18,4 +18,9 @@
         script_material_area_checker_success="mods/blankStone/files/scripts/purify_stone.lua"
     ></LuaComponent>
 
+    <VariableStorageComponent
+        name="purifyInto"
+        value_string="mods/blankStone/files/entities/blank_stone.xml"
+    ></VariableStorageComponent>
+
 </Entity>

@@ -7,7 +7,6 @@
             image_file="mods/blankStone/files/items_gfx/opus_magnum/lapis_philosophorum.png"
         ></PhysicsImageShapeComponent>
 
-
         <!-- item -->
 
         <SpriteComponent
