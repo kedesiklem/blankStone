@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$unstableTeleportStone_name"
-      ui_description="$unstableTeleportStone_desc"
+      item_name="$stone_blankstone_unstableTeleportStone_name"
+      ui_description="$stone_blankstone_unstableTeleportStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_unstable_teleport.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$unstableTeleportStone_name"
+      name="$stone_blankstone_unstableTeleportStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$unstableTeleportStone_name"
+      ui_name="$stone_blankstone_unstableTeleportStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

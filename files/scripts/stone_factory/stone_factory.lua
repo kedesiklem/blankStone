@@ -1,61 +1,9 @@
--- stone_factory.lua
-
-local LEVEL_REQUIREMENTS = dofile_once("mods/blankStone/files/scripts/stone_factory/level_requirements.lua")
+local level = dofile_once("mods/blankStone/files/scripts/stone_factory/level_requirements.lua")
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
+local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua")
+local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
-local function checkLevelRequirements(all_requirements, pos_x, pos_y, potion_id)
-    local check = true
-
-    if (not all_requirements) then return true end
-    
-    -- Material quantity check
-    local min_potion_count = all_requirements.min_potion_count or 0
-    local material_id = GetMaterialInventoryMainMaterial(potion_id)
-    if min_potion_count > 0 then
-        local potion_inventory = EntityGetFirstComponent(potion_id, "MaterialInventoryComponent")
-        if potion_inventory then
-            local cpmt = ComponentGetValue2(potion_inventory, "count_per_material_type")
-
-            -- Why +1 ? Because fuck you that's why.
-            local count = cpmt[material_id +1] or 0
-            
-            check = check and (count >= min_potion_count)
-        else
-            log.error("How the fuck potion has no MaterialInventoryComponent?")
-            return false
-        end
-    end
-
-    -- Orb count check
-    local min_orb = all_requirements.min_orb or 0
-    local np_orb = GameGetOrbCountThisRun()
-    check = check and np_orb >= min_orb
-
-    -- Purity check
-    -- ID of Corrupted Orb in the west adds 128 to Main World's ID, and the ones in east adds 256
-    local pure_orb_only = all_requirements.pure_orb_only or false
-    if pure_orb_only and np_orb ~= 0 then
-        local corrupted = false
-        for i=0, 11 do 
-            for _, j in ipairs({128, 256}) do
-                corrupted = corrupted or GameGetOrbCollectedThisRun(i + j)
-            end
-        end
-        if corrupted then
-            log.info("You're corrupt.")
-        end
-        check = check and not(corrupted)
-    end
-
-    return check
-end
-
-local function checkSpecificConditions(specific_conditions, pos_x, pos_y)
-    log.debug("Checking specific requirements not implemented yet")
-    -- TODO: Implémenter les checks spécifiques
-    return true
-end
 
 local function createStone(stone_data, pos_x, pos_y)
     -- Charger l'entité de la pierre
@@ -70,46 +18,174 @@ local function createStone(stone_data, pos_x, pos_y)
     log.info("Stone created: " .. stone_data.path)
 end
 
-local function getFailMessage(stone_data)
-    return stone_data.message_fail
+local function failStone(stone_data)
+    GamePrint(stone_data.message_fail)
 end
 
-local function tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
+
+-- INFUSION RECIPES RELATED FUNCTION
+---------------------------------------------------------------
+
+local function tryCreateStoneFromPotion(stone_key, hintCount, pos_x, pos_y, potion_id)
     -- Gérer la structure custom_stone vs vanilla_stone
     local stone_data = STONE_REGISTRY[stone_key]
     
     -- Useless if the lookup table is done correctly
     if not stone_data then
         log.warn("Stone key not found in registry: " .. tostring(stone_key))
-        return false, "The Gods don't understand what you're trying to do..."
+        return false
     end
 
     log.debug("Found stone data for key: " .. tostring(stone_key))
     
     -- Vérifier les conditions de level
     if stone_data.conditions.use_level_requirements then
-        local all_requirements = LEVEL_REQUIREMENTS[stone_data.level]
-        if not checkLevelRequirements(all_requirements, pos_x, pos_y, potion_id) then
-            return false, getFailMessage(stone_data)
+        if not level.checkLevelRequirements(stone_data.level) then
+            if(hintCount == 0) then
+                failStone(stone_data)
+            end
+            return false
         end
-    end
-    
-    -- Vérifier les conditions spécifiques
-    if stone_data.conditions.specific then
-        if not checkSpecificConditions(stone_data.conditions.specific, pos_x, pos_y) then
-            log.info("Specific conditions not met for stone: " .. tostring(stone_key))
-            return false, getFailMessage(stone_data)
-        end
-    else
-        log.debug("No specific conditions for stone: " .. tostring(stone_key))
     end
     
     -- Toutes les conditions remplies : créer la pierre
     createStone(stone_data, pos_x, pos_y)
-    return true, "You did something..."
+    return true
 end
+
+---------------------------------------------------------------
+
+
+-- FUSE RECIPES RELATED FUNCTION
+---------------------------------------------------------------
+
+-- Fonction d'aide: collecte les ingrédients
+local function collectIngredients(cx, cy, recipe)
+    local ingredients_entities = {}
+    
+    for i, ingredient in ipairs(recipe.ingredients) do
+        local entities
+        
+        if ingredient.tag then
+            entities = utils.getEntitiesMatchingExpressionInRadius(cx, cy, recipe.radius, ingredient.tag)
+            log.debug("Ingrédient trouvé par expression '" .. ingredient.tag .. "': " .. #entities)
+        elseif ingredient.name then
+            entities = utils.EntityGetInRadiusWithName(cx, cy, recipe.radius, ingredient.name) or {}
+            log.debug("Ingrédient trouvé par nom '" .. ingredient.name .. "': " .. #entities)
+        end
+        
+        if #entities < ingredient.count then 
+            return nil 
+        end
+        
+        ingredients_entities[i] = entities
+    end
+    
+    return ingredients_entities
+end
+
+-- Fonction d'aide: sélectionne les entités hors inventaire
+local function selectOutOfInventory(ingredients_entities, recipe)
+    local selected_ingredients = {}
+    
+    for i, ingredient in ipairs(recipe.ingredients) do
+        local entities = {}
+        
+        for _ = 1, ingredient.count do
+            local entity = utils.getFirstOutofInventory(ingredients_entities[i])
+            if not entity then return nil end
+            
+            table.insert(entities, entity)
+            
+            for k, v in ipairs(ingredients_entities[i]) do
+                if v == entity then
+                    table.remove(ingredients_entities[i], k)
+                    break
+                end
+            end
+        end
+        
+        selected_ingredients[i] = entities
+    end
+    
+    return selected_ingredients
+end
+
+-- Fonction d'aide: traite une recette unique
+local function tryRecipes(cx, cy, recipe)
+
+    local ingredients_entities = collectIngredients(cx, cy, recipe)
+    if not ingredients_entities then return false end
+    
+    log.debug("All ingredients present!")
+    
+    local selected_ingredients = selectOutOfInventory(ingredients_entities, recipe)
+    if not selected_ingredients then return false end
+    
+    log.debug("All ingredients out of inventory!")
+    
+    for _, result in ipairs(recipe.results) do
+        local stone_data = STONE_REGISTRY[result.key]
+        local spawn_x = cx + (result.offset_x or 0)
+        local spawn_y = cy + (result.offset_y or 0)
+        createStone(stone_data, spawn_x, spawn_y)
+    end
+    
+    -- Détruit tous les ingrédients utilisés
+    for i, entities in ipairs(selected_ingredients) do
+        for _, entity in ipairs(entities) do
+            EntityKill(entity)
+        end
+    end
+    
+    -- Callback de succès
+    if recipe.on_success then recipe.on_success() end
+    
+    return true
+end
+
+-- Fonction générique de crafting
+local function genericCraft(cx, cy, recipes)
+    if(not recipes) then
+        log.error("No recipes loaded")
+        return false
+    end
+    for k = 1, #recipes do
+        if tryRecipes(cx, cy, recipes[k]) then
+            return true
+        end
+    end
+    
+    return false
+end
+---------------------------------------------------------------
+
+
+-- FORGE RECIPES RELATED FUNCTION
+---------------------------------------------------------------
+
+local function forgeStone(id,x,y)
+    local result = craft.FORGE_RECIPIES[EntityGetName(id)]
+
+    if not result then return false end
+    
+    if result.spells then
+        for _, spell in ipairs(result.spells) do
+            CreateItemActionEntity(spell, x, y)
+        end
+    end
+
+    if result.message then
+        GamePrintImportant(result.message.title, result.message.desc)
+    end
+    return true
+end
+
+---------------------------------------------------------------
 
 return {
     createStone = createStone,
-    tryCreateStoneFromPotion = tryCreateStoneFromPotion
+    tryCreateStoneFromPotion = tryCreateStoneFromPotion,
+    genericCraft = genericCraft,
+    forgeStone = forgeStone
 }

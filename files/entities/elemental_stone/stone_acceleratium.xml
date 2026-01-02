@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$acceleratiumStone_name"
-      ui_description="$acceleratiumStone_desc"
+      item_name="$stone_blankstone_acceleratiumStone_name"
+      ui_description="$stone_blankstone_acceleratiumStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_acceleratium.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$acceleratiumStone_name"
+      name="$stone_blankstone_acceleratiumStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$acceleratiumStone_name"
+      ui_name="$stone_blankstone_acceleratiumStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

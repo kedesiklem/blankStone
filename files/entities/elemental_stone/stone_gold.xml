@@ -11,16 +11,16 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$goldStone_name"
-      ui_description="$goldStone_desc"
+      item_name="$stone_blankstone_goldStone_name"
+      ui_description="$stone_blankstone_goldStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_gold.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$goldStone_name"> </UIInfoComponent>
+      name="$stone_blankstone_goldStone_name"> </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$goldStone_name"
+      ui_name="$stone_blankstone_goldStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

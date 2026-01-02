@@ -15,17 +15,17 @@
         ></SpriteComponent>
 
         <ItemComponent
-            item_name="$quintessence_name"
-            ui_description="$quintessence_desc"
+            item_name="$stone_blankstone_quintessence_name"
+            ui_description="$stone_blankstone_quintessence_desc"
             ui_sprite="mods/blankStone/files/ui_gfx/quintessence_stone.png"
         ></ItemComponent>
 
         <UIInfoComponent
-            name="$quintessence_name"
+            name="$stone_blankstone_quintessence_name"
         > </UIInfoComponent>
 
         <AbilityComponent
-            ui_name="$quintessence_name"
+            ui_name="$stone_blankstone_quintessence_name"
         ></AbilityComponent>
     </Base>
 

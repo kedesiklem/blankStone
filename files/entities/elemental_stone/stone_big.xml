@@ -11,17 +11,17 @@
         ></SpriteComponent>
 
         <ItemComponent
-            item_name="$bigStone_name"
-            ui_description="$bigStone_desc"
+            item_name="$stone_blankstone_bigStone_name"
+            ui_description="$stone_blankstone_bigStone_desc"
             ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_big.png"
         ></ItemComponent>
 
         <UIInfoComponent
-            name="$bigStone_name"
+            name="$stone_blankstone_bigStone_name"
         ></UIInfoComponent>
 
         <AbilityComponent
-            ui_name="$bigStone_name"
+            ui_name="$stone_blankstone_bigStone_name"
             throw_as_item="1"
         ></AbilityComponent>
     </Base>

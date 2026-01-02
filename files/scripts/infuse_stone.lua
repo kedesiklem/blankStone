@@ -2,8 +2,8 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
-local STONE_TO_MATERIAL_TO_STONE = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
-local varUtility = dofile_once("mods/blankStone/files/scripts/variableStorage_accessibility.lua")
+local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
+local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
 local entity_id = GetUpdatedEntityID()
 local reaction_distance_max = 12
@@ -20,35 +20,25 @@ local function enableHalo(id, enable)
     end
 end
 
---- Potion related function
-local function getPotionMaterial(potion_id)
-    local material_id = GetMaterialInventoryMainMaterial(potion_id)
-    if material_id == 0 then
-        return nil
-    end
-    
-    return CellFactory_GetName(material_id), CellFactory_GetTags(material_id)
-end
-
 local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
 
-    local material, material_tags = getPotionMaterial(potion_id)
+    local material, material_tags = utils.getPotionMaterial(potion_id)
     if not material then
-        log.info("Potion has no valid material")
+        log.debug("Potion has no valid material")
         return false
     end
     
     -- Let the factory do its job
-    local stone_craft_list = STONE_TO_MATERIAL_TO_STONE[entityName]
+    local stone_craft_list = craft.STONE_TO_MATERIAL_TO_STONE[entityName]
     local stone_key = stone_craft_list[material]
     -- Check for tag recipes
 
     if not stone_key then
-        log.info(entityName .. " has no recipes involving material '" .. material .. "'.")
+        log.debug(entityName .. " has no recipes involving material '" .. material .. "'.")
         for _, value in ipairs(material_tags) do
             stone_key = stone_craft_list[value]
             if stone_key then
-                log.info(entityName .. " has recipes involving the tag " .. value)
+                log.debug(entityName .. " has recipes involving the tag " .. value)
                 break
             else
                 log.debug(entityName .. " has no recipes involving the tag " .. value)
@@ -57,12 +47,13 @@ local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
     end
     
     if not stone_key then
-        log.info(entityName .. " has no recipes involving the potion")
+        log.debug(entityName .. " has no recipes involving the potion")
         return false
     end
 
+    local hint_id = utils.getVariable(entity_id, "hintEnable")
     
-    local is_success,fail_message = stone_factory.tryCreateStoneFromPotion(stone_key, pos_x, pos_y, potion_id)
+    local is_success = stone_factory.tryCreateStoneFromPotion(stone_key, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y, potion_id)
     
     -- Handle the result
     if is_success then
@@ -71,10 +62,8 @@ local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
 
         return true
     else
-        local hint_id = varUtility.getVariable(entity_id, "hintEnable")
-        if(varUtility.getValue(hint_id, "value_int", 1) == 0) then
-            GamePrint(fail_message)
-            varUtility.setValue(hint_id, "value_int", 1)
+        if(utils.getValue(hint_id, "value_int", 1) == 0) then
+            utils.setValue(hint_id, "value_int", 1)
         end
 
         return false
@@ -86,7 +75,7 @@ function material_area_checker_success(pos_x, pos_y)
     entity_id = GetUpdatedEntityID()
 
     -- Visual hint
-    varUtility.setVariable(entity_id, "hintEnable", "value_bool", true)
+    utils.setVariable(entity_id, "hintEnable", "value_bool", true)
     enableHalo(entity_id, true)
     
     local entityName = EntityGetName(EntityGetParent(entity_id))
@@ -97,11 +86,11 @@ function material_area_checker_success(pos_x, pos_y)
 
 
     if #potions_id == 0 then
-        log.info("No valid potion found nearby")
+        log.debug("No valid potion found nearby")
     end
 
     if #powder_stashs_id == 0 then
-        log.info("No valid powder_stash found nearby")
+        log.debug("No valid powder_stash found nearby")
     end
     
     for i=1,#powder_stashs_id do
@@ -117,19 +106,19 @@ function material_area_checker_success(pos_x, pos_y)
 end
 
 function item_pickup(entity_item, entity_pickupper, item_name )
-    varUtility.setVariable(entity_item, "hintEnable", "value_bool", true)
-    varUtility.setVariable(entity_item, "hintEnable", "value_int", 0)
+    utils.setVariable(entity_item, "hintEnable", "value_bool", true)
+    utils.setVariable(entity_item, "hintEnable", "value_int", 0)
     enableHalo(entity_item, false)
 end
 
 --- File code
 
-local hint_variable = varUtility.getVariable(entity_id, "hintEnable")
+local hint_variable = utils.getVariable(entity_id, "hintEnable")
 
-if varUtility.getValue(hint_variable, "value_bool", false) then
-    log.info("disable halo [" .. hint_variable .. "]")
-    varUtility.setValue(hint_variable, "value_bool", false)
+if utils.getValue(hint_variable, "value_bool", false) then
+    log.debug("disable halo [" .. hint_variable .. "]")
+    utils.setValue(hint_variable, "value_bool", false)
 else
-    varUtility.setVariable(entity_id, "hintEnable", "value_int", 0)
+    utils.setVariable(entity_id, "hintEnable", "value_int", 0)
     enableHalo(entity_id, false)
 end

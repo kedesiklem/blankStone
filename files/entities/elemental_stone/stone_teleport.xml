@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$teleportStone_name"
-      ui_description="$teleportStone_desc"
+      item_name="$stone_blankstone_teleportStone_name"
+      ui_description="$stone_blankstone_teleportStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_teleport.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$teleportStone_name"
+      name="$stone_blankstone_teleportStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$teleportStone_name"
+      ui_name="$stone_blankstone_teleportStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
@@ -72,7 +72,7 @@
     material_type="0"
     suck_tag="[slime]"
     barrel_size="1000"
-    num_cells_sucked_per_frame="5"
+    num_cells_sucked_per_frame="50"
     randomized_position.min_x="-10"
     randomized_position.max_x="10"
     randomized_position.min_y="-10"

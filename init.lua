@@ -21,20 +21,27 @@ end
 
 function OnPlayerSpawned( player_entity ) 
     local pos_x, pos_y = EntityGetTransform( player_entity )
+
+    -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
     
+
     --- FORGE TEST
     -- pos_x = 1500
     -- pos_y = 6050
     -- EntitySetTransform(player_entity, pos_x, pos_y)
-    -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
+
 
     -- spawn_all_orb(player_entity)
+
+    -- SPELL
+    -- CreateItemActionEntity("BLANKSTONE_STONE_FUSER", pos_x, pos_y)
 
     -- OPUS MAGNUM 
     -- EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_magic_liquid.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_teleport.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_gold.xml", pos_x, pos_y )
@@ -89,6 +96,7 @@ ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scr
 -- based on Apotheosis
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
 dofile_once("mods/blankStone/files/scripts/biomes/hint_spawn_list.lua")
+ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/blankStone/files/actions.lua")
 
 -- Translation
 local translations = ModTextFileGetContent("data/translations/common.csv")

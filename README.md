@@ -12,12 +12,10 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 ├── files
 │   ├── entities
 │   │   ├── base_stone.xml                          # Base for every stone (define basic physical property)
-│   │   ├── elemental_stone
-│   │   │   └── ...
-│   │   ├── opus_magnum
-│   │   │   └── ...
-│   │   ├── items
-│   │   │   └── ...
+│   │   ├── elemental_stone/
+│   │   ├── opus_magnum/
+│   │   ├── items/
+│   │   ├── misc/
 │   │   ├── elemental_stone.xml                     # Base for every elemental stone (make them purifiable)
 │   │   ├── infusable.xml                           # Interface
 │   │   ├── purifiable.xml                          # Interface
@@ -26,20 +24,19 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   └── quintessence_stone.xml                  # For Advanced craft
 │   ├── items_gfx
 │   │   ├── blank_stone.png
-│   │   ├── elemental_stone
-│   │   │   └── ...
+│   │   ├── elemental_stone/
 │   │   ├── quintessence_stone.png
 │   │   └── stone.kra
 │   ├── scripts
 │   │   ├── infuse_stone.lua                        # Core of the mod
-│   │   ├── inject_stones.lua                       # Define what stone will spawn ingame
-│   │   ├── purify_stone.lua                        # Define how elemental stone turn into blank stone
-│   │   ├── stain_effect.lua                        # Allow stone to apply stain (doesn't work --')
+│   │   ├── inject_stones.lua                       # Define what stone will spawn ingame (currently [02/01/2026] only blankStone)
+│   │   ├── purify_stone.lua                        # Define how elemental stone turn into blank stone (or something else)
+│   │   ├── stain_effect.lua                        # Allow stone to apply stain
 |   |   ├── enable_children.lua                     # Because fuck me I guess
-│   │   ├── buildings
-│   │   │   └── anvil_appends.lua                   # To fuse different stones
 │   │   ├── biomes
 │   │   │   └── hint_spawn_list.lua                 # Emerald tablets hints
+│   │   ├── buildings
+│   │   │   └── anvil_appends.lua
 │   │   ├── mod_compatibility
 │   │   │   └── vanilla_appends.lua                 # Add abstract_stone property to vanilla stone and in_inventory effect (from apotheosis)
 │   │   ├── stone_factory                           # Handle collective and specific stone infusion condition
@@ -47,35 +44,30 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   │   ├── level_requirements.lua
 │   │   │   ├── stone_factory.lua
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
-│   │   ├── stone_specific_script
-│   │   │   └── ...
-│   │   ├── variableStorage_accessibility.lua
+│   │   ├── stone_specific_script/
+│   │   ├── magic/                                  # spell related
+│   │   ├── utils.lua
 │   │   └── nxml_tools.lua                          # For xml manipulation and injection
 │   ├── ui_gfx
 │   │   ├── blank_stone.png
-│   │   ├── elemental_stone
-│   │   │   └── ...
+│   │   ├── elemental_stone/
+│   │   ├── gun_actions/                            # spell related
 │   │   ├── quintessence_stone.png
 │   │   └── stone.kra
-│   └── VFX
-│       ├── image_emitters
-│       │   └── ...
-│       └── ...
+│   └── VFX/
 ├── init.lua
 ├── lib
 │   └── nxml.lua
 ├── mod.xml
 ├── README.md                                       # You're reading it
 ├── translations.csv
-├── utils                                           # useful stuff for debugging / adding new stone
-│   └── ...
+├── utils/                                          # useful stuff (mostly debugging)
 └── workshop.xml
 
 
 ```
 
 ## DONE
-- MORE STONE !!!
 - purifying stone into blank_stone
 - infusing stone with liquid
 - compatibility with vanilla stone
@@ -92,13 +84,14 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - hint for condition
 - opus magnum
 - purify into anything
+- stone fuser spell
+
 
 
 ## ONGOING
+- Make a stone for (almost) every liquid
 
-## TODO
-- Quintessence can replace the forge to make other quintessence
-
+## TODO 
 --- V2
 - Apotheosis liquid stone (V2)
 - Animation for stone_poly eye ?

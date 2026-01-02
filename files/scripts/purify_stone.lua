@@ -1,16 +1,16 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local varUtility = dofile_once("mods/blankStone/files/scripts/variableStorage_accessibility.lua")
+local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
 DEFAULT_STONE = "mods/blankStone/files/entities/blank_stone.xml"
 
 local function load_purified_stone(entity_id,x,y)
-	local purifyInto= varUtility.getVariable(entity_id, "purifyInto")
+	local purifyInto= utils.getVariable(entity_id, "purifyInto")
 	local stone
 	if (not purifyInto) then
 		log.warn("Missing \"purifyInto\" variable")
 		stone = DEFAULT_STONE
 	else
-		stone = varUtility.getValue(purifyInto,"value_string")
+		stone = utils.getValue(purifyInto,"value_string")
 	end
 	EntityLoad(stone, x, y - 5)
 end

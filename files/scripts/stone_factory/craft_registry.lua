@@ -18,6 +18,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_faster_levitation"] = "levitatiumStone",
         ["magic_liquid_movement_faster"] = "acceleratiumStone",
         ["magic_liquid_faster_levitation_and_movement"] = "hasteStone",
+        ["plasma_fading"] = "magicLiquidStone",
 
         ["magic_liquid_unstable_teleportation"] = "unstableTeleportStone",
 
@@ -67,4 +68,39 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
 }
 
-return STONE_TO_MATERIAL_TO_STONE
+-- Note : preferably use tags to identify ingredients if possible
+local FUSE_RECIPIES = {
+    {
+        -- Ingrédients requis
+        ingredients = {
+            { tag = "brimstone", count = 1 },
+            { tag = "thunderstone", count = 1 },
+            { tag = "waterstone", count = 1 },
+            { tag = "stonestone", count = 1 }
+        },
+        -- Rayon de détection
+        radius = 20,
+        -- Résultats à spawner (key for STONE_REGISTRY)
+        results = {
+            { key = "quintessence", offset_y = -10 },
+        },
+        -- Callback optionnel après craft réussi
+        on_success = function() end
+    },
+}
+
+local FORGE_RECIPIES = {
+    ["magicLiquidStone"] = {
+        spells = {"BLANKSTONE_STONE_FUSER"},
+        message = {
+            title = "$text_blankstone_repair_broken_stone_title",
+            desc = "$text_blankstone_repair_broken_stone_desc",
+        }
+    }
+}
+
+return {
+    STONE_TO_MATERIAL_TO_STONE = STONE_TO_MATERIAL_TO_STONE,
+    FUSE_RECIPIES = FUSE_RECIPIES,
+    FORGE_RECIPIES = FORGE_RECIPIES,
+}

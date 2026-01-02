@@ -31,7 +31,7 @@ local STONE_REGISTRY = {
 
     ["nigredo"]= stone_mk(
         opus_magnum_path .. "nigredo",
-        11,
+        10,
         "The Black Work is complete. Matter dissolves into void.",
         "The void rejects your offering.",
         {
@@ -51,7 +51,7 @@ local STONE_REGISTRY = {
     ),
     ["citrinitas"]= stone_mk(
         opus_magnum_path .. "citrinitas",
-        11,
+        33,
         "The Yellow Work is complete. The awakening achieved.",
         "The sun has not yet risen for you.",
         {
@@ -86,6 +86,12 @@ local STONE_REGISTRY = {
         "The Gods pity you.",
         "The Gods warn you not to do that."
     ),
+
+    ["magicLiquidStone"] = stone_mk(
+        elemental_stone_path .. "stone_magic_liquid",
+        1
+    ),
+
     ["unstableTeleportStone"] = stone_mk(
         elemental_stone_path .. "stone_unstable_teleport",
         1
@@ -145,8 +151,8 @@ local STONE_REGISTRY = {
     ["loveStone"] = stone_mk(
         elemental_stone_path .. "stone_love",
         10,
-        nil,
-        "You need more knowledge."
+        "You created love.",
+        "You need all the knowledge."
     ),
     
     -- Vanilla Stones

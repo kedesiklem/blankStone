@@ -52,17 +52,16 @@ local function check_slime_perk()
     if GameGetGameEffectCount(player, "NO_SLIME_SLOWDOWN") > 0
     then
         AddMaterialInventoryMaterial(stone, "slime", 1000)
-        log.info("Slime perk actif") 
+        log.debug("Slime perk actif") 
         return true
     end
-        log.info("Slime perk inactif")
+        log.debug("Slime perk inactif")
         return false
 end
 
 function kick()
     -- Check if the LuaComponent is disable to prevent tp when stone in_inventory
     local stone = GetUpdatedEntityID()
-    GetMaterialInventoryMainMaterial(stone)
     if not(EntityGetComponent(stone, "LuaComponent", "enabled_in_hand")) then return end
     
     if(check_slime_perk() or use_liquid_quantity(stone, SLIME_USE_QUANTITY))

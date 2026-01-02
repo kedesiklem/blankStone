@@ -10,16 +10,16 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$ambrosiaStone_name"
-      ui_description="$ambrosiaStone_desc"
+      item_name="$stone_blankstone_ambrosiaStone_name"
+      ui_description="$stone_blankstone_ambrosiaStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_ambrosia.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$ambrosiaStone_name"> </UIInfoComponent>
+      name="$stone_blankstone_ambrosiaStone_name"> </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$ambrosiaStone_name"
+      ui_name="$stone_blankstone_ambrosiaStone_name"
       throw_as_item="1"
     ></AbilityComponent>
 

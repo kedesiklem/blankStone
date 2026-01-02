@@ -14,17 +14,17 @@
         ></SpriteComponent>
 
         <ItemComponent
-            item_name="$lapis_philosophorum_name"
-            ui_description="$lapis_philosophorum_desc"
+            item_name="$stone_blankstone_lapis_philosophorum_name"
+            ui_description="$stone_blankstone_lapis_philosophorum_desc"
             ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/lapis_philosophorum.png"
         ></ItemComponent>
 
         <UIInfoComponent
-            name="$lapis_philosophorum_name"
+            name="$stone_blankstone_lapis_philosophorum_name"
         > </UIInfoComponent>
 
         <AbilityComponent
-            ui_name="$lapis_philosophorum_name"
+            ui_name="$stone_blankstone_lapis_philosophorum_name"
         ></AbilityComponent>
     </Base>
 

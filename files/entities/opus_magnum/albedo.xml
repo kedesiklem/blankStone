@@ -12,17 +12,17 @@
         ></SpriteComponent>
 
         <ItemComponent
-            item_name="$albedo_name"
-            ui_description="$albedo_desc"
+            item_name="$stone_blankstone_albedo_name"
+            ui_description="$stone_blankstone_albedo_desc"
             ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/albedo_stone.png"
         ></ItemComponent>
 
         <UIInfoComponent
-            name="$albedo_name"
+            name="$stone_blankstone_albedo_name"
         > </UIInfoComponent>
 
         <AbilityComponent
-            ui_name="$albedo_name"
+            ui_name="$stone_blankstone_albedo_name"
         ></AbilityComponent>
     </Base>
 

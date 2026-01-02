@@ -1,4 +1,4 @@
-<Entity name="blankStone" tags="hittable,teleportable_NOT,item_physics,item_pickup,forgeable">
+<Entity name="blankStone" tags="hittable,teleportable_NOT,item_physics,item_pickup">
   <Base file="mods/blankStone/files/entities/base_stone.xml">
 
     <!-- physical presence -->
@@ -15,17 +15,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$blankStone_name"
-      ui_description="$blankStone_desc"
+      item_name="$stone_blankstone_blankStone_name"
+      ui_description="$stone_blankstone_blankStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/blank_stone.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$blankStone_name"
+      name="$stone_blankstone_blankStone_name"
     > </UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$blankStone_name"
+      ui_name="$stone_blankstone_blankStone_name"
     ></AbilityComponent>
   </Base>
 

@@ -12,17 +12,17 @@
         ></SpriteComponent>
 
         <ItemComponent
-            item_name="$citrinitas_name"
-            ui_description="$citrinitas_desc"
+            item_name="$stone_blankstone_citrinitas_name"
+            ui_description="$stone_blankstone_citrinitas_desc"
             ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/citrinitas_stone.png"
         ></ItemComponent>
 
         <UIInfoComponent
-            name="$citrinitas_name"
+            name="$stone_blankstone_citrinitas_name"
         > </UIInfoComponent>
 
         <AbilityComponent
-            ui_name="$citrinitas_name"
+            ui_name="$stone_blankstone_citrinitas_name"
         ></AbilityComponent>
     </Base>
 

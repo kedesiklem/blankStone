@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$hasteStone_name"
-      ui_description="$hasteStone_desc"
+      item_name="$stone_blankstone_hasteStone_name"
+      ui_description="$stone_blankstone_hasteStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_haste.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$hasteStone_name"
+      name="$stone_blankstone_hasteStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$hasteStone_name"
+      ui_name="$stone_blankstone_hasteStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>

@@ -1,17 +1,17 @@
+local log = dofile_once("mods/blankStone/utils/logger.lua")
+
 local min_level = 1
 local max_level = 20
 
+-- level -1 = impossible (use to give hint)
 local LEVEL_REQUIREMENTS_RAW = {
     [5] = {
-        min_potion_count = 100,
         min_orb = 1,
     },
     [9] = {
-        min_potion_count = 500,
         min_orb = 5,
     },
     [10] = {
-        min_potion_count = 1000,
         min_orb = 11,
     },
     [11] = {
@@ -52,7 +52,46 @@ function DeepCopy(tbl)
     return copy
 end
 
+
 -- Appeler à l'initialisation
 BuildCumulativeRequirements()
 
-return LEVEL_REQUIREMENTS
+local function checkLevelRequirements(level)
+
+    if (level == -1) then return false end
+
+    local all_requirements = LEVEL_REQUIREMENTS[level]
+
+    local check = true
+
+    if (not all_requirements) then return true end
+
+    -- Orb count check
+    local min_orb = all_requirements.min_orb or 0
+    local np_orb = GameGetOrbCountThisRun()
+    check = check and np_orb >= min_orb
+
+    -- Purity check
+    -- ID of Corrupted Orb in the west adds 128 to Main World's ID, and the ones in east adds 256
+    local pure_orb_only = all_requirements.pure_orb_only or false
+    if pure_orb_only and np_orb ~= 0 then
+        local corrupted = false
+        for i=0, 11 do 
+            for _, j in ipairs({128, 256}) do
+                corrupted = corrupted or GameGetOrbCollectedThisRun(i + j)
+            end
+        end
+        if corrupted then
+            GamePrintImportant("$text_blankstone_corrupt", "")
+        end
+        check = check and not(corrupted)
+    end
+
+    return check
+end
+
+
+return {
+    LEVEL_REQUIREMENTS=LEVEL_REQUIREMENTS,
+    checkLevelRequirements=checkLevelRequirements
+}

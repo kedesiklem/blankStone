@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$toxicStone_name"
-      ui_description="$toxicStone_desc"
+      item_name="$stone_blankstone_toxicStone_name"
+      ui_description="$stone_blankstone_toxicStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_toxic.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$toxicStone_name"
+      name="$stone_blankstone_toxicStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$toxicStone_name"
+      ui_name="$stone_blankstone_toxicStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
