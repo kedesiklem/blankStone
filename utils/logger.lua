@@ -8,7 +8,7 @@ WARN = 1
 INFO = 2
 DEBUG = 3
 
-CURRENT = DEBUG
+CURRENT = ERROR
 
 -- Get current timestamp in HH:MM:SS format
 local function get_timestamp()
