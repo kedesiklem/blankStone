@@ -60,46 +60,46 @@ end
 ---------------------------------------------------------------
 
 -- Fonction d'aide: collecte les ingrédients
-local function collectIngredients(cx, cy, recipe)
-    local ingredients_entities = {}
+local function collectShoppingList(cx, cy, radius, list)
+    local found_entities = {}
     
-    for i, ingredient in ipairs(recipe.ingredients) do
+    for i, ingredient in ipairs(list) do
         local entities
         
         if ingredient.tag then
-            entities = utils.getEntitiesMatchingExpressionInRadius(cx, cy, recipe.radius, ingredient.tag)
-            log.debug("Ingrédient trouvé par expression '" .. ingredient.tag .. "': " .. #entities)
+            entities = utils.getEntitiesMatchingTagExpressionInRadius(cx, cy, radius, ingredient.tag)
+            log.debug("Ingredient by tag '" .. ingredient.tag .. "': " .. #entities)
         elseif ingredient.name then
-            entities = utils.EntityGetInRadiusWithName(cx, cy, recipe.radius, ingredient.name) or {}
-            log.debug("Ingrédient trouvé par nom '" .. ingredient.name .. "': " .. #entities)
+            entities = utils.getEntitiesMatchingNameExpressionInRadius(cx, cy, radius, ingredient.name) or {}
+            log.debug("Ingredient by name '" .. ingredient.name .. "': " .. #entities)
         end
         
-        if #entities < ingredient.count then 
-            return nil 
+        if #entities < ingredient.count then
+            return nil
         end
         
-        ingredients_entities[i] = entities
+        found_entities[i] = entities
     end
     
-    return ingredients_entities
+    return found_entities
 end
 
 -- Fonction d'aide: sélectionne les entités hors inventaire
-local function selectOutOfInventory(ingredients_entities, recipe)
+local function selectOutOfInventory(found_entities, list)
     local selected_ingredients = {}
     
-    for i, ingredient in ipairs(recipe.ingredients) do
+    for i, ingredient in ipairs(list) do
         local entities = {}
         
         for _ = 1, ingredient.count do
-            local entity = utils.getFirstOutofInventory(ingredients_entities[i])
+            local entity = utils.getFirstOutofInventory(found_entities[i])
             if not entity then return nil end
             
             table.insert(entities, entity)
             
-            for k, v in ipairs(ingredients_entities[i]) do
+            for k, v in ipairs(found_entities[i]) do
                 if v == entity then
-                    table.remove(ingredients_entities[i], k)
+                    table.remove(found_entities[i], k)
                     break
                 end
             end
@@ -114,15 +114,31 @@ end
 -- Fonction d'aide: traite une recette unique
 local function tryRecipes(cx, cy, recipe)
 
-    local ingredients_entities = collectIngredients(cx, cy, recipe)
+    local ingredients_entities = collectShoppingList(cx, cy, recipe.radius, recipe.ingredients)
     if not ingredients_entities then return false end
     
     log.debug("All ingredients present!")
     
-    local selected_ingredients = selectOutOfInventory(ingredients_entities, recipe)
+    local selected_ingredients = selectOutOfInventory(ingredients_entities, recipe.ingredients)
     if not selected_ingredients then return false end
     
     log.debug("All ingredients out of inventory!")
+
+    if recipe.catalistes then 
+        local catalist_entities = collectShoppingList(cx, cy, recipe.radius, recipe.catalistes)
+        if not catalist_entities then return false end
+        
+        log.debug("All catalist present!")
+        
+        local selected_catalist = selectOutOfInventory(catalist_entities, recipe.catalistes)
+        if not selected_catalist then return false end
+
+        log.debug("All catalist out of inventory!")
+
+    
+    else 
+        log.debug("no catalist required")
+    end
     
     for _, result in ipairs(recipe.results) do
         local stone_data = STONE_REGISTRY[result.key]
@@ -132,7 +148,7 @@ local function tryRecipes(cx, cy, recipe)
     end
     
     -- Détruit tous les ingrédients utilisés
-    for i, entities in ipairs(selected_ingredients) do
+    for _, entities in ipairs(selected_ingredients) do
         for _, entity in ipairs(entities) do
             EntityKill(entity)
         end

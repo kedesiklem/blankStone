@@ -1,0 +1,65 @@
+<Entity name="whiskeyStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_whiskey.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_whiskey.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_whiskeyStone_name"
+      ui_description="$stone_blankstone_whiskeyStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_whiskey.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_whiskeyStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_whiskeyStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+  <!-- POTION -->
+
+  <PotionComponent
+    _tags="enabled_in_hand,enabled_in_world"
+    spray_velocity_coeff="75"
+    spray_velocity_normalized_min="0.75"
+    dont_spray_static_materials="1"
+    dont_spray_just_leak_gas_materials="1"
+  ></PotionComponent>
+
+  <MaterialSuckerComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    barrel_size="1000"
+    num_cells_sucked_per_frame="5"
+  ></MaterialSuckerComponent>
+
+  <MaterialInventoryComponent
+    _tags="enabled_in_hand,enabled_in_world"
+  ></MaterialInventoryComponent>
+
+  <!-- VFX -->
+
+  <!-- effect -->
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="DRUNK"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/stone_specific_script/drunk.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+
+</Entity>

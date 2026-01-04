@@ -1,0 +1,15 @@
+<Entity>
+
+    <GameEffectComponent
+        effect="CUSTOM"
+        custom_effect_id="BLANKSTONE_DOUBLEVISION"
+        frames="60"
+    > </GameEffectComponent>
+
+    <DrugEffectModifierComponent>
+        <fx_add
+            doublevision_amount="1.0"
+        />
+    </DrugEffectModifierComponent>
+
+</Entity>

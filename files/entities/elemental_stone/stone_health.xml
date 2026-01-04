@@ -48,4 +48,11 @@
     ></VariableStorageComponent>
   </Base>
 
+  <GameEffectComponent
+    _tags="enabled_in_hand"
+    effect="REGENERATION"
+    frames="-1"
+  ></GameEffectComponent>
+
+
 </Entity>

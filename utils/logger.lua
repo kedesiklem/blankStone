@@ -8,7 +8,7 @@ WARN = 1
 INFO = 2
 DEBUG = 3
 
-CURRENT = ERROR
+CURRENT_LOG_MODE = ERROR
 
 -- Get current timestamp in HH:MM:SS format
 local function get_timestamp()
@@ -23,25 +23,25 @@ end
 
 -- Log for different levels
 function logger.debug(text)
-    if(CURRENT >= DEBUG) then
+    if(CURRENT_LOG_MODE >= DEBUG) then
         logger.log("[DEBUG] " .. text)
     end
 end
 
 function logger.info(text)
-    if(CURRENT >= INFO) then
+    if(CURRENT_LOG_MODE >= INFO) then
         logger.log("[INFO] " .. text)
     end
 end
 
 function logger.warn(text)
-    if(CURRENT >= WARN) then
+    if(CURRENT_LOG_MODE >= WARN) then
         logger.log("[WARN] " .. text)
     end
 end
 
 function logger.error(text)
-    if(CURRENT >= ERROR) then
+    if(CURRENT_LOG_MODE >= ERROR) then
         print_error("[" .. get_timestamp() .. "] [" .. logger.mod_name .. "] [ERROR] " .. text)
     end
 end

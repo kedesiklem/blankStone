@@ -8,6 +8,9 @@ local LEVEL_REQUIREMENTS_RAW = {
     [5] = {
         min_orb = 1,
     },
+    [7] = {
+        min_orb = 3,
+    },
     [9] = {
         min_orb = 5,
     },

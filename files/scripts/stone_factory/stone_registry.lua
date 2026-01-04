@@ -17,6 +17,11 @@ end
 
 local STONE_REGISTRY = {
 
+    ["blankStone"] = stone_mk(
+        blankStone_path .. "blank_stone",
+        0
+    ),
+
     -- Custom Stones
     ["lapis_philosophorum"] = stone_mk(
         opus_magnum_path .. "lapis_philosophorum",
@@ -92,6 +97,13 @@ local STONE_REGISTRY = {
         1
     ),
 
+    ["bloodStone"] = stone_mk(
+        elemental_stone_path .. "stone_blood",
+        9,
+        "Blood! Blood! Blood!",
+        "You're not ready."
+    ),
+
     ["unstableTeleportStone"] = stone_mk(
         elemental_stone_path .. "stone_unstable_teleport",
         1
@@ -154,7 +166,20 @@ local STONE_REGISTRY = {
         "You created love.",
         "You need all the knowledge."
     ),
-    
+
+    ["bonesStone"] = stone_mk(
+        elemental_stone_path .. "stone_bones",
+        7,
+        "I am steve.",
+        "The Gods are not ready to let you have it."
+    ),
+
+    ["whiskeyStone"] = stone_mk(
+        elemental_stone_path .. "stone_whiskey",
+        1,
+        "...",
+        "Why would you do that ?"
+    ),
     -- Vanilla Stones
 
     ["brimstone"] = stone_mk(

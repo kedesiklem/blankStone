@@ -63,6 +63,28 @@ local function splitTags(tagString, separator)
     return tags
 end
 
+-- Return a list with the element of input list satisfying the predicate
+local function filter(list, predicate)
+    local result = {}
+    for _, element in ipairs(list) do
+        log.debug("element filtered : " .. element)
+        if predicate(element) then
+            table.insert(result, element)
+        end
+    end
+    return result
+end
+
+-- Start by getting all entities in a radius then filter to get the correct name (use EntityGetInRadiusWithTag if possible)
+local function EntityGetInRadiusWithName(x,y,rad, name)
+    return filter(
+        EntityGetInRadius(x,y,rad),
+        function (entitie)
+            return EntityGetName(entitie) == name
+        end
+    )
+end
+
 -- Fonction pour vérifier si une entité a au moins un des tags d'un groupe
 local function hasAnyTagFromGroup(entity_id, tagGroup)
     local entityTagsString = EntityGetTags(entity_id)
@@ -151,21 +173,63 @@ local function entityMatchesExpression(entity_id, expression)
     return false
 end
 
--- Fonction pour obtenir les entités correspondant à une expression de tags
-local function getEntitiesMatchingExpressionInRadius(cx, cy, radius, tagString)
-    local expression = parseComplexTagExpression(tagString)
+-- Accumulate all Entities matching any tag from tags (can be use to match name)
+local function accumulateEntitiesFromTags(cx, cy, radius, tags, EntityGetInRadiusFunc)
+    local candidates = {}
+    local seen = {} -- Pour éviter les doublons
     
-    -- Optimisation : récupère d'abord avec un tag de base
-    local firstTag
-    if expression.mode == "OR" then
-        firstTag = expression.tags[1]
-    elseif expression.mode == "AND" then
-        firstTag = expression.tags[1]
-    elseif expression.mode == "COMPLEX" then
-        firstTag = expression.groups[1][1]
+    for _, tag in ipairs(tags) do
+        local entities = EntityGetInRadiusFunc(cx, cy, radius, tag) or {}
+        for _, entity in ipairs(entities) do
+            if not seen[entity] then
+                seen[entity] = true
+                table.insert(candidates, entity)
+            end
+        end
     end
     
-    local candidateEntities = EntityGetInRadiusWithTag(cx, cy, radius, firstTag) or {}
+    return candidates
+end
+
+local function getCandidatesForAndMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    if #expression.tags > 0 then
+        return EntityGetInRadiusFunc(cx, cy, radius, expression.tags[1]) or {}
+    end
+    return {}
+end
+
+local function getCandidatesForOrMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    return accumulateEntitiesFromTags(cx, cy, radius, expression.tags, EntityGetInRadiusFunc)
+end
+
+local function getCandidatesForComplexMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    -- Optimisation : récupère uniquement les entités du premier groupe (OR interne)
+    -- Si l'entité n'a aucun tag du premier groupe, elle sera invalide de toute façon
+    if #expression.groups > 0 then
+        local firstGroup = expression.groups[1]
+        return accumulateEntitiesFromTags(cx, cy, radius, firstGroup, EntityGetInRadiusFunc)
+    end
+    return {}
+end
+
+local function getCandidatesEntities(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    if expression.mode == "AND" then
+        return getCandidatesForAndMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    elseif expression.mode == "OR" then
+        return getCandidatesForOrMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    elseif expression.mode == "COMPLEX" then
+        return getCandidatesForComplexMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
+    end
+    
+    return {}
+end
+
+-- Fonction pour obtenir les entités correspondant à une expression de tags
+local function getEntitiesMatchingTagExpressionInRadius(cx, cy, radius, tagString)
+    local expression = parseComplexTagExpression(tagString)
+    
+    local candidateEntities = getCandidatesEntities(cx,cy,radius, expression, EntityGetInRadiusWithTag)
+
     local matchingEntities = {}
     
     -- Filtre les entités selon l'expression complète
@@ -176,6 +240,15 @@ local function getEntitiesMatchingExpressionInRadius(cx, cy, radius, tagString)
     end
     
     return matchingEntities
+end
+
+-- Fonction pour obtenir les entités correspondant à une expression de tags
+local function getEntitiesMatchingNameExpressionInRadius(cx, cy, radius, tagString)
+    local expression = parseComplexTagExpression(tagString)
+
+    if expression.mode ~= "OR" then log.error("None OR for name expression") end
+    
+    return getCandidatesEntities(cx,cy,radius, expression, EntityGetInRadiusWithName) or {}
 end
 
 -- Return the first element of a list that is not in inventory
@@ -189,28 +262,6 @@ local function getFirstOutofInventory(item_list)
     return nil
 end
 
--- Return a list with the element of input list satisfying the predicate
-local function filter(list, predicate)
-    local result = {}
-    for _, element in ipairs(list) do
-        log.debug("element filtered : " .. element)
-        if predicate(element) then
-            table.insert(result, element)
-        end
-    end
-    return result
-end
-
--- Start by getting all entities in a radius then filter to get the correct name (use EntityGetInRadiusWithTag if possible)
-local function EntityGetInRadiusWithName(x,y,rad, name)
-    return filter(
-        EntityGetInRadius(x,y,rad),
-        function (entitie)
-            return EntityGetName(entitie) == name
-        end
-    )
-end
-
 return {
     getVariable = getVariable,
     setVariable = setVariable,
@@ -219,7 +270,8 @@ return {
 
     getPotionMaterial = getPotionMaterial,
     entityMatchesExpression = entityMatchesExpression,
-    getEntitiesMatchingExpressionInRadius = getEntitiesMatchingExpressionInRadius,
+    getEntitiesMatchingTagExpressionInRadius = getEntitiesMatchingTagExpressionInRadius,
+    getEntitiesMatchingNameExpressionInRadius = getEntitiesMatchingNameExpressionInRadius,
     getFirstOutofInventory = getFirstOutofInventory,
 
     filter = filter,

@@ -85,13 +85,22 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - opus magnum
 - purify into anything
 - stone fuser spell
-
+- purify with spell
 
 
 ## ONGOING
 - Make a stone for (almost) every liquid
+    - [x] Alcool Stone
+    - [x] Blood Stone
+    - [x] Bone Stone
+    - [ ] BlackHole Stone (dig and attract enemies)
+    - [ ] Silver Stone
+    - [ ] Fungal Stone (see Apotheosis)
 
-## TODO 
+## TODO
+- Translation stones messages
+- Mimic stone -> stone fuse spell make it copy nearby stone (need more reflexion)
+- make steve(1%)/scott(2%) drop bonesStone 
 --- V2
 - Apotheosis liquid stone (V2)
 - Animation for stone_poly eye ?

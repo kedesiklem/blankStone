@@ -13,18 +13,26 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["blood_worm"] = "sunseed",
         ["magic_liquid_mana_regeneration"] = "wandstone",
         -------------------------
+        
         ["[radioactive]"] = "toxicStone",
         ["magic_liquid_berserk"] = "bigStone",
         ["magic_liquid_faster_levitation"] = "levitatiumStone",
         ["magic_liquid_movement_faster"] = "acceleratiumStone",
         ["magic_liquid_faster_levitation_and_movement"] = "hasteStone",
         ["plasma_fading"] = "magicLiquidStone",
-
+        ["plasma_fading_bright"] = "magicLiquidStone",
+        ["plasma_fading_green"] = "magicLiquidStone",
+        ["plasma_fading_pink"] = "magicLiquidStone",
         ["magic_liquid_unstable_teleportation"] = "unstableTeleportStone",
-
         ["magic_gas_midas"] = "goldStone",
         ["midas"] = "goldStone",
+        ["bone"] = "bonesStone",
 
+        ["alcohol"] = "whiskeyStone",
+        ["alcohol_gas"] = "whiskeyStone",
+        ["juhannussima"] = "whiskeyStone",
+        ["beer"] = "whiskeyStone",
+        
     },
     ["unstableTeleportStone"] = {
         ["[slime]"] = "teleportStone",
@@ -45,6 +53,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
 
     ["quintessence"] = {
+        ["[blood]"] = "bloodStone",
         ["[regenerative]"] = "healthStone",
         ["[regenerative_gas]"] = "healthStone",
         ["magic_liquid_protection_all"] = "ambrosiaStone",
@@ -85,6 +94,21 @@ local FUSE_RECIPIES = {
             { key = "quintessence", offset_y = -10 },
         },
         -- Callback optionnel après craft réussi
+        on_success = function() end
+    },
+
+    {
+        ingredients = {
+            { tag = "brimstone|stonestone|waterstone|thunderstone", count = 1 },
+        },
+        catalistes = {
+            { name = "blankStone|albedo", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "blankStone", offset_y = -10 },
+
+        },
         on_success = function() end
     },
 }

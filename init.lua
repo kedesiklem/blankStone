@@ -41,6 +41,8 @@ function OnPlayerSpawned( player_entity )
     -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_whiskey.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_bones.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_magic_liquid.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_teleport.xml", pos_x, pos_y )
@@ -97,6 +99,7 @@ ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scr
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
 dofile_once("mods/blankStone/files/scripts/biomes/hint_spawn_list.lua")
 ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/blankStone/files/actions.lua")
+ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/blankStone/files/scripts/status_effects/status_effects.lua")
 
 -- Translation
 local translations = ModTextFileGetContent("data/translations/common.csv")

@@ -1,0 +1,73 @@
+<Entity name="bloodStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_blood.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_blood.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_bloodStone_name"
+      ui_description="$stone_blankstone_bloodStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_blood.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_bloodStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_bloodStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="mods/blankStone/files/entities/quintessence_stone.xml"
+    ></VariableStorageComponent>
+  </Base>
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="blood"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+  <!-- effect -->
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="HEALING_BLOOD"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="GLOBAL_GORE"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="BLOODY"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    from_material_array="acid"
+    to_material_array="blood"
+    is_circle="1"
+    radius="30"
+    kill_when_finished="0"
+    loop="1"
+  ></MagicConvertMaterialComponent>
+
+</Entity>
