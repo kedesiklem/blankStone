@@ -41,7 +41,7 @@ function OnPlayerSpawned( player_entity )
     -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
-    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_whiskey.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_whiskey.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_bones.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_magic_liquid.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
