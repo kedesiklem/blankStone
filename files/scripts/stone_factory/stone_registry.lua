@@ -119,6 +119,11 @@ local STONE_REGISTRY = {
         1
     ),
 
+    ["poisonStone"] = stone_mk(
+        elemental_stone_path .. "stone_poison",
+        1
+    ),
+    
     ["bigStone"] = stone_mk(
         elemental_stone_path .. "stone_big",
         1

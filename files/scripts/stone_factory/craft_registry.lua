@@ -15,6 +15,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         -------------------------
         
         ["[radioactive]"] = "toxicStone",
+        ["poison"] = "poisonStone",
         ["magic_liquid_berserk"] = "bigStone",
         ["magic_liquid_faster_levitation"] = "levitatiumStone",
         ["magic_liquid_movement_faster"] = "acceleratiumStone",

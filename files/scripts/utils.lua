@@ -20,7 +20,7 @@ end
 local function setVariable(entity_id, variable_name, value_type, value)
     local variable = getVariable(entity_id, variable_name)
     if(not variable) then
-        log.debug("No variable name " .. variable_name .. "found")
+        log.debug("No variable name " .. variable_name .. " found")
         return
     end
     ComponentSetValue2(variable, value_type, value)
@@ -33,6 +33,9 @@ local function setValue(component, name, value)
     end
 end
 
+---@param component number VariableStorageComponent
+---@param name string field
+---@param default any?
 local function getValue(component, name, default)
     if component ~= nil then
         return ComponentGetValue2(component, name)
@@ -262,6 +265,54 @@ local function getFirstOutofInventory(item_list)
     return nil
 end
 
+
+
+
+
+
+-- FULL CREDIT TO Squirrelly for this GOATed function
+-------------------------------------------------------------------------------------
+local function stringsplit(inputstr, sep)
+	sep = sep or "%s"
+	local output = {}
+
+	for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+		table.insert(output, str)
+	end
+
+	return output
+end
+
+local function EntityGetDamageFromMaterial(entity, material)
+	local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity, "DamageModelComponent")
+	if damage_model_component then
+		local materials_that_damage = ComponentGetValue2(damage_model_component, "materials_that_damage")
+		materials_that_damage = stringsplit(materials_that_damage, ",")
+
+		local materials_how_much_damage = ComponentGetValue2(damage_model_component, "materials_how_much_damage")
+		materials_how_much_damage = stringsplit(materials_how_much_damage, ",")
+
+		if material then --if requested material, return damage for that material
+			for i, v in ipairs(materials_that_damage) do
+				if (materials_that_damage[i] == material) then
+					return tonumber(materials_how_much_damage[i])
+				end
+			end
+		else --if material field blank, return full table of material damage
+			local material_damage_table = {}
+			for key, value in pairs(materials_that_damage) do
+				material_damage_table[value] = materials_how_much_damage[key]
+			end
+			return material_damage_table
+		end
+	end
+	return nil
+end
+-------------------------------------------------------------------------------------
+
+
+
+
 return {
     getVariable = getVariable,
     setVariable = setVariable,
@@ -276,4 +327,5 @@ return {
 
     filter = filter,
     EntityGetInRadiusWithName = EntityGetInRadiusWithName,
+    EntityGetDamageFromMaterial = EntityGetDamageFromMaterial
 }

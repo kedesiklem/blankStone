@@ -1,0 +1,28 @@
+<Entity>
+
+    <InheritTransformComponent></InheritTransformComponent>
+
+    <VariableStorageComponent
+        name="instance_name"
+        value_string="placeholder"
+    ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="material"
+        value_string="placeholder"
+        value_float="0.0"
+    ></VariableStorageComponent>
+
+    <LuaComponent
+        execute_on_added="0"
+        script_source_file="mods/blankStone/files/scripts/status_effects/material_immunity_endcheck.lua"
+        execute_every_n_frame="5"
+    > </LuaComponent>
+
+    <GameEffectComponent
+        effect="NONE"
+        frames="8"
+    > </GameEffectComponent>
+
+
+</Entity>

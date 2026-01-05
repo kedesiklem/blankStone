@@ -1,29 +1,11 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local effect_status = dofile_once("mods/blankStone/files/scripts/status_effects/status_effects_utils.lua")
 
 local entity_id = GetUpdatedEntityID()
 local player_id = EntityGetRootEntity(entity_id)
 
-local children = EntityGetAllChildren(player_id) or {}
-local has_effect = false
-
 -- BRUNK DOUBLE VISION EFFECT
-
-for _, child_id in ipairs(children) do
-    local name = EntityGetName(child_id)
-    if name == "blankstone_doublevision_effect" then
-        has_effect = true
-        break
-    end
-end
-
-if not has_effect then
-    local x, y = EntityGetTransform(player_id)
-    local effect_id = EntityLoad("mods/blankStone/files/entities/misc/effect_double_vision.xml", x, y)
-    EntityAddChild(player_id, effect_id)
-    EntitySetName(effect_id, "blankstone_doublevision_effect")
-end
-
-
+effect_status.give_effect(player_id, "mods/blankStone/files/entities/misc/effect_double_vision.xml", "blankstone_doublevision_effect", true)
 
 -- return the quantity extract from the main material, nil == error
 local function clear_liquid(potion_id, material_id)

@@ -1,4 +1,4 @@
--- local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 function OnModPreInit() 
 
@@ -20,6 +20,9 @@ local function spawn_all_orb(player_entity)
 end
 
 function OnPlayerSpawned( player_entity ) 
+
+    if BLANKSTONE_RELEASE then return end
+
     local pos_x, pos_y = EntityGetTransform( player_entity )
 
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
@@ -41,6 +44,7 @@ function OnPlayerSpawned( player_entity )
     -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
+    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_whiskey.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_bones.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_magic_liquid.xml", pos_x, pos_y )

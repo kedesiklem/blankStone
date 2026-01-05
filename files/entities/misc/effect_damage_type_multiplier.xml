@@ -1,0 +1,35 @@
+<Entity tags="effect_protection">
+
+    <InheritTransformComponent> </InheritTransformComponent>
+
+    <GameEffectComponent
+        effect="CUSTOM"
+        custom_effect_id="BLANKSTONE_DAMAGE_TYPE"
+        frames="60"
+    > </GameEffectComponent>
+
+    <LuaComponent
+        execute_on_added="0"
+        script_source_file="mods/blankStone/files/scripts/status_effects/damage_type_multiplier_start.lua"
+        execute_every_n_frame="2"
+        remove_after_executed="1"
+    > </LuaComponent>
+
+    <LuaComponent
+        execute_on_removed="1"
+        script_source_file="mods/blankStone/files/scripts/status_effects/damage_type_multiplier_end.lua"
+        execute_every_n_frame="-1"
+    > </LuaComponent>
+
+    <VariableStorageComponent
+        name="damage_type"
+        value_string="undefine"
+        value_float="0.0"
+    ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="new_mult"
+        value_float="0.0"
+    ></VariableStorageComponent>
+
+</Entity>

@@ -2,13 +2,19 @@
 local logger = {}
 
 logger.mod_name = "BlankStone"
+BLANKSTONE_RELEASE = true
 
-ERROR = 0
-WARN = 1
-INFO = 2
-DEBUG = 3
+local ERROR = 0
+local WARN = 1
+local INFO = 2
+local DEBUG = 3
 
-CURRENT_LOG_MODE = ERROR
+
+local CURRENT_LOG_MODE = DEBUG
+
+if BLANKSTONE_RELEASE then
+    CURRENT_LOG_MODE = ERROR
+end
 
 -- Get current timestamp in HH:MM:SS format
 local function get_timestamp()

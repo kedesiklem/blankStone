@@ -1,0 +1,113 @@
+<Entity name="poisonStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_poison.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_poison.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_poisonStone_name"
+      ui_description="$stone_blankstone_poisonStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_poison.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_poisonStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_poisonStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="poison"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="rock_static_radioactive"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.3" color.g="0.0" color.b="0.5" color.a="0.25"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <!-- protection -->
+
+  <!-- === MATERIAL IMMUNITY ======== -->
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/status_effects/material_immunity_stone.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+  <!-- Required -->
+  <VariableStorageComponent
+    name="protected_material"
+    value_string="poison"
+  ></VariableStorageComponent>
+
+  <!-- Optional : Default value = 0.0 -->
+  <VariableStorageComponent
+    name="new_material_dmg"
+    value_float="0.0"
+  ></VariableStorageComponent>
+  <!-- ============================== -->
+
+
+  <!-- === STATUS EFFECT IMMUNITY === -->
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/status_effects/damage_type_multiplier_stone.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+  <!-- Required -->
+  <VariableStorageComponent
+    name="protected_damage_type"
+    value_string="poison"
+  ></VariableStorageComponent>
+
+  <!-- Optional : Default value = 0.0 -->
+  <VariableStorageComponent
+    name="new_damage_mult"
+    value_float="0.0"
+  ></VariableStorageComponent>
+  <!-- ============================== -->
+
+  <!-- magical properties -->
+
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    from_material_array="water, water_ice, water_swamp, water_salt"
+    to_material_array="radioactive_liquid, radioactive_liquid, radioactive_liquid, radioactive_liquid"
+    is_circle="1"
+    radius="30"
+    min_radius="20"
+    kill_when_finished="0"
+    loop="1"
+  ></MagicConvertMaterialComponent>
+
+</Entity>

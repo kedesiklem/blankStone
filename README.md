@@ -84,8 +84,8 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - hint for condition
 - opus magnum
 - purify into anything
-- stone fuser spell
-- purify with spell
+- Fuser Spell
+- material immunity / damage_type immunity : see poisonStone for implementation detail
 
 
 ## ONGOING
@@ -93,6 +93,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
     - [x] Alcool Stone
     - [x] Blood Stone
     - [x] Bone Stone
+    - [x] Poison Stone
     - [ ] BlackHole Stone (dig and attract enemies)
     - [ ] Silver Stone
     - [ ] Fungal Stone (see Apotheosis)
