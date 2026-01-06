@@ -1,6 +1,6 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
-function OnModPreInit() 
+function OnModPreInit()
 
 end
 
@@ -19,8 +19,20 @@ local function spawn_all_orb(player_entity)
     end
 end
 
-function OnPlayerSpawned( player_entity ) 
+local function on_player_first_spawned(player_id)
+    local x, y = EntityGetTransform(player_id)
+    EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+end
 
+function OnPlayerSpawned(player_entity)
+
+    local flag = "BLANKSTONE_PLAYER_SPAWNED"
+    if not GameHasFlagRun(flag) then
+        GameAddFlagRun(flag)
+        on_player_first_spawned(player_entity)
+    end
+
+    -- =========== TEST ZONE ===================
     if BLANKSTONE_RELEASE then return end
 
     local pos_x, pos_y = EntityGetTransform( player_entity )
@@ -45,7 +57,7 @@ function OnPlayerSpawned( player_entity )
 
     --- STONE TEST
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_lava.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_whiskey.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_bones.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_magic_liquid.xml", pos_x, pos_y )
@@ -59,6 +71,8 @@ function OnPlayerSpawned( player_entity )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_big.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_explosion.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_haste.xml", pos_x, pos_y )
+    -- =========================================
+
 end
 
 function OnPlayerDied( player_entity ) 

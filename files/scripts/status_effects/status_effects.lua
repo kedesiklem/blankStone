@@ -6,15 +6,7 @@ local blankStone_status_list = {
         ui_icon="data/ui_gfx/status_indicators/alcoholic.png",
 		effect_entity="mods/blankStone/files/entities/misc/effect_double_vision.xml",
 		is_harmful=true,
-    },
-    {
-        id="blankStone_PROTECTION_POISON",
-        ui_name="$status_blankStone_protection_poison",
-        ui_description="$statusdesc_blankStone_protection_poison",
-        ui_icon="mods/blankStone/files/ui_gfx/status_indicators/protection_poison_status.png",
-		effect_entity="mods/blankStone/files/entities/misc/effect_protection_poison.xml",
-		is_harmful=true,
-    },
+    }
 }
 local len = #status_effects
 for i=1, #blankStone_status_list do
