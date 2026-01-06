@@ -2,7 +2,7 @@
 local logger = {}
 
 logger.mod_name = "BlankStone"
-BLANKSTONE_RELEASE = false
+BLANKSTONE_RELEASE = true
 
 local ERROR = 0
 local WARN = 1
