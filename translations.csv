@@ -51,17 +51,34 @@ stone_blankstone_citrinitas_desc,"The Yellow Work.",,,,,,,,,,,,,
 stone_blankstone_rubedo_name,Rubedo,,,,,,,,,,,,,
 stone_blankstone_rubedo_desc,"The Red Work.",,,,,,,,,,,,,
 
+text_blankstone_nigredo_success_craft,"The Black Work is complete. Matter dissolves into void.",,,,,,,,,,,,,
+text_blankstone_nigredo_fail_craft,"The void rejects your offering.",,,,,,,,,,,,,
+text_blankstone_albedo_success_craft,"The White Work is complete. Purity achieved.",,,,,,,,,,,,,
+text_blankstone_albedo_fail_craft,"Your soul is not yet pure enough.",,,,,,,,,,,,,
+text_blankstone_citrinitas_success_craft,"The Yellow Work is complete. The awakening achieved.",,,,,,,,,,,,,
+text_blankstone_citrinitas_fail_craft,"The sun has not yet risen for you.",,,,,,,,,,,,,
+text_blankstone_rubedo_success_craft,"The Red Work is complete. The marriage of opposites achieved.",,,,,,,,,,,,,
+text_blankstone_rubedo_fail_craft,"Perfection requires the union of all knowledge.",,,,,,,,,,,,,
+
 spell_blankstone_stone_fuser_name,"Stone fuser.",,,,,,,,,,,,,
 spell_blankstone_stone_fuser_desc,"Brutaly merge multiple stone in a large radius.",,,,,,,,,,,,,
 
 book_blankstone_purity_name,Tome of purity,,,,,,,,,,,,,
-book_blankstone_purity_desc,"That which bears the Mark of Elements must return to Ashes...\nIn the Bed of Sacred Powder, Corruption dissolves.\nSeek that which Purifies through its own Dissolution.",,,,,,,,,,,,,
+book_blankstone_purity_desc,"Bury that which bears the Mark of Elements deep within the Purifying Powder...\nLet it be completely engulfed, hidden from sight.\nWhat cleanses above purges what lies below.",,,,,,,,,,,,,
 book_blankstone_infuse_name,Tome of infusion,,,,,,,,,,,,,
 book_blankstone_infuse_desc," The Fluid that Mimics observes what surrounds it...\nPlace the Purified within, and nearby, a Vessel filled.\nWhat is Near shall be Carried, what Bathes shall be Changed.\nThe Imitator becomes Messenger between Container and Stone...",,,,,,,,,,,,,
 book_blankstone_opus_magnum_name, Opus Magnum Instruction,,,,,,,,,,,,,
-book_blankstone_opus_magnum_desc, "Within quintessence, the liquid void.\nWhite milk upon the blackness.\nSolar metal dissolved in alabaster.\nConfusion itself becomes catalyst.\nEvery hue is touched.\nThe Ultimate Stone. Lapis Philosophorum.",,,,,"Dans la quintessence, le néant liquide.\nLe lait blanc sur la noirceur.\nLe métal solaire dissous dans l'albâtre.\nLa confusion même devient catalyseur.\nToutes les couleurs sont touchées.\nLa Pierre ultime. Lapis Philosophorum.",,,,,,,,
+book_blankstone_opus_magnum_desc, "Four must become One through violent convergence...\nFire, Water, Earth, Lightning - collide them brutally.\nFrom Chaos emerges the Quintessence, the Fifth Element.\n\nThis Perfect Essence refines its lesser forms...\nWith it Imperfection ascends to Perfection.",,,,,,,,,,,,,
 
 text_blankstone_corrupt,"You're corrupt.",,,,,,,,,,,,,
 
 text_blankstone_repair_broken_stone_title,"You fixed it.",,,,,,,,,,,,,
 text_blankstone_repair_broken_stone_desc,"The stone is now strong enough to let you use the magic whithin.",,,,,,,,,,,,,
+
+text_blankstone_quintessence_unleash_title,"The Gods can't hide it anymore.",,,,,,,,,,,,,
+text_blankstone_quintessence_unleash_desc,"You can now access the Gods secrets.",,,,,,,,,,,,,
+text_blankstone_magnum_opus_title,"Magnum Opus complete.",,,,,,,,,,,,,
+text_blankstone_magnum_opus_desc,"The Gods kneel.",,,,,,,,,,,,,
+
+text_blankstone_missing_stuff,"Something's missing.",,,,,,,,,,,,,
+

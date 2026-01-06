@@ -1,5 +1,5 @@
-<Entity name="rubedo" tags="hittable,teleportable_NOT,item_physics,item_pickup">
-    <Base file="mods/blankStone/files/entities/base_stone.xml">
+<Entity name="rubedo">
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
 
         <!-- physical presence -->
         <PhysicsImageShapeComponent
@@ -56,9 +56,5 @@
             scale.x="1.5" scale.y="1.5"
         ></SpriteParticleEmitterComponent>
     </Base>
-
-    <!-- Infusion process -->
-    <Base
-        file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
 </Entity>

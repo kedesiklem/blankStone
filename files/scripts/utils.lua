@@ -5,7 +5,7 @@ local function getVariable(entity_id, variable_name)
     local variables = EntityGetComponentIncludingDisabled( entity_id,"VariableStorageComponent")
 
     if ( not variables ) then
-        log.warn("No VariableStorageComponent found")
+        log.debug("No VariableStorageComponent found")
         return nil
     end
 

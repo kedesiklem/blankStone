@@ -36,9 +36,9 @@ local STONE_REGISTRY = {
 
     ["nigredo"]= stone_mk(
         opus_magnum_path .. "nigredo",
-        10,
-        "The Black Work is complete. Matter dissolves into void.",
-        "The void rejects your offering.",
+        5,
+        "$text_blankstone_nigredo_success_craft",
+        "$text_blankstone_nigredo_fail_craft",
         {
             "data/entities/projectiles/deck/explosion_giga.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
@@ -46,9 +46,9 @@ local STONE_REGISTRY = {
     ),
     ["albedo"]= stone_mk(
         opus_magnum_path .. "albedo",
-        11,
-        "The White Work is complete. Purity achieved.",
-        "Your soul is not yet pure enough.",
+        7,
+        "$text_blankstone_albedo_success_craft",
+        "$text_blankstone_albedo_fail_craft",
         {
             "data/entities/projectiles/deck/explosion_giga.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
@@ -56,9 +56,9 @@ local STONE_REGISTRY = {
     ),
     ["citrinitas"]= stone_mk(
         opus_magnum_path .. "citrinitas",
-        33,
-        "The Yellow Work is complete. The awakening achieved.",
-        "The sun has not yet risen for you.",
+        9,
+        "$text_blankstone_citrinitas_success_craft",
+        "$text_blankstone_citrinitas_fail_craft",
         {
             "data/entities/projectiles/deck/explosion_giga.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
@@ -66,9 +66,9 @@ local STONE_REGISTRY = {
     ),
     ["rubedo"]= stone_mk(
         opus_magnum_path .. "rubedo",
-        33,
-        "The Red Work is complete. The marriage of opposites achieved.",
-        "Perfection requires the union of all knowledge.",
+        9,
+        "$text_blankstone_rubedo_success_craft",
+        "$text_blankstone_rubedo_fail_craft",
         {
             "data/entities/projectiles/deck/explosion_giga.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
@@ -77,8 +77,8 @@ local STONE_REGISTRY = {
 
     ["quintessence"] = stone_mk(
         blankStone_path .. "quintessence_stone",
-        11,
-        "The Gods can't hide it anymore.",
+        7,
+        "$text_blankstone_quintessence_unleash_title",
         nil,
         {
             "data/entities/projectiles/deck/explosion_giga.xml",

@@ -79,12 +79,11 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 - sur-infusion/mixed liquid stone
 - infusion with powder
 - Forgeable stone
-- quintessence (forged and use for high level stone)
-- hintMessage for infusion fail
-- hint for condition
+- quintessence
+- hint (message / book)
 - opus magnum
 - purify into anything
-- Fuser Spell
+- fuser spell
 - material immunity / damage_type immunity : see poisonStone for implementation detail
 
 
@@ -94,13 +93,14 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
     - [x] Blood Stone
     - [x] Bone Stone
     - [x] Poison Stone
+    - [ ] Honey Stone
     - [ ] BlackHole Stone (dig and attract enemies)
     - [ ] Silver Stone
     - [ ] Fungal Stone (see Apotheosis)
+- Translation stones messages
+- Upgrade stone when fuse with quintessence as catalist
 
 ## TODO
-- Translation stones messages
-- Mimic stone -> stone fuse spell make it copy nearby stone (need more reflexion)
 - make steve(1%)/scott(2%) drop bonesStone 
 --- V2
 - Apotheosis liquid stone (V2)

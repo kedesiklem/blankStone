@@ -1,12 +1,10 @@
-<Entity name="nigredo" tags="hittable,teleportable_NOT,item_physics,item_pickup">
-    <Base file="mods/blankStone/files/entities/base_stone.xml">
+<Entity name="nigredo">
 
-        <!-- physical presence -->
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
         <PhysicsImageShapeComponent
             image_file="mods/blankStone/files/items_gfx/opus_magnum/nigredo_stone.png"
         ></PhysicsImageShapeComponent>
 
-        <!-- item -->
         <SpriteComponent
             image_file="mods/blankStone/files/items_gfx/opus_magnum/nigredo_stone.png"
         ></SpriteComponent>
@@ -19,14 +17,11 @@
 
         <UIInfoComponent
             name="$stone_blankstone_nigredo_name"
-        > </UIInfoComponent>
+        ></UIInfoComponent>
 
         <AbilityComponent
             ui_name="$stone_blankstone_nigredo_name"
         ></AbilityComponent>
     </Base>
-
-    <!-- Infusion process -->
-    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
 </Entity>

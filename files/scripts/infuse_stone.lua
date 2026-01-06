@@ -20,8 +20,7 @@ local function enableHalo(id, enable)
     end
 end
 
-local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
-
+local function findInfusionRecipes(potion_id, entityName)
     local material, material_tags = utils.getPotionMaterial(potion_id)
     if not material then
         log.debug("Potion has no valid material")
@@ -30,14 +29,14 @@ local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
     
     -- Let the factory do its job
     local stone_craft_list = craft.STONE_TO_MATERIAL_TO_STONE[entityName]
-    local stone_key = stone_craft_list[material]
+    local stone_recipes = stone_craft_list[material]
     -- Check for tag recipes
 
-    if not stone_key then
+    if not stone_recipes then
         log.debug(entityName .. " has no recipes involving material '" .. material .. "'.")
         for _, value in ipairs(material_tags) do
-            stone_key = stone_craft_list[value]
-            if stone_key then
+            stone_recipes = stone_craft_list[value]
+            if stone_recipes then
                 log.debug(entityName .. " has recipes involving the tag " .. value)
                 break
             else
@@ -46,20 +45,26 @@ local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
         end
     end
     
-    if not stone_key then
+    if not stone_recipes then
         log.debug(entityName .. " has no recipes involving the potion")
         return false
     end
 
+    return stone_recipes
+end
+
+local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
+
+    local stone_key = findInfusionRecipes(potion_id, entityName).stone_key
+
     local hint_id = utils.getVariable(entity_id, "hintEnable")
     
-    local is_success = stone_factory.tryCreateStoneFromPotion(stone_key, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y, potion_id)
+    local is_success = stone_factory.tryInfuseStone(stone_key, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y)
     
     -- Handle the result
     if is_success then
         EntityKill(EntityGetParent(entity_id))
         EntityKill(potion_id)
-
         return true
     else
         if(utils.getValue(hint_id, "value_int", 1) == 0) then

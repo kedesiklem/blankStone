@@ -39,7 +39,7 @@ PhysicsApplyForceOnArea( calculate_force_for_body, entity_id, x-size, y-size, x+
 
 -- Fonction principale à appeler
 local function fuseCrafting()
-    return stone_factory.genericCraft(x, y, craft.FUSE_RECIPIES)
+    return stone_factory.tryAllFuse(x, y, craft.FUSE_RECIPES)
 end
 
 if(fuseCrafting()) then
