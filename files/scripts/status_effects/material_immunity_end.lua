@@ -16,9 +16,7 @@ local material_dmg = utils.getValue(material_info, "value_float")
 local new_dmg_info = utils.getVariable(entity_id, "new_material_dmg")
 local new_dmg = utils.getValue(new_dmg_info, "value_float")
 
-if instance_name then
-    log.info("end info : " .. instance_name .. "[material:".. material_name .."[".. material_dmg .." -> " .. new_dmg .."]]")
-else
+if not instance_name then
     log.error("no instance_name for ending")
 end
 

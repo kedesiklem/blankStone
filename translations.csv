@@ -40,6 +40,10 @@ stone_blankstone_whiskeyStone_desc,"You wonder if it's really a stone ?",,,,,,,,
 stone_blankstone_poisonStone_name,"Crystal of Poison.",,,,,,,,,,,,,
 stone_blankstone_poisonStone_desc,"It look surprisingly safe.",,,,,,,,,,,,,
 
+stone_blankstone_lavaStone_name,"Quintessential Brimstone.",,,,,,,,,,,,,
+stone_blankstone_lavaStone_desc,"This tiny rock looks like it can melt your bones, but when touched only a very pleasant warmth can be felt.",,,,,,,,,,,,,
+
+
 stone_blankstone_lapis_philosophorum_name,Lapis Philosophorum,,,,,,,,,,,,,
 stone_blankstone_lapis_philosophorum_desc,"Opus Magnum. The truth revealed.",,,,,,,,,,,,,
 stone_blankstone_nigredo_name,Nigredo,,,,,,,,,,,,,

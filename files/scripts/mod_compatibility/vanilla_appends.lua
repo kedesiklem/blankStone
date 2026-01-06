@@ -22,7 +22,6 @@ local vanilla_stone = {
     "stonestone",
     "poopstone",
 }
-
 for _, value in pairs(vanilla_stone) do
     addPurifiable(vanilla_item_path .. value .. ".xml", stone_base)
 

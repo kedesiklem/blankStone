@@ -35,7 +35,6 @@ local STONE_TO_MATERIAL_TO_STONE = {
 
         -- Should be an upgraded version of a stone (fuse with quintessence as catalist to upgrade)
         -- lava stone
-        ["poison"] = {stone_key = "poisonStone"},
 
         ["void_liquid"] = {stone_key = "nigredo"},
         ["milk"] = {stone_key = "albedo"},
@@ -73,7 +72,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
 
 -- Note : preferably use tags to identify ingredients if possible
 local FUSE_RECIPES = {
-    {
+    { -- quintessence craft
         -- Ingrédients requis
         ingredients = {
             { tag = "brimstone", count = 1 },
@@ -95,7 +94,7 @@ local FUSE_RECIPES = {
         on_success = function() end
     },
 
-    {
+    { -- albedo purification
         ingredients = {
             { tag = "brimstone|stonestone|waterstone|thunderstone", count = 1 },
         },
@@ -110,12 +109,12 @@ local FUSE_RECIPES = {
         on_success = function() end
     },
     
-    {
+    { -- opum magnum
         ingredients = {
-            { tag = "nigredo", count = 1 },
-            { tag = "albedo", count = 1 },
-            { tag = "rubedo", count = 1 },
-            { tag = "citrinitas", count = 1 },
+            { name = "nigredo", count = 1 },
+            { name = "albedo", count = 1 },
+            { name = "rubedo", count = 1 },
+            { name = "citrinitas", count = 1 },
         },
         catalistes = {
             { name = "quintessence", count = 1 },
@@ -128,6 +127,42 @@ local FUSE_RECIPES = {
             title = "$text_blankstone_magnum_opus_title",
             desc = "$text_blankstone_magnum_opus_desc",
         },
+        on_success = function() end
+    },    
+    
+    { -- toxic to poison
+        ingredients = {
+            { name = "toxicStone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "poisonStone", offset_y = -10},
+        },
+        -- message = {
+        --     title = "$text_blankstone_title",
+        --     desc = "$text_blankstone_desc",
+        -- },
+        on_success = function() end
+    },
+
+    { -- fire to lava
+        ingredients = {
+            { tag = "brimstone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "lavaStone", offset_y = -10},
+        },
+        -- message = {
+        --     title = "$text_blankstone_title",
+        --     desc = "$text_blankstone_desc",
+        -- },
         on_success = function() end
     },
 }

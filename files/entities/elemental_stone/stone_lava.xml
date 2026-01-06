@@ -1,0 +1,130 @@
+<Entity name="lavaStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="data/items_gfx/brimstone.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="data/items_gfx/brimstone.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_lavaStone_name"
+      ui_description="$stone_blankstone_lavaStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_lava.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_lavaStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_lavaStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="data/entities/items/pickup/brimstone.xml"
+    ></VariableStorageComponent>
+  </Base>
+
+  <!-- Audio from brimstone -->
+  <AudioComponent
+    _tags="enabled_in_hand"
+    file="data/audio/Desktop/projectiles.bank"
+    event_root="player_projectiles/torch"
+    set_latest_event_position="1"> </AudioComponent>
+
+  <AudioLoopComponent
+    _tags="enabled_in_hand,enabled_in_world"
+    file="data/audio/Desktop/projectiles.bank"
+    event_name="player_projectiles/torch/loop"
+    auto_play_if_enabled="1"
+    play_on_component_enable="1"
+  ></AudioLoopComponent>
+
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="lava"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="fire"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="1" color.g="0.0" color.b="0.0" color.a="0.25"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="FRIEND_FIREMAGE"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- protection -->
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="PROTECTION_FIRE"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- === MATERIAL IMMUNITY ======== -->
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/status_effects/material_immunity_stone.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+  <VariableStorageComponent
+    name="protected_material"
+    value_string="lava"
+  ></VariableStorageComponent>
+  <!-- ============================== -->
+
+  <!-- magical properties -->
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    from_material_tag="[meltable_to_lava]"
+    ignite_materials="1"
+    to_material="lava"
+    is_circle="1"
+    radius="30"
+    kill_when_finished="0"
+    loop="1"
+    steps_per_frame="1"
+  ></MagicConvertMaterialComponent>
+
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_hand,enabled_in_world"
+    from_material_array="water,water_swamp,water_salt,radioactive_liquid"
+    to_material_array="steam,steam,steam,radioactive_gas"
+    kill_when_finished="0"
+    steps_per_frame="10"
+    clean_stains="0"
+    is_circle="1"
+    radius="30"
+    reaction_audio_amount="0.005"
+  > </MagicConvertMaterialComponent>
+
+
+</Entity>

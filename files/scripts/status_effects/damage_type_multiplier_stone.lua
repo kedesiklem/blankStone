@@ -41,7 +41,6 @@ local function change_damage_type_multiplier(id, type, original_mult, new_dmg, c
     EntityAddChild(id, effect_id)
     EntitySetName(effect_id, effect_name)
 
-    log.debug("status effect generated : " .. effect_id .. " [" .. type .. ": " .. original_mult .. " -> " .. new_dmg .. "]")
 end
 
 if(entity_id ~= player_id) then

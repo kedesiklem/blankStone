@@ -15,9 +15,7 @@ local material_info = utils.getVariable(entity_id, "material")
 local material_name = utils.getValue(material_info, "value_string")
 local material_dmg = utils.getValue(material_info, "value_float")
 
-if instance_name then
-    log.info("endcheck info : " .. instance_name .. "[material:".. material_name .."[".. material_dmg .."]]")
-else
+if not instance_name then
     log.error("no instance_name endcheck")
 end
 

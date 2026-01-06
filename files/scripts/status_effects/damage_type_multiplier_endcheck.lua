@@ -15,9 +15,7 @@ local damage_type_info = utils.getVariable(entity_id, "damage_type")
 local damage_type = utils.getValue(damage_type_info, "value_string")
 local damage_mult = utils.getValue(damage_type_info, "value_float")
 
-if instance_name then
-    log.info("endcheck info : " .. instance_name .. "[damage_type:".. damage_type .."[".. damage_mult .."]]")
-else
+if not instance_name then
     log.error("no instance_name endcheck")
 end
 

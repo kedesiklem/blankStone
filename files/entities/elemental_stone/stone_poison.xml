@@ -23,6 +23,11 @@
       ui_name="$stone_blankstone_poisonStone_name"
       throw_as_item="1"
     ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="mods/blankStone/files/entities/elemental_stone/stone_toxic.xml"
+    ></VariableStorageComponent>
   </Base>
 
 
@@ -55,6 +60,12 @@
   </Base>
 
   <!-- protection -->
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="PROTECTION_RADIOACTIVITY"
+    frames="-1"
+  ></GameEffectComponent>
 
   <!-- === MATERIAL IMMUNITY ======== -->
   <LuaComponent
@@ -99,13 +110,22 @@
 
   <!-- magical properties -->
 
+  <!-- Stain effect -->
+  <Base file="mods/blankStone/files/entities/staining.xml">
+    <VariableStorageComponent
+      name="stain_effect"
+      value_string="poison"
+      value_int="75"
+    ></VariableStorageComponent>
+  </Base>
+
   <MagicConvertMaterialComponent
     _tags="enabled_in_world,enabled_in_hand"
     from_material_array="water, water_ice, water_swamp, water_salt"
-    to_material_array="radioactive_liquid, radioactive_liquid, radioactive_liquid, radioactive_liquid"
+    to_material_array="poison, poison, poison, poison"
     is_circle="1"
-    radius="30"
-    min_radius="20"
+    radius="40"
+    min_radius="15"
     kill_when_finished="0"
     loop="1"
   ></MagicConvertMaterialComponent>

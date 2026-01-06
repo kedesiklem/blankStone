@@ -22,11 +22,6 @@
       ui_name="$stone_blankstone_ambrosiaStone_name"
       throw_as_item="1"
     ></AbilityComponent>
-
-    <VariableStorageComponent
-      name="purifyInto"
-      value_string="mods/blankStone/files/entities/quintessence_stone.xml"
-    ></VariableStorageComponent>
   </Base>
 
   <!-- VFX -->

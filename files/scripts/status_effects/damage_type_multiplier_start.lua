@@ -24,7 +24,6 @@ if (variables ~= nil) then
     end
     
     if damage_type and damage_mult ~= nil and new_mult ~= nil then
-        log.info("Applying damage_type protection: " .. damage_type .. " [" .. damage_mult .. " -> " .. new_mult .. "]")
         local comp = EntityGetFirstComponentIncludingDisabled( target, "DamageModelComponent" )
         if comp then
             ComponentObjectSetValue2(comp, "damage_multipliers", damage_type, new_mult)

@@ -96,7 +96,12 @@ local STONE_REGISTRY = {
         elemental_stone_path .. "stone_magic_liquid",
         1
     ),
-
+    ["lavaStone"] = stone_mk(
+        elemental_stone_path .. "stone_lava",
+        9,
+        "Pheonix",
+        "You're not ready."
+    ),
     ["bloodStone"] = stone_mk(
         elemental_stone_path .. "stone_blood",
         9,

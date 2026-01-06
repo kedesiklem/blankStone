@@ -41,7 +41,6 @@ local function change_material_damage(id, material, original_dmg, new_dmg, check
     EntityAddChild(id, effect_id)
     EntitySetName(effect_id, effect_name)
 
-    log.debug("status effect generated : " .. effect_id .. " [" .. material .. ": " .. original_dmg .. " -> " .. new_dmg .. "]")
 end
 
 if(entity_id ~= player_id) then
