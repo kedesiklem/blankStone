@@ -1,4 +1,6 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local MODID = ModTextFileGetContent("mods/blankStone/mod_id.txt")
+
 
 function OnModPreInit()
 
@@ -26,7 +28,7 @@ end
 
 function OnPlayerSpawned(player_entity)
 
-    local flag = "BLANKSTONE_PLAYER_SPAWNED"
+    local flag = MODID .. "_PLAYER_SPAWNED"
     if not GameHasFlagRun(flag) then
         GameAddFlagRun(flag)
         on_player_first_spawned(player_entity)
