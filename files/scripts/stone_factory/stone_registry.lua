@@ -15,6 +15,7 @@ local function stone_mk(path, level, message, message_fail ,vfx, conditions)
     }
 end
 
+-- TODO move text to translation.csv
 local STONE_REGISTRY = {
 
     ["blankStone"] = stone_mk(
@@ -40,7 +41,7 @@ local STONE_REGISTRY = {
         "$text_blankstone_nigredo_success_craft",
         "$text_blankstone_nigredo_fail_craft",
         {
-            "data/entities/projectiles/deck/explosion_giga.xml",
+            "data/entities/projectiles/explosion.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
         }
     ),
@@ -50,7 +51,7 @@ local STONE_REGISTRY = {
         "$text_blankstone_albedo_success_craft",
         "$text_blankstone_albedo_fail_craft",
         {
-            "data/entities/projectiles/deck/explosion_giga.xml",
+            "data/entities/projectiles/explosion.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
         }
     ),
@@ -60,7 +61,7 @@ local STONE_REGISTRY = {
         "$text_blankstone_citrinitas_success_craft",
         "$text_blankstone_citrinitas_fail_craft",
         {
-            "data/entities/projectiles/deck/explosion_giga.xml",
+            "data/entities/projectiles/explosion.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
         }
     ),
@@ -70,7 +71,7 @@ local STONE_REGISTRY = {
         "$text_blankstone_rubedo_success_craft",
         "$text_blankstone_rubedo_fail_craft",
         {
-            "data/entities/projectiles/deck/explosion_giga.xml",
+            "data/entities/projectiles/explosion.xml",
             "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml"
         }
     ),
@@ -99,7 +100,7 @@ local STONE_REGISTRY = {
     ["lavaStone"] = stone_mk(
         elemental_stone_path .. "stone_lava",
         9,
-        "Pheonix",
+        "Phoenix",
         "You're not ready."
     ),
     ["bloodStone"] = stone_mk(
@@ -117,7 +118,7 @@ local STONE_REGISTRY = {
         elemental_stone_path .. "stone_teleport",
         5,
         nil,
-        "You need more knowledge."
+        "$text_blankstone_missing_knowledge."
     ),
     ["toxicStone"] = stone_mk(
         elemental_stone_path .. "stone_toxic",
@@ -126,11 +127,23 @@ local STONE_REGISTRY = {
 
     ["poisonStone"] = stone_mk(
         elemental_stone_path .. "stone_poison",
+        7,
+        nil,
+        "$text_blankstone_missing_lot_knowledge."
+    ),
+
+    ["poisonHarmfulStone"] = stone_mk(
+        elemental_stone_path .. "stone_poison_harmful",
+        1
+    ),
+
+    ["bigStone"] = stone_mk(
+        elemental_stone_path .. "stone_big",
         1
     ),
     
-    ["bigStone"] = stone_mk(
-        elemental_stone_path .. "stone_big",
+    ["honeyStone"] = stone_mk(
+        elemental_stone_path .. "stone_honey",
         1
     ),
  
@@ -144,30 +157,37 @@ local STONE_REGISTRY = {
     ),
     ["hasteStone"] = stone_mk(
         elemental_stone_path .. "stone_haste",
-        5
+        5,
+        nil,
+        "$text_blankstone_missing_knowledge."
     ),
 
     ["explosionStone"] = stone_mk(
         elemental_stone_path .. "stone_explosion",
-        5
+        5,
+        nil,
+        "$text_blankstone_missing_lot_knowledge."
     ),
 
     ["polyStone"] = stone_mk(
         elemental_stone_path .. "stone_poly",
         11,
-        "The Gods fear this.",
-        "The Gods are afraid of what you're trying to do"
+        "$text_blankstone_poly_success_craft",
+        "$text_blankstone_poly_fail_craft"
     ),
  
     ["healthStone"] = stone_mk(
         elemental_stone_path .. "stone_health",
         11,
-        "The Gods are pleased."
+        "The Gods are pleased.",
+        "$text_blankstone_missing_all_knowledge"
     ),
 
     ["ambrosiaStone"] = stone_mk(
         elemental_stone_path .. "stone_ambrosia",
-        11
+        11,
+        nil,
+        "$text_blankstone_missing_all_knowledge"
     ),
 
     ["loveStone"] = stone_mk(
@@ -206,33 +226,35 @@ local STONE_REGISTRY = {
         vanilla_stone_path .. "stonestone",
         5,
         nil,
-        "You need more knowledge."
+        "$text_blankstone_missing_knowledge."
     ),
 
     ["waterstone"] = stone_mk(
         vanilla_stone_path .. "waterstone",
         5,
         nil,
-        "You need more knowledge."
+        "$text_blankstone_missing_knowledge."
     ),
 
     ["poopstone"] = stone_mk(
         vanilla_stone_path .. "poopstone",
         5,
         nil,
-        "You need more knowledge."
+        "$text_blankstone_missing_knowledge."
     ),
 
     ["sunseed"] = stone_mk(
         vanilla_stone_path .. "sun/sunseed",
-        9
+        9,
+        nil,
+        "$text_blankstone_missing_lot_knowledge."
     ),
 
     ["wandstone"] = stone_mk(
         vanilla_stone_path .. "wandstone",
         9,
         nil,
-        "You need far more knowledge."
+        "$text_blankstone_missing_lot_knowledge."
     ),
 }
 

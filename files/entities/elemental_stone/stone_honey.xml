@@ -1,0 +1,34 @@
+<Entity name="honeyStone">
+
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_honey.png"
+        ></PhysicsImageShapeComponent>
+
+        <SpriteComponent _tags="enabled_in_world"
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_honey.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$stone_blankstone_honeyStone_name"
+            ui_description="$stone_blankstone_honeyStone_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_honey.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$stone_blankstone_honeyStone_name"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$stone_blankstone_honeyStone_name"
+            throw_as_item="1"
+        ></AbilityComponent>
+    </Base>
+    <LuaComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        script_source_file="mods/blankStone/files/scripts/stone_specific_script/honey_secret.lua"
+        remove_after_executed="1"
+        execute_every_n_frame="36000"
+    ></LuaComponent>
+
+</Entity>

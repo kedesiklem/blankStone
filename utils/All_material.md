@@ -2,7 +2,7 @@
 | ---------------------------- | ------------------------------------------- | ------------------------------ | ------- | ------------ | ----------------------------------------------- |
 | Worm Blood                   | blood_worm                                  | sunseed                        | ONGOING | VANILLA      | Make the craft a little harder                  |
 | Concentrated Mana            | magic_liquid_mana_regeneration              | wandstone                      | ONGOING | VANILLA      | Make the craft a little harder                  |
-| Fire                         | [hot]                                       | brimstone                      | DONE    | VANILLA      | Upgrade into Lava stone                         |
+| Fire                         | [hot]                                       | brimstone                      | DONE    | VANILLA      |                                                 |
 | Diamond / Electric Spark     | diamond / spark_electric                    | thunderstone                   | DONE    | VANILLA      |                                                 |
 | Rock /                       | rock_static / [grows_grass]                 | stonestone                     | DONE    | VANILLA      |                                                 |
 | Water                        | water                                       | waterstone                     | DONE    | VANILLA      |                                                 |
@@ -11,7 +11,7 @@
 | Blood                        | [blood]                                     | bloodStone                     | DONE    | QUINTESSENCE |                                                 |
 | Heal                         | [regenerative] / [regenerative_gas]         | healthStone                    | DONE    | QUINTESSENCE |                                                 |
 | Ambrosia                     | magic_liquid_protection_all                 | ambrosiaStone                  | DONE    | QUINTESSENCE | honey stone + thunderstone = ambroisia + poison |
-| Poison                       | poison                                      | poisonStone                    | ONGOING |              | make it unsafe as it and need treatment         |
+| Poison                       | poison                                      | poisonHarmfulStone/poisonStone | DONE    |              |                                                 |
 | Poly                         | [magic_polymorph]                           | polyStone                      | DONE    | QUINTESSENCE |                                                 |
 | Slime                        | [slime]                                     | explosionStone / teleportStone | ONGOING |              | Make a slime stone                              |
 | Acceleratium                 | magic_liquid_movement_faster                | acceleratiumStone              | DONE    |              |                                                 |

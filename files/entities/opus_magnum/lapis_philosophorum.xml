@@ -30,32 +30,19 @@
 
     <!-- INVINCIBLE -->
     <GameEffectComponent
-        _tags="enabled_in_hand"
+        _tags="enabled_in_hand,enabled_in_inventory"
         effect="PROTECTION_ALL"
         frames="-1"
     ></GameEffectComponent>
     <GameEffectComponent
-        _tags="enabled_in_hand"
-        effect="PROTECTION_POLYMORPH"
-        frames="-1"
-    ></GameEffectComponent>
-
-    <!-- WATERSTONE -->
-    <GameEffectComponent
         _tags="enabled_in_hand,enabled_in_inventory"
-        effect="BREATH_UNDERWATER"
+        effect="PROTECTION_POLYMORPH"
         frames="-1"
     ></GameEffectComponent>
 
     <!-- BRIMSTONE -->
     <GameEffectComponent
         _tags="enabled_in_hand,enabled_in_inventory"
-        effect="PROTECTION_FIRE"
-        frames="-1"
-    ></GameEffectComponent>
-
-    <GameEffectComponent
-        _tags="enabled_in_hand"
         effect="FRIEND_FIREMAGE"
         frames="-1"
     ></GameEffectComponent>
@@ -63,29 +50,9 @@
     <!-- THUNDERSTONE -->
     <GameEffectComponent
         _tags="enabled_in_hand,enabled_in_inventory"
-        effect="PROTECTION_ELECTRICITY"
-        frames="-1"
-    ></GameEffectComponent>
-
-    <GameEffectComponent
-        _tags="enabled_in_hand"
         effect="FRIEND_THUNDERMAGE"
         frames="-1"
     ></GameEffectComponent>
-
-    <!-- STONESTONE -->
-    <!-- <MagicConvertMaterialComponent
-        _tags="enabled_in_hand,enabled_in_world"
-        _enabled="0"
-        kill_when_finished="0"
-        steps_per_frame="3"
-        from_material_tag="[earth]"
-        to_material="soil"
-        clean_stains="0"
-        is_circle="1"
-        radius="48"
-        reaction_audio_amount="0.005"
-    > </MagicConvertMaterialComponent> -->
 
     <!-- Enhance matter -->
     <MagicConvertMaterialComponent
@@ -94,7 +61,7 @@
         kill_when_finished="0"
         from_material_array="magic_liquid_movement_faster,magic_liquid_faster_levitation,grass,magic_liquid_unstable_teleportation,poison,rotten_meat,vomit,grass_holy"
         to_material_array="magic_liquid_faster_levitation_and_movement,magic_liquid_faster_levitation_and_movement,grass_holy,magic_liquid_teleportation,just_death,meat,magic_liquid_weakness,magic_liquid_hp_regeneration"
-        clean_stains="0"
+        clean_stains="1"
         is_circle="1"
         loop="1"
         radius="64"

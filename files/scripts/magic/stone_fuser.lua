@@ -1,8 +1,4 @@
 dofile_once("data/scripts/lib/utilities.lua")
-local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
-local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
-
 local distance_full = 150
 
 local entity_id = GetUpdatedEntityID()
@@ -35,13 +31,3 @@ local size = distance_full * 0.5
 
 
 PhysicsApplyForceOnArea( calculate_force_for_body, entity_id, x-size, y-size, x+size, y+size )
-
-
--- Fonction principale à appeler
-local function fuseCrafting()
-    return stone_factory.tryAllFuse(x, y, craft.FUSE_RECIPES)
-end
-
-if(fuseCrafting()) then
-	EntityKill(entity_id)
-end

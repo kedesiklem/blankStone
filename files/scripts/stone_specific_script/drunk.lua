@@ -7,16 +7,14 @@ local player_id = EntityGetRootEntity(entity_id)
 -- BRUNK DOUBLE VISION EFFECT
 effect_status.give_effect(player_id, "mods/blankStone/files/entities/misc/effect_double_vision.xml", "blankstone_doublevision_effect", true)
 
--- return the quantity extract from the main material, nil == error
 local function clear_liquid(potion_id, material_id)
     local material_name_input = CellFactory_GetName(material_id -1)
     AddMaterialInventoryMaterial(potion_id, material_name_input, 0)
-
 end
 
 local function convert_all_liquid_alcohol(potion_id)
         -- Material quantity check
-    local potion_inventory = EntityGetFirstComponent(potion_id, "MaterialInventoryComponent")
+    local potion_inventory = EntityGetFirstComponentIncludingDisabled(potion_id, "MaterialInventoryComponent")
 
     if not(potion_inventory) then
         log.error("How the fuck potion has no MaterialInventoryComponent?")

@@ -120,6 +120,12 @@
         execute_every_n_frame="1"
     > </LuaComponent>
 
+    <LuaComponent
+        script_source_file="mods/blankStone/files/scripts/magic/stone_fuser_end.lua"
+        execute_every_n_frame="-1"
+        execute_on_removed="1"
+    > </LuaComponent>
+
     <MusicEnergyAffectorComponent
         energy_target="1.0"
     ></MusicEnergyAffectorComponent>

@@ -67,19 +67,37 @@ end
 -- FUSE RECIPES RELATED FUNCTION
 ---------------------------------------------------------------
 
--- Get a list of ingredient identify by name or tag (take in charge custome expression)
-local function collectShoppingList(cx, cy, radius, list)
+-- Filter element out of inventory from a list
+local function getAllOutOfInventory(entities)
+    local out_entities = {}
+
+    for _, entitie in ipairs(entities) do
+        if entitie == EntityGetRootEntity(entitie) then
+            table.insert(out_entities, entitie)
+        end
+    end
+
+    return out_entities
+end
+
+local function getAllEntitiesInRadius(cx, cy, radius)
+    return EntityGetInRadius(cx, cy, radius) or {}
+end
+
+local function collectShoppingList(cx, cy, radius, list, cached_entities)
     local found_entities = {}
     
     for i, ingredient in ipairs(list) do
         local entities
         
         if ingredient.tag then
-            entities = utils.getEntitiesMatchingTagExpressionInRadius(cx, cy, radius, ingredient.tag)
-            log.debug("Ingredient by tag '" .. ingredient.tag .. "': " .. #entities)
+            -- Utilise la nouvelle fonction de filtrage depuis cache
+            entities = utils.filterEntitiesByTagExpression(cached_entities, ingredient.tag)
+            log.debug("Ingredient by tag '" .. ingredient.tag .. "': " .. #entities .. " (from cache)")
         elseif ingredient.name then
-            entities = utils.getEntitiesMatchingNameExpressionInRadius(cx, cy, radius, ingredient.name) or {}
-            log.debug("Ingredient by name '" .. ingredient.name .. "': " .. #entities)
+            -- Utilise la nouvelle fonction de filtrage depuis cache
+            entities = utils.filterEntitiesByNameExpression(cached_entities, ingredient.name)
+            log.debug("Ingredient by name '" .. ingredient.name .. "': " .. #entities .. " (from cache)")
         end
         
         if #entities < ingredient.count then
@@ -92,45 +110,12 @@ local function collectShoppingList(cx, cy, radius, list)
     return found_entities
 end
 
--- Filter element out of inventory from a list
-local function selectOutOfInventory(found_entities, list)
-    local selected_ingredients = {}
-    
-    for i, ingredient in ipairs(list) do
-        local entities = {}
-        
-        for _ = 1, ingredient.count do
-            local entity = utils.getFirstOutofInventory(found_entities[i])
-            if not entity then return nil end
-            
-            table.insert(entities, entity)
-            
-            for k, v in ipairs(found_entities[i]) do
-                if v == entity then
-                    table.remove(found_entities[i], k)
-                    break
-                end
-            end
-        end
-        
-        selected_ingredients[i] = entities
-    end
-    
-    return selected_ingredients
-end
-
-local function collectAndSelect(cx, cy, radius, item_list, item_type_name)
-    local found_entities = collectShoppingList(cx, cy, radius, item_list)
+local function collectAndSelect(cx, cy, radius, item_list, item_type_name, cached_entities)
+    local found_entities = collectShoppingList(cx, cy, radius, item_list, cached_entities)
     if not found_entities then return nil end
 
     log.debug("All " .. item_type_name .. " present!")
-
-    local selected = selectOutOfInventory(found_entities, item_list)
-    if not selected then return nil end
-
-    log.debug("All " .. item_type_name .. " out of inventory!")
-
-    return selected
+    return found_entities
 end
 
 local function destroyEntities(entity_groups)
@@ -141,22 +126,24 @@ local function destroyEntities(entity_groups)
     end
 end
 
-local function tryFuse(cx, cy, recipe)
+local function tryFuse(cx, cy, recipe, cached_entities)
+    -- Vérification des level requirements
     for _, result in ipairs(recipe.results) do
         local stone_data = STONE_REGISTRY[result.key]
         local can_craft, _ = checkRequirements(stone_data)
         if not can_craft then
+            log.debug("level requirements not meet : recipe skipped")
             return false
         end
     end
 
-    -- Collects ingredients
-    local selected_ingredients = collectAndSelect(cx, cy, recipe.radius, recipe.ingredients, "ingredients")
+    -- Collects ingredients (avec cache)
+    local selected_ingredients = collectAndSelect(cx, cy, recipe.radius, recipe.ingredients, "ingredients", cached_entities)
     if not selected_ingredients then return false end
 
-    -- Collecte catalistes (optionnel)
+    -- Collecte catalistes (avec cache, optionnel)
     if recipe.catalistes then
-        local selected_catalist = collectAndSelect(cx, cy, recipe.radius, recipe.catalistes, "catalist")
+        local selected_catalist = collectAndSelect(cx, cy, recipe.radius, recipe.catalistes, "catalist", cached_entities)
         if not selected_catalist then return false end
     else
         log.debug("no catalist required")
@@ -183,14 +170,31 @@ local function tryFuse(cx, cy, recipe)
     return true
 end
 
+-- Version optimisée : UNE SEULE recherche d'entités pour toutes les recettes
 local function tryAllFuse(cx, cy, recipes)
-    if(not recipes) then
+    if not recipes then
         log.error("No recipes loaded")
         return false
     end
+    
+    -- Calcul du radius maximum nécessaire
+    local max_radius = 0
+    for _, recipe in ipairs(recipes) do
+        if recipe.radius > max_radius then
+            max_radius = recipe.radius
+        end
+    end
+    
+    -- UNE SEULE recherche pour toutes les recettes
+    local cached_entities = getAllOutOfInventory(getAllEntitiesInRadius(cx, cy, max_radius))
+    log.debug("Cached " .. #cached_entities .. " entities for all recipes")
+    
+    -- Tester chaque recette avec le cache
     for k = 1, #recipes do
-        if tryFuse(cx, cy, recipes[k]) then
-            return true
+        if tryFuse(cx, cy, recipes[k], cached_entities) then
+            return true  -- Kill le sort après la première fusion réussie
+        else
+            log.debug("recipie failed.")
         end
     end
     

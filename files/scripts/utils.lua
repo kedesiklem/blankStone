@@ -124,12 +124,12 @@ local function parseComplexTagExpression(tagString)
     
     -- Si pas de parenthèses, traiter comme avant
     if #groups == 0 then
-        if string.find(tagString, "|") then
+        if string.find(tagString, ",") then
             -- Mode OU simple
-            return {mode = "OR", tags = splitTags(tagString, "|")}
+            return {mode = "AND", tags = splitTags(tagString, ",")}
         else
             -- Mode ET simple
-            return {mode = "AND", tags = splitTags(tagString, ",")}
+            return {mode = "OR", tags = splitTags(tagString, "|")}
         end
     end
     
@@ -176,67 +176,13 @@ local function entityMatchesExpression(entity_id, expression)
     return false
 end
 
--- Accumulate all Entities matching any tag from tags (can be use to match name)
-local function accumulateEntitiesFromTags(cx, cy, radius, tags, EntityGetInRadiusFunc)
-    local candidates = {}
-    local seen = {} -- Pour éviter les doublons
-    
-    for _, tag in ipairs(tags) do
-        local entities = EntityGetInRadiusFunc(cx, cy, radius, tag) or {}
-        for _, entity in ipairs(entities) do
-            if not seen[entity] then
-                seen[entity] = true
-                table.insert(candidates, entity)
-            end
-        end
-    end
-    
-    return candidates
-end
-
-local function getCandidatesForAndMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    if #expression.tags > 0 then
-        return EntityGetInRadiusFunc(cx, cy, radius, expression.tags[1]) or {}
-    end
-    return {}
-end
-
-local function getCandidatesForOrMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    return accumulateEntitiesFromTags(cx, cy, radius, expression.tags, EntityGetInRadiusFunc)
-end
-
-local function getCandidatesForComplexMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    -- Optimisation : récupère uniquement les entités du premier groupe (OR interne)
-    -- Si l'entité n'a aucun tag du premier groupe, elle sera invalide de toute façon
-    if #expression.groups > 0 then
-        local firstGroup = expression.groups[1]
-        return accumulateEntitiesFromTags(cx, cy, radius, firstGroup, EntityGetInRadiusFunc)
-    end
-    return {}
-end
-
-local function getCandidatesEntities(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    if expression.mode == "AND" then
-        return getCandidatesForAndMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    elseif expression.mode == "OR" then
-        return getCandidatesForOrMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    elseif expression.mode == "COMPLEX" then
-        return getCandidatesForComplexMode(cx, cy, radius, expression, EntityGetInRadiusFunc)
-    end
-    
-    return {}
-end
-
--- Fonction pour obtenir les entités correspondant à une expression de tags
-local function getEntitiesMatchingTagExpressionInRadius(cx, cy, radius, tagString)
+-- filtre depuis un cache au lieu de chercher dans le monde
+local function filterEntitiesByTagExpression(cached_entities, tagString)
     local expression = parseComplexTagExpression(tagString)
-    
-    local candidateEntities = getCandidatesEntities(cx,cy,radius, expression, EntityGetInRadiusWithTag)
-
     local matchingEntities = {}
     
-    -- Filtre les entités selon l'expression complète
-    for _, entity in ipairs(candidateEntities) do
+    -- Filtre directement depuis le cache
+    for _, entity in ipairs(cached_entities) do
         if entityMatchesExpression(entity, expression) then
             table.insert(matchingEntities, entity)
         end
@@ -245,13 +191,40 @@ local function getEntitiesMatchingTagExpressionInRadius(cx, cy, radius, tagStrin
     return matchingEntities
 end
 
--- Fonction pour obtenir les entités correspondant à une expression de tags
-local function getEntitiesMatchingNameExpressionInRadius(cx, cy, radius, tagString)
-    local expression = parseComplexTagExpression(tagString)
-
-    if expression.mode ~= "OR" then log.error("None OR for name expression") end
+-- filtre par nom depuis un cache
+local function filterEntitiesByNameExpression(cached_entities, nameString)
+    local expression = parseComplexTagExpression(nameString)
+    local matchingEntities = {}
     
-    return getCandidatesEntities(cx,cy,radius, expression, EntityGetInRadiusWithName) or {}
+    -- Filtre directement depuis le cache par nom
+    for _, entity in ipairs(cached_entities) do
+        local entity_name = EntityGetName(entity)
+        
+        -- Vérifie si le nom match l'expression
+        if expression.mode == "OR" then
+            -- Au moins un des noms
+            for _, name in ipairs(expression.tags) do
+                if entity_name == name then
+                    table.insert(matchingEntities, entity)
+                    break
+                end
+            end
+        elseif expression.mode == "AND" then
+            -- Tous les noms (peu probable mais géré)
+            local matches_all = true
+            for _, name in ipairs(expression.tags) do
+                if entity_name ~= name then
+                    matches_all = false
+                    break
+                end
+            end
+            if matches_all then
+                table.insert(matchingEntities, entity)
+            end
+        end
+    end
+    
+    return matchingEntities
 end
 
 -- Return the first element of a list that is not in inventory
@@ -264,10 +237,6 @@ local function getFirstOutofInventory(item_list)
     end
     return nil
 end
-
-
-
-
 
 
 -- FULL CREDIT TO Squirrelly for this GOATed function
@@ -312,7 +281,6 @@ end
 
 
 
-
 return {
     getVariable = getVariable,
     setVariable = setVariable,
@@ -321,8 +289,11 @@ return {
 
     getPotionMaterial = getPotionMaterial,
     entityMatchesExpression = entityMatchesExpression,
-    getEntitiesMatchingTagExpressionInRadius = getEntitiesMatchingTagExpressionInRadius,
-    getEntitiesMatchingNameExpressionInRadius = getEntitiesMatchingNameExpressionInRadius,
+    
+    -- Nouvelles fonctions pour cache
+    filterEntitiesByTagExpression = filterEntitiesByTagExpression,
+    filterEntitiesByNameExpression = filterEntitiesByNameExpression,
+    
     getFirstOutofInventory = getFirstOutofInventory,
 
     filter = filter,

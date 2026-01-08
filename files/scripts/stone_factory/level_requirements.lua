@@ -59,6 +59,17 @@ end
 -- Appeler à l'initialisation
 BuildCumulativeRequirements()
 
+local function isPure()
+    local corrupted = false
+    for i=0, 11 do 
+        for _, j in ipairs({128, 256}) do
+            corrupted = corrupted or GameGetOrbCollectedThisRun(i + j)
+        end
+    end
+    return not(corrupted)
+end
+
+
 local function checkLevelRequirements(level)
 
     if (level == -1) then return false end
@@ -78,16 +89,11 @@ local function checkLevelRequirements(level)
     -- ID of Corrupted Orb in the west adds 128 to Main World's ID, and the ones in east adds 256
     local pure_orb_only = all_requirements.pure_orb_only or false
     if pure_orb_only and np_orb ~= 0 then
-        local corrupted = false
-        for i=0, 11 do 
-            for _, j in ipairs({128, 256}) do
-                corrupted = corrupted or GameGetOrbCollectedThisRun(i + j)
-            end
+        local pure = isPure()
+        if not pure then 
+            GamePrintImportant("$text_blankstone_corrupt", "$text_blankstone_lies_desc")
         end
-        if corrupted then
-            GamePrintImportant("$text_blankstone_corrupt", "")
-        end
-        check = check and not(corrupted)
+        check = check and pure
     end
 
     return check

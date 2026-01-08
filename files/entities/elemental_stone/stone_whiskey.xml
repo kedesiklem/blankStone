@@ -23,6 +23,11 @@
       ui_name="$stone_blankstone_whiskeyStone_name"
       throw_as_item="1"
     ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="mods/blankStone/files/entities/elemental_stone/stone_honey.xml"
+    ></VariableStorageComponent>
   </Base>
 
   <!-- POTION -->

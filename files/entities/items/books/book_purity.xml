@@ -1,5 +1,5 @@
 <Entity name="book_purity" tags="tablet,normal_tablet">
-    <Base file="mods/blankStonefiles/entities/items/books/base_book.xml">
+    <Base file="mods/blankStone/files/entities/items/books/base_book.xml">
         <UIInfoComponent
             name="$book_blankstone_purity_name"
         > </UIInfoComponent>

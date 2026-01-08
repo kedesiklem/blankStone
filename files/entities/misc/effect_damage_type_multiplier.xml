@@ -28,7 +28,7 @@
     ></VariableStorageComponent>
 
     <VariableStorageComponent
-        name="new_mult"
+        name="new_damage_mult"
         value_float="0.0"
     ></VariableStorageComponent>
 

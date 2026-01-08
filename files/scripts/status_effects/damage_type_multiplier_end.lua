@@ -25,7 +25,6 @@ end
 if type then
     utils.setVariable(c, "damage_type", "value_string", type)
     utils.setVariable(c, "damage_type", "value_float", damage_mult)
-    utils.setVariable(c, "new_mult", "value_float", new_mult)
 else
     log.error("damage_type name not found")
 end

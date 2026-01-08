@@ -1,6 +1,6 @@
 local blankStone_spellappends = {
         {
-        id          = "blankStone_STONE_FUSER",
+        id          = "BLANKSTONE_STONE_FUSER",
         name 		= "$spell_blankstone_stone_fuser_name",
         description = "$spell_blankstone_stone_fuser_desc",
         sprite 		= "mods/blankStone/files/ui_gfx/gun_actions/stone_fuser.png",

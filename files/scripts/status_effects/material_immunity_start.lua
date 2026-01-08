@@ -24,7 +24,7 @@ if (variables ~= nil) then
     end
     
     if material_name and material_dmg ~= nil and new_dmg ~= nil then
-        log.info("Applying material protection: " .. material_name .. " [" .. material_dmg .. " -> " .. new_dmg .. "]")
+        log.debug("Applying material protection: " .. material_name .. " [" .. material_dmg .. " -> " .. new_dmg .. "]")
         EntitySetDamageFromMaterial(target, material_name, new_dmg)
     end
 end

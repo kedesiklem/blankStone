@@ -18,12 +18,13 @@ if (variables ~= nil) then
             damage_type = ComponentGetValue2(v, "value_string")
             damage_mult = ComponentGetValue2(v, "value_float")
             ComponentSetValue2(v, "value_float", damage_mult)
-        elseif (name == "new_mult") then
+        elseif (name == "new_damage_mult") then
             new_mult = ComponentGetValue2(v, "value_float")
         end
     end
     
     if damage_type and damage_mult ~= nil and new_mult ~= nil then
+        log.debug("Applying material protection: " .. damage_type .. " [" .. damage_mult .. " -> " .. new_mult .. "]")
         local comp = EntityGetFirstComponentIncludingDisabled( target, "DamageModelComponent" )
         if comp then
             ComponentObjectSetValue2(comp, "damage_multipliers", damage_type, new_mult)

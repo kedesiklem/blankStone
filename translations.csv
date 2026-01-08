@@ -39,21 +39,25 @@ stone_blankstone_whiskeyStone_name,"Pint of beer.",,,,,,,,,,,,,
 stone_blankstone_whiskeyStone_desc,"You wonder if it's really a stone ?",,,,,,,,,,,,,
 stone_blankstone_poisonStone_name,"Crystal of Poison.",,,,,,,,,,,,,
 stone_blankstone_poisonStone_desc,"It look surprisingly safe.",,,,,,,,,,,,,
-
+stone_blankstone_poisonHarmfulStone_name,"Tar of Poison.",,,,,,,,,,,,,
+stone_blankstone_poisonHarmfulStone_desc,"You don't want to hold it.\nIt is dangerous and must be purified.",,,,,,,,,,,,,
 stone_blankstone_lavaStone_name,"Quintessential Brimstone.",,,,,,,,,,,,,
 stone_blankstone_lavaStone_desc,"This tiny rock looks like it can melt your bones, but when touched only a very pleasant warmth can be felt.",,,,,,,,,,,,,
 
+stone_blankstone_honeyStone_name,Honeycomb.,,,,,,,,,,,,,
+stone_blankstone_honeyStone_desc,"Something is happening inside, it will take some time.\nYou should keep it.",,,,,,,,,,,,,
+stone_blankstone_honeyStone_desc2,"The buzzing has stopped.",,,,,,,,,,,,,
 
 stone_blankstone_lapis_philosophorum_name,Lapis Philosophorum,,,,,,,,,,,,,
 stone_blankstone_lapis_philosophorum_desc,"Opus Magnum. The truth revealed.",,,,,,,,,,,,,
 stone_blankstone_nigredo_name,Nigredo,,,,,,,,,,,,,
 stone_blankstone_nigredo_desc,"The Black Work.",,,,,,,,,,,,,
 stone_blankstone_albedo_name,Albedo,,,,,,,,,,,,,
-stone_blankstone_albedo_desc,"The White Work.",,,,,,,,,,,,,
+stone_blankstone_albedo_desc,"The White Work.\nIt's pure.",,,,,,,,,,,,,
 stone_blankstone_citrinitas_name,Citrinitas,,,,,,,,,,,,,
 stone_blankstone_citrinitas_desc,"The Yellow Work.",,,,,,,,,,,,,
 stone_blankstone_rubedo_name,Rubedo,,,,,,,,,,,,,
-stone_blankstone_rubedo_desc,"The Red Work.",,,,,,,,,,,,,
+stone_blankstone_rubedo_desc,"The Red Work.\nIt's confusing.",,,,,,,,,,,,,
 
 text_blankstone_nigredo_success_craft,"The Black Work is complete. Matter dissolves into void.",,,,,,,,,,,,,
 text_blankstone_nigredo_fail_craft,"The void rejects your offering.",,,,,,,,,,,,,
@@ -64,6 +68,9 @@ text_blankstone_citrinitas_fail_craft,"The sun has not yet risen for you.",,,,,,
 text_blankstone_rubedo_success_craft,"The Red Work is complete. The marriage of opposites achieved.",,,,,,,,,,,,,
 text_blankstone_rubedo_fail_craft,"Perfection requires the union of all knowledge.",,,,,,,,,,,,,
 
+text_blankstone_poly_success_craft,"The Gods fear this.",,,,,,,,,,,,,
+text_blankstone_poly_fail_craft,"The Gods are afraid of what you're trying to do.",,,,,,,,,,,,,
+
 spell_blankstone_stone_fuser_name,"Stone fuser.",,,,,,,,,,,,,
 spell_blankstone_stone_fuser_desc,"Brutaly merge multiple stone in a large radius.",,,,,,,,,,,,,
 
@@ -73,16 +80,28 @@ book_blankstone_infuse_name,Tome of infusion,,,,,,,,,,,,,
 book_blankstone_infuse_desc,"The Fluid that Mimics observes what surrounds it...\nPlace the Purified within, and nearby, a Vessel filled.\nWhat is Near shall be Carried, what Bathes shall be Changed.\nThe Imitator becomes Messenger between Container and Stone...",,,,,,,,,,,,,
 book_blankstone_opus_magnum_name, Opus Magnum Instruction,,,,,,,,,,,,,
 book_blankstone_opus_magnum_desc, "Four must become One through violent convergence...\nFire, Water, Earth, Lightning - collide them brutally.\nFrom Chaos emerges the Quintessence, the Fifth Element.\n\nThis Perfect Essence refines its lesser forms...\nWith it Imperfection ascends to Perfection.",,,,,,,,,,,,,
+book_blankstone_honey_name,Tome of Secret,,,,,,,,,,,,,
+book_blankstone_honey_desc,"Infuse a stone with the blue thing that disappears quickly.\nWith that, the fusion can begin.\nYou can only move forward by understanding the world and its rules.\nJust as liquids mix, stones fuse, but sometimes stones need a catalyst.\nYou will be halfway there when you have it.",,,,,,,,,,,,,
+
 
 text_blankstone_corrupt,"You're corrupt.",,,,,,,,,,,,,
+text_blankstone_lies_desc,"You chose to let the lies fool you.",,,,,,,,,,,,,
 
 text_blankstone_repair_broken_stone_title,"You fixed it.",,,,,,,,,,,,,
 text_blankstone_repair_broken_stone_desc,"The stone is now strong enough to let you use the magic whithin.",,,,,,,,,,,,,
 
 text_blankstone_quintessence_unleash_title,"The Gods can't hide it anymore.",,,,,,,,,,,,,
-text_blankstone_quintessence_unleash_desc,"You can now access the Gods secrets.",,,,,,,,,,,,,
+text_blankstone_quintessence_unleash_desc,"You're halfway.\nYou can now access the Gods secrets.",,,,,,,,,,,,,
 text_blankstone_magnum_opus_title,"Magnum Opus complete.",,,,,,,,,,,,,
 text_blankstone_magnum_opus_desc,"The Gods kneel.",,,,,,,,,,,,,
 
 text_blankstone_missing_stuff,"Something's missing.",,,,,,,,,,,,,
+text_blankstone_missing_knowledge,"You need knowledge.",,,,,,,,,,,,,
+text_blankstone_missing_lot_knowledge,"You need more knowledge.",,,,,,,,,,,,,
+text_blankstone_missing_all_knowledge,"You need to understand the truth and avoid the lies.",,,,,,,,,,,,,
 
+text_blankstone_honey_secret_title,"Bees reveal their secrets to you.",,,,,,,,,,,,,
+text_blankstone_honey_secret_desc,"Bees don't lie, why would they?",,,,,,,,,,,,,
+text_blankstone_honey_nosecret_title,"Bees have already revealed their secrets to you.",,,,,,,,,,,,,
+text_blankstone_honey_nosecret_desc,"Bees don't lie.",,,,,,,,,,,,,
+text_blankstone_fuse_fail,"Mergers require knowledge.",,,,,,,,,,,,,
