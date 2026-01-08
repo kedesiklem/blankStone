@@ -1,10 +1,10 @@
 <Entity name="book_opus_magnum" tags="tablet,normal_tablet">
-    <Base file="data/entities/items/books/base_book.xml">
+    <Base file="mods/blankStonefiles/entities/items/books/base_book.xml">
         <UIInfoComponent
             name="$book_blankstone_opus_magnum_name"
         > </UIInfoComponent>
 
-        <!-- At Alchemist -->
+        <!-- At Tower -->
         <ItemComponent
             item_name="$book_blankstone_opus_magnum_name"
             ui_description="$book_blankstone_opus_magnum_desc"
