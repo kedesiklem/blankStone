@@ -38,3 +38,23 @@ for _, value in pairs(vanilla_stone) do
 end
 
 ModLuaFileAppend( "data/scripts/buildings/forge_item_convert.lua", "mods/blankStone/files/scripts/buildings/anvil_appends.lua")
+
+-- SHOP-KEEPER STONE LOOT
+
+local enemies = {
+  "data/entities/animals/necromancer_shop.xml",
+  "data/entities/animals/necromancer_super.xml",
+}
+
+for _, path in pairs(enemies) do
+  local content = ModTextFileGetContent(path)
+  local xml = nxml.parse(content)
+
+  xml:add_child(nxml.new_element("LuaComponent", {
+    execute_on_removed = "1",
+    execute_every_n_frame = "-1",
+    script_death = "mods/blankStone/files/scripts/necromancer_loot.lua"
+  }))
+
+  ModTextFileSetContent(path, tostring(xml))
+end

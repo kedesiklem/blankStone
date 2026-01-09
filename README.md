@@ -4,6 +4,7 @@
 
 
 This mod add the possibility to purify and infuse stone to use the liquid at there maximum potential.
+Numerous clues are scattered throughout the world to guide you in understanding how to use the mod's mechanisms.
 
 
 ```
@@ -45,6 +46,7 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 │   │   │   ├── stone_factory.lua
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
 │   │   ├── stone_specific_script/
+│   │   ├── status_effect/                          # For material/damage_type immunity : check poisonStone
 │   │   ├── magic/                                  # spell related
 │   │   ├── utils.lua
 │   │   └── nxml_tools.lua                          # For xml manipulation and injection
@@ -68,23 +70,26 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
 ```
 
 ## DONE
-- purifying stone into blank_stone
-- infusing stone with liquid
-- compatibility with vanilla stone
-- stain_effect.lua (thanks GrahamBurger)
+### Mod add
+- purifying/infusion stone
 - Stone factory
     - different level stone
+    - different crafting system
 - VFX
+- stain_effect.lua (thanks GrahamBurger)
 - infusing stone from tags
 - sur-infusion/mixed liquid stone
-- infusion with powder
-- Forgeable stone
-- quintessence
+- quintessence (upgrading stone)
 - hint (message / book)
-- opus magnum
-- purify into anything
 - fuser spell
-- material immunity / damage_type immunity : see poisonStone for implementation detail
+- material immunity / damage_type immunity
+- opus magnum
+
+### VanillaChange
+- vanilla stone infusion and purification
+- vanilla stone passive effect in inventory (same as Apotheosis)
+- Steve and Skoude drop
+- Forgeable stone
 
 
 ## ONGOING
@@ -93,15 +98,13 @@ This mod add the possibility to purify and infuse stone to use the liquid at the
     - [x] Blood Stone
     - [x] Bone Stone
     - [x] Poison Stone
-    - [ ] Honey Stone
+    - [x] Honey Stone
     - [ ] BlackHole Stone (dig and attract enemies)
     - [ ] Silver Stone
     - [ ] Fungal Stone (see Apotheosis)
 - Translation stones messages
-- Upgrade stone when fuse with quintessence as catalist
 
 ## TODO
-- make steve(1%)/scott(2%) drop bonesStone 
 --- V2
 - Apotheosis liquid stone (V2)
 - Animation for stone_poly eye ?
