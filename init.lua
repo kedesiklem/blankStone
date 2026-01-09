@@ -55,10 +55,12 @@ function OnPlayerSpawned(player_entity)
 
     -- OPUS MAGNUM 
     -- EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_honey.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/items/books/book_honey.xml", pos_x, pos_y )
+
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_lava.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison_harmful.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison.xml", pos_x, pos_y )

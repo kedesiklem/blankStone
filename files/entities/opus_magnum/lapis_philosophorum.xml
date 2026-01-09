@@ -40,6 +40,21 @@
         frames="-1"
     ></GameEffectComponent>
 
+    <!-- WANDSTONE -->
+    <GameEffectComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        effect="EDIT_WANDS_EVERYWHERE"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <!-- SUNSEED -->
+    <GameEffectComponent
+        _tags="enabled_in_hand"
+        effect="REMOVE_FOG_OF_WAR"
+        frames="-1"
+    ></GameEffectComponent>
+
+
     <!-- BRIMSTONE -->
     <GameEffectComponent
         _tags="enabled_in_hand,enabled_in_inventory"
@@ -61,7 +76,7 @@
         kill_when_finished="0"
         from_material_array="magic_liquid_movement_faster,magic_liquid_faster_levitation,grass,magic_liquid_unstable_teleportation,poison,rotten_meat,vomit,grass_holy"
         to_material_array="magic_liquid_faster_levitation_and_movement,magic_liquid_faster_levitation_and_movement,grass_holy,magic_liquid_teleportation,just_death,meat,magic_liquid_weakness,magic_liquid_hp_regeneration"
-        clean_stains="1"
+        clean_stains="0"
         is_circle="1"
         loop="1"
         radius="64"
