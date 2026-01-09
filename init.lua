@@ -1,5 +1,6 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local MODID = ModTextFileGetContent("mods/blankStone/mod_id.txt")
+local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
 
 
 function OnModPreInit()
@@ -18,6 +19,22 @@ local function spawn_all_orb(player_entity)
     for n=0, 11 do
         local orb_file = string.format("data/entities/items/orbs/orb_%02d.xml", n)
         EntityLoad(orb_file, pos_x + 10*n, pos_y - 10)
+    end
+end
+
+local function spawn_all_stones(x,y, list, withgoldStone)
+    log.debug("Spawn all stones")
+
+    if not list then log.error("No stone to spawn") return end
+
+
+    for key, value in pairs(list) do
+        if key == "goldStone" and not withgoldStone then goto continue
+        else
+            log.debug("spawn stone [".. key .."] : ".. value.path)
+            EntityLoad(value.path, x, y)
+        end
+        ::continue::
     end
 end
 
@@ -40,7 +57,7 @@ function OnPlayerSpawned(player_entity)
     local pos_x, pos_y = EntityGetTransform( player_entity )
 
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
-    
+    -- spawn_all_stones(pos_x,pos_y, STONE_REGISTRY)
 
     --- FORGE TEST
     -- pos_x = 1500
@@ -55,11 +72,11 @@ function OnPlayerSpawned(player_entity)
 
     -- OPUS MAGNUM 
     -- EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_honey.xml", pos_x, pos_y )
-    EntityLoad( "mods/blankStone/files/entities/items/books/book_honey.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/items/books/book_honey.xml", pos_x, pos_y )
 
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_lava.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison_harmful.xml", pos_x, pos_y )
