@@ -1,6 +1,7 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local MODID = ModTextFileGetContent("mods/blankStone/mod_id.txt")
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
+local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
 
 function OnModPreInit()
@@ -40,7 +41,8 @@ end
 
 local function on_player_first_spawned(player_id)
     local x, y = EntityGetTransform(player_id)
-    EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+    local starter_blankstone = EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+    utils.changeDescription(starter_blankstone,"$text_blankstone_starter_stone_desc")
 end
 
 function OnPlayerSpawned(player_entity)

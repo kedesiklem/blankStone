@@ -43,6 +43,16 @@ local function getValue(component, name, default)
     return default
 end
 
+local function changeDescription(entity, new_description)
+    local info_ids = EntityGetComponentIncludingDisabled(entity,"ItemComponent")
+
+    if not info_ids then log.error("can't change description without ItemComponent") return end
+
+    for _, value in ipairs(info_ids) do
+        ComponentSetValue2(value, "ui_description", new_description)
+    end
+end
+
 --- Potion related function
 local function getPotionMaterial(potion_id)
     local material_id = GetMaterialInventoryMainMaterial(potion_id)
@@ -323,14 +333,16 @@ return {
 
     getPotionMaterial = getPotionMaterial,
     entityMatchesExpression = entityMatchesExpression,
-    
+
     -- Nouvelles fonctions pour cache
     filterEntitiesByTagExpression = filterEntitiesByTagExpression,
     filterEntitiesByNameExpression = filterEntitiesByNameExpression,
-    
+
     getFirstOutofInventory = getFirstOutofInventory,
 
     filter = filter,
     EntityGetInRadiusWithName = EntityGetInRadiusWithName,
-    EntityGetDamageFromMaterial = EntityGetDamageFromMaterial
+    EntityGetDamageFromMaterial = EntityGetDamageFromMaterial,
+
+    changeDescription=changeDescription,
 }

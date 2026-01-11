@@ -19,8 +19,6 @@ stone_blankstone_loveStone_name,Heart of Devotion,,,,,Cœur de Dévotion,,,,,,,
 stone_blankstone_loveStone_desc,"Love screams from within. Everything yearns for you.",,,,,L'amour hurle de l'intérieur. Tout aspire à vous.,,,,,,,
 stone_blankstone_polyStone_name,Flesh Sculptor's Eye,,,,,Œil du Sculpteur de Chair,,,,,,,
 stone_blankstone_polyStone_desc,"Something watches through you. Your form is negotiable.",,,,,Quelque chose observe à travers vous. Votre forme est négociable.,,,,,,,
-stone_blankstone_quintessence_name,Quintessence,,,,,Quintessence,,,,,,,
-stone_blankstone_quintessence_desc,"The fifth element. Halfway to divinity.",,,,,Le cinquième élément. À mi-chemin de la divinité.,,,,,,,
 stone_blankstone_blankStone_name,Blank Stone,,,,,Pierre Intacte,,,,,,,
 stone_blankstone_blankStone_desc,"An imitation without soul. It yearns to become.",,,,,Une imitation sans âme. Elle aspire à devenir.,,,,,,,
 stone_blankstone_toxicStone_name,Miasma Seed,,,,,Graine de Miasme,,,,,,,
@@ -51,8 +49,12 @@ stone_blankstone_honeyStone_name,Sealed Hive,,,,,Ruche Scellée,,,,,,,
 stone_blankstone_honeyStone_desc,"Something stirs within. Buzzing fills your mind.\nPatience.",,,,,Quelque chose remue à l'intérieur. Un bourdonnement emplit votre esprit.\nPatience.,,,,,,,
 stone_blankstone_honeyStone_desc2,"Silence. The metamorphosis is complete.",,,,,Silence. La métamorphose est complète.,,,,,,,
 
+stone_blankstone_quintessence_name,Quintessence,,,,,Quintessence,,,,,,,
+stone_blankstone_quintessence_desc,"The fifth element. Halfway to divinity.",,,,,Le cinquième élément. À mi-chemin de la divinité.,,,,,,,
+
 stone_blankstone_lapis_philosophorum_name,Lapis Philosophorum,,,,,Lapis Philosophorum,,,,,,,
 stone_blankstone_lapis_philosophorum_desc,"Opus Magnum. The truth revealed.",,,,,Opus Magnum. La vérité révélée.,,,,,,,
+
 stone_blankstone_nigredo_name,Nigredo,,,,,Nigredo,,,,,,,
 stone_blankstone_nigredo_desc,"The Black Work.",,,,,L'Œuvre au Noir.,,,,,,,
 stone_blankstone_albedo_name,Albedo,,,,,Albedo,,,,,,,
@@ -108,3 +110,6 @@ text_blankstone_fuse_fail,"Mergers require knowledge.",,,,,Les fusions exigent d
 
 text_blankstone_quintesscence_upgrade_title,"The Stone Remembers",,,,,La Pierre se Souvient,,,,,,,
 text_blankstone_quintesscence_upgrade_desc,"Quintessence awakens what slumbered within.\nThe stone reveals what it was always meant to be.",,,,,"La Quintessence éveille ce qui sommeillait.\nLa pierre révèle ce qu'elle était destinée à devenir.",,,,,,,
+
+text_blankstone_starter_stone_desc,"You manage to read these words carved into the stone:\n   Knowledge lies in books scattered above and below.\n   The powder purifies.\n   The mimicking fluid transforms.\n   This is only the beginning.",,,,,"Vous parvenez à lire ces mots gravés dans la pierre :\n   La connaissance repose dans les livres éparpillés en haut et bas.\n   La poudre purifie.\n   Le fluide imitateur transforme.\n   Ce n'est que le début.",,,,,,,
+
