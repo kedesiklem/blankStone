@@ -207,7 +207,7 @@ end
 ---------------------------------------------------------------
 
 local function forgeStone(id,x,y)
-    local result = craft.FORGE_RECIPES[EntityGetName(id)]
+    local result = craft.FORGE_RECIPES[utils.getEntityIdentifier(id)]
 
     if not result then return false end
     

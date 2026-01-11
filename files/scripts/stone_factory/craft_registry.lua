@@ -15,6 +15,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         -------------------------
         
         ["[radioactive]"] = {stone_key = "toxicStone"},
+        ["magic_liquid_invisibility"] = {stone_key = "invisibilityStone"},
         ["magic_liquid_berserk"] = {stone_key = "bigStone"},
         ["magic_liquid_faster_levitation"] = {stone_key = "levitatiumStone"},
         ["magic_liquid_movement_faster"] = {stone_key = "acceleratiumStone"},
@@ -137,10 +138,10 @@ local FUSE_RECIPES = {
         results = {
             { key = "poisonStone", offset_y = -10},
         },
-        -- message = {
-        --     title = "$text_blankstone_title",
-        --     desc = "$text_blankstone_desc",
-        -- },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
         on_success = function() end
     },
 
@@ -155,10 +156,10 @@ local FUSE_RECIPES = {
         results = {
             { key = "loveStone", offset_y = -10},
         },
-        -- message = {
-        --     title = "$text_blankstone_title",
-        --     desc = "$text_blankstone_desc",
-        -- },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
         on_success = function() end
     },
 
@@ -173,15 +174,34 @@ local FUSE_RECIPES = {
         results = {
             { key = "lavaStone", offset_y = -10},
         },
-        -- message = {
-        --     title = "$text_blankstone_title",
-        --     desc = "$text_blankstone_desc",
-        -- },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
         on_success = function() end
 
     },
 
-        { -- honey + diamond = ambrosia + posion
+    { -- wandstone to manaStone
+        ingredients = {
+            { name = "wandstone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "manaStone", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
+        on_success = function() end
+
+    },
+
+    { -- honey + diamond = ambrosia + posion
         ingredients = {
             { tag = "thunderstone", count = 1 },
             { name = "honeyStone", count = 1 },

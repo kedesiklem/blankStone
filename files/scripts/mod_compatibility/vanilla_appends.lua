@@ -22,39 +22,59 @@ local vanilla_stone = {
     "stonestone",
     "poopstone",
 }
+
 for _, value in pairs(vanilla_stone) do
-    addPurifiable(vanilla_item_path .. value .. ".xml", stone_base)
+    local path = vanilla_item_path .. value .. ".xml"
+    addPurifiable(path, stone_base)
+
+    local content = ModTextFileGetContent(path)
+    local xml = nxml.parse(content)
+    local modified = false
+
+    local stone_id = value:match("([^/]+)$")
+
+    -- VariableStorageComponent blankStoneID
+    if not xml:first_of("VariableStorageComponent", function(v)
+        return v.attr.name == "blankStoneID"
+    end) then
+        xml:add_child(nxml.new_element("VariableStorageComponent", {
+            name = "blankStoneID",
+            value_string = stone_id,
+        }))
+        modified = true
+    else
+        log.error("blankStoneID already exists: " .. path)
+    end
 
     -- FROM APOTHEOSIS
     -- In-inv behavior for various items
-    local content = ModTextFileGetContent(vanilla_item_path .. value .. ".xml")
-    local xml = nxml.parse(content)
     local gameEffect = xml:first_of("GameEffectComponent")
     if gameEffect then
-        local attrs = gameEffect.attr
-        attrs._tags = attrs._tags .. ",enabled_in_inventory"
-        ModTextFileSetContent(vanilla_item_path .. value .. ".xml", tostring(xml))
+        gameEffect.attr._tags = gameEffect.attr._tags .. ",enabled_in_inventory"
+        modified = true
+    end
+
+    if modified then
+        ModTextFileSetContent(path, tostring(xml))
     end
 end
 
 ModLuaFileAppend( "data/scripts/buildings/forge_item_convert.lua", "mods/blankStone/files/scripts/buildings/anvil_appends.lua")
 
--- SHOP-KEEPER STONE LOOT
 
+-- SHOP-KEEPER STONE LOOT
+-- Thanks to nathansnail & userk for the edit_file advice
 local enemies = {
   "data/entities/animals/necromancer_shop.xml",
   "data/entities/animals/necromancer_super.xml",
 }
 
 for _, path in pairs(enemies) do
-  local content = ModTextFileGetContent(path)
-  local xml = nxml.parse(content)
-
-  xml:add_child(nxml.new_element("LuaComponent", {
-    execute_on_removed = "1",
-    execute_every_n_frame = "-1",
-    script_death = "mods/blankStone/files/scripts/necromancer_loot.lua"
-  }))
-
-  ModTextFileSetContent(path, tostring(xml))
+  for xml in nxml.edit_file(path) do
+    xml:add_child(nxml.new_element("LuaComponent", {
+      execute_on_removed = "1",
+      execute_every_n_frame = "-1",
+      script_death = "mods/blankStone/files/scripts/necromancer_loot.lua"
+    }))
+  end
 end

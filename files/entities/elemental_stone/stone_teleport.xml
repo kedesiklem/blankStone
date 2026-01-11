@@ -93,4 +93,9 @@
     execute_every_n_frame="-1"
   ></LuaComponent>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="teleportStone"
+  ></VariableStorageComponent>
+
 </Entity>

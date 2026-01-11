@@ -36,4 +36,9 @@
     </Base>
 
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="magicLiquidStone"
+  ></VariableStorageComponent>
+
 </Entity>

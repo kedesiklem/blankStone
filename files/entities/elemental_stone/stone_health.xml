@@ -55,4 +55,9 @@
   ></GameEffectComponent>
 
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="healthStone"
+  ></VariableStorageComponent>
+
 </Entity>

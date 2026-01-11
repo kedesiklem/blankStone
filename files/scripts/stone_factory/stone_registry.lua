@@ -141,12 +141,14 @@ local STONE_REGISTRY = {
         elemental_stone_path .. "stone_big",
         1
     ),
-    
     ["honeyStone"] = stone_mk(
         elemental_stone_path .. "stone_honey",
         1
     ),
- 
+    ["invisibilityStone"] = stone_mk(
+        elemental_stone_path .. "stone_invisibility",
+        1
+    ),
     ["acceleratiumStone"] = stone_mk(
         elemental_stone_path .. "stone_acceleratium",
         1
@@ -209,6 +211,10 @@ local STONE_REGISTRY = {
         1,
         "...",
         "Why would you do that ?"
+    ),
+    ["manaStone"] = stone_mk(
+        elemental_stone_path .. "stone_mana",
+        9
     ),
     -- Vanilla Stones
 

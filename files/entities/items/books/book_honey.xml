@@ -27,4 +27,9 @@
             emitted_material_name="honey"
         ></ParticleEmitterComponent>
     </Base>
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="book_honey"
+  ></VariableStorageComponent>
+
 </Entity>

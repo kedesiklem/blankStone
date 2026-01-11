@@ -127,4 +127,9 @@
   > </MagicConvertMaterialComponent>
 
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="lavaStone"
+  ></VariableStorageComponent>
+
 </Entity>

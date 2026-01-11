@@ -104,4 +104,9 @@
     loop="1"
   ></MagicConvertMaterialComponent>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="poisonHarmfulStone"
+  ></VariableStorageComponent>
+
 </Entity>

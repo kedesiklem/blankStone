@@ -1,7 +1,7 @@
-Most of the code is written by me, based on reverse-engineering Noita or a few mods. Whenever I use code directly from someone else, I credit the original creators here.
+Most of the code is written by me, based on "reverse-engineering" Noita or a few mods. Whenever I use code directly from someone else, I credit the original creators here.
 
 Conga Lyne - Writing most of the code of Apotheosis wich I use as a guide line
 Evasia - Creating the item list appends script
-Copis - Extracting liquid from potion (use for stone_tp)
+Copis - Extracting liquid from potion
 Lamia - Translation insert script
 Squirrelly - EntityGetDamageFromMaterial function

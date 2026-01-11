@@ -1,4 +1,5 @@
-<Entity name="lapis_philosophorum" tags="hittable,teleportable_NOT,item_physics,item_pickup">
+<Entity name="lapis_philosophorum"
+    tags="hittable,teleportable_NOT,item_physics,item_pickup,indesctructible">
     <Base file="mods/blankStone/files/entities/base_stone.xml">
 
         <!-- physical presence -->
@@ -134,5 +135,10 @@
             count_max="10"
         ></SpriteParticleEmitterComponent>
     </Base>
+
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="lapis_philosophorum"
+    ></VariableStorageComponent>
 
 </Entity>

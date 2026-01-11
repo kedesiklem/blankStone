@@ -44,4 +44,9 @@
     frames="-1"
   ></GameEffectComponent>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="explosionStone"
+  ></VariableStorageComponent>
+
 </Entity>

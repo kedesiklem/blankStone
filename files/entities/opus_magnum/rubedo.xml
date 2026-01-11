@@ -57,4 +57,9 @@
         ></SpriteParticleEmitterComponent>
     </Base>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="rubedo"
+  ></VariableStorageComponent>
+
 </Entity>

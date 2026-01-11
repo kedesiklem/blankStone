@@ -67,4 +67,9 @@
   ></LuaComponent>
 
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="whiskeyStone"
+  ></VariableStorageComponent>
+
 </Entity>

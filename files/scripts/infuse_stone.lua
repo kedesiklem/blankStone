@@ -83,7 +83,7 @@ function material_area_checker_success(pos_x, pos_y)
     utils.setVariable(entity_id, "hintEnable", "value_bool", true)
     enableHalo(entity_id, true)
     
-    local entityName = EntityGetName(EntityGetParent(entity_id))
+    local entityName = utils.getEntityIdentifier(EntityGetParent(entity_id))
 
     -- Get potion or powder_stash material
     local potions_id = EntityGetInRadiusWithTag(pos_x, pos_y, reaction_distance_max, "potion")

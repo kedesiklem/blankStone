@@ -67,4 +67,9 @@
     ></VariableStorageComponent>
   </Base>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="polyStone"
+  ></VariableStorageComponent>
+
 </Entity>

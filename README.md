@@ -2,9 +2,8 @@
 
 ![BlankStone Preview Image](workshop_preview_image.png)
 
-
-This mod add the possibility to purify and infuse stone to use the liquid at there maximum potential.
-Numerous clues are scattered throughout the world to guide you in understanding how to use the mod's mechanisms.
+This mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. 
+Discover all the secrets scattered around the world, decipher the hints, and achieve the Opus Magnum."
 
 
 ```
@@ -45,7 +44,7 @@ Numerous clues are scattered throughout the world to guide you in understanding 
 │   │   │   ├── level_requirements.lua
 │   │   │   ├── stone_factory.lua
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
-│   │   ├── stone_specific_script/
+│   │   ├── stone_specific_script/                  # For the script that concerns only a handful of stones 
 │   │   ├── status_effect/                          # For material/damage_type immunity : check poisonStone
 │   │   ├── magic/                                  # spell related
 │   │   ├── utils.lua
@@ -101,16 +100,19 @@ Numerous clues are scattered throughout the world to guide you in understanding 
     - [x] Honey Stone
     - [ ] BlackHole Stone (dig and attract enemies)
     - [ ] Silver Stone
+    - [x] Invisible Stone
     - [ ] Fungal Stone (see Apotheosis)
 - Translation stones messages
 
 ## TODO
---- V2
+### V2
 - Apotheosis liquid stone (V2)
-- Animation for stone_poly eye ?
+- Animation (and something else) for stone_poly eye ?
 
 
-### special thanks to
-- lamia_zamia for the help
+## Special thanks to
+- lamia_zamia for the early help and guidance
 - zerupo for the feedback
+- jobslesssteve for the feedback and testing
 - krapouchnouille for the memes
+- All the noita modding community

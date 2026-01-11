@@ -55,4 +55,9 @@
             scale.x="1.5" scale.y="1.5"
         ></SpriteParticleEmitterComponent>
     </Base>
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="citrinitas"
+  ></VariableStorageComponent>
+
 </Entity>

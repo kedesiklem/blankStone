@@ -31,4 +31,9 @@
         execute_every_n_frame="36000"
     ></LuaComponent>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="honeyStone"
+  ></VariableStorageComponent>
+
 </Entity>

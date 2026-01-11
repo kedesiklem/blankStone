@@ -78,16 +78,6 @@ local function filter(list, predicate)
     return result
 end
 
--- Start by getting all entities in a radius then filter to get the correct name (use EntityGetInRadiusWithTag if possible)
-local function EntityGetInRadiusWithName(x,y,rad, name)
-    return filter(
-        EntityGetInRadius(x,y,rad),
-        function (entitie)
-            return EntityGetName(entitie) == name
-        end
-    )
-end
-
 -- Fonction pour vérifier si une entité a au moins un des tags d'un groupe
 local function hasAnyTagFromGroup(entity_id, tagGroup)
     local entityTagsString = EntityGetTags(entity_id)
@@ -191,41 +181,83 @@ local function filterEntitiesByTagExpression(cached_entities, tagString)
     return matchingEntities
 end
 
--- filtre par nom depuis un cache
+-- Fonction utilitaire pour obtenir le nom d'une entité (via blankStoneID ou EntityGetName)
+local function getEntityIdentifier(entity)
+    -- Priorité au blankStoneID si présent
+    local var = getVariable(entity, "blankStoneID")
+    if var then
+        local stone_id = getValue(var, "value_string")
+        if stone_id then
+            return stone_id
+        end
+    end
+    
+    -- Fallback sur EntityGetName si pas de blankStoneID
+    return EntityGetName(entity)
+end
+
+-- Vérifie si un nom correspond à une expression simple ou complexe
+local function matchesNameExpression(entity_name, expression)
+    if expression.mode == "OR" then
+        for _, name in ipairs(expression.tags) do
+            if entity_name == name then
+                return true
+            end
+        end
+        return false
+        
+    elseif expression.mode == "AND" then
+        for _, name in ipairs(expression.tags) do
+            if entity_name ~= name then
+                return false
+            end
+        end
+        return true
+    end
+    
+    return false
+end
+
+-- Filtre par nom depuis un cache (version refactorisée)
 local function filterEntitiesByNameExpression(cached_entities, nameString)
     local expression = parseComplexTagExpression(nameString)
     local matchingEntities = {}
-    
-    -- Filtre directement depuis le cache par nom
+
     for _, entity in ipairs(cached_entities) do
-        local entity_name = EntityGetName(entity)
+        local entity_name = getEntityIdentifier(entity)
         
-        -- Vérifie si le nom match l'expression
-        if expression.mode == "OR" then
-            -- Au moins un des noms
-            for _, name in ipairs(expression.tags) do
-                if entity_name == name then
-                    table.insert(matchingEntities, entity)
-                    break
-                end
-            end
-        elseif expression.mode == "AND" then
-            -- Tous les noms (peu probable mais géré)
-            local matches_all = true
-            for _, name in ipairs(expression.tags) do
-                if entity_name ~= name then
-                    matches_all = false
-                    break
-                end
-            end
-            if matches_all then
-                table.insert(matchingEntities, entity)
-            end
+        if entity_name and matchesNameExpression(entity_name, expression) then
+            table.insert(matchingEntities, entity)
         end
     end
     
     return matchingEntities
 end
+
+-- Version améliorée qui supporte blankStoneID
+local function EntityGetInRadiusWithName(x, y, rad, name)
+    return filter(
+        EntityGetInRadius(x, y, rad),
+        function(entity)
+            local entity_name = getEntityIdentifier(entity)
+            return entity_name == name
+        end
+    )
+end
+
+-- Bonus : version qui supporte les expressions complexes
+local function EntityGetInRadiusWithNameExpression(x, y, rad, nameString)
+    local expression = parseComplexTagExpression(nameString)
+    
+    return filter(
+        EntityGetInRadius(x, y, rad),
+        function(entity)
+            local entity_name = getEntityIdentifier(entity)
+            return entity_name and matchesNameExpression(entity_name, expression)
+        end
+    )
+end
+
 
 -- Return the first element of a list that is not in inventory
 local function getFirstOutofInventory(item_list)
@@ -286,6 +318,8 @@ return {
     setVariable = setVariable,
     setValue = setValue,
     getValue = getValue,
+
+    getEntityIdentifier = getEntityIdentifier,
 
     getPotionMaterial = getPotionMaterial,
     entityMatchesExpression = entityMatchesExpression,

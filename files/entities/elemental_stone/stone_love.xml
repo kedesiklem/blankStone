@@ -55,4 +55,9 @@
     is_circle="1"
   ></MagicConvertMaterialComponent>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="loveStone"
+  ></VariableStorageComponent>
+
 </Entity>

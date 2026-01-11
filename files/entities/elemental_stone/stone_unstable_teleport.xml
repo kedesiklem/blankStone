@@ -64,4 +64,9 @@
     execute_every_n_frame="60"
   ></LuaComponent>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="unstableTeleportStone"
+  ></VariableStorageComponent>
+
 </Entity>

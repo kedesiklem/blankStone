@@ -79,4 +79,9 @@
     <!-- Infusion process -->
     <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="quintessence"
+  ></VariableStorageComponent>
+
 </Entity>

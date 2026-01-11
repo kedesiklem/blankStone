@@ -1,0 +1,92 @@
+<Entity name="manaStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_mana.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_mana.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_manaStone_name"
+      ui_description="$stone_blankstone_manaStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_mana.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_manaStone_name"> </UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_manaStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="data/entities/items/pickup/wandstone.xml"
+    ></VariableStorageComponent>
+  </Base>
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/halo.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.0" color.g="0.4" color.b="0.7" color.a="0.15"
+      color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+      additive="1"
+      emissive="1"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      color.r="0.0" color.g="0.4" color.b="0.7" color.a="0.35"
+      count_min="2"
+      count_max="5"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="plasma_fading"
+      count_min="4"
+      count_max="6"
+    ></ParticleEmitterComponent>
+  </Base>
+
+
+  <!-- magic -->
+
+  <GameEffectComponent
+    _tags="enabled_in_hand"
+    effect="EDIT_WANDS_EVERYWHERE"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <GameEffectComponent
+    _tags="enabled_in_hand"
+    effect="MANA_REGENERATION"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    kill_when_finished="1"
+    from_material=""
+    from_material_tag="[liquid_common]"
+    steps_per_frame="2"
+    to_material="magic_liquid_mana_regeneration"
+    clean_stains="0"
+    is_circle="1"
+    radius="64"
+    loop="1"
+  > </MagicConvertMaterialComponent>
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="manaStone"
+  ></VariableStorageComponent>
+
+</Entity>

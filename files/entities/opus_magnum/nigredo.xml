@@ -24,4 +24,9 @@
         ></AbilityComponent>
     </Base>
 
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="nigredo"
+  ></VariableStorageComponent>
+
 </Entity>

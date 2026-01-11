@@ -42,4 +42,9 @@
             value_int="256"
         ></VariableStorageComponent>
     </Base>
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="bigStone"
+  ></VariableStorageComponent>
+
 </Entity>
