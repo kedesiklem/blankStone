@@ -1,10 +1,9 @@
-<Entity name="book_honey" tags="tablet,normal_tablet">
+<Entity name="book_honey" tags="tablet,normal_tablet,forgeable">
     <Base file="mods/blankStone/files/entities/items/books/base_book.xml">
         <UIInfoComponent
             name="$book_blankstone_honey_name"
         > </UIInfoComponent>
 
-        <!-- At Alchemist -->
         <ItemComponent
             item_name="$book_blankstone_honey_name"
             ui_description="$book_blankstone_honey_desc"
@@ -27,9 +26,9 @@
             emitted_material_name="honey"
         ></ParticleEmitterComponent>
     </Base>
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="book_honey"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="book_honey"
+    ></VariableStorageComponent>
 
 </Entity>

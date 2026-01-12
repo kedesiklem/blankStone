@@ -1,5 +1,5 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local MODID = ModTextFileGetContent("mods/blankStone/mod_id.txt")
+local MODID = "BlankStone"
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
@@ -40,6 +40,7 @@ local function spawn_all_stones(x,y, list, withgoldStone)
 end
 
 local function on_player_first_spawned(player_id)
+
     local x, y = EntityGetTransform(player_id)
     local starter_blankstone = EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
     utils.changeDescription(starter_blankstone,"$text_blankstone_starter_stone_desc")
@@ -57,6 +58,9 @@ function OnPlayerSpawned(player_entity)
     if BLANKSTONE_RELEASE then return end
 
     local pos_x, pos_y = EntityGetTransform( player_entity )
+
+    local STONE_PATH = "mods/blankStone/files/entities/elemental_stone/"
+    local BOOK_PATH = "mods/blankStone/files/entities/items/books/"
 
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
     -- spawn_all_stones(pos_x,pos_y, STONE_REGISTRY)
@@ -77,25 +81,31 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_honey.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/items/books/book_honey.xml", pos_x, pos_y )
 
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_lava.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison_harmful.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_poison.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_whiskey.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_bones.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_magic_liquid.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_unstable_teleport.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_teleport.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_gold.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_ambrosia.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_toxic.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_love.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_health.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_big.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_explosion.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/elemental_stone/stone_haste.xml", pos_x, pos_y )
+    -- EntityLoad( BOOK_PATH .."book_infuse.xml", pos_x, pos_y )
+    -- EntityLoad( BOOK_PATH .."book_purity.xml", pos_x, pos_y )
+    -- EntityLoad( BOOK_PATH .."book_opus_magnum.xml", pos_x, pos_y )
+
+
+    -- EntityLoad( STONE_PATH .. "stone_honey.xml", pos_x, pos_y )
+    -- EntityLoad( BOOK_PATH .."book_honey.xml", pos_x, pos_y )
+
+    -- EntityLoad( STONE_PATH .. "stone_lava.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_poison_harmful.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_poison.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_whiskey.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_bones.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_magic_liquid.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_unstable_teleport.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_teleport.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_gold.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_ambrosia.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_toxic.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_love.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_health.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_big.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_explosion.xml", pos_x, pos_y )
+    -- EntityLoad( STONE_PATH .. "stone_haste.xml", pos_x, pos_y )
     -- =========================================
 
 end
@@ -136,6 +146,7 @@ function OnPausePreUpdate()
 
 end
 	
+
 
 ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scripts/inject_stones.lua")
 

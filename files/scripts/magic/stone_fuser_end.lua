@@ -16,5 +16,4 @@ if(fuseCrafting()) then
     log.debug("Fuse success")
 else
     log.debug("Fuse fail")
-    GamePrint("$text_blankstone_fuse_fail")
 end

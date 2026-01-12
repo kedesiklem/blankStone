@@ -41,7 +41,7 @@ Discover all the secrets scattered around the world, decipher the hints, and ach
 │   │   │   └── vanilla_appends.lua                 # Add abstract_stone property to vanilla stone and in_inventory effect (from apotheosis)
 │   │   ├── stone_factory                           # Handle collective and specific stone infusion condition
 │   │   │   ├── craft_registry.lua                  # <--- If you want to add new craft
-│   │   │   ├── level_requirements.lua
+│   │   │   ├── craft_requirements.lua
 │   │   │   ├── stone_factory.lua
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
 │   │   ├── stone_specific_script/                  # For the script that concerns only a handful of stones 
@@ -83,6 +83,7 @@ Discover all the secrets scattered around the world, decipher the hints, and ach
 - fuser spell
 - material immunity / damage_type immunity
 - opus magnum
+- Gods Secrets
 
 ### VanillaChange
 - vanilla stone infusion and purification
@@ -105,6 +106,7 @@ Discover all the secrets scattered around the world, decipher the hints, and ach
 - Translation stones messages
 
 ## TODO
+secret message when quintessence inhand
 ### V2
 - Apotheosis liquid stone (V2)
 - Animation (and something else) for stone_poly eye ?

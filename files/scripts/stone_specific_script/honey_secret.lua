@@ -1,5 +1,5 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local MODID = ModTextFileGetContent("mods/blankStone/mod_id.txt")
+local MODID = "BlankStone"
 local flag = MODID .. "_HONEY_SECRET"
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 

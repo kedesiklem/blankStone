@@ -1,0 +1,34 @@
+<Entity name="reforged_book_honey" tags="tablet,normal_tablet">
+    <Base file="mods/blankStone/files/entities/items/books/base_reforged_book.xml">
+        <UIInfoComponent
+            name="$reforged_book_blankstone_honey_name"
+        > </UIInfoComponent>
+
+        <ItemComponent
+            item_name="$reforged_book_blankstone_honey_name"
+            ui_description="$reforged_book_blankstone_honey_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/items/blankstone_reforged_honey_tablet.png"
+        > </ItemComponent>
+
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/blankstone_reforged_honey_tablet.png"
+        ></PhysicsImageShapeComponent>
+
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/in_hand/blankstone_reforged_honey_tablet_in_hand.png"
+        ></SpriteComponent>
+
+        <AbilityComponent
+            ui_name="$reforged_book_blankstone_honey_name"
+        > </AbilityComponent>
+
+        <ParticleEmitterComponent
+            emitted_material_name="honey"
+        ></ParticleEmitterComponent>
+    </Base>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="reforged_book_honey"
+    ></VariableStorageComponent>
+
+</Entity>

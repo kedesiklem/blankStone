@@ -1,4 +1,4 @@
-<Entity name="book_purity" tags="tablet,normal_tablet">
+<Entity name="book_purity" tags="tablet,normal_tablet,forgeable">
     <Base file="mods/blankStone/files/entities/items/books/base_book.xml">
         <UIInfoComponent
             name="$book_blankstone_purity_name"
@@ -14,9 +14,9 @@
             ui_name="$book_blankstone_purity_name"
         > </AbilityComponent>
     </Base>
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="book_purity"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="book_purity"
+    ></VariableStorageComponent>
 
 </Entity>

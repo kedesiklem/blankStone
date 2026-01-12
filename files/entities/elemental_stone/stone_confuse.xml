@@ -1,0 +1,63 @@
+<Entity name="confuseStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_confuse.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_confuse.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_confuseStone_name"
+      ui_description="$stone_blankstone_confuseStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_confuse.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_confuseStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_confuseStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+
+  <!-- VFX -->
+
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      _tags="enabled_in_world,enabled_in_hand"
+      color.r="0.5" color.g="0.5" color.b="0.0"
+      count_min="1"
+      count_max="4"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      _tags="enabled_in_world,enabled_in_hand"
+      color.r="0.0" color.g="0.00" color.b="1.0"
+      count_min="1"
+      count_max="4"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      _tags="enabled_in_world,enabled_in_hand"
+      color.r="1.0" color.g="0.0" color.b="0.0"
+      count_min="1"
+      count_max="4"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <!-- effect -->
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="confuseStone"
+  ></VariableStorageComponent>
+
+</Entity>

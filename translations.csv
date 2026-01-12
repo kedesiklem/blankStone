@@ -1,4 +1,8 @@
 ,en,ru,pt-br,es-es,de,fr-fr,it,pl,zh-cn,jp,ko,,NOTES – use \n for newline,max length
+
+
+text_blankstone_starter_stone_desc,"[You manage to read these words carved into the stone]\n   Knowledge is found in books scattered throughout the world.\n   The powder purifies.\n   The mimicking fluid transforms.\n   You must be strong.\n   Find the bees",,,,,"[Vous parvenez à lire ces mots gravés dans la pierre]\n   Le savoir se trouve dans les livres dispersés à travers le monde.\n   La poudre purifie.\n   Le fluide imitateur transforme.\n   Vous devrez être fort.\n   Trouvez les abeilles",,,,,,,
+
 stone_blankstone_acceleratiumStone_name,Viridian Rush Stone,,,,,Pierre de Ruée Viridienne,,,,,,,
 stone_blankstone_acceleratiumStone_desc,Time bends around you. The world slows while you race.,,,,,Le temps se plie autour de vous. Le monde ralentit pendant que vous filez.,,,,,,,
 stone_blankstone_ambrosiaStone_name,Ambrosia Stone,,,,,Pierre d'Ambroisie,,,,,,,
@@ -38,7 +42,7 @@ stone_blankstone_whiskeyStone_desc,"Is it stone? Is it drink? Does it matter?",,
 stone_blankstone_poisonStone_name,Venom Prism,,,,,Prisme de Venin,,,,,,,
 stone_blankstone_poisonStone_desc,"Crystallized death. Surprisingly docile.",,,,,La mort cristallisée. Étonnamment docile.,,,,,,,
 stone_blankstone_poisonHarmfulStone_name,Corruption Tar,,,,,Goudron de Corruption,,,,,,,
-stone_blankstone_poisonHarmfulStone_desc,"It seeps into your skin.\nPurification is the only salvation.",,,,,Ça s'infiltre dans votre peau.\nLa purification est la seule salvation.,,,,,,,
+stone_blankstone_poisonHarmfulStone_desc,"It seeps into your skin.\nTrue purification is the only salvation.",,,,,Ça s'infiltre dans votre peau.\nLa purification véritable est la seule salvation.,,,,,,,
 stone_blankstone_lavaStone_name,Heart of Brimstone,,,,,Cœur de Soufre,,,,,,,
 stone_blankstone_lavaStone_desc,"Molten fury contained. Yet it only offers warmth.",,,,,Furie fondue contenue. Pourtant elle n'offre que chaleur.,,,,,,,
 stone_blankstone_invisibilityStone_name,Void Shard,,,,,Éclat du Vide,,,,,,,
@@ -46,8 +50,16 @@ stone_blankstone_invisibilityStone_desc,"Light bends away. You become absence.",
 stone_blankstone_manaStone_name,Sauvan Sykkivä Ydin,,,,,Sauvan Sykkivä Ydin,,,,,,,
 stone_blankstone_manaStone_desc,"The beating heart of wands. True power requires no perk.",,,,,Le cœur battant des baguettes. Le vrai pouvoir n'exige aucun avantage.,,,,,,,
 stone_blankstone_honeyStone_name,Sealed Hive,,,,,Ruche Scellée,,,,,,,
-stone_blankstone_honeyStone_desc,"Something stirs within. Buzzing fills your mind.\nPatience.",,,,,Quelque chose remue à l'intérieur. Un bourdonnement emplit votre esprit.\nPatience.,,,,,,,
-stone_blankstone_honeyStone_desc2,"Silence. The metamorphosis is complete.",,,,,Silence. La métamorphose est complète.,,,,,,,
+stone_blankstone_honeyStone_desc,"Something stirs within. Buzzing fills your mind.\nPatience. Keep it.",,,,,Quelque chose remue à l'intérieur. Un bourdonnement emplit votre esprit.\nPatience. Gardez la.,,,,,,,
+stone_blankstone_honeyStone_desc2,"Silence. The bees have spoken.",,,,,Silence. Les abeilles ont parlé.,,,,,,,
+
+stone_blankstone_voidStone_name,Decay Stone,,,,,Pierre de Décrépitude,,,,,,,
+stone_blankstone_voidStone_desc,"Matter unravels at its touch. The first step toward nothingness.",,,,,"La matière se délite à son contact. Le premier pas vers le néant.",,,,,,,
+stone_blankstone_milkStone_name,Moonstone,,,,,Pierre de Lune,,,,,,,
+stone_blankstone_milkStone_desc,"Pale light trapped within. Innocence crystallized.",,,,,"Lumière pâle emprisonnée. L'innocence cristallisée.",,,,,,,
+stone_blankstone_confuseStone_name,Unity Core,,,,,Noyau d'Unité,,,,,,,
+stone_blankstone_confuseStone_desc,"Confusion becomes clarity within. Chaos dissolves.",,,,,"La confusion devient clarté à l'intérieure. Le chaos se dissout.",,,,,,,
+
 
 stone_blankstone_quintessence_name,Quintessence,,,,,Quintessence,,,,,,,
 stone_blankstone_quintessence_desc,"The fifth element. Halfway to divinity.",,,,,Le cinquième élément. À mi-chemin de la divinité.,,,,,,,
@@ -64,35 +76,60 @@ stone_blankstone_citrinitas_desc,"The Yellow Work.",,,,,L'Œuvre au Jaune.,,,,,,
 stone_blankstone_rubedo_name,Rubedo,,,,,Rubedo,,,,,,,
 stone_blankstone_rubedo_desc,"The Red Work.\nIt's confusing.",,,,,L'Œuvre au Rouge.\nC'est déconcertant.,,,,,,,
 text_blankstone_nigredo_success_craft,"The Black Work is complete. Matter dissolves into void.",,,,,L'Œuvre au Noir est accomplie. La matière se dissout dans le vide.,,,,,,,
-text_blankstone_nigredo_fail_craft,"The void rejects your offering.",,,,,Le vide rejette votre offrande.,,,,,,,
+text_blankstone_nigredo_fail_craft,"The void bellow rejects your offering.",,,,,Le vide rejette votre offrande.,,,,,,,
 text_blankstone_albedo_success_craft,"The White Work is complete. Purity achieved.",,,,,L'Œuvre au Blanc est accomplie. Pureté atteinte.,,,,,,,
 text_blankstone_albedo_fail_craft,"Your soul is not yet pure enough.",,,,,Votre âme n'est pas encore assez pure.,,,,,,,
 text_blankstone_citrinitas_success_craft,"The Yellow Work is complete. The awakening achieved.",,,,,L'Œuvre au Jaune est accomplie. L'éveil atteint.,,,,,,,
-text_blankstone_citrinitas_fail_craft,"The sun has not yet risen for you.",,,,,Le soleil ne s'est pas encore levé pour vous.,,,,,,,
+text_blankstone_citrinitas_fail_craft,"The sun above has not yet risen for you.",,,,,Le soleil ne s'est pas encore levé pour vous.,,,,,,,
 text_blankstone_rubedo_success_craft,"The Red Work is complete. The marriage of opposites achieved.",,,,,L'Œuvre au Rouge est accomplie. Le mariage des opposés atteint.,,,,,,,
 text_blankstone_rubedo_fail_craft,"Perfection requires the union of all knowledge.",,,,,La perfection exige l'union de toute connaissance.,,,,,,,
 
 text_blankstone_poly_success_craft,"The Gods fear this.",,,,,Les Dieux craignent cela.,,,,,,,
 text_blankstone_poly_fail_craft,"The Gods are afraid of what you're trying to do.",,,,,Les Dieux ont peur de ce que vous tentez de faire.,,,,,,,
 
+text_blankstone_honey_success_craft,"You found the bees.",,,,,Vous avez trouvé les abeilles.,,,,,,,
+
 spell_blankstone_stone_fuser_name,Stone Fuser,,,,,Fusionneur de Pierres,,,,,,,
 spell_blankstone_stone_fuser_desc,"Brutally merge multiple stones in a large radius.",,,,,Fusionne brutalement plusieurs pierres dans un large rayon.,,,,,,,
-
 book_blankstone_purity_name,Tome of Purity,,,,,Tome de Pureté,,,,,,,
-book_blankstone_purity_desc,"Bury that which bears the Mark of Elements deep within the Purifying Powder...\nLet it be completely engulfed, hidden from sight.\nWhat cleanses around purges what lies inside.",,,,,"Enterrez ce qui porte la Marque des Éléments au plus profond de la Poudre Purificatrice...\nQu'elle soit complètement engloutie, cachée de la vue.\nCe qui nettoie autour purge ce qui est à l'intérieur.",,,,,,,
+
+book_blankstone_purity_desc,"Bury that which bears the Mark of Elements deep within the Purifying Powder...\nLet it be completely engulfed, hidden from sight.\nWhat cleanses around purges what lies inside.\nTo understand, you will have to descend into the depths and rise back to the surface.\nDescending is not easy, but rising back up is the real challenge.",,,,,"Enterrez ce qui porte la Marque des Éléments au plus profond de la Poudre Purificatrice...\nQu'elle soit complètement engloutie, cachée de la vue.\nCe qui nettoie autour purge ce qui est à l'intérieur.\nPour comprendre, vous devrez descendre dans les profondeurs et remonter à la surface.\nDescendre n'est pas facile, mais remonter est le véritable défi.",,,,,,,
 book_blankstone_infuse_name,Tome of Infusion,,,,,Tome d'Infusion,,,,,,,
 book_blankstone_infuse_desc,"The Fluid that Mimics observes what surrounds it...\nPlace the Purified within, and nearby, a Vessel filled.\nWhat is Near shall be Carried, what Bathes shall be Changed.\nThe Imitator becomes Messenger between Container and Stone.",,,,,"Le Fluide qui Imite observe ce qui l'entoure...\nPlacez le Purifié à l'intérieur, et à proximité, un Réceptacle rempli.\nCe qui est Proche sera Porté, ce qui Baigne sera Changé.\nL'Imitateur devient Messager entre Contenant et Pierre.",,,,,,,
-book_blankstone_opus_magnum_name,Opus Magnum Instruction,,,,,Instructions de l'Opus Magnum,,,,,,,
-book_blankstone_opus_magnum_desc,"Four must become One through violent convergence...\nFire, Water, Earth, Lightning - collide them brutally.\nFrom Chaos emerges the Quintessence, the Fifth Element.\n\nThis Perfect Essence refines its lesser forms...\nWith it, Imperfection ascends to Perfection.",,,,,"Quatre doivent devenir Un par convergence violente...\nFeu, Eau, Terre, Foudre - faites-les entrer en collision brutalement.\nDu Chaos émerge la Quintessence, le Cinquième Élément.\n\nCette Essence Parfaite raffine ses formes inférieures...\nAvec elle, l'Imperfection s'élève vers la Perfection.",,,,,,,
+book_blankstone_opus_magnum_name,Tome of Opus Magnum,,,,,Tome du Grand Œuvre,,,,,,,
+book_blankstone_opus_magnum_desc,"Four must become One through violent convergence...\nFire, Water, Earth, Lightning - collide them brutally.\nFrom Chaos emerges the Quintessence, the Fifth Element.\nThis Perfect Essence refines its lesser forms...\nWith it, Imperfection ascends to Perfection.\nBut such power requires tools that transcend mortal limits.\nSeek the one who breaks the gods' chains, who offers spells without bounds.",,,,,"Quatre doivent devenir Un par convergence violente...\nFeu, Eau, Terre, Foudre - faites-les entrer en collision brutalement.\nDu Chaos émerge la Quintessence, le Cinquième Élément.\nCette Essence Parfaite raffine ses formes inférieures...\nAvec elle, l'Imperfection s'élève vers la Perfection.\nMais un tel pouvoir exige des outils qui transcendent les limites mortelles.\nCherchez celui qui brise les chaînes des dieux, qui offre des sorts sans limites.",,,,,,,
+
+
+reforged_book_blankstone_purity_name,Tome of True Purity,,,,,Tome de Pureté Veritable,,,,,,,
+reforged_book_blankstone_purity_desc,"The Powder cleanses, but only the surface...\nTrue Purity flows from what nurtures life itself.\nInfuse the Stone with the White Gift, the Mother's Essence.\nMakes it perfect.\nOnly through this can corruption be truly expelled.",,,,,"La Poudre nettoie, mais seulement la surface...\nLa Vraie Pureté coule de ce qui nourrit la vie elle-même.\nInfuse la Pierre avec le Don Blanc, l'Essence de la Mère.\nRend la parfaite.\nSeulement ainsi la corruption peut être vraiment expulsée.",,,,,,,
+reforged_book_blankstone_infuse_name,Tome of True Infusion,,,,,Tome d'Infusion,,,,,,,
+reforged_book_blankstone_infuse_desc,"The Imitator carries essence once, but its thirst is not quenched...\nSome vessels hunger for more. Some stones crave deeper transformation.\nReturn to the bath. Let the Messenger speak again.\nWhat was Changed can Change further.\nRepetition reveals hidden depths.",,,,,"L'Imitateur porte l'essence une fois, mais sa soif n'est pas étanchée...\nCertains réceptacles ont plus faim. Certaines pierres désirent une transformation plus profonde.\nRetournez au bain. Laissez le Messager parler à nouveau.\nCe qui fut Changé peut Changer davantage.\nLa répétition révèle des profondeurs cachées.",,,,,,,
+reforged_book_blankstone_opus_magnum_name,Tome of True Opus Magnum,,,,,Tome du Grand Œuvre Veritable,,,,,,,
+reforged_book_blankstone_opus_magnum_desc,"Knowledge illuminates the path to perfection...\nSeek the Spheres of Enlightenment scattered across realms.\nBut beware - not all light is pure.\nThe Tainted Orbs whisper sweet lies, they corrupt the soul.\nTo achieve the Magnum Opus, you must see true from false.\nWisdom without corruption. Power without compromise.",,,,,"La connaissance illumine le chemin vers la perfection...\nCherchez les Sphères d'Éveil éparpillées à travers les royaumes.\nMais prenez garde - toute lumière n'est pas pure.\nLes Orbes Souillés murmurent de doux mensonges, ils corrompent l'âme.\nPour accomplir le Magnum Opus, vous devez distinguer le vrai du faux.\nSagesse sans corruption. Pouvoir sans compromis.",,,,,,,
+
 book_blankstone_honey_name,Tome of Secrets,,,,,Tome des Secrets,,,,,,,
 book_blankstone_honey_desc,"Infuse a stone with the blue thing that disappears quickly.\nWith that, the fusion can begin.\nYou can only move forward by understanding the world and its rules.\nJust as liquids mix, stones fuse, but sometimes stones need a catalyst.\nYou will be halfway there when you have it.",,,,,"Imprégnez une pierre avec la chose bleue qui disparaît rapidement.\nAvec cela, la fusion peut commencer.\nVous ne pouvez avancer qu'en comprenant le monde et ses règles.\nTout comme les liquides se mélangent, les pierres fusionnent, mais parfois les pierres ont besoin d'un catalyseur.\nVous serez à mi-chemin quand vous l'aurez.",,,,,,,
+reforged_book_blankstone_honey_name,Tome of True Secrets,,,,,Tome des Secrets Veritable,,,,,,,
+reforged_book_blankstone_honey_desc,"Find all three True Tomes; together they reveal the secret of the gods.\nWe told you how to merge.",,,,,"Trouvez les trois Tomes Veritables; ensemble, ils révèlent le secret des dieux.\nNous vous avons expliqué comment fusionner.",,,,,,,
+
+
+book_blankstone_gods_secrets_name,Gods Secrets ?,,,,,Secrets des Dieux ?,,,,,,,
+book_blankstone_gods_secrets_desc,"[The pages are blank, yet you feel they contain something...]",,,,,"[Les pages sont vierges, pourtant vous sentez qu'elles contiennent quelque chose...]",,,,,,,
+reforged_book_blankstone_gods_secrets_name,Gods Secrets,,,,,Secrets des Dieux,,,,,,,
+reforged_book_blankstone_gods_secrets_desc,"You have walked the Path. The Veil lifts.\nPURITY - The White Gift absolves all sin.\nINFUSION - Hunger is eternal. Feed the stone until it transcends.\nFUSION - Violence births creation. Collide, merge, ascend.\nBut know this final truth:\nThe Gods created stones to chain magic.\nYou have learned to break those chains.\nThe Lapis Philosophorum is not the end - it is rebellion made manifest.\nFour Works lead to Divinity:\nNigredo bellow.\nAlbedo purifies the soul.\nCitrinitas above.\nRubedo unites all opposites.\nComplete the Great Work.\nBecome what the Gods feared you would become.",,,,,"Vous avez parcouru le Chemin. Le Voile se lève.\nPURETÉ - Le Don Blanc absout tous les péchés.\nINFUSION - La faim est éternelle. Nourrissez la pierre jusqu'à ce qu'elle transcende.\nFUSION - La violence engendre la création. Entrez en collision, fusionnez, ascendez.\nMais connaissez cette vérité finale :\nLes Dieux ont créé les pierres pour enchaîner la magie.\nVous avez appris à briser ces chaînes.\nLe Lapis Philosophorum n'est pas la fin - c'est la rébellion incarnée.\nQuatre Œuvres mènent à la Divinité :\nNigredo en bas.\nAlbedo purifie l'âme.\nCitrinitas en haut.\nRubedo unit tous les opposés.\nAccomplissez le Grand Œuvre.\nDevenez ce que les Dieux craignaient que vous deveniez.",,,,,,,
+
 
 text_blankstone_corrupt,"You're corrupt.",,,,,Vous êtes corrompu.,,,,,,,
 text_blankstone_lies_desc,"You chose to let the lies fool you.",,,,,Vous avez choisi de laisser les mensonges vous tromper.,,,,,,,
 text_blankstone_repair_broken_stone_title,"You fixed it.",,,,,Vous l'avez réparé.,,,,,,,
 text_blankstone_repair_broken_stone_desc,"The stone is now strong enough to let you use the magic within.",,,,,La pierre est maintenant assez forte pour vous laisser utiliser la magie qu'elle contient.,,,,,,,
+text_blankstone_repair_book_title,"You fixed it.",,,,,Vous l'avez réparé.,,,,,,,
+text_blankstone_repair_book_desc,"You can decipher the text better.",,,,,"Vous pouvez mieux déchiffrer le texte.",,,,,,,
+text_blankstone_fuse_book_title,Gods Secrets,,,,,Secrets des Dieux,,,,,,,
+text_blankstone_fuse_book_desc,"They are making one last effort to hide them from you.",,,,,"Ils font un dernier effort pour vous les cacher.",,,,,,,
+
 text_blankstone_quintessence_unleash_title,"The Gods can't hide it anymore.",,,,,Les Dieux ne peuvent plus le cacher.,,,,,,,
-text_blankstone_quintessence_unleash_desc,"You're halfway.\nYou can now access the Gods' secrets.",,,,,Vous êtes à mi-chemin.\nVous pouvez maintenant accéder aux secrets des Dieux.,,,,,,,
+text_blankstone_quintessence_unleash_desc,"You're halfway.\nYou can now access the Stones potential.\nThe Gods' Secrets can be reached..",,,,,Vous êtes à mi-chemin.\nVous pouvez maintenant accéder aux potential des Pierres.Les Secrets des Dieux peuvent être atteints.,,,,,,,
 text_blankstone_magnum_opus_title,"Magnum Opus complete.",,,,,Magnum Opus accompli.,,,,,,,
 text_blankstone_magnum_opus_desc,"The Gods kneel.",,,,,Les Dieux s'agenouillent.,,,,,,,
 
@@ -110,6 +147,3 @@ text_blankstone_fuse_fail,"Mergers require knowledge.",,,,,Les fusions exigent d
 
 text_blankstone_quintesscence_upgrade_title,"The Stone Remembers",,,,,La Pierre se Souvient,,,,,,,
 text_blankstone_quintesscence_upgrade_desc,"Quintessence awakens what slumbered within.\nThe stone reveals what it was always meant to be.",,,,,"La Quintessence éveille ce qui sommeillait.\nLa pierre révèle ce qu'elle était destinée à devenir.",,,,,,,
-
-text_blankstone_starter_stone_desc,"You manage to read these words carved into the stone:\n   Knowledge lies in books scattered above and below.\n   The powder purifies.\n   The mimicking fluid transforms.\n   This is only the beginning.",,,,,"Vous parvenez à lire ces mots gravés dans la pierre :\n   La connaissance repose dans les livres éparpillés en haut et bas.\n   La poudre purifie.\n   Le fluide imitateur transforme.\n   Ce n'est que le début.",,,,,,,
-

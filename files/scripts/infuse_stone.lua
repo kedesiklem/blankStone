@@ -82,7 +82,7 @@ function material_area_checker_success(pos_x, pos_y)
     -- Visual hint
     utils.setVariable(entity_id, "hintEnable", "value_bool", true)
     enableHalo(entity_id, true)
-    
+
     local entityName = utils.getEntityIdentifier(EntityGetParent(entity_id))
 
     -- Get potion or powder_stash material
@@ -97,14 +97,22 @@ function material_area_checker_success(pos_x, pos_y)
     if #powder_stashs_id == 0 then
         log.debug("No valid powder_stash found nearby")
     end
-    
+
     for i=1,#powder_stashs_id do
         potions_id[#potions_id+1] = powder_stashs_id[i]
     end
 
-    for i=1, #potions_id do
-        if (tryCreateStone(potions_id[i], pos_x, pos_y, entityName)) then
-            return
+    -- No potion around : no spamming possible
+    if #potions_id == 0 then
+        log.debug("Reset hint count")
+        local hint_id = utils.getVariable(entity_id, "hintEnable")
+        utils.setValue(hint_id, "value_int", 0)
+    else
+
+        for i=1, #potions_id do
+            if (tryCreateStone(potions_id[i], pos_x, pos_y, entityName)) then
+                return
+            end
         end
     end
 

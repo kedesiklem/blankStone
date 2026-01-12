@@ -1,20 +1,8 @@
-local level = dofile_once("mods/blankStone/files/scripts/stone_factory/level_requirements.lua")
+local condition = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_requirements.lua")
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
 local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua")
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
-
-
--- Check level requirements and return a message linked to the result
-local function checkRequirements(stone_data)
-    -- Vérifier les conditions de level
-    if stone_data.conditions.use_level_requirements then
-        if not level.checkLevelRequirements(stone_data.level) then
-            return false, stone_data.message_fail
-        end
-    end
-    return true, stone_data.message
-end
 
 -- Just spawn the stone, use createStone instead to add VFX
 local function spawnStone(stone_data, pos_x, pos_y)
@@ -47,11 +35,12 @@ local function tryInfuseStone(stone_key, hintCount, pos_x, pos_y)
 
     log.debug("Found stone data for key: " .. tostring(stone_key))
     
-    local is_success, message = checkRequirements(stone_data)
+    local is_success, message, pure = condition.checkRequirements(stone_data)
 
-    if (not is_success) then 
+    if (not is_success) then
+        log.debug("Fail stone requirement")
         if (hintCount == 0) then
-            GamePrint(message)
+            if not pure then GamePrintImportant("$text_blankstone_corrupt","$text_blankstone_lies_desc") else GamePrint(message) end
         end
         return false
     end
@@ -127,15 +116,6 @@ local function destroyEntities(entity_groups)
 end
 
 local function tryFuse(cx, cy, recipe, cached_entities)
-    -- Vérification des level requirements
-    for _, result in ipairs(recipe.results) do
-        local stone_data = STONE_REGISTRY[result.key]
-        local can_craft, _ = checkRequirements(stone_data)
-        if not can_craft then
-            log.debug("level requirements not meet : recipe skipped")
-            return false
-        end
-    end
 
     -- Collects ingredients (avec cache)
     local selected_ingredients = collectAndSelect(cx, cy, recipe.radius, recipe.ingredients, "ingredients", cached_entities)
@@ -147,6 +127,17 @@ local function tryFuse(cx, cy, recipe, cached_entities)
         if not selected_catalist then return false end
     else
         log.debug("no catalist required")
+    end
+
+    -- Vérification des requirements
+    for _, result in ipairs(recipe.results) do
+        local stone_data = STONE_REGISTRY[result.key]
+        local can_craft, msg, pure = condition.checkRequirements(stone_data)
+        if not can_craft then
+            log.debug("requirements not meet : recipe skipped")
+            if not pure then GamePrintImportant("$text_blankstone_corrupt","$text_blankstone_lies_desc") else GamePrint(msg) end
+            return false
+        end
     end
     
     -- Create results
@@ -214,6 +205,13 @@ local function forgeStone(id,x,y)
     if result.spells then
         for _, spell in ipairs(result.spells) do
             CreateItemActionEntity(spell, x, y)
+        end
+    end
+
+    if result.items then
+        for _, item in ipairs(result.items) do
+            log.debug("forge item : ".. item)
+            EntityLoad(item, x, y)
         end
     end
 

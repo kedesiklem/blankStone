@@ -30,16 +30,17 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["bone"] = {stone_key = "bonesStone"},
         ["poison"] = {stone_key = "poisonHarmfulStone"},
         
-        ["honey"] = {stone_key = "honeyStone"},
         ["alcohol"] = {stone_key = "whiskeyStone"},
         ["alcohol_gas"] = {stone_key = "whiskeyStone"},
         ["juhannussima"] = {stone_key = "whiskeyStone"},
         ["beer"] = {stone_key = "whiskeyStone"},
 
-        ["void_liquid"] = {stone_key = "nigredo"},
-        ["milk"] = {stone_key = "albedo"},
-        ["material_confusion"] = {stone_key = "rubedo"},
-        ["[gold]"] = {stone_key = "citrinitas"},
+        ["void_liquid"] = {stone_key = "voidStone"},
+        ["milk"] = {stone_key = "milkStone"},
+        ["material_confusion"] = {stone_key = "confuseStone"},
+        -- ["[gold]"] = {stone_key = "honeyStone"},
+        ["honey"] = {stone_key = "honeyStone"},
+
     },
     ["unstableTeleportStone"] = {
         ["[slime]"] = {stone_key = "teleportStone"},
@@ -91,6 +92,79 @@ local FUSE_RECIPES = {
         on_success = function() end
     },
 
+    { -- voidStone to nigredo
+        ingredients = {
+            { name = "voidStone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "nigredo", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
+        on_success = function() end
+
+    },
+    { -- milkStone to albedo
+        ingredients = {
+            { name = "milkStone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "albedo", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
+        on_success = function() end
+
+    },
+    { -- honeyStone to citrinitas
+        ingredients = {
+            { name = "honeyStone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "citrinitas", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
+        on_success = function() end
+
+    },
+    { -- confuseStone to rubedo
+        ingredients = {
+            { name = "confuseStone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "rubedo", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
+        on_success = function() end
+
+    },
+
     { -- albedo purification
         ingredients = {
             { tag = "brimstone|stonestone|waterstone|thunderstone", count = 1 },
@@ -124,6 +198,23 @@ local FUSE_RECIPES = {
             title = "$text_blankstone_magnum_opus_title",
             desc = "$text_blankstone_magnum_opus_desc",
         },
+        on_success = function() end
+    },
+
+    { -- hasteStone by fusion
+        ingredients = {
+            { name = "levitatiumStone", count = 1 },
+            { name = "acceleratiumStone", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "hasteStone", offset_y = -10},
+            { key = "blankStone", offset_y = -10},
+        },
+        -- message = {
+        --     title = "$text_blankstone_magnum_opus_title",
+        --     desc = "$text_blankstone_magnum_opus_desc",
+        -- },
         on_success = function() end
     },
 
@@ -220,7 +311,27 @@ local FUSE_RECIPES = {
         -- },
         on_success = function() end
     },
+
+    { -- Gods secrets
+        ingredients = {
+            { name = "reforged_book_infuse", count = 1 },
+            { name = "reforged_book_purity", count = 1 },
+            { name = "reforged_book_opus_magnum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "bookGodsSecrets", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_fuse_book_title",
+            desc = "$text_blankstone_fuse_book_desc",
+        },
+        on_success = function() end
+
+    },
 }
+
+BOOK_PATH = "mods/blankStone/files/entities/items/books/"
 
 local FORGE_RECIPES = {
     ["magicLiquidStone"] = {
@@ -228,6 +339,41 @@ local FORGE_RECIPES = {
         message = {
             title = "$text_blankstone_repair_broken_stone_title",
             desc = "$text_blankstone_repair_broken_stone_desc",
+        }
+    },
+    ["book_infuse"] = {
+        items={BOOK_PATH .. "reforged_book_infuse.xml"},
+        message = {
+            title = "$text_blankstone_repair_book_title",
+            desc = "$text_blankstone_repair_book_desc",
+        }
+    },
+    ["book_purity"] = {
+        items={BOOK_PATH .. "reforged_book_purity.xml"},
+        message = {
+            title = "$text_blankstone_repair_book_title",
+            desc = "$text_blankstone_repair_book_desc",
+        }
+    },
+    ["book_opus_magnum"] = {
+        items={BOOK_PATH .. "reforged_book_opus_magnum.xml"},
+        message = {
+            title = "$text_blankstone_repair_book_title",
+            desc = "$text_blankstone_repair_book_desc",
+        }
+    },
+    ["book_gods_secrets"] = {
+        items={BOOK_PATH .. "reforged_book_gods_secrets.xml"},
+        message = {
+            title = "$text_blankstone_repair_book_title",
+            desc = "$text_blankstone_repair_book_desc",
+        }
+    },
+    ["book_honey"] = {
+        items={BOOK_PATH .. "reforged_book_honey.xml"},
+        message = {
+            title = "$text_blankstone_repair_book_title",
+            desc = "$text_blankstone_repair_book_desc",
         }
     }
 }
