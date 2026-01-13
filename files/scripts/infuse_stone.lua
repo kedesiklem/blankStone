@@ -55,11 +55,11 @@ end
 
 local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
 
-    local stone_key = findInfusionRecipes(potion_id, entityName).stone_key
+    local stone_recipie = findInfusionRecipes(potion_id, entityName)
 
     local hint_id = utils.getVariable(entity_id, "hintEnable")
     
-    local is_success = stone_factory.tryInfuseStone(stone_key, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y)
+    local is_success = stone_factory.tryInfuseStone(stone_recipie, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y)
     
     -- Handle the result
     if is_success then

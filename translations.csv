@@ -147,3 +147,9 @@ text_blankstone_fuse_fail,"Mergers require knowledge.",,,,,Les fusions exigent d
 
 text_blankstone_quintesscence_upgrade_title,"The Stone Remembers",,,,,La Pierre se Souvient,,,,,,,
 text_blankstone_quintesscence_upgrade_desc,"Quintessence awakens what slumbered within.\nThe stone reveals what it was always meant to be.",,,,,"La Quintessence éveille ce qui sommeillait.\nLa pierre révèle ce qu'elle était destinée à devenir.",,,,,,,
+
+text_blankstone_hint_skipping_step,"You cannot skip steps.",,,,,"Vous ne pouvez pas sauter des étapes.",,,,,,,
+text_blankstone_hint_useless,"The Gods considered the matter, but found it of no interest.",,,,,"Les dieux examinèrent la question, mais la trouvèrent sans intérêt.",,,,,,,
+text_blankstone_hint_teleport_too_stable,"The liquid is too stable to be infused.",,,,,"Le liquide est trop stable pour être infusé.",,,,,,,
+text_blankstone_hint_sonte_too_weak,"This power is too great for the stone. Seek the fifth essence.",,,,,"Ce pouvoir est trop grand pour la pierre. Cherchez la cinquième essence.",,,,,,,
+

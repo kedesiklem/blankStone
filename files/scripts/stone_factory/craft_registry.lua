@@ -38,10 +38,23 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["void_liquid"] = {stone_key = "voidStone"},
         ["milk"] = {stone_key = "milkStone"},
         ["material_confusion"] = {stone_key = "confuseStone"},
-        -- ["[gold]"] = {stone_key = "honeyStone"},
         ["honey"] = {stone_key = "honeyStone"},
 
+        -- HINT
+
+        ["magic_liquid_teleportation"] = {hint_key = "hint_blankstone_teleport"},
+        ["lava"] = {hint_key = "hint_blankstone_skipping_step"},
+        ["magic_liquid_charm"] = {hint_key = "hint_blankstone_skipping_step"},
+
+        ["acid"] = {hint_key = "hint_blankstone_useless"},
+        ["oil"] = {hint_key = "hint_blankstone_useless"},
+
+        ["[blood]"] = {hint_key = "hint_quintessence_base"},
+        ["[regenerative]"] = {hint_key = "hint_quintessence_base"},
+        ["[regenerative_gas]"] = {hint_key = "hint_quintessence_base"},
+        ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
     },
+
     ["unstableTeleportStone"] = {
         ["[slime]"] = {stone_key = "teleportStone"},
     },

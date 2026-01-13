@@ -1,5 +1,6 @@
 local condition = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_requirements.lua")
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
+local HINT_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/hint_registry.lua")
 local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua")
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
@@ -23,7 +24,43 @@ end
 -- INFUSION RECIPES RELATED FUNCTION
 ---------------------------------------------------------------
 
-local function tryInfuseStone(stone_key, hintCount, pos_x, pos_y)
+local function handleHint(hint_data, pos_x, pos_y)
+    if not hint_data then
+        log.warn("Hint data is nil")
+        return
+    end
+    
+    GamePrint(hint_data.message)
+    
+    for i = 0, 8 do
+        local angle = (i / 8) * 2 * math.pi
+        local radius = 10
+        local x = pos_x + math.cos(angle) * radius
+        local y = pos_y + math.sin(angle) * radius
+        GameCreateParticle("spark_blue", x, y, 3, 0, 0, false, false, false)
+    end
+    
+    GamePlaySound("data/audio/Desktop/ui.bank", "ui/button_click", pos_x, pos_y)
+end
+
+local function tryInfuseStone(stone_recipie, hintCount, pos_x, pos_y)
+
+    local stone_hint = stone_recipie.hint_key
+
+    if stone_hint then
+        if hintCount == 0 then
+            local hint_data = HINT_REGISTRY[stone_hint]
+            if hint_data then
+                handleHint(hint_data, pos_x, pos_y)
+            else
+                log.warn("Hint key not found in registry: " .. tostring(stone_hint))
+            end
+        end
+        return false
+    end
+
+    
+    local stone_key = stone_recipie.stone_key
 
     local stone_data = STONE_REGISTRY[stone_key]
     
@@ -34,7 +71,9 @@ local function tryInfuseStone(stone_key, hintCount, pos_x, pos_y)
     end
 
     log.debug("Found stone data for key: " .. tostring(stone_key))
-    
+
+
+
     local is_success, message, pure = condition.checkRequirements(stone_data)
 
     if (not is_success) then

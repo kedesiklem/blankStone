@@ -25,10 +25,13 @@
 | Alcohol                      | alcohol[_gas] / juhannussima / beer         | whiskeyStone                   | DONE    |                 |                                |
 | Honey                        | honey                                       | honeyStone                     | DONE    | HINT            |                                |
 | Invisiblium                  | magic_liquid_invisibility                   | invisibilityStone              | DONE    |                 |                                |
-| Milk                         | milk                                        | albedo                         | ONGOING |                 | Make it upgrade                |
-| Void Liquid                  | void_liquid                                 | nigredo                        | ONGOING |                 | Make it upgrade                |
-| Flummoxium                   | material_confusion                          | rubedo                         | ONGOING |                 | Make it upgrade                |
-| Gold                         | [gold]                                      | citrinitas                     | ONGOING |                 | Make it upgrade                |
+| Milk                         | milk                                        | milkStone                      | ONGOING |                 |                                |
+| Void Liquid                  | void_liquid                                 | voidStone                      | ONGOING |                 |                                |
+| Flummoxium                   | material_confusion                          | confuseStone                   | ONGOING |                 |                                |
+| Acid                         | acid                                        | hintMessage                    |         |                 |                                |
+| Lava                         | lava                                        | hintMessage                    |         |                 |                                |
+| Teleportatium                | magic_liquid_teleportation                  | hintMessage                    |         |                 |                                |
+| Gold                         | [gold]                                      |                                | ONGOING |                 |                                |
 | Wax                          | wax_molten / wax / wax_b2                   |                                |         |                 |                                |
 | Worm Pheromone               | magic_liquid_worm_attractor                 |                                |         |                 |                                |
 | Rainbow                      | material_rainbow                            |                                |         |                 |                                |
@@ -36,10 +39,8 @@
 | Diminution Cloud             | magic_gas_weakness                          |                                |         |                 |                                |
 | Gate-Opener                  | magic_liquid                                |                                |         |                 |                                |
 | Pheromone                    | magic_liquid_charm                          |                                |         |                 |                                |
-| Teleportatium                | magic_liquid_teleportation                  |                                |         |                 |                                |
 | Oil                          | oil                                         |                                |         |                 |                                |
 | Mimicium                     | mimic_liquid                                |                                |         |                 |                                |
-| Acid                         | acid                                        |                                |         |                 |                                |
 | Frozen Acid                  | ice_acid_glass                              |                                |         |                 |                                |
 | Air                          | air                                         |                                |         |                 |                                |
 | Alchemic Precursor           | midas_precursor                             |                                |         |                 |                                |
@@ -140,7 +141,6 @@
 | Ice                          | ice_glass_b2                                |                                |         |                 |                                |
 | Ice                          | ice_melting_perf_killer                     |                                |         |                 |                                |
 | Instant Deathium             | just_death                                  |                                |         |                 |                                |
-| Lava                         | lava                                        |                                |         |                 |                                |
 | Magic Gate                   | rock_magic_gate                             |                                |         |                 |                                |
 | Magic Wall                   | rock_magic_bottom                           |                                |         |                 |                                |
 | Mämmi                        | mammi                                       |                                |         |                 |                                |
