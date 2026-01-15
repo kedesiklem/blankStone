@@ -1,3 +1,7 @@
 .vscode
-**~
+.dev
+*.kra
+*~
+artwork/
+drawing.svg
 RELEASE_CHECKLIST.md
