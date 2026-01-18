@@ -4,7 +4,7 @@
         script_throw_item="mods/blankStone/files/scripts/enable_children.lua"
     ></LuaComponent>
 
-    <Entity tags="enabled_in_world">
+    <Entity name="infusableEntity" tags="enabled_in_world">
         <InheritTransformComponent></InheritTransformComponent>
         <MaterialAreaCheckerComponent
             _tags="enabled_in_world"
@@ -19,14 +19,14 @@
             kill_after_message="0"
         ></MaterialAreaCheckerComponent>
 
+        <LuaComponent
+            _tags="enabled_in_world"
+            execute_every_n_frame="-1"
+            script_material_area_checker_success="mods/blankStone/files/scripts/infuse_stone.lua"
+        ></LuaComponent>
+
         <!-- VFX START -->
-        <Base file="mods/blankStone/files/VFX/halo.xml">
-            <SpriteParticleEmitterComponent
-                additive="1"
-                emissive="1"
-                is_emitting="0"
-            ></SpriteParticleEmitterComponent>
-        </Base>
+        <Base file="mods/blankStone/files/VFX/crafting_halo.xml" include_children="1" />
 
         <!-- 
             bool    : halo
@@ -38,13 +38,12 @@
             value_int="0"
         ></VariableStorageComponent>
         <!-- VFX END -->
-
-        <LuaComponent
-            _tags="enabled_in_world"
-            execute_every_n_frame="20"
-            script_source_file="mods/blankStone/files/scripts/infuse_stone.lua"
-            script_material_area_checker_success="mods/blankStone/files/scripts/infuse_stone.lua"
-            script_item_picked_up="mods/blankStone/files/scripts/infuse_stone.lua"
-        ></LuaComponent>
     </Entity>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        execute_every_n_frame="20"
+        script_source_file="mods/blankStone/files/scripts/infuse_stone.lua"
+        script_item_picked_up="mods/blankStone/files/scripts/infuse_stone.lua"
+    ></LuaComponent>
 </Entity>

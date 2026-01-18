@@ -601,19 +601,6 @@ local function merge_xml(root, base_element, base_file)
 			root:set(attr_name, tags)
 		end
 	end
-
-	--[[
-	TODO:
-	local to_remove = {}
-	for idx, elem in ipairs(parent.children) do
-		if elem.attr._remove_from_base == "1" then
-			table.insert(to_remove, 1, idx)
-		end
-	end
-	for _, idx in ipairs(to_remove) do
-		table.remove(parent.children, idx)
-	end
-]]
 end
 
 ---Expands the Base files for an entity xml
@@ -1073,59 +1060,6 @@ function nxml.new_element(name, attrs, children)
 	}
 	---@diagnostic disable-next-line: return-type-mismatch
 	return setmetatable(element, XML_ELEMENT_MT)
-end
-
---TODO: this is slow for some reason, investigate
-local function to_string_internal_experimental(elem, packed, indent_char, cur_indent, buffer)
-	buffer[#buffer + 1] = "<"
-	buffer[#buffer + 1] = elem.name
-	local self_closing = #elem.children == 0 and (not elem.content or #elem.content == 0)
-
-	for k, v in pairs(elem.attr) do
-		buffer[#buffer + 1] = " "
-		buffer[#buffer + 1] = k
-		buffer[#buffer + 1] = '="'
-		buffer[#buffer + 1] = attr_value_to_str(v)
-		buffer[#buffer + 1] = '"'
-	end
-
-	if self_closing then
-		buffer[#buffer + 1] = " />"
-		return table.concat(buffer)
-	end
-
-	buffer[#buffer + 1] = ">"
-
-	local deeper_indent = cur_indent .. indent_char
-
-	if elem.content and #elem.content ~= 0 then
-		if not packed then
-			buffer[#buffer + 1] = "\n"
-			buffer[#buffer + 1] = deeper_indent
-		end
-		buffer[#buffer + 1] = elem:text()
-	end
-
-	if not packed then
-		buffer[#buffer + 1] = "\n"
-	end
-
-	for _, v in ipairs(elem.children) do
-		if not packed then
-			buffer[#buffer + 1] = deeper_indent
-		end
-		to_string_internal_experimental(v, packed, indent_char, deeper_indent, buffer)
-		if not packed then
-			buffer[#buffer + 1] = "\n"
-		end
-	end
-
-	buffer[#buffer + 1] = cur_indent
-	buffer[#buffer + 1] = "</"
-	buffer[#buffer + 1] = elem.name
-	buffer[#buffer + 1] = ">"
-
-	return table.concat(buffer)
 end
 
 local function to_string_internal(elem, packed, indent_char, cur_indent)

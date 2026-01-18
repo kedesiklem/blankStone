@@ -1,0 +1,38 @@
+<Entity>
+    <SpriteParticleEmitterComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        sprite_file="mods/blankStone/files/VFX/particles/absorb_bubble.xml"
+        emission_interval_min_frames="42"
+        emission_interval_max_frames="42"
+        count_min="1"
+        count_max="1"
+        color.a="0.4"
+    > </SpriteParticleEmitterComponent>
+
+    <ParticleEmitterComponent
+        emitted_material_name="mimic_liquid"
+        offset.x="0"
+        offset.y="0"
+        x_pos_offset_min="-15"
+        x_pos_offset_max="15"
+        y_pos_offset_min="-15"
+        y_pos_offset_max="15"
+        x_vel_min="-8"
+        x_vel_max="8"
+        gravity.y="0.0"
+        y_vel_min="-8"
+        y_vel_max="8"
+        count_min="1"
+        count_max="3"
+        attractor_force="32"
+        lifetime_min="0.5"
+        lifetime_max="1.5"
+        create_real_particles="0"
+        collide_with_grid="0"
+        emit_cosmetic_particles="1"
+        fade_based_on_lifetime="1"
+        draw_as_long="1"
+        emission_interval_min_frames="2"
+        emission_interval_max_frames="2"
+    ></ParticleEmitterComponent>
+</Entity>

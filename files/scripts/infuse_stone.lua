@@ -5,15 +5,30 @@ local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/s
 local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
-local entity_id = GetUpdatedEntityID()
+
+
+local function get_infusion_entity()
+    local entity_id
+    local stone_id = GetUpdatedEntityID()
+    local children = EntityGetAllChildren(stone_id)
+    if children then
+        for _, child in pairs(children) do
+            if EntityGetName(child) == "infusableEntity" then
+                entity_id = child
+            end
+        end
+    end
+    return stone_id, entity_id
+end
 local reaction_distance_max = 12
 
 --- VFX function
 local function enableHalo(id, enable)
-    local components = EntityGetComponentIncludingDisabled(id, "SpriteParticleEmitterComponent")
-    if components then
-        for _, comp_id in ipairs(components) do
-            if ComponentGetValue2(comp_id, "sprite_file") == "mods/blankStone/files/VFX/particles/bubble.xml" then
+    local compnames = {"ParticleEmitterComponent","SpriteParticleEmitterComponent"}
+    for _, compname in pairs(compnames) do
+            local components = EntityGetComponentIncludingDisabled(id, compname)
+        if components then
+            for _, comp_id in ipairs(components) do
                 ComponentSetValue2(comp_id, "is_emitting", enable)
             end
         end
@@ -55,6 +70,9 @@ end
 
 local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
 
+    local entity_id = GetUpdatedEntityID()
+    local stone_id = EntityGetParent(entity_id)
+
     local stone_recipie = findInfusionRecipes(potion_id, entityName)
 
     local hint_id = utils.getVariable(entity_id, "hintEnable")
@@ -63,7 +81,7 @@ local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
     
     -- Handle the result
     if is_success then
-        EntityKill(EntityGetParent(entity_id))
+        EntityKill(stone_id)
         EntityKill(potion_id)
         return true
     else
@@ -77,13 +95,14 @@ end
 
 --- Main infusion function
 function material_area_checker_success(pos_x, pos_y)
-    entity_id = GetUpdatedEntityID()
+    local entity_id = GetUpdatedEntityID()
+    local stone_id = EntityGetParent(entity_id)
 
     -- Visual hint
     utils.setVariable(entity_id, "hintEnable", "value_bool", true)
     enableHalo(entity_id, true)
 
-    local entityName = utils.getEntityIdentifier(EntityGetParent(entity_id))
+    local entityName = utils.getEntityIdentifier(stone_id)
 
     -- Get potion or powder_stash material
     local potions_id = EntityGetInRadiusWithTag(pos_x, pos_y, reaction_distance_max, "potion")
@@ -119,12 +138,16 @@ function material_area_checker_success(pos_x, pos_y)
 end
 
 function item_pickup(entity_item, entity_pickupper, item_name )
-    utils.setVariable(entity_item, "hintEnable", "value_bool", true)
-    utils.setVariable(entity_item, "hintEnable", "value_int", 0)
-    enableHalo(entity_item, false)
+    local _, entity_id = get_infusion_entity()
+
+    utils.setVariable(entity_id, "hintEnable", "value_bool", false)
+    utils.setVariable(entity_id, "hintEnable", "value_int", 0)
+    enableHalo(entity_id, false)
 end
 
 --- File code
+
+local _, entity_id = get_infusion_entity()
 
 local hint_variable = utils.getVariable(entity_id, "hintEnable")
 

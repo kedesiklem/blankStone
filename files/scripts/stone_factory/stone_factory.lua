@@ -32,14 +32,6 @@ local function handleHint(hint_data, pos_x, pos_y)
     
     GamePrint(hint_data.message)
     
-    for i = 0, 8 do
-        local angle = (i / 8) * 2 * math.pi
-        local radius = 10
-        local x = pos_x + math.cos(angle) * radius
-        local y = pos_y + math.sin(angle) * radius
-        GameCreateParticle("spark_blue", x, y, 3, 0, 0, false, false, false)
-    end
-    
     GamePlaySound("data/audio/Desktop/ui.bank", "ui/button_click", pos_x, pos_y)
 end
 

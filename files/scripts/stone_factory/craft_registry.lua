@@ -40,7 +40,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["material_confusion"] = {stone_key = "confuseStone"},
         ["honey"] = {stone_key = "honeyStone"},
 
-        -- HINT
+        -- HINT (not recipes)
 
         ["magic_liquid_teleportation"] = {hint_key = "hint_blankstone_teleport"},
         ["lava"] = {hint_key = "hint_blankstone_skipping_step"},
