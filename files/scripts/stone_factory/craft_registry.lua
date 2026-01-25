@@ -10,7 +10,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[grows_grass]"] = {stone_key = "stonestone"},
         ["water"] = {stone_key = "waterstone"},
         ["poo"] = {stone_key = "poopstone"},
-        ["blood_worm"] = {stone_key = "sunseed"},
+        ["blood_worm"] = {stone_key = "wormBloodStone"},
         ["magic_liquid_mana_regeneration"] = {stone_key = "wandstone"},
         -------------------------
         
@@ -329,7 +329,7 @@ local FUSE_RECIPES = {
         ingredients = {
             { name = "reforged_book_infuse", count = 1 },
             { name = "reforged_book_purity", count = 1 },
-            { name = "reforged_book_opus_magnum", count = 1 },
+            { name = "reforged_book_magnum_opus", count = 1 },
         },
         radius = 20,
         results = {
@@ -341,6 +341,42 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
 
+    },    
+    
+    { -- Sun Seed Quintessence
+        ingredients = {
+            { name = "wormBloodStone", count = 1 }
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "sunseed", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_fuse_book_title",
+            desc = "$text_blankstone_fuse_book_desc",
+        },
+        on_success = function() end
+    },
+
+    { -- Sun Seed Paha Silmä
+        ingredients = {
+            { name = "wormBloodStone", count = 1 }
+        },
+        catalistes = {
+            { tag = "evil_eye", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "sunseed", offset_y = -10},
+        },
+        message = {
+            title = "$text_blankstone_sunSeed_craft_title",
+            desc = "$text_blankstone_sunSeed_craft_desc",
+        },
+        on_success = function() end
     },
 }
 
@@ -368,8 +404,8 @@ local FORGE_RECIPES = {
             desc = "$text_blankstone_repair_book_desc",
         }
     },
-    ["book_opus_magnum"] = {
-        items={BOOK_PATH .. "reforged_book_opus_magnum.xml"},
+    ["book_magnum_opus"] = {
+        items={BOOK_PATH .. "reforged_book_magnum_opus.xml"},
         message = {
             title = "$text_blankstone_repair_book_title",
             desc = "$text_blankstone_repair_book_desc",

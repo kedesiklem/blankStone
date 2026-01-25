@@ -76,15 +76,15 @@ function OnPlayerSpawned(player_entity)
     -- SPELL
     -- CreateItemActionEntity("BLANKSTONE_STONE_FUSER", pos_x, pos_y)
 
-    -- OPUS MAGNUM 
+    -- MAGNUM OPUS 
     -- EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
-    -- EntityLoad( "mods/blankStone/files/entities/opus_magnum/lapis_philosophorum.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/magnum_opus/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST
 
     -- EntityLoad( BOOK_PATH .."book_infuse.xml", pos_x, pos_y )
     -- EntityLoad( BOOK_PATH .."book_purity.xml", pos_x, pos_y )
-    -- EntityLoad( BOOK_PATH .."book_opus_magnum.xml", pos_x, pos_y )
+    -- EntityLoad( BOOK_PATH .."book_magnum_opus.xml", pos_x, pos_y )
 
 
     -- EntityLoad( STONE_PATH .. "stone_honey.xml", pos_x, pos_y )

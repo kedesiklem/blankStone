@@ -3,7 +3,7 @@
 ![BlankStone Preview Image](workshop_preview_image.png)
 
 This mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. 
-Discover all the secrets scattered around the world, decipher the hints, and achieve the Opus Magnum."
+Discover all the secrets scattered around the world, decipher the hints, and achieve the Magnum Opus."
 
 
 ```
@@ -13,7 +13,7 @@ Discover all the secrets scattered around the world, decipher the hints, and ach
 │   ├── entities
 │   │   ├── base_stone.xml                          # Base for every stone (define basic physical property)
 │   │   ├── elemental_stone/
-│   │   ├── opus_magnum/
+│   │   ├── magnum_opus/
 │   │   ├── items/
 │   │   ├── misc/
 │   │   ├── elemental_stone.xml                     # Base for every elemental stone (make them purifiable)
@@ -39,10 +39,11 @@ Discover all the secrets scattered around the world, decipher the hints, and ach
 │   │   │   └── anvil_appends.lua
 │   │   ├── mod_compatibility
 │   │   │   └── vanilla_appends.lua                 # Add abstract_stone property to vanilla stone and in_inventory effect (from apotheosis)
-│   │   ├── stone_factory                           # Handle collective and specific stone infusion condition
-│   │   │   ├── craft_registry.lua                  # <--- If you want to add new craft
+│   │   ├── stone_factory                           # Handle -collective and specific stone infusion condition
 │   │   │   ├── craft_requirements.lua
 │   │   │   ├── stone_factory.lua
+│   │   │   ├── craft_registry.lua                  # <--- If you want to add new craft
+│   │   │   ├── hint_registry.lua                   # <--- If you add hint craft (that doesn't produce of consume anything)
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
 │   │   ├── stone_specific_script/                  # For the script that concerns only a handful of stones 
 │   │   ├── status_effect/                          # For material/damage_type immunity : check poisonStone
@@ -82,7 +83,7 @@ Discover all the secrets scattered around the world, decipher the hints, and ach
 - hint (message / book)
 - fuser spell
 - material immunity / damage_type immunity
-- opus magnum
+- magnum opus
 - Gods Secrets
 
 ### VanillaChange

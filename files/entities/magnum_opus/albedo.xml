@@ -3,18 +3,18 @@
 
         <!-- physical presence -->
         <PhysicsImageShapeComponent
-            image_file="mods/blankStone/files/items_gfx/opus_magnum/albedo_stone.png"
+            image_file="mods/blankStone/files/items_gfx/magnum_opus/albedo_stone.png"
         ></PhysicsImageShapeComponent>
 
         <!-- item -->
         <SpriteComponent
-            image_file="mods/blankStone/files/items_gfx/opus_magnum/albedo_stone.png"
+            image_file="mods/blankStone/files/items_gfx/magnum_opus/albedo_stone.png"
         ></SpriteComponent>
 
         <ItemComponent
             item_name="$stone_blankstone_albedo_name"
             ui_description="$stone_blankstone_albedo_desc"
-            ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/albedo_stone.png"
+            ui_sprite="mods/blankStone/files/ui_gfx/magnum_opus/albedo_stone.png"
         ></ItemComponent>
 
         <UIInfoComponent
@@ -56,9 +56,9 @@
         ></SpriteParticleEmitterComponent>
     </Base>
 
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="albedo"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="albedo"
+    ></VariableStorageComponent>
 
 </Entity>

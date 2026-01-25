@@ -3,18 +3,18 @@
 
         <!-- physical presence -->
         <PhysicsImageShapeComponent
-            image_file="mods/blankStone/files/items_gfx/opus_magnum/citrinitas_stone.png"
+            image_file="mods/blankStone/files/items_gfx/magnum_opus/citrinitas_stone.png"
         ></PhysicsImageShapeComponent>
 
         <!-- item -->
         <SpriteComponent
-            image_file="mods/blankStone/files/items_gfx/opus_magnum/citrinitas_stone.png"
+            image_file="mods/blankStone/files/items_gfx/magnum_opus/citrinitas_stone.png"
         ></SpriteComponent>
 
         <ItemComponent
             item_name="$stone_blankstone_citrinitas_name"
             ui_description="$stone_blankstone_citrinitas_desc"
-            ui_sprite="mods/blankStone/files/ui_gfx/opus_magnum/citrinitas_stone.png"
+            ui_sprite="mods/blankStone/files/ui_gfx/magnum_opus/citrinitas_stone.png"
         ></ItemComponent>
 
         <UIInfoComponent
@@ -55,9 +55,9 @@
             scale.x="1.5" scale.y="1.5"
         ></SpriteParticleEmitterComponent>
     </Base>
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="citrinitas"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="citrinitas"
+    ></VariableStorageComponent>
 
 </Entity>

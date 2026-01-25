@@ -14,6 +14,6 @@ xml:first_of("mBufferedPixelScenes"):add_child(nxml.parse([[
 
 -- Wand Tower book
 xml:first_of("mBufferedPixelScenes"):add_child(nxml.parse([[
-    <PixelScene pos_x="10030" pos_y="4365" just_load_an_entity="mods/blankStone/files/entities/items/books/book_opus_magnum.xml" />
+    <PixelScene pos_x="10030" pos_y="4365" just_load_an_entity="mods/blankStone/files/entities/items/books/book_magnum_opus.xml" />
 ]]))
 ModTextFileSetContent("data/biome/_pixel_scenes.xml", tostring(xml))

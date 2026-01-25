@@ -1,6 +1,6 @@
 <Mod
 	name="Blank Stone"
-	description="BlankStone: A Journey to the Magnum Opus\nThis mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. Discover all the secrets scattered around the world, decipher the hints, and achieve the Opus Magnum."
+	description="BlankStone: A Journey to the Magnum Opus\nThis mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. Discover all the secrets scattered around the world, decipher the hints, and achieve the Magnum Opus."
 	tags="alchemy,items"
 	dont_upload_folders=".vscode"
 	dont_upload_files=".gitignore"

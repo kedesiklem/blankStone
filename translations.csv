@@ -3,6 +3,8 @@
 
 text_blankstone_starter_stone_desc,"[You manage to read these words carved into the stone]\n   Knowledge is found in books scattered throughout the world.\n   The powder purifies.\n   The mimicking fluid transforms.\n   You must be strong.\n   Find the bees",,,,,"[Vous parvenez à lire ces mots gravés dans la pierre]\n   Le savoir se trouve dans les livres dispersés à travers le monde.\n   La poudre purifie.\n   Le fluide imitateur transforme.\n   Vous devrez être fort.\n   Trouvez les abeilles",,,,,,,
 
+stone_blankstone_blankStone_name,Blank Stone,,,,,Pierre Immaculé,,,,,,,
+stone_blankstone_blankStone_desc,"An imitation without soul. It yearns to become.",,,,,Une imitation sans âme. Elle aspire à devenir.,,,,,,,
 stone_blankstone_acceleratiumStone_name,Viridian Rush Stone,,,,,Pierre de Ruée Viridienne,,,,,,,
 stone_blankstone_acceleratiumStone_desc,Time bends around you. The world slows while you race.,,,,,Le temps se plie autour de vous. Le monde ralentit pendant que vous filez.,,,,,,,
 stone_blankstone_ambrosiaStone_name,Ambrosia Stone,,,,,Pierre d'Ambroisie,,,,,,,
@@ -23,8 +25,6 @@ stone_blankstone_loveStone_name,Heart of Devotion,,,,,Cœur de Dévotion,,,,,,,
 stone_blankstone_loveStone_desc,"Love screams from within. Everything yearns for you.",,,,,L'amour hurle de l'intérieur. Tout aspire à vous.,,,,,,,
 stone_blankstone_polyStone_name,Flesh Sculptor's Eye,,,,,Œil du Sculpteur de Chair,,,,,,,
 stone_blankstone_polyStone_desc,"Something watches through you. Your form is negotiable.",,,,,Quelque chose observe à travers vous. Votre forme est négociable.,,,,,,,
-stone_blankstone_blankStone_name,Blank Stone,,,,,Pierre Intacte,,,,,,,
-stone_blankstone_blankStone_desc,"An imitation without soul. It yearns to become.",,,,,Une imitation sans âme. Elle aspire à devenir.,,,,,,,
 stone_blankstone_toxicStone_name,Miasma Seed,,,,,Graine de Miasme,,,,,,,
 stone_blankstone_toxicStone_desc,"Death concentrated. The air around it withers.",,,,,La mort concentrée. L'air autour d'elle se flétrit.,,,,,,,
 stone_blankstone_unstableTeleportStone_name,Fractured Blink Stone,,,,,Pierre de Transfert Fracturée,,,,,,,
@@ -52,6 +52,8 @@ stone_blankstone_manaStone_desc,"The beating heart of wands. True power requires
 stone_blankstone_honeyStone_name,Sealed Hive,,,,,Ruche Scellée,,,,,,,
 stone_blankstone_honeyStone_desc,"Something stirs within. Buzzing fills your mind.\nPatience. Keep it.",,,,,Quelque chose remue à l'intérieur. Un bourdonnement emplit votre esprit.\nPatience. Gardez la.,,,,,,,
 stone_blankstone_honeyStone_desc2,"Silence. The bees have spoken.",,,,,Silence. Les abeilles ont parlé.,,,,,,,
+stone_blankstone_wormBloodStone_name,Worm's Scrying Eye,,,,,Œil divinatoire du ver,,,,,,,
+stone_blankstone_wormBloodStone_desc,"The worm sees all. Shadows dissolve before its gaze.\nFeed it malice, and it'll hungers for the sun.",,,,," Le ver voit tout. Les ombres se dissolvent sous son regard. Nourrissez-le de malveillance, et il aura soif de soleil.",,,,,,,
 
 stone_blankstone_voidStone_name,Decay Stone,,,,,Pierre de Décrépitude,,,,,,,
 stone_blankstone_voidStone_desc,"Matter unravels at its touch. The first step toward nothingness.",,,,,"La matière se délite à son contact. Le premier pas vers le néant.",,,,,,,
@@ -65,7 +67,7 @@ stone_blankstone_quintessence_name,Quintessence,,,,,Quintessence,,,,,,,
 stone_blankstone_quintessence_desc,"The fifth element. Halfway to divinity.",,,,,Le cinquième élément. À mi-chemin de la divinité.,,,,,,,
 
 stone_blankstone_lapis_philosophorum_name,Lapis Philosophorum,,,,,Lapis Philosophorum,,,,,,,
-stone_blankstone_lapis_philosophorum_desc,"Opus Magnum. The truth revealed.",,,,,Opus Magnum. La vérité révélée.,,,,,,,
+stone_blankstone_lapis_philosophorum_desc,"Magnum Opus. The truth revealed.",,,,,Magnum Opus. La vérité révélée.,,,,,,,
 
 stone_blankstone_nigredo_name,Nigredo,,,,,Nigredo,,,,,,,
 stone_blankstone_nigredo_desc,"The Black Work.",,,,,L'Œuvre au Noir.,,,,,,,
@@ -96,16 +98,16 @@ book_blankstone_purity_name,Tome of Purity,,,,,Tome de Pureté,,,,,,,
 book_blankstone_purity_desc,"Bury that which bears the Mark of Elements deep within the Purifying Powder...\nLet it be completely engulfed, hidden from sight.\nWhat cleanses around purges what lies inside.\nTo understand, you will have to descend into the depths and rise back to the surface.\nDescending is not easy, but rising back up is the real challenge.",,,,,"Enterrez ce qui porte la Marque des Éléments au plus profond de la Poudre Purificatrice...\nQu'elle soit complètement engloutie, cachée de la vue.\nCe qui nettoie autour purge ce qui est à l'intérieur.\nPour comprendre, vous devrez descendre dans les profondeurs et remonter à la surface.\nDescendre n'est pas facile, mais remonter est le véritable défi.",,,,,,,
 book_blankstone_infuse_name,Tome of Infusion,,,,,Tome d'Infusion,,,,,,,
 book_blankstone_infuse_desc,"The Fluid that Mimics observes what surrounds it...\nPlace the Purified within, and nearby, a Vessel filled.\nWhat is Near shall be Carried, what Bathes shall be Changed.\nThe Imitator becomes Messenger between Container and Stone.",,,,,"Le Fluide qui Imite observe ce qui l'entoure...\nPlacez le Purifié à l'intérieur, et à proximité, un Réceptacle rempli.\nCe qui est Proche sera Porté, ce qui Baigne sera Changé.\nL'Imitateur devient Messager entre Contenant et Pierre.",,,,,,,
-book_blankstone_opus_magnum_name,Tome of Opus Magnum,,,,,Tome du Grand Œuvre,,,,,,,
-book_blankstone_opus_magnum_desc,"Four must become One through violent convergence...\nFire, Water, Earth, Lightning - collide them brutally.\nFrom Chaos emerges the Quintessence, the Fifth Element.\nThis Perfect Essence refines its lesser forms...\nWith it, Imperfection ascends to Perfection.\nBut such power requires tools that transcend mortal limits.\nSeek the one who breaks the gods' chains, who offers spells without bounds.",,,,,"Quatre doivent devenir Un par convergence violente...\nFeu, Eau, Terre, Foudre - faites-les entrer en collision brutalement.\nDu Chaos émerge la Quintessence, le Cinquième Élément.\nCette Essence Parfaite raffine ses formes inférieures...\nAvec elle, l'Imperfection s'élève vers la Perfection.\nMais un tel pouvoir exige des outils qui transcendent les limites mortelles.\nCherchez celui qui brise les chaînes des dieux, qui offre des sorts sans limites.",,,,,,,
+book_blankstone_magnum_opus_name,Tome of Magnum Opus,,,,,Tome du Grand Œuvre,,,,,,,
+book_blankstone_magnum_opus_desc,"Four must become One through violent convergence...\nFire, Water, Earth, Lightning - collide them brutally.\nFrom Chaos emerges the Quintessence, the Fifth Element.\nThis Perfect Essence refines its lesser forms...\nWith it, Imperfection ascends to Perfection.\nBut such power requires tools that transcend mortal limits.\nSeek the one who breaks the gods' chains, who offers spells without bounds.",,,,,"Quatre doivent devenir Un par convergence violente...\nFeu, Eau, Terre, Foudre - faites-les entrer en collision brutalement.\nDu Chaos émerge la Quintessence, le Cinquième Élément.\nCette Essence Parfaite raffine ses formes inférieures...\nAvec elle, l'Imperfection s'élève vers la Perfection.\nMais un tel pouvoir exige des outils qui transcendent les limites mortelles.\nCherchez celui qui brise les chaînes des dieux, qui offre des sorts sans limites.",,,,,,,
 
 
 reforged_book_blankstone_purity_name,Tome of True Purity,,,,,Tome de Pureté Veritable,,,,,,,
 reforged_book_blankstone_purity_desc,"The Powder cleanses, but only the surface...\nTrue Purity flows from what nurtures life itself.\nInfuse the Stone with the White Gift, the Mother's Essence.\nMakes it perfect.\nOnly through this can corruption be truly expelled.",,,,,"La Poudre nettoie, mais seulement la surface...\nLa Vraie Pureté coule de ce qui nourrit la vie elle-même.\nInfuse la Pierre avec le Don Blanc, l'Essence de la Mère.\nRend la parfaite.\nSeulement ainsi la corruption peut être vraiment expulsée.",,,,,,,
 reforged_book_blankstone_infuse_name,Tome of True Infusion,,,,,Tome d'Infusion,,,,,,,
 reforged_book_blankstone_infuse_desc,"The Imitator carries essence once, but its thirst is not quenched...\nSome vessels hunger for more. Some stones crave deeper transformation.\nReturn to the bath. Let the Messenger speak again.\nWhat was Changed can Change further.\nRepetition reveals hidden depths.",,,,,"L'Imitateur porte l'essence une fois, mais sa soif n'est pas étanchée...\nCertains réceptacles ont plus faim. Certaines pierres désirent une transformation plus profonde.\nRetournez au bain. Laissez le Messager parler à nouveau.\nCe qui fut Changé peut Changer davantage.\nLa répétition révèle des profondeurs cachées.",,,,,,,
-reforged_book_blankstone_opus_magnum_name,Tome of True Opus Magnum,,,,,Tome du Grand Œuvre Veritable,,,,,,,
-reforged_book_blankstone_opus_magnum_desc,"Knowledge illuminates the path to perfection...\nSeek the Spheres of Enlightenment scattered across realms.\nBut beware - not all light is pure.\nThe Tainted Orbs whisper sweet lies, they corrupt the soul.\nTo achieve the Magnum Opus, you must see true from false.\nWisdom without corruption. Power without compromise.",,,,,"La connaissance illumine le chemin vers la perfection...\nCherchez les Sphères d'Éveil éparpillées à travers les royaumes.\nMais prenez garde - toute lumière n'est pas pure.\nLes Orbes Souillés murmurent de doux mensonges, ils corrompent l'âme.\nPour accomplir le Magnum Opus, vous devez distinguer le vrai du faux.\nSagesse sans corruption. Pouvoir sans compromis.",,,,,,,
+reforged_book_blankstone_magnum_opus_name,Tome of True Magnum Opus,,,,,Tome du Grand Œuvre Veritable,,,,,,,
+reforged_book_blankstone_magnum_opus_desc,"Knowledge illuminates the path to perfection...\nSeek the Spheres of Enlightenment scattered across realms.\nBut beware - not all light is pure.\nThe Tainted Orbs whisper sweet lies, they corrupt the soul.\nTo achieve the Magnum Opus, you must see true from false.\nWisdom without corruption. Power without compromise.",,,,,"La connaissance illumine le chemin vers la perfection...\nCherchez les Sphères d'Éveil éparpillées à travers les royaumes.\nMais prenez garde - toute lumière n'est pas pure.\nLes Orbes Souillés murmurent de doux mensonges, ils corrompent l'âme.\nPour accomplir le Magnum Opus, vous devez distinguer le vrai du faux.\nSagesse sans corruption. Pouvoir sans compromis.",,,,,,,
 
 book_blankstone_honey_name,Tome of Secrets,,,,,Tome des Secrets,,,,,,,
 book_blankstone_honey_desc,"Infuse a stone with the blue thing that disappears quickly.\nWith that, the fusion can begin.\nYou can only move forward by understanding the world and its rules.\nJust as liquids mix, stones fuse, but sometimes stones need a catalyst.\nYou will be halfway there when you have it.",,,,,"Imprégnez une pierre avec la chose bleue qui disparaît rapidement.\nAvec cela, la fusion peut commencer.\nVous ne pouvez avancer qu'en comprenant le monde et ses règles.\nTout comme les liquides se mélangent, les pierres fusionnent, mais parfois les pierres ont besoin d'un catalyseur.\nVous serez à mi-chemin quand vous l'aurez.",,,,,,,
@@ -147,6 +149,9 @@ text_blankstone_fuse_fail,"Mergers require knowledge.",,,,,Les fusions exigent d
 
 text_blankstone_quintesscence_upgrade_title,"The Stone Remembers",,,,,La Pierre se Souvient,,,,,,,
 text_blankstone_quintesscence_upgrade_desc,"Quintessence awakens what slumbered within.\nThe stone reveals what it was always meant to be.",,,,,"La Quintessence éveille ce qui sommeillait.\nLa pierre révèle ce qu'elle était destinée à devenir.",,,,,,,
+
+text_blankstone_sunSeed_craft_title,The Seed Awakens,,,,,La Graine s'Éveille,,,,,,,
+text_blankstone_sunSeed_craft_desc,"The worm is inspired by malice and... shines?  Since when do worms do that?",,,,,Le ver est inspiré par la malveillance et... brille ? Depuis quand les vers font-ils ça ?,,,,,,,
 
 text_blankstone_hint_skipping_step,"You cannot skip steps.",,,,,"Vous ne pouvez pas sauter des étapes.",,,,,,,
 text_blankstone_hint_useless,"The Gods considered the matter, but found it of no interest.",,,,,"Les dieux examinèrent la question, mais la trouvèrent sans intérêt.",,,,,,,

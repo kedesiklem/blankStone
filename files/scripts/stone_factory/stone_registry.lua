@@ -1,6 +1,6 @@
 local blankStone_path = "mods/blankStone/files/entities/"
 local elemental_stone_path = blankStone_path .. "elemental_stone/"
-local opus_magnum_path = blankStone_path .. "opus_magnum/"
+local magnum_opus_path = blankStone_path .. "magnum_opus/"
 local vanilla_stone_path = "data/entities/items/pickup/"
 local book_path = "mods/blankStone/files/entities/items/books/"
 
@@ -16,31 +16,31 @@ local STONE_DATA = {
         category = "special",
     },
 
-    -- Opus Magnum
+    -- Magnum Opus
     ["lapis_philosophorum"] = {
-        path = opus_magnum_path .. "lapis_philosophorum",
+        path = magnum_opus_path .. "lapis_philosophorum",
         level = 34,
-        category = "opus_magnum",
+        category = "magnum_opus",
     },
     ["nigredo"] = {
-        path = opus_magnum_path .. "nigredo",
+        path = magnum_opus_path .. "nigredo",
         level = 5,
-        category = "opus_magnum",
+        category = "magnum_opus",
     },
     ["albedo"] = {
-        path = opus_magnum_path .. "albedo",
+        path = magnum_opus_path .. "albedo",
         level = 7,
-        category = "opus_magnum",
+        category = "magnum_opus",
     },
     ["citrinitas"] = {
-        path = opus_magnum_path .. "citrinitas",
+        path = magnum_opus_path .. "citrinitas",
         level = 9,
-        category = "opus_magnum",
+        category = "magnum_opus",
     },
     ["rubedo"] = {
-        path = opus_magnum_path .. "rubedo",
+        path = magnum_opus_path .. "rubedo",
         level = 9,
-        category = "opus_magnum",
+        category = "magnum_opus",
     },
 
     -- Special
@@ -167,6 +167,12 @@ local STONE_DATA = {
         category = "elemental",
     },
 
+    ["wormBloodStone"] = {
+        path = elemental_stone_path .. "stone_worm_blood",
+        level = 9,
+        category = "elemental",
+    },
+
     ["polyStone"] = {
         path = elemental_stone_path .. "stone_poly",
         level = 11,
@@ -237,8 +243,8 @@ local STONE_DATA = {
         level = 0,
         category = "book",
     },
-    ["reforgedBookOpusMagnum"] = {
-        path = book_path .. "reforged_book_opus_magnum",
+    ["reforgedBookMagnumOpus"] = {
+        path = book_path .. "reforged_book_magnum_opus",
         level = 0,
         category = "book",
     },
@@ -255,9 +261,9 @@ local STONE_DATA = {
 
 -- TODO move text to translation.csv
 local STONE_MESSAGES = {
-    -- Opus Magnum
+    -- Magnum Opus
     ["lapis_philosophorum"] = {
-        success = "The Gods applaud you. You have achieved the Opus Magnum.",
+        success = "The Gods applaud you. You have achieved the Magnum Opus.",
         fail = "The ultimate transmutation requires absolute perfection.",
     },
     ["nigredo"] = {
@@ -365,11 +371,11 @@ local VFX_PRESETS = {
     default = {
         "data/entities/projectiles/explosion.xml",
     },
-    opus_magnum_ultimate = {
+    magnum_opus_ultimate = {
         "data/entities/projectiles/deck/explosion_giga.xml",
         "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml",
     },
-    opus_magnum_standard = {
+    magnum_opus_standard = {
         "data/entities/projectiles/explosion.xml",
         "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml",
     },
@@ -381,11 +387,11 @@ local VFX_PRESETS = {
 
 -- Mapping pierre → VFX
 local STONE_VFX_MAPPING = {
-    ["lapis_philosophorum"] = "opus_magnum_ultimate",
-    ["nigredo"] = "opus_magnum_standard",
-    ["albedo"] = "opus_magnum_standard",
-    ["citrinitas"] = "opus_magnum_standard",
-    ["rubedo"] = "opus_magnum_standard",
+    ["lapis_philosophorum"] = "magnum_opus_ultimate",
+    ["nigredo"] = "magnum_opus_standard",
+    ["albedo"] = "magnum_opus_standard",
+    ["citrinitas"] = "magnum_opus_standard",
+    ["rubedo"] = "magnum_opus_standard",
     ["quintessence"] = "quintessence_unleash",
 }
 
