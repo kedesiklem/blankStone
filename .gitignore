@@ -3,5 +3,6 @@
 *.kra
 *~
 artwork/
+utils/other/
 drawing.svg
 RELEASE_CHECKLIST.md

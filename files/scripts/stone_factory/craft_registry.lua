@@ -29,6 +29,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["midas"] = {stone_key = "goldStone"},
         ["bone"] = {stone_key = "bonesStone"},
         ["poison"] = {stone_key = "poisonHarmfulStone"},
+        ["[slime]"] = {stone_key = "slimeStone"},
         
         ["alcohol"] = {stone_key = "whiskeyStone"},
         ["alcohol_gas"] = {stone_key = "whiskeyStone"},
@@ -39,6 +40,8 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["milk"] = {stone_key = "milkStone"},
         ["material_confusion"] = {stone_key = "confuseStone"},
         ["honey"] = {stone_key = "honeyStone"},
+
+        ["[gold]"] = {stone_key = "shinyOrb"},
 
         -- HINT (not recipes)
 
@@ -53,6 +56,12 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[regenerative]"] = {hint_key = "hint_quintessence_base"},
         ["[regenerative_gas]"] = {hint_key = "hint_quintessence_base"},
         ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
+
+    },
+
+    ["slimeStone"] = {
+        ["unstableTeleportStone"] = {stone_key = "teleportStone"},
+        ["[magic_faster]"] = {stone_key = "explosionStone"},
     },
 
     ["unstableTeleportStone"] = {
@@ -81,7 +90,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
 }
 
--- Note : preferably use tags to identify ingredients if possible
+-- Note : preferably use tags to identify ingredients/catalistes if possible
 local FUSE_RECIPES = {
     { -- quintessence craft
         -- Ingrédients requis
@@ -104,7 +113,6 @@ local FUSE_RECIPES = {
         -- Callback optionnel après craft réussi
         on_success = function() end
     },
-
     { -- voidStone to nigredo
         ingredients = {
             { name = "voidStone", count = 1 },
@@ -177,7 +185,6 @@ local FUSE_RECIPES = {
         on_success = function() end
 
     },
-
     { -- albedo purification
         ingredients = {
             { tag = "brimstone|stonestone|waterstone|thunderstone", count = 1 },
@@ -192,7 +199,6 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
     },
-    
     { -- opum magnum
         ingredients = {
             { name = "nigredo", count = 1 },
@@ -213,7 +219,6 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
     },
-
     { -- hasteStone by fusion
         ingredients = {
             { name = "levitatiumStone", count = 1 },
@@ -230,7 +235,6 @@ local FUSE_RECIPES = {
         -- },
         on_success = function() end
     },
-
     { -- poisonharmful to poison
         ingredients = {
             { name = "poisonHarmfulStone", count = 1 },
@@ -248,7 +252,6 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
     },
-
     { -- berserk to pheromone
         ingredients = {
             { name = "bigStone", count = 1 },
@@ -266,7 +269,6 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
     },
-
     { -- fire to lava
         ingredients = {
             { tag = "brimstone", count = 1 },
@@ -285,7 +287,6 @@ local FUSE_RECIPES = {
         on_success = function() end
 
     },
-
     { -- wandstone to manaStone
         ingredients = {
             { name = "wandstone", count = 1 },
@@ -304,7 +305,6 @@ local FUSE_RECIPES = {
         on_success = function() end
 
     },
-
     { -- honey + diamond = ambrosia + posion
         ingredients = {
             { tag = "thunderstone", count = 1 },
@@ -324,7 +324,6 @@ local FUSE_RECIPES = {
         -- },
         on_success = function() end
     },
-
     { -- Gods secrets
         ingredients = {
             { name = "reforged_book_infuse", count = 1 },
@@ -341,26 +340,7 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
 
-    },    
-    
-    { -- Sun Seed Quintessence
-        ingredients = {
-            { name = "wormBloodStone", count = 1 }
-        },
-        catalistes = {
-            { name = "quintessence|lapis_philosophorum", count = 1 },
-        },
-        radius = 20,
-        results = {
-            { key = "sunseed", offset_y = -10},
-        },
-        message = {
-            title = "$text_blankstone_fuse_book_title",
-            desc = "$text_blankstone_fuse_book_desc",
-        },
-        on_success = function() end
     },
-
     { -- Sun Seed Paha Silmä
         ingredients = {
             { name = "wormBloodStone", count = 1 }

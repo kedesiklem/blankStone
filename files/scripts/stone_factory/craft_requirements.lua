@@ -5,6 +5,7 @@ local function isPure()
     for i=0, 11 do 
         for _, j in ipairs({128, 256}) do
             corrupted = corrupted or GameGetOrbCollectedThisRun(i + j)
+            
         end
     end
     return not(corrupted)

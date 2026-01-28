@@ -7,18 +7,20 @@ local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
 -- Just spawn the stone, use createStone instead to add VFX
 local function spawnStone(stone_data, pos_x, pos_y)
-    EntityLoad(stone_data.path, pos_x, pos_y - 5)
     log.info("Stone created: " .. stone_data.path)
+    return EntityLoad(stone_data.path, pos_x, pos_y - 5)
 end
 
 -- Create stone with VFX
 local function createStone(stone_data, pos_x, pos_y)
     -- Charger l'entité de la pierre
-    spawnStone(stone_data, pos_x, pos_y)
+    local stone_id = spawnStone(stone_data, pos_x, pos_y)
     -- Spawn VFX Entity (explosion/gliph...)
     for i=1, #stone_data.vfx do
         EntityLoad(stone_data.vfx[i], pos_x, pos_y - 5)
     end
+
+    return stone_id
 end
 
 -- INFUSION RECIPES RELATED FUNCTION
@@ -38,7 +40,6 @@ end
 local function tryInfuseStone(stone_recipie, hintCount, pos_x, pos_y)
 
     local stone_hint = stone_recipie.hint_key
-
     if stone_hint then
         if hintCount == 0 then
             local hint_data = HINT_REGISTRY[stone_hint]
@@ -50,17 +51,18 @@ local function tryInfuseStone(stone_recipie, hintCount, pos_x, pos_y)
         end
         return false
     end
-
     
     local stone_key = stone_recipie.stone_key
-
     local stone_data = STONE_REGISTRY[stone_key]
-    
+
+
     -- Useless if the lookup table is done correctly
     if not stone_data then
         log.warn("Stone key not found in registry: " .. tostring(stone_key))
         return false
     end
+
+    stone_data = stone_data.preprocess(stone_data)
 
     log.debug("Found stone data for key: " .. tostring(stone_key))
 
@@ -76,7 +78,8 @@ local function tryInfuseStone(stone_recipie, hintCount, pos_x, pos_y)
         return false
     end
 
-    createStone(stone_data, pos_x, pos_y)
+    local stone_id = createStone(stone_data, pos_x, pos_y)
+    stone_data.postprocess(stone_id)
     GamePrintImportant(message)
     return true
 end

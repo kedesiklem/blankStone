@@ -21,7 +21,10 @@ local vanilla_stone = {
     "thunderstone",
     "stonestone",
     "poopstone",
+    "physics_gold_orb_greed",
+    "physics_gold_orb",
 }
+
 
 for _, value in pairs(vanilla_stone) do
     local path = vanilla_item_path .. value .. ".xml"
@@ -34,9 +37,15 @@ for _, value in pairs(vanilla_stone) do
     local stone_id = value:match("([^/]+)$")
 
     -- VariableStorageComponent blankStoneID
-    if not xml:first_of("VariableStorageComponent", function(v)
-        return v.attr.name == "blankStoneID"
-    end) then
+    local existing = nil
+    for elem in xml:each_of("VariableStorageComponent") do
+        if elem:get("name") == "blankStoneID" then
+            existing = elem
+            break
+        end
+    end
+
+    if not existing then
         xml:add_child(nxml.new_element("VariableStorageComponent", {
             name = "blankStoneID",
             value_string = stone_id,

@@ -1,0 +1,53 @@
+<Entity name="slimeStone">
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_slime.png"
+        ></PhysicsImageShapeComponent>
+
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_slime.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$stone_blankstone_slimeStone_name"
+            ui_description="$stone_blankstone_slimeStone_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_slime.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$stone_blankstone_slimeStone_name"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$stone_blankstone_slimeStone_name"
+            throw_as_item="1"
+        ></AbilityComponent>
+    </Base>
+
+
+    <!-- VFX -->
+
+    <Base file="mods/blankStone/files/VFX/sweat.xml">
+        <ParticleEmitterComponent
+            emitted_material_name="slime"
+            count_min="4"
+            count_max="6"
+        ></ParticleEmitterComponent>
+    </Base>
+
+    <!-- effect -->
+
+    <Base file="data/entities/misc/perks/projectile_slow_field.xml"></Base>
+
+    <GameEffectComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        effect="NO_SLIME_SLOWDOWN"
+        frames="-1"
+    ></GameEffectComponent>
+
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="slimeStone"
+    ></VariableStorageComponent>
+
+</Entity>

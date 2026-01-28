@@ -2,9 +2,26 @@
 
 ![BlankStone Preview Image](workshop_preview_image.png)
 
-This mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. 
-Discover all the secrets scattered around the world, decipher the hints, and achieve the Magnum Opus."
+```
+This mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. Discover all the secrets scattered around the world, decipher the hints, and achieve the Magnum Opus.
 
+[A message apears before you]
+    Hey! Thanks you for playing BlankStone.
+    The mod is still in Alpha version, so expect many changes (mainly in the endgame content).
+    Hope you'll have as much fun discovering the mod as I had creating it.
+- Ked
+
+```
+
+# README
+
+```
+This is where the actual README file begins. If you are a player, Noita is a knowledge-based game, and blankStone follows this philosophy. If you want to enjoy the mod, don't spoil your experience by directly accessing the mod files.
+
+If, despite this message, you still want to proceed, have fun! It means you're either a modder or just curious. In either case, welcome to blankStone's back room.
+
+PS: Also, feel free to contact me if you have any suggestion.
+```
 
 ```
 .

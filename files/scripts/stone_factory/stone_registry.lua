@@ -230,6 +230,11 @@ local STONE_DATA = {
         level = 9,
         category = "vanilla",
     },
+    ["shinyOrb"] = {
+        path = vanilla_stone_path .. "physics_gold_orb",
+        level = 1,
+        category = "vanilla",
+    },
 
     -- Books
 
@@ -295,6 +300,7 @@ local STONE_MESSAGES = {
     ["honeyStone"] = {
         success = "$text_blankstone_honey_success_craft",
     },
+
     -- Pierres avec messages custom
     ["lavaStone"] = {
         success = "Phoenix",
@@ -354,6 +360,11 @@ local STONE_MESSAGES = {
     ["wandstone"] = {
         fail = "$text_blankstone_missing_lot_knowledge",
     },
+
+    -- A bit of trolling
+    ["shinyOrb"] = {
+        success = "$text_blankstone_shinyorb_anticlimax",
+    }
 }
 
 -- Messages par défaut
@@ -425,6 +436,32 @@ local function deduceConditions(level)
 end
 
 -- ============================================================================
+-- PREPROCESS : Too specific change
+-- ============================================================================
+-- Call BEFORE spawn, but AFTER conditions check
+-- Input : data
+-- Output : new_data
+
+local STONE_PREPROCESS = {
+    ["shinyOrb"] = function(data)
+        if GameHasFlagRun("greed_curse") and not GameHasFlagRun("greed_curse_gone") then
+            data.path = "data/entities/items/pickup/physics_gold_orb_greed.xml"
+        end
+        return data
+    end,
+}
+
+-- ============================================================================
+-- POSTPROCESS : Callback
+-- ============================================================================
+-- Call AFTER spawn stone + VFX
+-- Input : stone entity id
+-- Output : void
+
+local STONE_POSTPROCESS = {
+}
+
+-- ============================================================================
 -- BUILDER : Construit STONE_REGISTRY dans le format attendu
 -- ============================================================================
 
@@ -447,7 +484,11 @@ local function buildStoneRegistry()
             or deduceConditions(stone_data.level)
             or STONE_CONDITIONS.default
         
-        -- Construire l'entrée exactement comme avant
+        -- Callbacks
+        local preprocess = STONE_PREPROCESS[stone_key] or function(data) return data end
+        local postprocess = STONE_POSTPROCESS[stone_key] or function(id) end
+        
+        -- Construire l'entrée
         registry[stone_key] = {
             path = stone_data.path .. ".xml",
             level = stone_data.level,
@@ -455,15 +496,14 @@ local function buildStoneRegistry()
             message_fail = message_fail,
             vfx = vfx,
             conditions = conditions,
+
+            preprocess = preprocess,
+            postprocess = postprocess,
         }
     end
 
     return registry
 end
-
--- ============================================================================
--- EXPORT : STONE_REGISTRY inchangé pour le reste du code
--- ============================================================================
 
 local STONE_REGISTRY = buildStoneRegistry()
 
