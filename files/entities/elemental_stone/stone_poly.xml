@@ -15,6 +15,7 @@
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_poly.png"
     ></ItemComponent>
 
+
     <UIInfoComponent
       name="$stone_blankstone_polyStone_name"> </UIInfoComponent>
 
@@ -50,6 +51,20 @@
       count_max="5"
     ></SpriteParticleEmitterComponent>
   </Base>
+
+
+  <Base file="mods/blankStone/files/VFX/inventory_animation/inventory_animation.xml">
+    <VariableStorageComponent
+      name="animation_folder"
+      value_string="mods/blankStone/files/VFX/inventory_animation/stone_poly_eye"
+    ></VariableStorageComponent>
+    <VariableStorageComponent
+      name="animation_config"
+      value_string="blink"
+      value_int="5"
+    ></VariableStorageComponent>
+  </Base>
+
 
   <!-- protection -->
   <GameEffectComponent

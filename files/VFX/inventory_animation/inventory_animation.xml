@@ -1,0 +1,24 @@
+<Entity>
+    <LuaComponent
+        _tags="enabled_in_inventory,enabled_in_hand"
+        script_source_file="mods/blankStone/files/VFX/inventory_animation/inventory_animation.lua"
+        execute_every_n_frame="6"
+    ></LuaComponent>
+
+    <VariableStorageComponent
+        name="animation_folder"
+        value_string="mods/blankStone/files/ui_gfx/elemental_stone/tiles"
+    ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="animation_config"
+        value_string="loop"
+        value_int="7"
+    ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="animation_state"
+        value_int="0"
+        value_float="0"
+    ></VariableStorageComponent>
+</Entity>

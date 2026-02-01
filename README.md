@@ -49,7 +49,7 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   │   ├── inject_stones.lua                       # Define what stone will spawn ingame (currently [02/01/2026] only blankStone)
 │   │   ├── purify_stone.lua                        # Define how elemental stone turn into blank stone (or something else)
 │   │   ├── stain_effect.lua                        # Allow stone to apply stain
-|   |   ├── enable_children.lua                     # Because fuck me I guess
+│   │   ├── enable_children.lua                     # Because fuck me I guess
 │   │   ├── biomes
 │   │   │   └── hint_spawn_list.lua                 # Emerald tablets hints
 │   │   ├── buildings
@@ -112,14 +112,8 @@ PS: Also, feel free to contact me if you have any suggestion.
 
 ## ONGOING
 - Make a stone for (almost) every liquid
-    - [x] Alcool Stone
-    - [x] Blood Stone
-    - [x] Bone Stone
-    - [x] Poison Stone
-    - [x] Honey Stone
     - [ ] BlackHole Stone (dig and attract enemies)
     - [ ] Silver Stone
-    - [x] Invisible Stone
     - [ ] Fungal Stone (see Apotheosis)
 - Translation stones messages
 
@@ -127,7 +121,6 @@ PS: Also, feel free to contact me if you have any suggestion.
 secret message when quintessence inhand
 ### V2
 - Apotheosis liquid stone (V2)
-- Animation (and something else) for stone_poly eye ?
 
 
 ## Special thanks to

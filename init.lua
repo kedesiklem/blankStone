@@ -90,6 +90,7 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( STONE_PATH .. "stone_honey.xml", pos_x, pos_y )
     -- EntityLoad( BOOK_PATH .."book_honey.xml", pos_x, pos_y )
 
+    -- EntityLoad( STONE_PATH .. "stone_poly.xml", pos_x, pos_y )
     -- EntityLoad( STONE_PATH .. "stone_lava.xml", pos_x, pos_y )
     -- EntityLoad( STONE_PATH .. "stone_poison_harmful.xml", pos_x, pos_y )
     -- EntityLoad( STONE_PATH .. "stone_poison.xml", pos_x, pos_y )
