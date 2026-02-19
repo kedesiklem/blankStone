@@ -118,6 +118,11 @@ local STONE_DATA = {
         level = 1,
         category = "elemental",
     },
+    ["urineStone"] = {
+        path = elemental_stone_path .. "stone_urine",
+        level = 1,
+        category = "elemental",
+    },
     ["unstableTeleportStone"] = {
         path = elemental_stone_path .. "stone_unstable_teleport",
         level = 1,

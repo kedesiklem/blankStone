@@ -4,7 +4,7 @@
             name="$book_blankstone_purity_name"
         > </UIInfoComponent>
 
-        <!-- At Mimic Quest -->
+        <!-- At Mimic Quest MW -->
         <ItemComponent
             item_name="$book_blankstone_purity_name"
             ui_description="$book_blankstone_purity_desc"

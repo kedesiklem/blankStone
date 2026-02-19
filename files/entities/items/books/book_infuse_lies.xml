@@ -1,0 +1,22 @@
+<Entity name="book_infuse_lies" tags="tablet,normal_tablet,forgeable">
+    <Base file="mods/blankStone/files/entities/items/books/base_book.xml">
+        <UIInfoComponent
+            name="$book_blankstone_infuse_lies_name"
+        > </UIInfoComponent>
+
+        <!-- At Alchemist PW -->
+        <ItemComponent
+            item_name="$book_blankstone_infuse_lies_name"
+            ui_description="$book_blankstone_infuse_lies_desc"
+        > </ItemComponent>
+
+        <AbilityComponent
+            ui_name="$book_blankstone_infuse_lies_name"
+        > </AbilityComponent>
+    </Base>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="book_infuse_lies"
+    ></VariableStorageComponent>
+
+</Entity>

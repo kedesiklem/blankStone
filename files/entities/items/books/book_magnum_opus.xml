@@ -4,7 +4,7 @@
             name="$book_blankstone_magnum_opus_name"
         > </UIInfoComponent>
 
-        <!-- At Tower -->
+        <!-- At Tower MW -->
         <ItemComponent
             item_name="$book_blankstone_magnum_opus_name"
             ui_description="$book_blankstone_magnum_opus_desc"

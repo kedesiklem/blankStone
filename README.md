@@ -45,7 +45,7 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   │   ├── quintessence_stone.png
 │   │   └── stone.kra
 │   ├── scripts
-│   │   ├── infuse_stone.lua                        # Core of the mod
+│   │   ├── infuse_stone.lua                        # Original core of the mod
 │   │   ├── inject_stones.lua                       # Define what stone will spawn ingame (currently [02/01/2026] only blankStone)
 │   │   ├── purify_stone.lua                        # Define how elemental stone turn into blank stone (or something else)
 │   │   ├── stain_effect.lua                        # Allow stone to apply stain
@@ -56,13 +56,13 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   │   │   └── anvil_appends.lua
 │   │   ├── mod_compatibility
 │   │   │   └── vanilla_appends.lua                 # Add abstract_stone property to vanilla stone and in_inventory effect (from apotheosis)
-│   │   ├── stone_factory                           # Handle -collective and specific stone infusion condition
+│   │   ├── stone_factory                           # Current [19/02/2026] core of the mod
 │   │   │   ├── craft_requirements.lua
 │   │   │   ├── stone_factory.lua
 │   │   │   ├── craft_registry.lua                  # <--- If you want to add new craft
-│   │   │   ├── hint_registry.lua                   # <--- If you add hint craft (that doesn't produce of consume anything)
+│   │   │   ├── hint_registry.lua                   # <--- If you add hint craft (that doesn't produce or consume anything)
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
-│   │   ├── stone_specific_script/                  # For the script that concerns only a handful of stones 
+│   │   ├── stone_specific_script/                  # For the scripts that concerns only a handful of stones 
 │   │   ├── status_effect/                          # For material/damage_type immunity : check poisonStone
 │   │   ├── magic/                                  # spell related
 │   │   ├── utils.lua
@@ -112,20 +112,19 @@ PS: Also, feel free to contact me if you have any suggestion.
 
 ## ONGOING
 - Make a stone for (almost) every liquid
-    - [ ] BlackHole Stone (dig and attract enemies)
     - [ ] Silver Stone
     - [ ] Fungal Stone (see Apotheosis)
 - Translation stones messages
 
 ## TODO
-secret message when quintessence inhand
+secret message when quintessence inhand ?
 ### V2
 - Apotheosis liquid stone (V2)
 
 
 ## Special thanks to
 - lamia_zamia for the early help and guidance
-- zerupo for the feedback
+- zerupo for the feedback and testing
 - jobslesssteve for the feedback and testing
 - krapouchnouille for the memes
 - All the noita modding community

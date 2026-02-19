@@ -10,9 +10,13 @@ local HINT_REGISTRY = {
     ["hint_blankstone_teleport"] = {
         message = "$text_blankstone_hint_teleport_too_stable",
     },
+
+    ["hint_blankstone_void"] = {
+        message = "$text_blankstone_hint_too_pure",
+    },
     
     ["hint_quintessence_base"] = {
-        message = "$text_blankstone_hint_sonte_too_weak",
+        message = "$text_blankstone_hint_stone_too_weak",
     },
 }
 
