@@ -315,9 +315,9 @@ local FUSE_RECIPES = {
             { tag = "thunderstone", count = 1 },
             { name = "honeyStone", count = 1 },
         },
-        catalistes = {
-            { name = "quintessence|lapis_philosophorum", count = 1 },
-        },
+        -- catalistes = {
+        --     { name = "quintessence|lapis_philosophorum", count = 1 },
+        -- },
         radius = 20,
         results = {
             { key = "ambrosiaStone", offset_y = -10},
