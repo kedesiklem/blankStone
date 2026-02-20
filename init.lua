@@ -4,14 +4,18 @@ local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
 
+local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
 function OnModPreInit()
+    if ModIsEnabled("apotheosis") or ModIsEnabled("Apotheosis") then
+        PATCH_APO.ApplyApotheosisPatches()
+    end
+end
+
+function OnModInit()
 
 end
 
-function OnModInit() 
-end
-
-function OnModPostInit() 
+function OnModPostInit()
 
 end
 
@@ -56,6 +60,9 @@ function OnPlayerSpawned(player_entity)
 
     -- =========== TEST ZONE ===================
     if BLANKSTONE_RELEASE then return end
+
+    log.info("Mods compatibility patch")
+    log.flush()
 
     local pos_x, pos_y = EntityGetTransform( player_entity )
 

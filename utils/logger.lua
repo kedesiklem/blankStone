@@ -52,4 +52,36 @@ function logger.error(text)
     end
 end
 
+-- Deferred logging
+local buffer = {}
+
+local level_handlers = {
+    [DEBUG] = logger.debug,
+    [INFO]  = logger.info,
+    [WARN]  = logger.warn,
+    [ERROR] = logger.error,
+}
+
+local function buffer_push(level, text)
+    table.insert(buffer, { level = level, text = text })
+end
+
+function logger.tmp_debug(text) buffer_push(DEBUG, text) end
+function logger.tmp_info(text)  buffer_push(INFO,  text) end
+function logger.tmp_warn(text)  buffer_push(WARN,  text) end
+function logger.tmp_error(text) buffer_push(ERROR, text) end
+
+function logger.flush()
+    for _, entry in ipairs(buffer) do
+        local handler = level_handlers[entry.level]
+        if handler then handler(entry.text) end
+    end
+    buffer = {}
+end
+
+function logger.clear()
+    buffer = {}
+end
+
+
 return logger

@@ -86,8 +86,8 @@ text_blankstone_citrinitas_fail_craft,"The sun above has not yet risen for you."
 text_blankstone_rubedo_success_craft,"The Red Work is complete. The marriage of opposites achieved.",,,,,L'Œuvre au Rouge est accomplie. Le mariage des opposés atteint.,,,,,,,
 text_blankstone_rubedo_fail_craft,"Perfection requires the union of all knowledge.",,,,,La perfection exige l'union de toute connaissance.,,,,,,,
 
-text_blankstone_poly_success_craft,"The Gods fear this.",,,,,Les Dieux craignent cela.,,,,,,,
-text_blankstone_poly_fail_craft,"The Gods are afraid of what you're trying to do.",,,,,Les Dieux ont peur de ce que vous tentez de faire.,,,,,,,
+text_blankstone_poly_craft_success,"The Gods fear this.",,,,,Les Dieux craignent cela.,,,,,,,
+text_blankstone_poly_craft_fail,"The Gods are afraid of what you're trying to do.",,,,,Les Dieux ont peur de ce que vous tentez de faire.,,,,,,,
 
 text_blankstone_honey_success_craft,"You found the bees.",,,,,Vous avez trouvé les abeilles.,,,,,,,
 
@@ -146,7 +146,6 @@ text_blankstone_magnum_opus_desc,"The Gods kneel.",,,,,Les Dieux s'agenouillent.
 
 text_blankstone_albedo_purify_title,The White Work speaks.,,,,,L'Œuvre Blanche parle.,,,,,,,
 text_blankstone_albedo_purify_desc,"What was given, is ungiven.\nThe stone remembers what it was.",,,,,"Ce qui fut donné, est retiré.\nLa pierre se souvient de ce qu'elle était.",,,,,,,
-text_blankstone_hint_needs_fusion,"The Imitator cannot carry what two stones must decide together.\nBring them close. Let them choose.",,,,,"L'Imitateur ne peut porter ce que deux pierres doivent décider ensemble.\nRapprochez-les. Laissez-les choisir.",,,,,,,
 
 text_blankstone_missing_stuff,"Something's missing.",,,,,Il manque quelque chose.,,,,,,,
 text_blankstone_missing_knowledge,"You need knowledge.",,,,,Vous avez besoin de connaissance.,,,,,,,
@@ -173,6 +172,7 @@ text_blankstone_hint_useless,"The Gods considered the matter, but found it of no
 text_blankstone_hint_teleport_too_stable,"The liquid is too stable to be infused.",,,,,"Le liquide est trop stable pour être infusé.",,,,,,,
 text_blankstone_hint_stone_too_weak,"This power is too great for the stone. Seek the fifth essence.",,,,,"Ce pouvoir est trop grand pour la pierre. Cherchez la cinquième essence.",,,,,,,
 text_blankstone_hint_too_pure,"The stone is too pure to absorb the void. Degradation is the first step.",,,,,La pierre est trop pure pour absorber le vide. La dégradation est la première étape.,,,,,,,
+text_blankstone_hint_needs_fusion,"The Imitator cannot carry what two stones must decide together. Bring them close. Let them choose.",,,,,"L'Imitateur ne peut porter ce que deux pierres doivent décider ensemble. Rapprochez-les. Laissez-les choisir.",,,,,,,
 
 text_blankstone_lapis_philosophorum_success,"The Gods did not expect this of you.",,,,,Les Dieux ne s'attendaient pas à cela de votre part.,,,,,,,
 text_blankstone_lapis_philosophorum_fail,"Perfection does not bend to impatience.",,,,,La perfection ne plie pas à l'impatience.,,,,,,,
@@ -191,8 +191,6 @@ text_blankstone_whiskeystone_success,...,,,,,...,,,,,,,
 text_blankstone_whiskeystone_fail,"Why would you do that.",,,,,Pourquoi feriez-vous cela.,,,,,,,
 text_blankstone_healthstone_success,"The Gods are pleased.",,,,,Les Dieux sont satisfaits.,,,,,,,
 text_blankstone_shinyorb_anticlimax,"Oh. It is just gold.",,,,,Oh. C'est juste de l'or.,,,,,,,
-text_blankstone_poly_success_craft,"Form is a suggestion. You accepted that.",,,,,La forme est une suggestion. Vous l'avez acceptée.,,,,,,,
-text_blankstone_poly_fail_craft,"Identity resists dissolution.",,,,,L'identité résiste à la dissolution.,,,,,,,
 
 text_blankstone_default_success,"You've done something...",,,,,Vous avez accompli quelque chose...,,,,,,,
 text_blankstone_default_fail,"Something's wrong.",,,,,Quelque chose ne va pas.,,,,,,,

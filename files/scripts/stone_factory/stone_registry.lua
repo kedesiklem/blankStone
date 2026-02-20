@@ -325,8 +325,8 @@ local STONE_MESSAGES = {
         fail = "$text_blankstone_missing_lot_knowledge",
     },
     ["polyStone"] = {
-        success = "$text_blankstone_poly_success_craft",
-        fail    = "$text_blankstone_poly_fail_craft",
+        success = "$text_blankstone_poly_craft_success",
+        fail    = "$text_blankstone_poly_craft_fail",
     },
     ["healthStone"] = {
         success = "$text_blankstone_healthstone_success",

@@ -1,8 +1,7 @@
 local nxml = dofile_once("mods/blankStone/lib/nxml.lua")
 local content = ModTextFileGetContent("data/biome/_pixel_scenes.xml")
 local xml = nxml.parse(content)
-
-local WORLD_WIDTH = 70 * 512
+local worldsize = ModTextFileGetContent("data/compatibilitydata/worldsize.txt") or 35840
 local MAX_PW = 3
 
 -- {x, y, file, mode}
@@ -37,7 +36,7 @@ for _, book in ipairs(books) do
     for _, world_i in ipairs(offsets) do
         pixel_scenes:add_child(nxml.parse(string.format(
             '<PixelScene pos_x="%d" pos_y="%d" just_load_an_entity="%s" />',
-            book.x + WORLD_WIDTH * world_i,
+            book.x + worldsize * world_i,
             book.y,
             BASE_PATH .. book.file
         )))

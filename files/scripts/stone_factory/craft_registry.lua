@@ -20,6 +20,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_berserk"] = {stone_key = "bigStone"},
         ["magic_liquid_faster_levitation"] = {stone_key = "levitatiumStone"},
         ["magic_liquid_movement_faster"] = {stone_key = "acceleratiumStone"},
+        ["magic_liquid_faster_levitation_and_movement"] = {stone_key = "hasteStone"},
         ["plasma_fading"] = {stone_key = "magicLiquidStone"},
         ["plasma_fading_bright"] = {stone_key = "magicLiquidStone"},
         ["plasma_fading_green"] = {stone_key = "magicLiquidStone"},
@@ -48,7 +49,6 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_liquid_teleportation"] = {hint_key = "hint_blankstone_teleport"},
         ["lava"] = {hint_key = "hint_blankstone_skipping_step"},
         ["magic_liquid_charm"] = {hint_key = "hint_blankstone_skipping_step"},
-        ["magic_liquid_faster_levitation_and_movement"] = {hint_key = "hint_blankstone_skipping_step"},
 
 
         ["acid"] = {hint_key = "hint_blankstone_useless"},
@@ -77,11 +77,11 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[slime]"] = {stone_key = "explosionStone"},
     },
     ["levitatiumStone"] = {
-        ["magic_liquid_movement_faster"] = {hint_key = "hint_need_fuse"},
+        ["magic_liquid_movement_faster"] = {stone_key = "hasteStone"},
         ["[slime]"] = {stone_key = "explosionStone"},
     },
     ["acceleratiumStone"] = {
-        ["magic_liquid_faster_levitation"] = {hint_key = "hint_need_fuse"},
+        ["magic_liquid_faster_levitation"] = {stone_key = "hasteStone"},
         ["[slime]"] = {stone_key = "explosionStone"},
     },
     ["bigStone"] = {
