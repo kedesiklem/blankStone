@@ -269,51 +269,48 @@ local STONE_DATA = {
 -- MESSAGES
 -- ============================================================================
 
--- TODO move text to translation.csv
 local STONE_MESSAGES = {
-    -- Magnum Opus
+-- Magnum Opus
     ["lapis_philosophorum"] = {
-        success = "The Gods applaud you. You have achieved the Magnum Opus.",
-        fail = "The ultimate transmutation requires absolute perfection.",
+        success = "$text_blankstone_lapis_philosophorum_success",
+        fail    = "$text_blankstone_lapis_philosophorum_fail",
     },
     ["nigredo"] = {
         success = "$text_blankstone_nigredo_success_craft",
-        fail = "$text_blankstone_nigredo_fail_craft",
+        fail    = "$text_blankstone_nigredo_fail_craft",
     },
     ["albedo"] = {
         success = "$text_blankstone_albedo_success_craft",
-        fail = "$text_blankstone_albedo_fail_craft",
+        fail    = "$text_blankstone_albedo_fail_craft",
     },
     ["citrinitas"] = {
         success = "$text_blankstone_citrinitas_success_craft",
-        fail = "$text_blankstone_citrinitas_fail_craft",
+        fail    = "$text_blankstone_citrinitas_fail_craft",
     },
     ["rubedo"] = {
         success = "$text_blankstone_rubedo_success_craft",
-        fail = "$text_blankstone_rubedo_fail_craft",
+        fail    = "$text_blankstone_rubedo_fail_craft",
     },
-
-    -- Pierres spéciales
+-- Pierres spéciales
     ["quintessence"] = {
         success = "$text_blankstone_quintessence_unleash_title",
-        fail = "$text_blankstone_missing_knowledge",
+        fail    = "$text_blankstone_missing_knowledge",
     },
     ["goldStone"] = {
-        success = "The Gods pity you.",
-        fail = "The Gods warn you not to do that.",
+        success = "$text_blankstone_goldstone_success",
+        fail    = "$text_blankstone_goldstone_fail",
     },
     ["honeyStone"] = {
         success = "$text_blankstone_honey_success_craft",
     },
-
-    -- Pierres avec messages custom
+-- Pierres avec messages custom
     ["lavaStone"] = {
-        success = "Phoenix",
-        fail = "You're not ready.",
+        success = "$text_blankstone_lavastone_success",
+        fail    = "$text_blankstone_lavastone_fail",
     },
     ["bloodStone"] = {
-        success = "Blood! Blood! Blood!",
-        fail = "You're not ready.",
+        success = "$text_blankstone_bloodstone_success",
+        fail    = "$text_blankstone_bloodstone_fail",
     },
     ["teleportStone"] = {
         fail = "$text_blankstone_missing_knowledge",
@@ -329,26 +326,26 @@ local STONE_MESSAGES = {
     },
     ["polyStone"] = {
         success = "$text_blankstone_poly_success_craft",
-        fail = "$text_blankstone_poly_fail_craft",
+        fail    = "$text_blankstone_poly_fail_craft",
     },
     ["healthStone"] = {
-        success = "The Gods are pleased.",
-        fail = "$text_blankstone_missing_all_knowledge",
+        success = "$text_blankstone_healthstone_success",
+        fail    = "$text_blankstone_missing_all_knowledge",
     },
     ["ambrosiaStone"] = {
         fail = "$text_blankstone_missing_all_knowledge",
     },
     ["loveStone"] = {
-        success = "You created love.",
-        fail = "You need all the knowledge.",
+        success = "$text_blankstone_lovestone_success",
+        fail    = "$text_blankstone_lovestone_fail",
     },
     ["bonesStone"] = {
-        success = "I am steve.",
-        fail = "The Gods are not ready to let you have it.",
+        success = "$text_blankstone_bonestone_success",
+        fail    = "$text_blankstone_bonestone_fail",
     },
     ["whiskeyStone"] = {
-        success = "...",
-        fail = "Why would you do that ?",
+        success = "$text_blankstone_whiskeystone_success",
+        fail    = "$text_blankstone_whiskeystone_fail",
     },
     ["stonestone"] = {
         fail = "$text_blankstone_missing_knowledge",
@@ -365,17 +362,15 @@ local STONE_MESSAGES = {
     ["wandstone"] = {
         fail = "$text_blankstone_missing_lot_knowledge",
     },
-
-    -- A bit of trolling
+-- A bit of trolling
     ["shinyOrb"] = {
         success = "$text_blankstone_shinyorb_anticlimax",
-    }
+    },
 }
 
--- Messages par défaut
 local DEFAULT_MESSAGES = {
-    success = "You've done something...",
-    fail = "Something's wrong",
+    success = "$text_blankstone_default_success",
+    fail    = "$text_blankstone_default_fail",
 }
 
 -- ============================================================================
@@ -419,10 +414,10 @@ local STONE_VFX_MAPPING = {
 
 local STONE_CONDITIONS = {
     ["citrinitas"] = {
-        flags = {run = "progress_sun", persistant = "secret_hat"}
+        flags = {{run = "progress_sun", persistant = "secret_hat"}}
     },
     ["nigredo"] = {
-        flags = {run = "progress_darksun", persistant = "secret_hat"}
+        flags = {{run = "progress_darksun", persistant = "secret_hat"}}
     },
     default = {
     },

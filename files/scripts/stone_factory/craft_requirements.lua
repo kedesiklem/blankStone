@@ -20,7 +20,6 @@ local function checkFlagRequirements(flags_required)
                 return false
             end
         end
-
     end
     return true
 end

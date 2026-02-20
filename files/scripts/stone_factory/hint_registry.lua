@@ -18,6 +18,9 @@ local HINT_REGISTRY = {
     ["hint_quintessence_base"] = {
         message = "$text_blankstone_hint_stone_too_weak",
     },
+    ["hint_need_fuse"] = {
+        message = "$text_blankstone_hint_needs_fusion"
+    }
 }
 
 return HINT_REGISTRY

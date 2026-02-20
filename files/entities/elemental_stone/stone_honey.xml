@@ -28,12 +28,12 @@
         _tags="enabled_in_hand,enabled_in_inventory"
         script_source_file="mods/blankStone/files/scripts/stone_specific_script/honey_secret.lua"
         remove_after_executed="1"
-        execute_every_n_frame="36000"
+        execute_every_n_frame="3600"
     ></LuaComponent>
 
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="honeyStone"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="honeyStone"
+    ></VariableStorageComponent>
 
 </Entity>

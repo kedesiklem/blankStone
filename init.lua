@@ -77,7 +77,7 @@ function OnPlayerSpawned(player_entity)
     -- CreateItemActionEntity("BLANKSTONE_STONE_FUSER", pos_x, pos_y)
 
     -- MAGNUM OPUS 
-    -- EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
+    EntityLoad( "mods/blankStone/files/entities/quintessence_stone.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/magnum_opus/lapis_philosophorum.xml", pos_x, pos_y )
 
     --- STONE TEST

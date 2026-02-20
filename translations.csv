@@ -1,8 +1,7 @@
 ,en,ru,pt-br,es-es,de,fr-fr,it,pl,zh-cn,jp,ko,,NOTES – use \n for newline,max length
 
 
-text_blankstone_starter_stone_desc,"[You manage to read these words carved into the stone]\n   Knowledge is found in books scattered throughout the world.\n   The powder purifies.\n   The mimicking fluid transforms.\n   You must be strong.\n   Find the bees",,,,,"[Vous parvenez à lire ces mots gravés dans la pierre]\n   Le savoir se trouve dans les livres dispersés à travers le monde.\n   La poudre purifie.\n   Le fluide imitateur transforme.\n   Vous devrez être fort.\n   Trouvez les abeilles",,,,,,,
-
+text_blankstone_starter_stone_desc,"[Some words carved into the stone are still legible]\nKnowledge is found in bo.ks sc..tered throughout the w.rld.\nSlay the a....ist.\nRe.ch the .imic f...d.\nAsc..d the tow.r.\nFind the bees.",,,,,"[Quelques mots gravés dans la pierre sont encore lisibles]\nLe savoir se trouve dans les li.res di..ersés à travers le m.nde.\nTuez l'a....iste.\nRe.oignez le .imique f...de.\nMon..z la t.ur.\nTrouvez les abeilles.",,,,,,,
 stone_blankstone_blankStone_name,Blank Stone,,,,,Pierre Immaculé,,,,,,,
 stone_blankstone_blankStone_desc,"An imitation without soul. It yearns to become.",,,,,Une imitation sans âme. Elle aspire à devenir.,,,,,,,
 stone_blankstone_acceleratiumStone_name,Viridian Rush Stone,,,,,Pierre de Ruée Viridienne,,,,,,,
@@ -64,7 +63,6 @@ stone_blankstone_milkStone_desc,"Pale light trapped within. Innocence crystalliz
 stone_blankstone_confuseStone_name,Unity Core,,,,,Noyau d'Unité,,,,,,,
 stone_blankstone_confuseStone_desc,"Confusion becomes clarity within. Chaos dissolves.",,,,,"La confusion devient clarté à l'intérieure. Le chaos se dissout.",,,,,,,
 
-
 stone_blankstone_quintessence_name,Quintessence,,,,,Quintessence,,,,,,,
 stone_blankstone_quintessence_desc,"The fifth element. Halfway to divinity.",,,,,Le cinquième élément. À mi-chemin de la divinité.,,,,,,,
 
@@ -125,12 +123,10 @@ book_blankstone_honey_desc,"Infuse a stone with the blue thing that disappears q
 reforged_book_blankstone_honey_name,Tome of True Secrets,,,,,Tome des Secrets Veritable,,,,,,,
 reforged_book_blankstone_honey_desc,"Find all three True Tomes; together they reveal the secret of the gods.\nWe told you how to merge.",,,,,"Trouvez les trois Tomes Veritables; ensemble, ils révèlent le secret des dieux.\nNous vous avons expliqué comment fusionner.",,,,,,,
 
-
 book_blankstone_gods_secrets_name,Gods Secrets ?,,,,,Secrets des Dieux ?,,,,,,,
 book_blankstone_gods_secrets_desc,"[The pages are blank, yet you feel they contain something...]",,,,,"[Les pages sont vierges, pourtant vous sentez qu'elles contiennent quelque chose...]",,,,,,,
 reforged_book_blankstone_gods_secrets_name,Gods Secrets,,,,,Secrets des Dieux,,,,,,,
 reforged_book_blankstone_gods_secrets_desc,"You have walked the Path. The Veil lifts.\nPURITY - The White Gift absolves all sin.\nINFUSION - Hunger is eternal. Feed the stone until it transcends.\nFUSION - Violence births creation. Collide, merge, ascend.\nBut know this final truth:\nThe Gods created stones to chain magic.\nYou have learned to break those chains.\nThe Lapis Philosophorum is not the end - it is rebellion made manifest.\nFour Works lead to Divinity:\nNigredo bellow.\nAlbedo purifies the soul.\nCitrinitas above.\nRubedo unites all opposites.\nComplete the Great Work.\nBecome what the Gods feared you would become.",,,,,"Vous avez parcouru le Chemin. Le Voile se lève.\nPURETÉ - Le Don Blanc absout tous les péchés.\nINFUSION - La faim est éternelle. Nourrissez la pierre jusqu'à ce qu'elle transcende.\nFUSION - La violence engendre la création. Entrez en collision, fusionnez, ascendez.\nMais connaissez cette vérité finale :\nLes Dieux ont créé les pierres pour enchaîner la magie.\nVous avez appris à briser ces chaînes.\nLe Lapis Philosophorum n'est pas la fin - c'est la rébellion incarnée.\nQuatre Œuvres mènent à la Divinité :\nNigredo en bas.\nAlbedo purifie l'âme.\nCitrinitas en haut.\nRubedo unit tous les opposés.\nAccomplissez le Grand Œuvre.\nDevenez ce que les Dieux craignaient que vous deveniez.",,,,,,,
-
 
 text_blankstone_corrupt,"You're corrupt.",,,,,Vous êtes corrompu.,,,,,,,
 text_blankstone_lies_desc,"You chose to let the lies fool you.",,,,,Vous avez choisi de laisser les mensonges vous tromper.,,,,,,,
@@ -147,6 +143,10 @@ text_blankstone_quintessence_unleash_title,"The Gods can't hide it anymore.",,,,
 text_blankstone_quintessence_unleash_desc,"You're halfway.\nYou can now access the Stones potential.\nThe Gods' Secrets can be reached..",,,,,Vous êtes à mi-chemin.\nVous pouvez maintenant accéder aux potential des Pierres.Les Secrets des Dieux peuvent être atteints.,,,,,,,
 text_blankstone_magnum_opus_title,"Magnum Opus complete.",,,,,Magnum Opus accompli.,,,,,,,
 text_blankstone_magnum_opus_desc,"The Gods kneel.",,,,,Les Dieux s'agenouillent.,,,,,,,
+
+text_blankstone_albedo_purify_title,The White Work speaks.,,,,,L'Œuvre Blanche parle.,,,,,,,
+text_blankstone_albedo_purify_desc,"What was given, is ungiven.\nThe stone remembers what it was.",,,,,"Ce qui fut donné, est retiré.\nLa pierre se souvient de ce qu'elle était.",,,,,,,
+text_blankstone_hint_needs_fusion,"The Imitator cannot carry what two stones must decide together.\nBring them close. Let them choose.",,,,,"L'Imitateur ne peut porter ce que deux pierres doivent décider ensemble.\nRapprochez-les. Laissez-les choisir.",,,,,,,
 
 text_blankstone_missing_stuff,"Something's missing.",,,,,Il manque quelque chose.,,,,,,,
 text_blankstone_missing_knowledge,"You need knowledge.",,,,,Vous avez besoin de connaissance.,,,,,,,
@@ -172,4 +172,27 @@ text_blankstone_hint_skipping_step,"You cannot skip steps.",,,,,"Vous ne pouvez 
 text_blankstone_hint_useless,"The Gods considered the matter, but found it of no interest.",,,,,"Les dieux examinèrent la question, mais la trouvèrent sans intérêt.",,,,,,,
 text_blankstone_hint_teleport_too_stable,"The liquid is too stable to be infused.",,,,,"Le liquide est trop stable pour être infusé.",,,,,,,
 text_blankstone_hint_stone_too_weak,"This power is too great for the stone. Seek the fifth essence.",,,,,"Ce pouvoir est trop grand pour la pierre. Cherchez la cinquième essence.",,,,,,,
-text_blankstone_hint_too_pure,"The stone is too pure to absorb the void.\nSomething must be broken before it can transcend.\nDegradation is the first step.",,,,,La pierre est trop pure pour absorber le vide.\nQuelque chose doit être brisé avant de pouvoir transcender.\nLa dégradation est la première étape.,,,,,,,
+text_blankstone_hint_too_pure,"The stone is too pure to absorb the void. Degradation is the first step.",,,,,La pierre est trop pure pour absorber le vide. La dégradation est la première étape.,,,,,,,
+
+text_blankstone_lapis_philosophorum_success,"The Gods did not expect this of you.",,,,,Les Dieux ne s'attendaient pas à cela de votre part.,,,,,,,
+text_blankstone_lapis_philosophorum_fail,"Perfection does not bend to impatience.",,,,,La perfection ne plie pas à l'impatience.,,,,,,,
+
+text_blankstone_goldstone_success,"The Gods pity you.",,,,,Les Dieux vous plaignent.,,,,,,,
+text_blankstone_goldstone_fail,"The Gods warn you not to pursue this.",,,,,Les Dieux vous avertissent de ne pas poursuivre cela.,,,,,,,
+text_blankstone_lavastone_success,Phoenix.,,,,,Phénix.,,,,,,,
+text_blankstone_lavastone_fail,"You are not ready for rebirth.",,,,,Vous n'êtes pas prêt pour la renaissance.,,,,,,,
+text_blankstone_bloodstone_success,"Blood. Blood. Blood.",,,,,Sang. Sang. Sang.,,,,,,,
+text_blankstone_bloodstone_fail,"You are not ready.",,,,,Vous n'êtes pas prêt.,,,,,,,
+text_blankstone_lovestone_success,"Love was not created. It was unlocked.",,,,,L'amour n'a pas été créé. Il a été libéré.,,,,,,,
+text_blankstone_lovestone_fail,"Love requires understanding everything.",,,,,L'amour exige de tout comprendre.,,,,,,,
+text_blankstone_bonestone_success,I am steve.,,,,,Je suis steve.,,,,,,,
+text_blankstone_bonestone_fail,"The Gods are not ready to let go.",,,,,Les Dieux ne sont pas prêts à lâcher.,,,,,,,
+text_blankstone_whiskeystone_success,...,,,,,...,,,,,,,
+text_blankstone_whiskeystone_fail,"Why would you do that.",,,,,Pourquoi feriez-vous cela.,,,,,,,
+text_blankstone_healthstone_success,"The Gods are pleased.",,,,,Les Dieux sont satisfaits.,,,,,,,
+text_blankstone_shinyorb_anticlimax,"Oh. It is just gold.",,,,,Oh. C'est juste de l'or.,,,,,,,
+text_blankstone_poly_success_craft,"Form is a suggestion. You accepted that.",,,,,La forme est une suggestion. Vous l'avez acceptée.,,,,,,,
+text_blankstone_poly_fail_craft,"Identity resists dissolution.",,,,,L'identité résiste à la dissolution.,,,,,,,
+
+text_blankstone_default_success,"You've done something...",,,,,Vous avez accompli quelque chose...,,,,,,,
+text_blankstone_default_fail,"Something's wrong.",,,,,Quelque chose ne va pas.,,,,,,,
