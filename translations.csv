@@ -55,6 +55,10 @@ stone_blankstone_wormBloodStone_name,Worm's Scrying Eye,,,,,Œil divinatoire du 
 stone_blankstone_wormBloodStone_desc,"The worm sees all. Shadows dissolve before its gaze.\nFeed it malice, and it'll hungers for the sun.",,,,," Le ver voit tout. Les ombres se dissolvent sous son regard. Nourrissez-le de malveillance, et il aura soif de soleil.",,,,,,,
 stone_blankstone_urineStone_name,Degraded Shard,,,,,Éclat Dégradé,,,,,,,
 stone_blankstone_urineStone_desc,"Humiliation crystallized. Weakness made tangible.\nBut the deepest vessels are those that have been emptied.",,,,,L'humiliation cristallisée. La faiblesse rendue tangible.\nMais les récipients les plus profonds sont ceux qui ont été vidés.,,,,,,,
+stone_blankstone_slimeStone_name,Viscous Anchor,,,,,Ancre Visqueuse,,,,,,,
+stone_blankstone_slimeStone_desc,"Still at its core. What thrashes near it finds no purchase.",,,,,Immobile en son cœur. Ce qui s'agite près d'elle n'y trouve pas prise.,,,,,,,
+stone_blankstone_freezeStone_name,Permafrost Heart,,,,,Cœur de Permafrost,,,,,,,
+stone_blankstone_freezeStone_desc,"Winter claimed it long ago. There is nothing left to freeze.",,,,,L'hiver l'a réclamée il y a longtemps. Il n'y a plus rien à geler.,,,,,,,
 
 stone_blankstone_voidStone_name,Decay Stone,,,,,Pierre de Décrépitude,,,,,,,
 stone_blankstone_voidStone_desc,"Matter unravels at its touch. The first step toward nothingness.",,,,,"La matière se délite à son contact. Le premier pas vers le néant.",,,,,,,

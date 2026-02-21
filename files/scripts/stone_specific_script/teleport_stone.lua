@@ -1,8 +1,10 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local tp = dofile_once("mods/blankStone/files/scripts/stone_specific_script/tp_stone_util.lua")
+local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
+local entity_id = GetUpdatedEntityID()
 
--- Use 5% of max_quantity/tp
-local SLIME_USE_QUANTITY = 50
+-- Use 2.5% of max_quantity/tp
+local SLIME_USE_QUANTITY = 25
 
 -- return the quantity extract from the main material, nil == error
 local function extract_liquid_quantity(potion_id, quantity)
@@ -49,7 +51,8 @@ end
 local function check_slime_perk()
     local stone = GetUpdatedEntityID()
     local player = EntityGetRootEntity(stone)
-    if GameGetGameEffectCount(player, "NO_SLIME_SLOWDOWN") > 0
+    
+    if GameGetGameEffect(player, "NO_SLIME_SLOWDOWN") ~= 0
     then
         AddMaterialInventoryMaterial(stone, "slime", 1000)
         log.debug("Slime perk actif") 
@@ -69,3 +72,5 @@ function kick()
     else tp.tp_random()
     end
 end
+
+utils.convert_all_liquid(entity_id, "slime")

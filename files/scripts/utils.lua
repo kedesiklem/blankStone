@@ -319,6 +319,35 @@ local function EntityGetDamageFromMaterial(entity, material)
 	end
 	return nil
 end
+
+local function clear_liquid(potion_id, material_id)
+    local material_name_input = CellFactory_GetName(material_id -1)
+    AddMaterialInventoryMaterial(potion_id, material_name_input, 0)
+end
+
+local function convert_all_liquid(potion_id, target_name)
+        -- Material quantity check
+    local potion_inventory = EntityGetFirstComponentIncludingDisabled(potion_id, "MaterialInventoryComponent")
+
+    if not(potion_inventory) then
+        log.error("How the fuck potion has no MaterialInventoryComponent?")
+        return
+    end
+
+    local cpmt = ComponentGetValue2(potion_inventory, "count_per_material_type")
+
+    local target_id = CellFactory_GetType(target_name)
+
+    local acumulator = 0
+
+    for material_id, count in ipairs(cpmt) do
+        if count ~= 0 and material_id ~= target_id+1 then
+            clear_liquid(potion_id, material_id)
+            acumulator = acumulator + count
+        end
+    end
+    AddMaterialInventoryMaterial(potion_id, target_name, cpmt[target_id +1] + acumulator)
+end
 -------------------------------------------------------------------------------------
 
 
@@ -345,4 +374,5 @@ return {
     EntityGetDamageFromMaterial = EntityGetDamageFromMaterial,
 
     changeDescription=changeDescription,
+    convert_all_liquid=convert_all_liquid,
 }

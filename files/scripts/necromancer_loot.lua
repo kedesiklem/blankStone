@@ -11,7 +11,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
     local proba_spawn = 0.01
     if EntityGetName(entity) == "$animal_necromancer_super"
     then
-        proba_spawn = 0.03
+        proba_spawn = 0.05
     end
 
     local roll = Random()

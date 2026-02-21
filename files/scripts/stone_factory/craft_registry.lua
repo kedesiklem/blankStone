@@ -38,6 +38,9 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["beer"] = {stone_key = "whiskeyStone"},
 
         ["urine"] = {stone_key = "urineStone"},
+        
+        ["blood_cold"] = {stone_key = "freezeStone"},
+        ["blood_cold_vapour"] = {stone_key = "freezeStone"},
 
         ["milk"] = {stone_key = "milkStone"},
         ["material_confusion"] = {stone_key = "confuseStone"},
@@ -45,7 +48,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
 
         -- HINT (not recipes)
 
-        ["void_liquid"] = {hint_key = "hint_blankstone_void"},
+        ["void_liquid"] = {stone_key = "voidStone"},
         ["magic_liquid_teleportation"] = {hint_key = "hint_blankstone_teleport"},
         ["lava"] = {hint_key = "hint_blankstone_skipping_step"},
         ["magic_liquid_charm"] = {hint_key = "hint_blankstone_skipping_step"},
@@ -59,10 +62,6 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[regenerative_gas]"] = {hint_key = "hint_quintessence_base"},
         ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
 
-    },
-
-    ["urineStone"] = {
-        ["void_liquid"] = {stone_key = "voidStone"},
     },
 
     ["slimeStone"] = {

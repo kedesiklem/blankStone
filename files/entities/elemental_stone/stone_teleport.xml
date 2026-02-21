@@ -79,6 +79,18 @@
     randomized_position.max_y="10"
   ></MaterialSuckerComponent>
 
+  <MaterialSuckerComponent
+    _tags="enabled_in_hand,enabled_in_world"
+    material_type="0"
+    suck_tag="[mimic_liquid]"
+    barrel_size="1000"
+    num_cells_sucked_per_frame="50"
+    randomized_position.min_x="-10"
+    randomized_position.max_x="10"
+    randomized_position.min_y="-10"
+    randomized_position.max_y="10"
+  ></MaterialSuckerComponent>
+
   <MaterialInventoryComponent
     _tags="enabled_in_hand,enabled_in_world"
   >
@@ -91,6 +103,12 @@
     _tags="enabled_in_hand,enabled_in_inventory"
     script_kick="mods/blankStone/files/scripts/stone_specific_script/teleport_stone.lua"
     execute_every_n_frame="-1"
+  ></LuaComponent>
+
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/stone_specific_script/teleport_stone.lua"
+    execute_every_n_frame="6"
   ></LuaComponent>
 
   <VariableStorageComponent

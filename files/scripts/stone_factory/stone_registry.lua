@@ -128,7 +128,16 @@ local STONE_DATA = {
         level = 1,
         category = "elemental",
     },
-
+    ["slimeStone"] = {
+        path = elemental_stone_path .. "stone_slime",
+        level = 1,
+        category = "elemental",
+    },
+    ["freezeStone"] = {
+        path = elemental_stone_path .. "stone_freeze",
+        level = 5,
+        category = "elemental",
+    },
     ["teleportStone"] = {
         path = elemental_stone_path .. "stone_teleport",
         level = 5,
@@ -311,6 +320,9 @@ local STONE_MESSAGES = {
     ["bloodStone"] = {
         success = "$text_blankstone_bloodstone_success",
         fail    = "$text_blankstone_bloodstone_fail",
+    },
+    ["freezeStone"] = {
+        fail = "$text_blankstone_missing_knowledge",
     },
     ["teleportStone"] = {
         fail = "$text_blankstone_missing_knowledge",

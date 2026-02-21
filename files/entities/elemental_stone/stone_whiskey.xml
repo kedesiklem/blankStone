@@ -63,7 +63,7 @@
   <LuaComponent
     _tags="enabled_in_hand,enabled_in_inventory"
     script_source_file="mods/blankStone/files/scripts/stone_specific_script/drunk.lua"
-    execute_every_n_frame="1"
+    execute_every_n_frame="6"
   ></LuaComponent>
 
 
