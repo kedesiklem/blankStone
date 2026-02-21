@@ -1,4 +1,4 @@
-<Entity name="quintessence" tags="hittable,teleportable_NOT,item_physics,item_pickup">
+<Entity name="quintessence">
     <Base file="mods/blankStone/files/entities/base_stone.xml">
 
         <!-- physical presence -->
@@ -79,9 +79,9 @@
     <!-- Infusion process -->
     <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="quintessence"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="quintessence"
+    ></VariableStorageComponent>
 
 </Entity>
