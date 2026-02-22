@@ -23,6 +23,7 @@ function material_area_checker_success(pos_x, pos_y)
 		log.debug("Found item entity ID: " .. tostring(id))
 		-- make sure item is not carried in inventory or wand
 		if EntityGetRootEntity(id) == id then
+			log.debug("EntityToPurify: " .. tostring(id))
 			local x,y = EntityGetTransform(entity_id)
 			load_purified_stone(entity_id,x,y)
 			EntityLoad("data/entities/projectiles/explosion.xml", x, y - 10)

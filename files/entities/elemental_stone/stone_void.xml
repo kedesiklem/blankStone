@@ -1,4 +1,4 @@
-<Entity name="voidStone">
+<Entity name="voidStone" tags="forgeable">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
     <PhysicsImageShapeComponent

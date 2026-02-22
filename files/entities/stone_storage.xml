@@ -1,0 +1,51 @@
+<!-- TODO
+FIX :   on_death file not call
+FEAT:   Upgrade to increase storage_cap
+
+-->
+
+<Entity name="storageStone">
+    <Base file="mods/blankStone/files/entities/base_stone.xml">
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/stone_storage.png"
+        ></PhysicsImageShapeComponent>
+
+        <SpriteComponent _tags="enabled_in_world"
+            image_file="mods/blankStone/files/items_gfx/stone_storage.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$stone_blankstone_storageStone_name"
+            ui_description="$stone_blankstone_storageStone_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/stone_storage.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$stone_blankstone_storageStone_name"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$stone_blankstone_storageStone_name"
+            throw_as_item="1"
+        ></AbilityComponent>
+    </Base>
+
+    <LuaComponent
+        execute_every_n_frame="-1"
+        script_source_file="mods/blankStone/files/scripts/storage_stone/on_death.lua"
+        execute_on_removed="1"
+    ></LuaComponent>
+
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="storageStone"
+    ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankstone_storage_cap"
+        value_int="8"
+    ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneStorage"
+    ></VariableStorageComponent>
+
+</Entity>

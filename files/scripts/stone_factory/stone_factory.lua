@@ -149,6 +149,23 @@ local function destroyEntities(entity_groups)
     end
 end
 
+local UPGRADE_COMP = "blankStoneUpgraded"
+
+local function isUpgraded(item)
+    local c = utils.getVariable(item, UPGRADE_COMP)
+    if c then
+        return ComponentGetValue2(c, "value_bool")
+    end
+    return nil
+end
+
+local function setUpgraded(item, value)
+    EntityAddComponent2(item, "VariableStorageComponent", {
+        name      = UPGRADE_COMP,
+        value_bool = value,
+    })
+end
+
 local function tryFuse(cx, cy, recipe, cached_entities)
 
     -- Collects ingredients (avec cache)
@@ -163,27 +180,55 @@ local function tryFuse(cx, cy, recipe, cached_entities)
         log.debug("no catalist required")
     end
 
-    -- Vérification des requirements
-    for _, result in ipairs(recipe.results) do
-        local stone_data = STONE_REGISTRY[result.key]
-        local can_craft, msg, pure = condition.checkRequirements(stone_data)
-        if not can_craft then
-            log.debug("requirements not meet : recipe skipped")
-            if not pure then GamePrintImportant("$text_blankstone_corrupt","$text_blankstone_lies_desc") else GamePrint(msg) end
-            return false
-        end
-    end
-    
-    -- Create results
-    for _, result in ipairs(recipe.results) do
-        local stone_data = STONE_REGISTRY[result.key]
-        local spawn_x = cx + (result.offset_x or 0)
-        local spawn_y = cy + (result.offset_y or 0)
-        createStone(stone_data, spawn_x, spawn_y)
-    end
 
-    -- Remove ingredients
-    destroyEntities(selected_ingredients)
+    local function_upgrade = recipe.upgrade
+    
+    if(function_upgrade ~= nil) then
+    --- MODE UPGRADE
+
+        log.debug("Mode UPGRADE")
+        
+        local is_upgrading = false
+        for _, value in ipairs(selected_ingredients[1]) do
+            if(not isUpgraded(value)) then
+                log.debug("UPGRADE " .. value)
+                function_upgrade(value)
+                setUpgraded(value, true)
+                is_upgrading = true
+            end
+        end
+        
+        if not is_upgrading then return false end
+
+    else
+    --- MODE FUSION
+    
+        log.debug("Mode FUSION")
+        
+        -- Vérification des requirements
+        for _, result in ipairs(recipe.results) do
+            local stone_data = STONE_REGISTRY[result.key]
+            local can_craft, msg, pure = condition.checkRequirements(stone_data)
+            if not can_craft then
+                log.debug("requirements not meet : recipe skipped")
+                if not pure then GamePrintImportant("$text_blankstone_corrupt","$text_blankstone_lies_desc") else GamePrint(msg) end
+                return false
+            end
+        end
+
+        -- Create results
+        for _, result in ipairs(recipe.results) do
+            local stone_data = STONE_REGISTRY[result.key]
+            local spawn_x = cx + (result.offset_x or 0)
+            local spawn_y = cy + (result.offset_y or 0)
+            createStone(stone_data, spawn_x, spawn_y)
+        end
+
+        -- Remove ingredients
+        destroyEntities(selected_ingredients)
+
+
+    end
 
     if recipe.message then
         GamePrintImportant(recipe.message.title, recipe.message.desc)
@@ -191,8 +236,8 @@ local function tryFuse(cx, cy, recipe, cached_entities)
 
     -- Callback de succès
     if recipe.on_success then recipe.on_success() end
-
     return true
+
 end
 
 -- Version optimisée : UNE SEULE recherche d'entités pour toutes les recettes

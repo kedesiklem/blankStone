@@ -1,5 +1,27 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
+local function getPlayer()
+    local tags = {"player_unit", "polymorphed_player", "polymorphed_cessation"}
+	for tag=1,#tags do
+		local player = EntityGetWithTag(tags[tag])
+		if #player > 0 then
+			return player[1]
+		end
+	end
+    return nil
+end
+
+local function getPlayers()
+    local tags = {"player_unit", "polymorphed_player", "polymorphed_cessation"}
+	for tag=1,#tags do
+		local players = EntityGetWithTag(tags[tag])
+		if #players > 0 then
+			return players
+		end
+	end
+    return nil
+end
+
 local function getVariable(entity_id, variable_name)
 
     local variables = EntityGetComponentIncludingDisabled( entity_id,"VariableStorageComponent")
@@ -357,6 +379,9 @@ return {
     setVariable = setVariable,
     setValue = setValue,
     getValue = getValue,
+
+    getPlayer = getPlayer,
+    getPlayers = getPlayers,
 
     getEntityIdentifier = getEntityIdentifier,
 

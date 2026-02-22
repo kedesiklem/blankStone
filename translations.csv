@@ -198,3 +198,11 @@ text_blankstone_shinyorb_anticlimax,"Oh. It is just gold.",,,,,Oh. C'est juste d
 
 text_blankstone_default_success,"You've done something...",,,,,Vous avez accompli quelque chose...,,,,,,,
 text_blankstone_default_fail,"Something's wrong.",,,,,Quelque chose ne va pas.,,,,,,,
+
+stone_blankstone_storageStone_name,Storage Stone,,,,,Pierre de Stockage,,,,,,,
+stone_blankstone_storageStone_desc,A bottomless stone that holds items within its core.,,,,,Une pierre sans fond qui contient des objets en son cœur.,,,,,,,
+stone_blankstone_storageStone_stored,Item stored.,,,,,Objet rangé.,,,,,,,
+stone_blankstone_storageStone_nothing,No item nearby to store.,,,,,Aucun objet à proximité.,,,,,,,
+stone_blankstone_storageStone_full,Storage Stone is full.,,,,,La Pierre de Stockage est pleine.,,,,,,,
+stone_blankstone_storageStone_drag_hint,Release outside to drop,,,,,Relâcher hors du panneau pour lâcher,,,,,,,
+text_blankstone_storagestone_success,The stone resonates with a hollow hum.,,,,,La pierre résonne d'un bourdonnement creux.,,,,,,,

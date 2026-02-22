@@ -2,6 +2,7 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local MODID = "BlankStone"
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
+local StorageStoneController = dofile_once("mods/blankStone/files/scripts/storage_stone/controller.lua")
 
 
 local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
@@ -70,6 +71,8 @@ function OnPlayerSpawned(player_entity)
     local BOOK_PATH = "mods/blankStone/files/entities/items/books/"
 
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
+    -- EntityLoad( "mods/blankStone/files/entities/stone_storage.xml", pos_x, pos_y )
+
     -- spawn_all_stones(pos_x,pos_y, STONE_REGISTRY)
 
     --- FORGE TEST
@@ -97,6 +100,7 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( STONE_PATH .. "stone_honey.xml", pos_x, pos_y )
     -- EntityLoad( BOOK_PATH .."book_honey.xml", pos_x, pos_y )
 
+    -- EntityLoad( STONE_PATH .. "stone_void.xml", pos_x, pos_y )
     -- EntityLoad( STONE_PATH .. "stone_poly.xml", pos_x, pos_y )
     -- EntityLoad( STONE_PATH .. "stone_lava.xml", pos_x, pos_y )
     -- EntityLoad( STONE_PATH .. "stone_poison_harmful.xml", pos_x, pos_y )
@@ -131,7 +135,7 @@ function OnWorldPreUpdate()
 end
 
 function OnWorldPostUpdate() 
-
+    StorageStoneController.update()
 end
 
 function OnBiomeConfigLoaded() 

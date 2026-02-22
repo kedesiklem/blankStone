@@ -73,6 +73,11 @@ local STONE_DATA = {
         level = 1,
         category = "elemental",
     },
+    ["storageStone"] = {
+        path = blankStone_path .. "stone_storage",
+        level = 1,
+        category = "special",
+    },
     ["milkStone"] = {
         path = elemental_stone_path .. "stone_milk",
         level = 1,

@@ -1,3 +1,7 @@
+local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
+local storage = dofile_once("mods/blankStone/files/scripts/storage_stone/storage.lua")
+
+
 -- Mapping material to keys in STONE_REGISTRY for infusion
 local STONE_TO_MATERIAL_TO_STONE = {
     ["blankStone"] = {
@@ -94,6 +98,10 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[magic_polymorph]"] = {stone_key = "polyStone"},
     },
 }
+
+local function storageStoneUpgrade(item)
+    storage.set_capacity(item, 16)
+end
 
 -- Note : preferably use tags to identify ingredients/catalistes if possible
 local FUSE_RECIPES = {
@@ -348,7 +356,6 @@ local FUSE_RECIPES = {
             desc = "$text_blankstone_fuse_book_desc",
         },
         on_success = function() end
-
     },
     { -- Sun Seed Paha Silmä
         ingredients = {
@@ -366,6 +373,26 @@ local FUSE_RECIPES = {
             desc = "$text_blankstone_sunSeed_craft_desc",
         },
         on_success = function() end
+    },
+
+        
+    { -- storageStone upgrade
+        ingredients = {
+            { name = "storageStone", count = 1 },
+        },
+        catalistes = {
+            { name = "quintessence|lapis_philosophorum", count = 1 },
+        },
+        radius = 20,
+
+        upgrade = function(item) storageStoneUpgrade(item) end,
+
+        message = {
+            title = "$text_blankstone_quintesscence_upgrade_title",
+            desc = "$text_blankstone_quintesscence_upgrade_desc",
+        },
+        on_success = function() end
+
     },
 }
 
@@ -389,6 +416,7 @@ local FORGE_RECIPES = {
             desc  = "$text_blankstone_repair_broken_stone_desc",
         }
     },
+    ["voidStone"] = {items = {"mods/blankStone/files/entities/stone_storage.xml"}},
     ["book_infuse"]      = { items = {BOOK_PATH .. "reforged_book_infuse.xml"},      message = REPAIR_MESSAGE },
     ["book_purity"]      = { items = {BOOK_PATH .. "reforged_book_purity.xml"},      message = REPAIR_MESSAGE },
     ["book_magnum_opus"] = { items = {BOOK_PATH .. "reforged_book_magnum_opus.xml"}, message = REPAIR_MESSAGE },
