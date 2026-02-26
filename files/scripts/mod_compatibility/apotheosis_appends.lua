@@ -81,7 +81,7 @@ local function apply_reforge_tags(reforge_perks)
     end
 end
 
-function ApplyApotheosisPatches()
+local function ApplyApotheosisPatches()
     local new_inputs, new_outputs, reforge_perks = "", "", {}
     for _, stone in ipairs(stones) do
         new_inputs  = new_inputs  .. '    "' .. gfx_base .. stone.id .. '.png",\n'

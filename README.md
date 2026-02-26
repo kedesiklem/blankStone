@@ -62,6 +62,7 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   │   │   ├── craft_registry.lua                  # <--- If you want to add new craft
 │   │   │   ├── hint_registry.lua                   # <--- If you add hint craft (that doesn't produce or consume anything)
 │   │   │   └── stone_registry.lua                  # <--- If you want to add new stone, don't forget to put them here
+│   │   ├── stone_storage/                          # For Inventory managment (all credit goes to Killua)
 │   │   ├── stone_specific_script/                  # For the scripts that concerns only a handful of stones 
 │   │   ├── status_effect/                          # For material/damage_type immunity : check poisonStone
 │   │   ├── magic/                                  # spell related

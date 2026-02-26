@@ -1,5 +1,4 @@
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
-local storage = dofile_once("mods/blankStone/files/scripts/storage_stone/storage.lua")
 
 
 -- Mapping material to keys in STONE_REGISTRY for infusion
@@ -100,7 +99,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
 }
 
 local function storageStoneUpgrade(item)
-    storage.set_capacity(item, 16)
+    EntitySetName(item, "upgraded_universal_storageStone")
 end
 
 -- Note : preferably use tags to identify ingredients/catalistes if possible

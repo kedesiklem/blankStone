@@ -1,10 +1,4 @@
-<!-- TODO
-FIX :   on_death file not call
-FEAT:   Upgrade to increase storage_cap
-
--->
-
-<Entity name="storageStone">
+<Entity name="universal_storageStone">
     <Base file="mods/blankStone/files/entities/base_stone.xml">
         <PhysicsImageShapeComponent
             image_file="mods/blankStone/files/items_gfx/stone_storage.png"
@@ -30,22 +24,42 @@ FEAT:   Upgrade to increase storage_cap
         ></AbilityComponent>
     </Base>
 
-    <LuaComponent
-        execute_every_n_frame="-1"
-        script_source_file="mods/blankStone/files/scripts/storage_stone/on_death.lua"
-        execute_on_removed="1"
-    ></LuaComponent>
-
     <VariableStorageComponent
         name="blankStoneID"
         value_string="storageStone"
     ></VariableStorageComponent>
+
+    <!-- storage functionnalities -->
+    <Inventory2Component
+        quick_inventory_slots="0"
+        full_inventory_slots_x="8"
+        full_inventory_slots_y="1"
+    />
+
     <VariableStorageComponent
-        name="blankstone_storage_cap"
-        value_int="8"
+        name="bags_of_many_last_available_position"
+        value_int="1"
     ></VariableStorageComponent>
     <VariableStorageComponent
-        name="blankStoneStorage"
+        name="bags_of_many_positions"
     ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="bags_of_many_bag_pickup_override"
+        value_int="1"
+    ></VariableStorageComponent>
+
+    <Entity name="inventory_quick">
+    </Entity>
+    <Entity name="inventory_full">
+        <InheritTransformComponent />
+    </Entity>
+
+    <!-- Throw bag -->
+    <LuaComponent
+        _tags="enabled_in_hand"
+        script_throw_item="mods/blankStone/files/scripts/storage_stone/bags/bags_throw_script.lua"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
 
 </Entity>

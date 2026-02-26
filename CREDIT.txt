@@ -1,6 +1,7 @@
 Most of the code is written by me (Ked), based on "reverse-engineering" Noita or a few mods. Whenever I use code directly from someone else, I credit the original creators here.
 
 Conga Lyne - Writing most of the code of Apotheosis wich I use as a guide line
+KILLUA - The mod BagsOfMany whom storage_stone is almost a copy past of
 Evasia - Creating the item list appends script
 Copis - Extracting liquid from potion
 Lamia - Translation insert script
