@@ -1,6 +1,9 @@
 -- Doesn't work as intended but do the job
 function kick( entity_who_kicked )
     local entity_id = GetUpdatedEntityID()
+
+    if(entity_id ~= EntityGetRootEntity(entity_id)) then return end
+    
     local pos_x, pos_y, rot, scale_x, scale_y = EntityGetTransform( entity_id )
     if(Random() <= 0.92)
     -- if(true)

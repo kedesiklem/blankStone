@@ -32,6 +32,17 @@
   <!-- Infusion process -->
   <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
+  <LuaComponent
+    _tags="enabled_in_world"
+    script_kick="mods/blankStone/files/scripts/stone_specific_script/blankStone.lua"
+  ></LuaComponent>
+
+  <!-- Cap at 50% potion -->
+  <VariableStorageComponent
+    name="liquidAvailable"
+    value_int="500"
+  ></VariableStorageComponent>
+
   <VariableStorageComponent
     name="blankStoneID"
     value_string="blankStone"
