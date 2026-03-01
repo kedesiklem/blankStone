@@ -78,6 +78,11 @@ local STONE_DATA = {
         level = 1,
         category = "special",
     },
+    ["phasingStone"] = {
+        path = blankStone_path .. "stone_phasing",
+        level = 9,
+        category = "elemental",
+    },
     ["milkStone"] = {
         path = elemental_stone_path .. "stone_milk",
         level = 1,
@@ -427,14 +432,14 @@ local STONE_VFX_MAPPING = {
 -- CONDITIONS
 -- ============================================================================
 
--- persistant > run
+-- persistent > run
 
 local STONE_CONDITIONS = {
     ["citrinitas"] = {
-        flags = {{run = "progress_sun", persistant = "secret_hat"}}
+        flags = {{run = "progress_sun", persistent = "secret_hat"}}
     },
     ["nigredo"] = {
-        flags = {{run = "progress_darksun", persistant = "secret_hat"}}
+        flags = {{run = "progress_darksun", persistent = "secret_hat"}}
     },
     default = {
     },

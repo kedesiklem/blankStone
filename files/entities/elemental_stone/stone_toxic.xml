@@ -62,6 +62,19 @@
     frames="-1"
   ></GameEffectComponent>
 
+  <!-- === MATERIAL IMMUNITY ======== -->
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/status_effects/material_immunity_stone.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+  <!-- PROTECTION_RADIOACTIVITY protect the stone from material damage, not the player ––' -->
+  <VariableStorageComponent
+    name="protected_material"
+    value_string="radioactive_gas,radioactive_gas_static,radioactive_liquid,radioactive_liquid_fading,ice_radioactive_static,ice_radioactive_glass,radioactive_liquid_yellow,rock_static_radioactive,gold_radioactive,gold_static_radioactive"
+  ></VariableStorageComponent>
+
   <!-- magical properties -->
 
   <MagicConvertMaterialComponent

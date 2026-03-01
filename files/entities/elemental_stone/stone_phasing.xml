@@ -1,0 +1,55 @@
+<Entity name="phasingStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_phasing.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_phasing.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_phasingStone_name"
+      ui_description="$stone_blankstone_phasingStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_phasing.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_phasingStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_phasingStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+  <!-- VFX -->
+  <LuaComponent
+    _tags="enabled_in_hand"
+    script_source_file="mods/blankStone/files/scripts/stone_specific_script/noclip_hand.lua"
+    execute_every_n_frame="1"
+    _enabled="0"
+  ></LuaComponent>
+
+  <LuaComponent
+    _tags="enabled_in_inventory,enabled_in_world"
+    script_source_file="mods/blankStone/files/scripts/stone_specific_script/noclip_monitor.lua"
+    script_throw_item="mods/blankStone/files/scripts/stone_specific_script/noclip_monitor.lua"
+    execute_every_n_frame="1"
+    _enabled="0"
+  ></LuaComponent>
+
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="INVISIBILITY"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="phasingStone"
+  ></VariableStorageComponent>
+
+</Entity>

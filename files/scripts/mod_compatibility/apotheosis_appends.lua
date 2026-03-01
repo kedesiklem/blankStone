@@ -29,6 +29,7 @@ local stones = {
     { id = "stone_toxic",             perk = "PROTECTION_RADIOACTIVITY" },
     { id = "stone_void",              perk = "APOTHEOSIS_VOID"          },
     { id = "stone_worm_blood",        perk = "REMOVE_FOG_OF_WAR"        },
+    { id = "stone_mana",              perk = "UNLIMITED_SPELLS"        },
 }
 
 local gfx_base    = "mods/blankStone/files/items_gfx/elemental_stone/"

@@ -61,7 +61,7 @@
 
   <VariableStorageComponent
     name="new_material_dmg"
-    value_float="0.003"
+    value_string="0.003"
   ></VariableStorageComponent>
 
 

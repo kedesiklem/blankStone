@@ -60,13 +60,13 @@
   <!-- magic -->
 
   <GameEffectComponent
-    _tags="enabled_in_hand"
+    _tags="enabled_in_hand,enabled_in_inventory"
     effect="EDIT_WANDS_EVERYWHERE"
     frames="-1"
   ></GameEffectComponent>
 
   <GameEffectComponent
-    _tags="enabled_in_hand"
+    _tags="enabled_in_hand,enabled_in_inventory"
     effect="MANA_REGENERATION"
     frames="-1"
   ></GameEffectComponent>

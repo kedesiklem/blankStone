@@ -37,9 +37,9 @@ local function handleHint(hint_data, pos_x, pos_y)
     GamePlaySound("data/audio/Desktop/ui.bank", "ui/button_click", pos_x, pos_y)
 end
 
-local function tryInfuseStone(stone_recipie, hintCount, pos_x, pos_y)
+local function tryInfuseStone(stone_recipe, hintCount, pos_x, pos_y)
 
-    local stone_hint = stone_recipie.hint_key
+    local stone_hint = stone_recipe.hint_key
     if stone_hint then
         if hintCount == 0 then
             local hint_data = HINT_REGISTRY[stone_hint]
@@ -52,7 +52,7 @@ local function tryInfuseStone(stone_recipie, hintCount, pos_x, pos_y)
         return false
     end
     
-    local stone_key = stone_recipie.stone_key
+    local stone_key = stone_recipe.stone_key
     local stone_data = STONE_REGISTRY[stone_key]
 
 
@@ -172,9 +172,9 @@ local function tryFuse(cx, cy, recipe, cached_entities)
     local selected_ingredients = collectAndSelect(cx, cy, recipe.radius, recipe.ingredients, "ingredients", cached_entities)
     if not selected_ingredients then return false end
 
-    -- Collecte catalistes (avec cache, optionnel)
-    if recipe.catalistes then
-        local selected_catalist = collectAndSelect(cx, cy, recipe.radius, recipe.catalistes, "catalist", cached_entities)
+    -- Collecte catalysts (avec cache, optionnel)
+    if recipe.catalysts then
+        local selected_catalist = collectAndSelect(cx, cy, recipe.radius, recipe.catalysts, "catalist", cached_entities)
         if not selected_catalist then return false end
     else
         log.debug("no catalist required")
@@ -208,6 +208,7 @@ local function tryFuse(cx, cy, recipe, cached_entities)
         -- Vérification des requirements
         for _, result in ipairs(recipe.results) do
             local stone_data = STONE_REGISTRY[result.key]
+            stone_data = stone_data.preprocess(stone_data)
             local can_craft, msg, pure = condition.checkRequirements(stone_data)
             if not can_craft then
                 log.debug("requirements not meet : recipe skipped")
@@ -264,7 +265,7 @@ local function tryAllFuse(cx, cy, recipes)
         if tryFuse(cx, cy, recipes[k], cached_entities) then
             return true  -- Kill le sort après la première fusion réussie
         else
-            log.debug("recipie failed.")
+            log.debug("recipe failed.")
         end
     end
     

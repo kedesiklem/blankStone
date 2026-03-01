@@ -73,11 +73,11 @@ local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
     local entity_id = GetUpdatedEntityID()
     local stone_id = EntityGetParent(entity_id)
 
-    local stone_recipie = findInfusionRecipes(potion_id, entityName)
+    local stone_recipe = findInfusionRecipes(potion_id, entityName)
 
     local hint_id = utils.getVariable(entity_id, "hintEnable")
     
-    local is_success = stone_factory.tryInfuseStone(stone_recipie, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y)
+    local is_success = stone_factory.tryInfuseStone(stone_recipe, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y)
     
     -- Handle the result
     if is_success then
@@ -117,6 +117,7 @@ function material_area_checker_success(pos_x, pos_y)
         log.debug("No valid powder_stash found nearby")
     end
 
+    -- merge potions & pouch in one list
     for i=1,#powder_stashs_id do
         potions_id[#potions_id+1] = powder_stashs_id[i]
     end
@@ -129,9 +130,14 @@ function material_area_checker_success(pos_x, pos_y)
     else
 
         for i=1, #potions_id do
+
+            -- Don't use potion directly from inventory
+            if(potions_id[i] ~= EntityGetRootEntity(potions_id[i])) then goto continue end
+
             if (tryCreateStone(potions_id[i], pos_x, pos_y, entityName)) then
                 return
             end
+            ::continue::
         end
     end
 

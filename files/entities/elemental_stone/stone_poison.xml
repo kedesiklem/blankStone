@@ -83,7 +83,7 @@
   <!-- Optional : Default value = 0.0 -->
   <VariableStorageComponent
     name="new_material_dmg"
-    value_float="0.0"
+    value_string="0.0"
   ></VariableStorageComponent>
   <!-- ============================== -->
 

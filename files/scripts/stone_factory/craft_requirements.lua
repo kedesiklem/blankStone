@@ -16,7 +16,7 @@ local function checkFlagRequirements(flags_required)
 
     for _, flag in pairs(flags_required) do
         if not GameHasFlagRun(flag.run) then
-            if not HasFlagPersistent( flag.persistant ) then
+            if not HasFlagPersistent( flag.persistent ) then
                 return false
             end
         end
