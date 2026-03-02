@@ -3,6 +3,6 @@ Most of the code is written by me (Ked), based on "reverse-engineering" Noita or
 Conga Lyne - Writing most of the code of Apotheosis wich I use as a guide line
 KILLUA - The mod BagsOfMany whom storage_stone is almost a copy past of
 Evasia - Creating the item list appends script
-Copis - Extracting liquid from potion
+Copi - Extracting liquid from potion
 Lamia - Translation insert script
 Squirrelly - EntityGetDamageFromMaterial function
