@@ -164,6 +164,12 @@ local STONE_DATA = {
         category = "elemental",
     },
 
+    ["gunponwderStone"] = {
+        path = elemental_stone_path .. "stone_gunpowder",
+        level = 5,
+        category = "elemental",
+    },
+
     ["poisonStone"] = {
         path = elemental_stone_path .. "stone_poison",
         level = 7,

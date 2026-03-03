@@ -1,7 +1,7 @@
 dofile("data/scripts/lib/mod_settings.lua")
 dofile("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 
-local mod_version = "1.6.19"
+local mod_version = "1.16.3"
 
 local function last_widget_is_being_hovered(gui)
     local _, _, hovered = GuiGetPreviousWidgetInfo(gui)

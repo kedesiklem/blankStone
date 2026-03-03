@@ -62,6 +62,10 @@ stone_blankstone_freezeStone_desc,"Winter claimed it long ago. There is nothing 
 stone_blankstone_phasingStone_name,Liminal Fragment,,,,,Fragment Liminal,,,,,,,
 stone_blankstone_phasingStone_desc,"It does not break what it crosses. It simply disagrees with it.",,,,,Elle ne brise pas ce qu'elle traverse. Elle est simplement en désaccord avec.,,,,,,,
 
+stone_blankstone_gunpowderStone_name,Blasted Flint,,,,,Silex Déflagré,,,,,,,
+stone_blankstone_gunpowderStone_desc,"At its center, an explosion. Frozen, permanent, going nowhere.",,,,,"En son cœur, une explosion. Figée, permanente, n'allant nulle part.",,,,,,,
+
+
 stone_blankstone_voidStone_name,Decay Stone,,,,,Pierre de Décrépitude,,,,,,,
 stone_blankstone_voidStone_desc,"Matter unravels at its touch. The first step toward nothingness.",,,,,"La matière se délite à son contact. Le premier pas vers le néant.",,,,,,,
 stone_blankstone_milkStone_name,Moonstone,,,,,Pierre de Lune,,,,,,,

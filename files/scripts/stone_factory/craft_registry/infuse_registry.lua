@@ -31,6 +31,12 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["bone"] = {stone_key = "bonesStone"},
         ["poison"] = {stone_key = "poisonHarmfulStone"},
         ["[slime]"] = {stone_key = "slimeStone"},
+
+        ["gunpowder_explosive"] = {stone_key = "gunponwderStone"},
+        ["gunpowder_tnt"] = {stone_key = "gunponwderStone"},
+        ["gunpowder"] = {stone_key = "gunponwderStone"},
+        ["gunpowder_unstable"] = {stone_key = "gunponwderStone"},
+        ["gunpowder_unstable_big"] = {stone_key = "gunponwderStone"},
         
         ["alcohol"] = {stone_key = "whiskeyStone"},
         ["alcohol_gas"] = {stone_key = "whiskeyStone"},

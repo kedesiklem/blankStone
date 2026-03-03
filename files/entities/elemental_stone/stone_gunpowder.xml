@@ -1,0 +1,51 @@
+<Entity name="gunpowderStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_gunpowder.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_gunpowder.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_gunpowderStone_name"
+      ui_description="$stone_blankstone_gunpowderStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_gunpowder.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_gunpowderStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_gunpowderStone_name"
+      throw_as_item="1"
+    ></AbilityComponent>
+  </Base>
+
+  <!-- effect -->
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="PROTECTION_EXPLOSION"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="gunpowder_unstable"
+      emit_real_particles="1"
+      emit_cosmetic_particles="0"
+      count_min="0"
+      count_max="1"
+    ></ParticleEmitterComponent>
+  </Base>
+
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="gunpowderStone"
+  ></VariableStorageComponent>
+
+</Entity>
