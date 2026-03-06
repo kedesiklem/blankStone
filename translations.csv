@@ -30,6 +30,8 @@ stone_blankstone_unstableTeleportStone_name,Fractured Blink Stone,,,,,Pierre de 
 stone_blankstone_unstableTeleportStone_desc,"Reality slips through your fingers. Where will you end?",,,,,La réalité glisse entre vos doigts. Où allez-vous finir ?,,,,,,,
 stone_blankstone_teleportStone_name,Stable Blink Stone,,,,,Pierre de Transfert Stable,,,,,,,
 stone_blankstone_teleportStone_desc,"The slime anchored it to this plane. Space obeys now.",,,,,La gelée l'a ancrée à ce plan. L'espace obéit maintenant.,,,,,,,
+stone_blankstone_trueTeleportStone_name,True Stable Blink Stone,,,,,Pierre de Transfert Stable Veritable,,,,,,,
+stone_blankstone_trueTeleportStone_desc,"The slime anchored it permanently to this plane. Space obeys now.",,,,,La gelée l'a ancrée définitivement à ce plan. L'espace obéit maintenant.,,,,,,,
 stone_blankstone_magicLiquidStone_name,Shattered Vessel,,,,,Réceptacle Brisé,,,,,,,
 stone_blankstone_magicLiquidStone_desc,"Magic bleeds out. Too broken to contain power.",,,,,La magie s'échappe. Trop brisé pour contenir le pouvoir.,,,,,,,
 stone_blankstone_bloodStone_name,Crimson Hunger,,,,,Faim Écarlate,,,,,,,

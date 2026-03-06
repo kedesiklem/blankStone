@@ -1,4 +1,4 @@
-<Entity name="teleportStone">
+<Entity name="trueTeleportStone">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
     <PhysicsImageShapeComponent
@@ -10,17 +10,17 @@
     ></SpriteComponent>
 
     <ItemComponent
-      item_name="$stone_blankstone_teleportStone_name"
-      ui_description="$stone_blankstone_teleportStone_desc"
+      item_name="$stone_blankstone_trueTeleportStone_name"
+      ui_description="$stone_blankstone_trueTeleportStone_desc"
       ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_teleport.png"
     ></ItemComponent>
 
     <UIInfoComponent
-      name="$stone_blankstone_teleportStone_name"
+      name="$stone_blankstone_trueTeleportStone_name"
     ></UIInfoComponent>
 
     <AbilityComponent
-      ui_name="$stone_blankstone_teleportStone_name"
+      ui_name="$stone_blankstone_trueTeleportStone_name"
       throw_as_item="1"
     ></AbilityComponent>
   </Base>
@@ -67,55 +67,15 @@
     loop="1"
   ></MagicConvertMaterialComponent>
 
-  <MaterialSuckerComponent
-    _tags="enabled_in_hand,enabled_in_world"
-    material_type="0"
-    suck_tag="[slime]"
-    barrel_size="1000"
-    num_cells_sucked_per_frame="50"
-    randomized_position.min_x="-10"
-    randomized_position.max_x="10"
-    randomized_position.min_y="-10"
-    randomized_position.max_y="10"
-  ></MaterialSuckerComponent>
-
-  <MaterialSuckerComponent
-    _tags="enabled_in_hand,enabled_in_world"
-    material_type="0"
-    suck_tag="[mimic_liquid]"
-    barrel_size="1000"
-    num_cells_sucked_per_frame="50"
-    randomized_position.min_x="-10"
-    randomized_position.max_x="10"
-    randomized_position.min_y="-10"
-    randomized_position.max_y="10"
-  ></MaterialSuckerComponent>
-
-  <MaterialInventoryComponent
-    _tags="enabled_in_hand,enabled_in_world"
-  >
-    <count_per_material_type>
-      <Material material="slime" count="1000" />
-    </count_per_material_type>
-  </MaterialInventoryComponent>
-
-  <!-- TP -->
   <LuaComponent
     _tags="enabled_in_hand,enabled_in_inventory"
-    script_kick="mods/blankStone/files/scripts/stone_specific_script/teleport_stone.lua"
+    script_kick="mods/blankStone/files/scripts/stone_specific_script/trueTeleport_stone.lua"
     execute_every_n_frame="-1"
-  ></LuaComponent>
-
-  <!-- convert material in inventory -->
-  <LuaComponent
-    _tags="enabled_in_hand,enabled_in_inventory"
-    script_source_file="mods/blankStone/files/scripts/stone_specific_script/teleport_stone.lua"
-    execute_every_n_frame="6"
   ></LuaComponent>
 
   <VariableStorageComponent
     name="blankStoneID"
-    value_string="teleportStone"
+    value_string="trueTeleportStone"
   ></VariableStorageComponent>
 
 </Entity>

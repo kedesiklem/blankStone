@@ -145,10 +145,30 @@ local FUSE_RECIPES = {
             { key = "hasteStone", offset_y = -10},
             { key = "blankStone", offset_y = -10},
         },
-        -- message = {
-        --     title = "$text_blankstone_magnum_opus_title",
-        --     desc = "$text_blankstone_magnum_opus_desc",
-        -- },
+        on_success = function() end
+    },
+    { -- teleportStone by fusion
+        ingredients = {
+            { name = "slimeStone", count = 1 },
+            { name = "teleportStone", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "trueTeleportStone", offset_y = -10},
+            { key = "blankStone", offset_y = -10},
+        },
+        on_success = function() end
+    },
+    { -- explosionStone by fusion
+        ingredients = {
+            { name = "slimeStone", count = 1 },
+            { name = "hasteStone|acceleratiumStone|levitatiumStone", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "explosionStone", offset_y = -10},
+            { key = "blankStone", offset_y = -10},
+        },
         on_success = function() end
     },
     { -- poisonharmful to poison

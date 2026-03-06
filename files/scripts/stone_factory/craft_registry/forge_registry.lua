@@ -1,4 +1,6 @@
 BOOK_PATH = "mods/blankStone/files/entities/items/books/"
+STONE_PATH = "mods/blankStone/files/entities/"
+ELEMENTAL_PATH = STONE_PATH .. "elemental_stone/"
 
 local LIES_MESSAGE = {
     title = "$text_blankstone_unmask_book_title",
@@ -18,7 +20,8 @@ local FORGE_RECIPES = {
             desc  = "$text_blankstone_repair_broken_stone_desc",
         }
     },
-    ["voidStone"] = {items = {"mods/blankStone/files/entities/stone_storage.xml"}},
+    ["voidStone"] = {items = {STONE_PATH .. "stone_storage.xml"}},
+    ["unstableTeleportStone"] = {items = {ELEMENTAL_PATH .. "stone_teleport.xml"}},
     ["book_infuse"]      = { items = {BOOK_PATH .. "reforged_book_infuse.xml"},      message = REPAIR_MESSAGE },
     ["book_purity"]      = { items = {BOOK_PATH .. "reforged_book_purity.xml"},      message = REPAIR_MESSAGE },
     ["book_magnum_opus"] = { items = {BOOK_PATH .. "reforged_book_magnum_opus.xml"}, message = REPAIR_MESSAGE },

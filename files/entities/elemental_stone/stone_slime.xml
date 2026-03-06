@@ -24,6 +24,7 @@
         ></AbilityComponent>
     </Base>
 
+    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
     <!-- VFX -->
 
@@ -34,6 +35,34 @@
             count_max="6"
         ></ParticleEmitterComponent>
     </Base>
+
+    <MagicConvertMaterialComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        from_material="magic_liquid_unstable_teleportation"
+        to_material="magic_liquid_teleportation"
+        is_circle="1"
+        radius="15"
+        kill_when_finished="0"
+        loop="1"
+    ></MagicConvertMaterialComponent>
+    <MagicConvertMaterialComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        from_material_tag="[fire]"
+        to_material="cloud_slime"
+        is_circle="1"
+        radius="15"
+        kill_when_finished="0"
+        loop="1"
+    ></MagicConvertMaterialComponent>
+    <MagicConvertMaterialComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        from_material_tag="[magic_faster]"
+        to_material="fire_blue"
+        is_circle="1"
+        radius="15"
+        kill_when_finished="0"
+        loop="1"
+    ></MagicConvertMaterialComponent>
 
     <!-- effect -->
 

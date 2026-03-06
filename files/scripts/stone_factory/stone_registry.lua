@@ -153,6 +153,11 @@ local STONE_DATA = {
         level = 5,
         category = "elemental",
     },
+    ["trueTeleportStone"] = {
+        path = elemental_stone_path .. "stone_true_teleport",
+        level = 5,
+        category = "elemental",
+    },
     ["hasteStone"] = {
         path = elemental_stone_path .. "stone_haste",
         level = 5,

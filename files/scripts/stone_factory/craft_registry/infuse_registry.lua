@@ -71,12 +71,11 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
 
     ["slimeStone"] = {
-        ["unstableTeleportStone"] = {stone_key = "teleportStone"},
         ["[magic_faster]"] = {stone_key = "explosionStone"},
     },
 
-    ["unstableTeleportStone"] = {
-        ["[slime]"] = {stone_key = "teleportStone"},
+    ["teleportStone"] = {
+        ["[slime]"] = {stone_key = "trueTeleportStone"},
     },
     ["hasteStone"] = {
         ["[slime]"] = {stone_key = "explosionStone"},
