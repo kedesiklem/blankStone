@@ -95,7 +95,7 @@
     _tags="enabled_in_hand,enabled_in_world"
   >
     <count_per_material_type>
-      <Material material="slime" count="1000" />
+      <Material material="slime" count="0" />
     </count_per_material_type>
   </MaterialInventoryComponent>
 
