@@ -16,8 +16,7 @@ local function extract_liquid_quantity(potion_id, quantity)
     local material_name = CellFactory_GetName(material_id)
     local potion_inventory = EntityGetFirstComponent(potion_id, "MaterialInventoryComponent")
 
-    if not(potion_inventory) then
-        log.error("How the fuck potion has no MaterialInventoryComponent?")
+    if not(potion_inventory) then -- stone in inventory without slime perk
         return
     end
 

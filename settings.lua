@@ -379,12 +379,8 @@ local translations = {
 		allow_potions_d = "Allow potions to be stored in the storage stone",
 		allow_items = "Allow items",
 		allow_items_d = "Allow items (evil eye, sunseed...) to be stored in the storage stone",
-		allow_bags_inception_universal_bag = "Allow storage stone",
-		allow_bags_inception_universal_bag_d = "Allow storage stone to be stored in storage stone",
-		allow_bags_inception_potion_bag = "Allow potion pouches",
-		allow_bags_inception_potion_bag_d = "Allow potion pouches to be stored in storage stone",
-		allow_bags_inception_spell_bag = "Allow spell binders",
-		allow_bags_inception_spell_bag_d = "Allow spell binders to be stored in storage stone",
+		allow_bags_inception = "Allow storage stone",
+		allow_bags_inception_d = "Allow storage stone to be stored in storage stone",
 		-- Pickup restrictions boolean group
 		pickup_restrictions = "Pickup restrictions",
 		allow_holy_mountain_wand_stealing = "Allow HM wand stealing",
@@ -463,9 +459,7 @@ D = {
 	allow_wands = false,
 	allow_potions = true,
 	allow_items = true,
-	allow_bags_inception_universal_bag = true,
-	allow_bags_inception_potion_bag = false,
-	allow_bags_inception_spell_bag = false,
+	allow_bags_inception = true,
 	-- Pickup restrictions
 	allow_holy_mountain_wand_stealing = false,
 	allow_holy_mountain_spell_stealing = false,
@@ -627,7 +621,7 @@ local function build_settings()
 					ui_fn = S.mod_setting_better_boolean,
 					checkboxes = {
 						"allow_spells", "allow_wands", "allow_potions", "allow_items",
-						"allow_bags_inception_universal_bag", "allow_bags_inception_potion_bag", "allow_bags_inception_spell_bag",
+						"allow_bags_inception",
 					},
 				},
 				{

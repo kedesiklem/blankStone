@@ -71,7 +71,7 @@ function universal_bag_pickup(entity_who_kicked, active_item)
         add_items_to_inventory(active_item, inventory, entity_who_kicked, entities)
     end
     -- Pickup bags
-    if ModSettingGet("blankStone.allow_bags_inception_universal_bag") or ModSettingGet("blankStone.allow_bags_inception_potion_bag") or ModSettingGet("blankStone.allow_bags_inception_spell_bag") then
+    if ModSettingGet("blankStone.allow_bags_inception") then
         local entities = EntityGetInRadiusWithTag(pos_x, pos_y, pickup_distance, "item_pickup")
         add_bags_to_inventory(active_item, inventory, entity_who_kicked, entities)
     end
@@ -459,15 +459,8 @@ function is_allowed_in_bag(item_id, bag_id)
     if is_universal_bag(bag_id) then
         local entity_allowed_in_bag = false
         entity_allowed_in_bag = is_allowed_in_universal_bag(item_id)
-        if ModSettingGet("blankStone.allow_bags_inception_potion_bag") and is_potion_bag(item_id) then
+        if ModSettingGet("blankStone.allow_bags_inception") and is_universal_bag(item_id) then
             entity_allowed_in_bag = true
-        elseif ModSettingGet("blankStone.allow_bags_inception_spell_bag") and is_spell_bag(item_id) then
-            entity_allowed_in_bag = true
-        elseif ModSettingGet("blankStone.allow_bags_inception_universal_bag") and is_universal_bag(item_id) then
-            entity_allowed_in_bag = true
-        end
-        if not ModSettingGet("blankStone.allow_big_bag_in_small_bag") then
-            entity_allowed_in_bag = is_bag_one_smaller_than_bag_two(item_id, bag_id)
         end
         return entity_allowed_in_bag
     end
@@ -1443,15 +1436,8 @@ function add_bags_to_inventory(active_item, inventory, player_id, entities)
         if is_storageStone(entity) and entity ~= active_item then
             if EntityGetParent(entity) == 0 then
                 if is_bag_not_full(active_item, get_bag_inventory_size(active_item)) then
-                    if ModSettingGet("blankStone.allow_bags_inception_potion_bag") and is_potion_bag(entity) then
+                    if ModSettingGet("blankStone.allow_bags_inception") and is_universal_bag(entity) then
                         entity_allowed_in_bag = true
-                    elseif ModSettingGet("blankStone.allow_bags_inception_spell_bag") and is_spell_bag(entity) then
-                        entity_allowed_in_bag = true
-                    elseif ModSettingGet("blankStone.allow_bags_inception_universal_bag") and is_universal_bag(entity) then
-                        entity_allowed_in_bag = true
-                    end
-                    if not ModSettingGet("blankStone.allow_big_bag_in_small_bag") then
-                        entity_allowed_in_bag = is_bag_one_smaller_than_bag_two(entity, active_item)
                     end
                 end
             end
