@@ -4,5 +4,5 @@ Conga Lyne - Writing most of the code of Apotheosis wich I use as a guide line
 KILLUA - The mod BagsOfMany whom storage_stone is almost a copy past of
 Evasia - Creating the item list appends script
 Copi - Extracting liquid from potion
-Lamia - Translation insert script
+Lamia - Translation insert script & Settings
 Squirrelly - EntityGetDamageFromMaterial function

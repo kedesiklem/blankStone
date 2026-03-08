@@ -1,723 +1,736 @@
-dofile("data/scripts/lib/mod_settings.lua")
-dofile("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
+---@diagnostic disable: name-style-check
+dofile_once("data/scripts/lib/mod_settings.lua")
+dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 
-local mod_version = "1.16.4"
-
-local function last_widget_is_being_hovered(gui)
-    local _, _, hovered = GuiGetPreviousWidgetInfo(gui)
-    return hovered
-end
-
-local function last_widget_is_left_clicked(gui)
-    local left_click = GuiGetPreviousWidgetInfo(gui)
-    return left_click
-end
-
-local function last_widget_size(gui)
-    local _, _, _, _, _, width, height = GuiGetPreviousWidgetInfo(gui)
-    return width, height
-end
-
-local function get_key_pressed_name(value_pressed)
-    for key, value in pairs(InputCodes.Key) do
-        if value_pressed == value then
-            return string.upper(InputCodes.KeyName[key])
-        end
-    end
-    return ""
-end
-
-local function get_mouse_pressed_name(value_pressed)
-    for mouse, value in pairs(InputCodes.Mouse) do
-        if value_pressed == value then
-            return string.upper(InputCodes.MouseName[mouse])
-        end
-    end
-    return ""
-end
-
-local function detect_any_key_just_down()
-    local just_down_list = {}
-    for key, value in pairs(InputCodes.Key) do
-        local just_down =  InputIsKeyJustDown(value)
-        if just_down then
-            table.insert(just_down_list, key)
-        end
-    end
-    return just_down_list
-end
-
-local function detect_any_mouse_just_down()
-    local just_down_list = {}
-    for key, value in pairs(InputCodes.Mouse) do
-        local just_down =  InputIsMouseButtonJustDown(value)
-        if just_down then
-            table.insert(just_down_list, key)
-        end
-    end
-    return just_down_list
-end
-
-local listening_to_key_press = false
-local function mod_setting_key_display(mod_id, gui, in_main_menu, im_id, setting)
-    local error_msg = "COULD NOT BE DISPLAYED PROPERLY PLEASE REPORT THE PROBLEM"
-    local pickup_input_code = ModSettingGet("blankStone.pickup_input_code")
-    local pickup_input_type = ModSettingGet("blankStone.pickup_input_type")
-    if not in_main_menu and pickup_input_code and pickup_input_type and pickup_input_code ~= "" and pickup_input_type ~= "" then
-        if not listening_to_key_press then
-            GuiImage(gui, 1, mod_setting_group_x_offset, 0, "mods/blankStone/files/ui_gfx/settings/click_rebind_button.png", 0, 1)
-            local last_hovered = last_widget_is_being_hovered(gui)
-            local button_clicked = last_widget_is_left_clicked(gui)
-            local _, button_y = last_widget_size(gui)
-            if last_hovered then
-                GuiColorSetForNextWidget(gui, 0.75, 0.75, 0.75, 1.0)
-            end
-            if button_y then
-                GuiImage(gui, 1, mod_setting_group_x_offset, -button_y, "mods/blankStone/files/ui_gfx/settings/click_rebind_button.png", 1, 1)
-            end
-            if last_hovered then
-                GuiColorSetForNextWidget(gui, 1, 1, 0.71764705882, 1)
-                GuiText(gui, mod_setting_group_x_offset, 0, "CLICK TO BEGIN LISTENING TO KEY PRESS...")
-            end
-            if last_hovered and button_clicked then
-                listening_to_key_press = true
-            end
-        else
-            GuiImage(gui, 1, mod_setting_group_x_offset, 0, "mods/blankStone/files/ui_gfx/settings/listening_rebind.png", 0, 1)
-            local _, right_clicked, last_hovered = GuiGetPreviousWidgetInfo(gui)
-            local _, button_y = last_widget_size(gui)
-            if last_hovered then
-                GuiColorSetForNextWidget(gui, 0.75, 0.75, 0.75, 1.0)
-            end
-            if button_y then
-                GuiImage(gui, 1, mod_setting_group_x_offset, -button_y, "mods/blankStone/files/ui_gfx/settings/listening_rebind.png", 1, 1)
-            end
-            if last_hovered then
-                GuiColorSetForNextWidget(gui, 1, 1, 0.71764705882, 1)
-                GuiText(gui, mod_setting_group_x_offset, 0, "RIGHT CLICK TO CANCEL...")
-            end
-            local cancelling = false
-            if last_hovered and right_clicked then
-                listening_to_key_press = false
-                cancelling = true
-            end
-
-            if not cancelling then
-                local type_found = nil
-                local keys_just_down = detect_any_key_just_down()
-                local mouse_just_down = detect_any_mouse_just_down()
-                local key_or_mouse_found = nil
-                for _, key_code in pairs(keys_just_down or {}) do
-                    local key_number = InputCodes.Key[key_code]
-                    if key_number then
-                        type_found = "Key"
-                        key_or_mouse_found = key_number
-                        listening_to_key_press = false
-                        break
-                    end
-                end
-                for _, mouse_code in pairs(mouse_just_down or {}) do
-                    local mouse_number = InputCodes.Mouse[mouse_code]
-                    if mouse_number then
-                        type_found = "Mouse"
-                        key_or_mouse_found = mouse_number
-                        listening_to_key_press = false
-                        break
-                    end
-                end
-                if key_or_mouse_found and type_found then
-                    ModSettingSet("blankStone.pickup_input_type", type_found)
-                    ModSettingSetNextValue("blankStone.pickup_input_type", type_found, false)
-                    ModSettingSet("blankStone.pickup_input_code", key_or_mouse_found)
-                    ModSettingSetNextValue("blankStone.pickup_input_code", key_or_mouse_found, false)
-                end
-            end
-        end
-    end
-    if in_main_menu then
-        GuiColorSetForNextWidget(gui, 1.0, 0.4, 0.4, 1.0)
-        GuiText(gui, mod_setting_group_x_offset, 0, "TO MODIFY THIS SETTING ENTER A GAME")
-    end
-    -- DISPLAY PICKUP CODE NAME
-    local pickup_input_code_name = ""
-    if pickup_input_type == "Key" then
-        pickup_input_code_name = get_key_pressed_name(tonumber(pickup_input_code))
-    elseif pickup_input_type == "Mouse" then
-        pickup_input_code_name = get_mouse_pressed_name(tonumber(pickup_input_code))
-    end
-    local message_disp = ""
-    if pickup_input_code_name and pickup_input_code_name ~= "" then
-        message_disp = "INPUT key/mouse code: " .. "[  " .. pickup_input_code_name .. "  ]"
-    end
-    if message_disp and message_disp ~= "" then
-        GuiText(gui, mod_setting_group_x_offset, 0, message_disp)
-    else
-        GuiText(gui, mod_setting_group_x_offset, 0, error_msg)
-    end
-end
-
-local function mod_setting_type_display(mod_id, gui, in_main_menu, im_id, setting)
-    local pickup_input_code = tostring(ModSettingGet("blankStone.pickup_input_code"))
-    local pickup_input_type = tostring(ModSettingGet("blankStone.pickup_input_type"))
-    local msg_display = ""
-    if pickup_input_code ~= nil and pickup_input_type ~= nil and pickup_input_code ~= "" and pickup_input_type ~= "" then
-        msg_display = "Input Type -> ( " .. pickup_input_type .. " ) | Input Code -> ( " .. pickup_input_code .. " )"
-    end
-    if msg_display and msg_display ~= "" then
-        GuiColorSetForNextWidget(gui, 0.55, 0.55, 0.55, 1)
-        GuiText(gui, mod_setting_group_x_offset, 0, msg_display)
-    else
-        GuiText(gui, mod_setting_group_x_offset, 0, "COULD NOT BE DISPLAYED PROPERLY PLEASE REPORT THE PROBLEM")
-    end
-end
-
-local function mod_setting_section(mod_id, gui, in_main_menu, im_id, setting)
-    GuiColorSetForNextWidget(gui, 0.4, 0.4, 0.4, 1.0)
-    GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_name .. ": " .. setting.ui_description)
-end
-
-local function mod_setting_section_rgb(mod_id, gui, in_main_menu, im_id, setting)
-    local local_bag_ui_red = tonumber(ModSettingGet("blankStone.bag_image_red"))/255
-    local local_bag_ui_green = tonumber(ModSettingGet("blankStone.bag_image_green"))/255
-    local local_bag_ui_blue = tonumber(ModSettingGet("blankStone.bag_image_blue"))/255
-    local local_bag_ui_alpha = tonumber(ModSettingGet("blankStone.bag_image_alpha"))/255
-    GuiColorSetForNextWidget(gui, 0.4, 0.4, 0.4, 1.0)
-    GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_name .. ": " .. setting.ui_description)
-    GuiColorSetForNextWidget(gui, local_bag_ui_red, local_bag_ui_green, local_bag_ui_blue, local_bag_ui_alpha)
-    GuiText(gui, mod_setting_group_x_offset, 0, "BACKGROUND")
-end
-
-local function mod_setting_warning_inventory_lock(mod_id, gui, in_main_menu, im_id, setting)
-    if not ModSettingGet("blankStone.locked") then
-        GuiColorSetForNextWidget(gui, 1.0, 1.0, 0.4, 1.0)
-        GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_description)
-    end
-end
-
--- function mod_setting_dev_enabled(mod_id, gui, in_main_menu, im_id, setting)
---     if ModSettingGet("blankStone.dev_enabled") then
---         GuiColorSetForNextWidget(gui, 1.0, 1.0, 1.0, 1.0)
---         GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_name)
---     end
--- end
+local mod_version = "1.16.5"
 
 local mod_id = "blankStone"
-mod_settings_version = 1
-mod_settings =
-{
-    {
-        category_id = "bag_keybindings",
-        foldable = true,
-        _folded = true,
-        ui_name = "Bag Keybindings",
-        ui_description = "Keybindings for the bags",
-        settings = {
-            {
-                ui_fn = mod_setting_key_display,
-                id = "pickup_input_code",
-                value_default = "10",
-                text_max_length = 4,
-				allowed_characters = "0123456789",
-                value_display_formatting = "Pickup input code : $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_type_display,
-                id = "pickup_input_type",
-                ui_name = "Pickup input type",
-                value_default = "Key",
-                ui_description = "Pickup input type used for the pickup actions.",
-                value_display_formatting = "Pickup input type: $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-        }
-    },
-    {
-        category_id = "bag_position_inventory",
-        foldable = true,
-        _folded = true,
-        ui_name = "Bag General",
-        ui_description = "General options for the bags",
-        settings = {
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Position of the bag inventory ui",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "pos_x",
-                ui_name = "Horizontal position",
-                ui_description = "",
-                value_default = 170,
-                value_min = 0,
-                value_max = 1000,
-                value_display_multiplier = 1,
-                value_display_formatting = " x = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "pos_y",
-                ui_name = "Vertical position",
-                ui_description = "",
-                value_default = 54,
-                value_min = 0,
-                value_max = 1000,
-                value_display_multiplier = 1,
-                value_display_formatting = " y = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "alchemy_pos_x",
-                ui_name = "Alchemy horizontal position",
-                ui_description = "",
-                value_default = 170,
-                value_min = 0,
-                value_max = 1000,
-                value_display_multiplier = 1,
-                value_display_formatting = " x = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "alchemy_pos_y",
-                ui_name = "Alchemy vertical position",
-                ui_description = "",
-                value_default = 200,
-                value_min = 0,
-                value_max = 1000,
-                value_display_multiplier = 1,
-                value_display_formatting = " y = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "show_bags_without_inventory_open",
-                ui_name = "Show bags without inventory open",
-                ui_description = "Show the bags inventory even when the inventory is not open.\n"..
-                    "\n    With big wand the bag ui gets hidden by the wand inventory\n"..
-                    "\n    so this option allows to show the bags ui without having to open the inventory.",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "locked",
-                ui_name = "Lock Inventory",
-                ui_description = "When false, the bag button can be dragged to a new position to display the inventory at a new location",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_warning_inventory_lock,
-                ui_name = "Unlocked Position",
-                ui_description = "\n   When the button is unlocked you wont be abled to\n" ..
-                    "\n   use the sliders to choose the inventory position.\n" ..
-                    "\n   If you want to move the inventory position with"..
-                    "\n   the sliders first lock the bag position.",
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Gui general options",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "keep_tooltip_open",
-                ui_name = "Keep bag tooltip open",
-                ui_description = "Show the bag inventory when hovered and then keep it open\n"..
-                    "\n    to show items inside and drop them.\n",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "dropdown_style",
-                ui_name = "Bag navigation style",
-                ui_description = "When set to true will automatically change the bag displayed when hovering it:\n    This allows to quickly check what is inside a bag without cluttering the screen.\n"..
-                    "When set to false will need to right click on a bag item to open its display:\n    This helps in switching items from one bag to another.\n",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Inventory Wrapping",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "bag_slots_inventory_wrap",
-                ui_name = "Inventory Slots Wrap",
-                ui_description = "Number of inventory slots before newline in ui",
-                value_default = "8",
-                text_max_length = 3,
-				allowed_characters = "0123456789",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "spells_slots_inventory_wrap",
-                ui_name = "Spells Slots Wrap",
-                ui_description = "Number of spells in wand tooltip before newline in ui",
-                value_default = "12",
-                text_max_length = 2,
-				allowed_characters = "0123456789",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section_rgb,
-                ui_name = "RGB of the bag inventory ui",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "bag_image_red",
-                ui_name = "Red of the background",
-                ui_description = "The red in the rgb of the bag ui",
-                value_default = 255,
-                value_min = 0,
-                value_max = 255,
-                value_display_multiplier = 1,
-                value_display_formatting = " red = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "bag_image_green",
-                ui_name = "Green of the background",
-                ui_description = "The green in the rgb of the bag ui",
-                value_default = 255,
-                value_min = 0,
-                value_max = 255,
-                value_display_multiplier = 1,
-                value_display_formatting = " green = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "bag_image_blue",
-                ui_name = "Blue of the background",
-                ui_description = "The blue in the rgb of the bag ui",
-                value_default = 255,
-                value_min = 0,
-                value_max = 255,
-                value_display_multiplier = 1,
-                value_display_formatting = " blue = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "bag_image_alpha",
-                ui_name = "Alpha of the background",
-                ui_description = "The alpha in the rgb of the bag ui",
-                value_default = 255,
-                value_min = 0,
-                value_max = 255,
-                value_display_multiplier = 1,
-                value_display_formatting = " alpha = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-        }
-    },
-    {
-        category_id = "bag_inventory_size",
-        foldable = true,
-        _folded = true,
-        ui_name = "Bag Inventory",
-        ui_description = "Options for the bags inventories",
-        settings = {
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Inventory Interaction Options",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "dragging_allowed",
-                ui_name = "Dragging in inventory allowed",
-                ui_description = "Allows to drag items in the inventory bag.\n When sorting by positions the inventory will act similarly to the normal inventory. \n When sorting by time of pickup will allow dropping and changing bags.",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "vanilla_dragging_allowed",
-                ui_name = "Vanilla inventory interaction allowed",
-                ui_description = "Allows to drag items from the vanilla inventory to bags inventory and vice versa.\n    Be aware that transfering wand back to the vanilla inventory\n    can sometimes lag the vanilla inventory display, but it can\n    be fixed with an open/close of the inventory.",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Inventory UI Options",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "only_show_bag_button_when_held",
-                ui_name = "Only show bag button when held",
-                ui_description = "Will only show the bag button when a bag item is held in the player\nhands, otherwise will always be shown when the inventory is open",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "show_drop_all_inventory_button",
-                ui_name = "Show drop all inventory button",
-                ui_description = "Will display the drop all inventory button at the end of the inventory UI",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "show_change_sorting_direction_button",
-                ui_name = "Show change sorting direction inventory button",
-                ui_description = "Will display the change sorting direction inventory button at the end of the inventory UI",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Inventory Sorting Options",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "sorting_type",
-                ui_name = "Inventory sorting type",
-                ui_description = "Sort the items in the bag by the order of time of pickup\n or by their positions (time of pickup until moved).\n ON: Sort by time of pickup\n OFF: Sort by positions",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "sorting_order",
-                ui_name = "Ascending sorting direction",
-                ui_description = "Will sort the items in the bag by the order of time of pickup.\n (with Inventory Sorting type: On)\n ON: Newer items will be at the end of the bag\n OFF: Newer items will be at the beginning of the bag",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Allowed Items in Universal Bags",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "allow_spells",
-                ui_name = "Allow Spells",
-                ui_description = "When set to true spells will be allowed to be stored in the storage stone",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_wands",
-                ui_name = "Allow Wands",
-                ui_description = "When set to true wands will be allowed to be stored in the storage stone",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_potions",
-                ui_name = "Allow Potions",
-                ui_description = "When set to true potions will be allowed to be stored in the storage stone",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_items",
-                ui_name = "Allow Items",
-                ui_description = "When set to true items will be allowed to be stored in the storage stone (evil eye, sunseed, etc.)",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_bags_inception_universal_bag",
-                ui_name = "Allow Storage Stone",
-                ui_description = "When set to true storage stone will be allowed to be stored in storage stone",
-                value_default = true,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_bags_inception_potion_bag",
-                ui_name = "Allow Potion Pouches",
-                ui_description = "When set to true potion pouches will be allowed to be stored in storage stone",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_bags_inception_spell_bag",
-                ui_name = "Allow Spell Binders",
-                ui_description = "When set to true spell binders will be allowed to be stored in storage stone",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Pickup restrictions",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "allow_holy_mountain_wand_stealing",
-                ui_name = "Allow holy mountain WAND stealing with bags",
-                ui_description = "When set to true bags will be allowed to steal the wands in holy mountains",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_holy_mountain_spell_stealing",
-                ui_name = "Allow holy mountain SPELL stealing with bags",
-                ui_description = "When set to true bags will be allowed to steal the spells in holy mountains",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_tower_wand_stealing",
-                ui_name = "Allow TOWER wands stealing with bags",
-                ui_description = "When set to true bags will be allowed to steal the tower wands (you can take multiple tower wands)",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "allow_sampo_stealing",
-                ui_name = "Allow the SAMPO to be picked up with bags",
-                ui_description = "When set to true bags will be allowed to pickup the sampo",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Storage Stone",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "universal_storageStone_size",
-                ui_name = "Storage Stone Size",
-                ui_description = "Size of the storage stone inventory",
-                value_default = "8",
-                text_max_length = 2,
-				allowed_characters = "0123456789",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                id = "upgraded_universal_storageStone_size",
-                ui_name = "Storage Stone Upgraded Size",
-                ui_description = "Size of the storage stone inventory when ugraded",
-                value_default = "16",
-                text_max_length = 2,
-				allowed_characters = "0123456789",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-            {
-                ui_fn = mod_setting_vertical_spacing,
-                not_setting = true,
-            },
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Misc",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "drop_orderly_distance",
-                ui_name = "Drop orderly distance between items",
-                ui_description = "Specify the distance between the items when using the drop all items in an orderly fashion.\n (order displayed in the bag)",
-                value_default = 12,
-                value_min = 0,
-                value_max = 20,
-                value_display_multiplier = 1,
-                value_display_formatting = " pixels = $0",
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-        }
-    },
-    {
-        category_id = "bag_abilities",
-        foldable = true,
-        _folded = true,
-        ui_name = "Bag Abilities",
-        ui_description = "Bag abilities options",
-        settings = {
-            {
-                ui_fn = mod_setting_section,
-                ui_name = "Storage Stone",
-                ui_description = "",
-                not_setting = true,
-            },
-            {
-                id = "universal_bag_alchemy_table",
-                ui_name = "Storage stone alchemy table",
-                ui_description = "When true the storage stone have the alchemy table gui available.",
-                value_default = false,
-                scope = MOD_SETTING_SCOPE_RUNTIME,
-            },
-        }
-    },
-    {
-        category_id = "blankStone_version",
-        foldable = false,
-        _folded = true,
-        ui_name = "Version: ".. mod_version,
-        ui_description = "Current version of the mod",
-        settings = {}
-    }
-}
+local mod_prfx = mod_id .. "."
+local T = {}
+local D = {}
+local current_language_last_frame = nil
 
-local function adjust_setting_values(screen_width, screen_height)
-	if not screen_width then
-		local gui = GuiCreate()
-		GuiStartFrame(gui)
-		screen_width, screen_height = GuiGetScreenDimensions(gui)
+local mod_id_hash = 0
+for i = 1, #mod_id do
+	local char = mod_id:sub(i, i)
+	mod_id_hash = mod_id_hash + char:byte() * i
+end
+
+local gui_id = mod_id_hash * 1000
+local function id()
+	gui_id = gui_id + 1
+	return gui_id
+end
+
+---------------------------------------------
+--              Helpers
+---------------------------------------------
+
+local U = {
+	whitebox = "data/debug/whitebox.png",
+	empty = "data/debug/empty.png",
+	offset = 0,
+	max_y = 300,
+	min_y = 50,
+	keycodes = {},
+	waiting_for_input = "",
+}
+do -- helpers
+	function U.set_setting(setting_name, value)
+		ModSettingSet(mod_prfx .. setting_name, value)
+		ModSettingSetNextValue(mod_prfx .. setting_name, value, false)
 	end
-	for i, setting in ipairs(mod_settings) do
-		if setting.id == "pos_x" then
-			setting.value_max = screen_width - 100
-		elseif setting.id == "pos_y" then
-			setting.value_max = screen_height - 100
+
+	function U.get_setting(setting_name)
+		return ModSettingGet(mod_prfx .. setting_name)
+	end
+
+	function U.get_setting_next(setting_name)
+		return ModSettingGetNextValue(mod_prfx .. setting_name)
+	end
+
+	function U.calculate_elements_offset(array, gui)
+		local should_destroy = false
+		if not gui then
+			gui = GuiCreate()
+			GuiStartFrame(gui)
+			should_destroy = true
 		end
+		local max_width = 10
+		for _, setting in ipairs(array) do
+			if setting.category_id then
+				local cat_max_width = U.calculate_elements_offset(setting.settings, gui)
+				max_width = math.max(max_width, cat_max_width)
+			end
+			if setting.ui_name then
+				local name_length = GuiGetTextDimensions(gui, setting.ui_name)
+				max_width = math.max(max_width, name_length)
+			end
+		end
+		if should_destroy then GuiDestroy(gui) end
+		return max_width + 3
+	end
+
+	function U.set_default(all)
+		for setting, value in pairs(D) do
+			if U.get_setting(setting) == nil or all then U.set_setting(setting, value) end
+		end
+	end
+
+	-- Builds keycodes lookup tables from InputCodes provided by keycodes_tables.lua
+	function U.gather_key_codes()
+		U.keycodes = {
+			kb = {},
+			mouse = {},
+		}
+		for key, value in pairs(InputCodes.Key) do
+			U.keycodes.kb[tostring(value)] = string.upper(InputCodes.KeyName[key] or key)
+		end
+		for mouse, value in pairs(InputCodes.Mouse) do
+			U.keycodes.mouse[tostring(value)] = string.upper(InputCodes.MouseName[mouse] or mouse)
+		end
+	end
+
+	function U.pending_input()
+		for code, _ in pairs(U.keycodes.kb) do
+			if InputIsKeyJustDown(code) then return code, "kb" end
+		end
+		for code, _ in pairs(U.keycodes.mouse) do
+			if InputIsMouseButtonJustDown(code) then return code, "mouse" end
+		end
+	end
+
+	function U.reset_settings()
+		local count = ModSettingGetCount()
+		local setting_list = {}
+		for i = 0, count do
+			local setting_id = ModSettingGetAtIndex(i)
+			if setting_id and setting_id:find("^blankStone%.") then
+				setting_list[#setting_list + 1] = setting_id
+			end
+		end
+		for i = 1, #setting_list do
+			ModSettingRemove(setting_list[i])
+		end
+		U.set_default(true)
 	end
 end
 
+---------------------------------------------
+--            GUI Helpers
+---------------------------------------------
+
+local G = {}
+do -- gui helpers
+	function G.button_options(gui)
+		GuiOptionsAddForNextWidget(gui, GUI_OPTION.ClickCancelsDoubleClick)
+		GuiOptionsAddForNextWidget(gui, GUI_OPTION.ForceFocusable)
+		GuiOptionsAddForNextWidget(gui, GUI_OPTION.HandleDoubleClickAsClick)
+	end
+
+	function G.yellow_if_hovered(gui, hovered)
+		if hovered then GuiColorSetForNextWidget(gui, 1, 1, 0.7, 1) end
+	end
+
+	function G.button(gui, x_pos, text, color)
+		GuiOptionsAddForNextWidget(gui, GUI_OPTION.Layout_NextSameLine)
+		GuiText(gui, x_pos, 0, "")
+		local _, _, _, x, y = GuiGetPreviousWidgetInfo(gui)
+		text = "[" .. text .. "]"
+		local width, height = GuiGetTextDimensions(gui, text)
+		G.button_options(gui)
+		GuiImageNinePiece(gui, id(), x, y, width, height, 0)
+		local clicked, _, hovered = GuiGetPreviousWidgetInfo(gui)
+		if color then
+			local r, g, b = unpack(color)
+			GuiColorSetForNextWidget(gui, r, g, b, 1)
+		end
+		G.yellow_if_hovered(gui, hovered)
+		GuiText(gui, x_pos, 0, text)
+		return clicked
+	end
+
+	function G.on_clicks(setting_name, value, default)
+		if InputIsMouseButtonJustDown(1) then U.set_setting(setting_name, value) end
+		if InputIsMouseButtonJustDown(2) then
+			GamePlaySound("data/audio/Desktop/ui.bank", "ui/button_click", 0, 0)
+			U.set_setting(setting_name, default)
+		end
+	end
+
+	function G.toggle_checkbox_boolean(gui, setting_name)
+		local text = T[setting_name]
+		local _, _, _, prev_x, y, prev_w = GuiGetPreviousWidgetInfo(gui)
+		local x = prev_x + prev_w + 1
+		local value = U.get_setting_next(setting_name)
+		local offset_w = GuiGetTextDimensions(gui, text) + 8
+
+		GuiZSetForNextWidget(gui, -1)
+		G.button_options(gui)
+		GuiImageNinePiece(gui, id(), x + 2, y, offset_w, 10, 10, U.empty, U.empty) -- hover box
+		local _, _, hovered = GuiGetPreviousWidgetInfo(gui)
+		G.tooltip(gui, setting_name)
+
+		GuiZSetForNextWidget(gui, 1)
+		GuiImageNinePiece(gui, id(), x + 2, y + 2, 6, 6) -- check box
+
+		GuiText(gui, 4, 0, "")
+		if value then
+			GuiColorSetForNextWidget(gui, 0, 0.8, 0, 1)
+			GuiText(gui, 0, 0, "V")
+			GuiText(gui, 0, 0, " ")
+			G.yellow_if_hovered(gui, hovered)
+		else
+			GuiColorSetForNextWidget(gui, 0.8, 0, 0, 1)
+			GuiText(gui, 0, 0, "X")
+			GuiText(gui, 0, 0, " ")
+			G.yellow_if_hovered(gui, hovered)
+		end
+		GuiText(gui, 0, 0, text)
+		if hovered then G.on_clicks(setting_name, not value, D[setting_name]) end
+	end
+
+	function G.mod_setting_number(gui, setting)
+		GuiLayoutBeginHorizontal(gui, 0, 0, true, 0, 0)
+		GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_name)
+		local _, _, _, x_start, y_start = GuiGetPreviousWidgetInfo(gui)
+		local w = GuiGetTextDimensions(gui, setting.ui_name)
+		local value = tonumber(U.get_setting_next(setting.id)) or setting.value_default
+		local multiplier = setting.value_display_multiplier or 1
+		local value_new =
+			GuiSlider(gui, id(), U.offset - w + 6, 0, "", value, setting.value_min, setting.value_max, setting.value_default, multiplier, " ", 64)
+		GuiColorSetForNextWidget(gui, 0.81, 0.81, 0.81, 1)
+		local format = setting.format or ""
+		GuiText(gui, 3, 0, tostring(math.floor(value * multiplier)) .. format)
+		GuiLayoutEnd(gui)
+		local _, _, _, x_end, _, t_w = GuiGetPreviousWidgetInfo(gui)
+		GuiImageNinePiece(gui, id(), x_start, y_start, x_end - x_start + t_w, 8, 0, U.empty, U.empty)
+		G.tooltip(gui, setting.id, setting.scope)
+		return value, value_new
+	end
+
+	function G.tooltip(gui, setting_name, scope)
+		local description = T[setting_name .. "_d"]
+		local value = U.get_setting_next(setting_name)
+		local value_now = U.get_setting(setting_name)
+
+		if value ~= value_now then
+			if scope == MOD_SETTING_SCOPE_RUNTIME_RESTART then
+				if description then
+					GuiTooltip(gui, description, "$menu_modsettings_changes_restart")
+				else
+					GuiTooltip(gui, "$menu_modsettings_changes_restart", "")
+				end
+				return
+			elseif scope == MOD_SETTING_SCOPE_NEW_GAME then
+				if description then
+					GuiTooltip(gui, description, "$menu_modsettings_changes_worldgen")
+				else
+					GuiTooltip(gui, "$menu_modsettings_changes_worldgen", "")
+				end
+				return
+			end
+		end
+
+		if description then GuiTooltip(gui, description, "") end
+	end
+end
+
+---------------------------------------------
+--            Settings GUI
+---------------------------------------------
+
+local S = {}
+do -- Settings GUI
+	function S.mod_setting_number_integer(_, gui, _, _, setting)
+		local value, value_new = G.mod_setting_number(gui, setting)
+		value_new = math.floor(value_new + 0.5)
+		if value ~= value_new then U.set_setting(setting.id, value_new) end
+	end
+
+	function S.mod_setting_better_boolean(_, gui, _, _, setting)
+		GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_name)
+		G.tooltip(gui, setting.id)
+		for _, setting_id in ipairs(setting.checkboxes) do
+			GuiLayoutBeginHorizontal(gui, mod_setting_group_x_offset + 8, 0, true, 0, 0)
+			GuiText(gui, 0, 0, "")
+			G.toggle_checkbox_boolean(gui, setting_id)
+			GuiLayoutEnd(gui)
+		end
+	end
+
+	function S.get_input(_, gui, _, _, setting)
+		local setting_id = setting.id
+		local type_string = setting_id .. "_type"
+		local input_type = tostring(U.get_setting(type_string))
+		local key = (U.keycodes[input_type] and U.keycodes[input_type][tostring(U.get_setting(setting_id))]) or "hwuh?"
+		local current_key = "[" .. key .. "]"
+
+		if U.waiting_for_input == setting_id then
+			current_key = GameTextGetTranslatedOrNot("$menuoptions_configurecontrols_pressakey")
+			local new_key, new_type = U.pending_input()
+			if new_key and new_type then
+				U.set_setting(setting_id, new_key)
+				U.set_setting(type_string, new_type)
+				U.waiting_for_input = ""
+			end
+		end
+
+		GuiOptionsAddForNextWidget(gui, GUI_OPTION.Layout_NextSameLine)
+		GuiText(gui, mod_setting_group_x_offset, 0, setting.ui_name)
+
+		GuiLayoutBeginHorizontal(gui, U.offset, 0, true, 0, 0)
+		GuiText(gui, 8, 0, "")
+		local _, _, _, x, y = GuiGetPreviousWidgetInfo(gui)
+		local w, h = GuiGetTextDimensions(gui, current_key)
+		G.button_options(gui)
+		GuiImageNinePiece(gui, id(), x, y, w, h, 0)
+		local _, _, hovered = GuiGetPreviousWidgetInfo(gui)
+		if hovered then
+			GuiColorSetForNextWidget(gui, 1, 1, 0.7, 1)
+			GuiTooltip(gui, T[setting_id .. "_d"] or "", GameTextGetTranslatedOrNot("$menuoptions_reset_keyboard"))
+			if InputIsMouseButtonJustDown(1) then U.waiting_for_input = setting_id end
+			if InputIsMouseButtonJustDown(2) then
+				GamePlaySound("data/audio/Desktop/ui.bank", "ui/button_click", 0, 0)
+				U.set_setting(setting_id, D[setting_id])
+				U.set_setting(type_string, "kb")
+				U.waiting_for_input = ""
+			end
+		end
+		GuiText(gui, 0, 0, current_key)
+		GuiLayoutEnd(gui)
+	end
+
+	function S.reset_stuff(_, gui, _, _, setting)
+		local fn = U[setting.id]
+		if not fn then
+			GuiText(gui, mod_setting_group_x_offset, 0, "ERR")
+			return
+		end
+		if G.button(gui, mod_setting_group_x_offset, T.reset, { 1, 0.4, 0.4 }) then fn() end
+	end
+end
+
+---------------------------------------------
+--            Translations
+---------------------------------------------
+
+local translations = {
+	["English"] = {
+		-- Keybinding
+		pickup_input_code = "Pickup Key",
+		pickup_input_code_d = "Hotkey to pickup items into bags",
+		-- Position sliders
+		pos_x = "Horizontal position",
+		pos_y = "Vertical position",
+		alchemy_pos_x = "Alchemy horizontal position",
+		alchemy_pos_y = "Alchemy vertical position",
+		-- Display boolean group
+		display_options = "Display options",
+		show_bags_without_inventory_open = "Show bags without inventory",
+		show_bags_without_inventory_open_d = "Show the bags inventory even when the inventory is not open",
+		locked = "Lock inventory",
+		locked_d = "When false, the bag button can be dragged to a new position",
+		keep_tooltip_open = "Keep tooltip open",
+		keep_tooltip_open_d = "Show the bag inventory when hovered and then keep it open",
+		dropdown_style = "Dropdown navigation",
+		dropdown_style_d = "Automatically change the bag displayed when hovering it",
+		-- Wrap sliders
+		bag_slots_inventory_wrap = "Inventory slots wrap",
+		bag_slots_inventory_wrap_d = "Number of inventory slots before newline in ui",
+		spells_slots_inventory_wrap = "Spells slots wrap",
+		spells_slots_inventory_wrap_d = "Number of spells in wand tooltip before newline in ui",
+		-- Color sliders
+		bag_image_red = "Red",
+		bag_image_red_d = "Red channel of the bag ui background",
+		bag_image_green = "Green",
+		bag_image_green_d = "Green channel of the bag ui background",
+		bag_image_blue = "Blue",
+		bag_image_blue_d = "Blue channel of the bag ui background",
+		bag_image_alpha = "Alpha",
+		bag_image_alpha_d = "Alpha channel of the bag ui background",
+		-- Inventory interaction boolean group
+		inventory_interaction = "Inventory interaction",
+		dragging_allowed = "Dragging allowed",
+		dragging_allowed_d = "Allows to drag items in the inventory bag",
+		vanilla_dragging_allowed = "Vanilla interaction",
+		vanilla_dragging_allowed_d = "Allows to drag items from the vanilla inventory to bags and vice versa",
+		-- UI options boolean group
+		inventory_ui_options = "UI options",
+		only_show_bag_button_when_held = "Show button when held",
+		only_show_bag_button_when_held_d = "Only show the bag button when a bag item is held",
+		show_drop_all_inventory_button = "Show drop all button",
+		show_drop_all_inventory_button_d = "Display the drop all inventory button at the end of the inventory UI",
+		show_change_sorting_direction_button = "Show sorting button",
+		show_change_sorting_direction_button_d = "Display the change sorting direction button at the end of the inventory UI",
+		-- Sorting boolean group
+		inventory_sorting = "Sorting",
+		sorting_type = "Sort by pickup time",
+		sorting_type_d = "ON: Sort by time of pickup / OFF: Sort by positions",
+		sorting_order = "Ascending order",
+		sorting_order_d = "ON: Newer items at end of bag / OFF: Newer items at beginning",
+		-- Allowed items boolean group
+		allowed_items = "Allowed items",
+		allow_spells = "Allow spells",
+		allow_spells_d = "Allow spells to be stored in the storage stone",
+		allow_wands = "Allow wands",
+		allow_wands_d = "Allow wands to be stored in the storage stone",
+		allow_potions = "Allow potions",
+		allow_potions_d = "Allow potions to be stored in the storage stone",
+		allow_items = "Allow items",
+		allow_items_d = "Allow items (evil eye, sunseed...) to be stored in the storage stone",
+		allow_bags_inception_universal_bag = "Allow storage stone",
+		allow_bags_inception_universal_bag_d = "Allow storage stone to be stored in storage stone",
+		allow_bags_inception_potion_bag = "Allow potion pouches",
+		allow_bags_inception_potion_bag_d = "Allow potion pouches to be stored in storage stone",
+		allow_bags_inception_spell_bag = "Allow spell binders",
+		allow_bags_inception_spell_bag_d = "Allow spell binders to be stored in storage stone",
+		-- Pickup restrictions boolean group
+		pickup_restrictions = "Pickup restrictions",
+		allow_holy_mountain_wand_stealing = "Allow HM wand stealing",
+		allow_holy_mountain_wand_stealing_d = "Allow bags to steal wands in holy mountains",
+		allow_holy_mountain_spell_stealing = "Allow HM spell stealing",
+		allow_holy_mountain_spell_stealing_d = "Allow bags to steal spells in holy mountains",
+		allow_tower_wand_stealing = "Allow tower wand stealing",
+		allow_tower_wand_stealing_d = "Allow bags to steal tower wands",
+		allow_sampo_stealing = "Allow sampo pickup",
+		allow_sampo_stealing_d = "Allow bags to pickup the sampo",
+		-- Storage stone size sliders
+		universal_storageStone_size = "Storage stone size",
+		universal_storageStone_size_d = "Size of the storage stone inventory",
+		upgraded_universal_storageStone_size = "Upgraded size",
+		upgraded_universal_storageStone_size_d = "Size of the storage stone inventory when upgraded",
+		-- Misc slider
+		drop_orderly_distance = "Drop orderly distance",
+		drop_orderly_distance_d = "Distance between items when using drop all in orderly fashion",
+		-- Abilities boolean group
+		bag_abilities_label = "Abilities",
+		universal_bag_alchemy_table = "Alchemy table",
+		universal_bag_alchemy_table_d = "Storage stone has the alchemy table gui available",
+		-- Reset
+		reset_settings = "Reset settings",
+		reset = "Reset",
+	},
+}
+
+local mt = {
+	__index = function(t, k)
+		local currentLang = GameTextGetTranslatedOrNot("$current_language")
+		if not translations[currentLang] then currentLang = "English" end
+		return translations[currentLang][k]
+	end,
+}
+setmetatable(T, mt)
+
+---------------------------------------------
+--              Settings
+---------------------------------------------
+
+D = {
+	-- Keybinding
+	pickup_input_code = "10",
+	pickup_input_code_type = "kb",
+	-- Position
+	pos_x = 170,
+	pos_y = 54,
+	alchemy_pos_x = 170,
+	alchemy_pos_y = 200,
+	-- Display
+	show_bags_without_inventory_open = false,
+	locked = false,
+	keep_tooltip_open = false,
+	dropdown_style = false,
+	-- Wrap
+	bag_slots_inventory_wrap = 8,
+	spells_slots_inventory_wrap = 12,
+	-- Colors
+	bag_image_red = 255,
+	bag_image_green = 255,
+	bag_image_blue = 255,
+	bag_image_alpha = 255,
+	-- Inventory interaction
+	dragging_allowed = true,
+	vanilla_dragging_allowed = true,
+	-- UI options
+	only_show_bag_button_when_held = true,
+	show_drop_all_inventory_button = true,
+	show_change_sorting_direction_button = true,
+	-- Sorting
+	sorting_type = false,
+	sorting_order = true,
+	-- Allowed items
+	allow_spells = false,
+	allow_wands = false,
+	allow_potions = true,
+	allow_items = true,
+	allow_bags_inception_universal_bag = true,
+	allow_bags_inception_potion_bag = false,
+	allow_bags_inception_spell_bag = false,
+	-- Pickup restrictions
+	allow_holy_mountain_wand_stealing = false,
+	allow_holy_mountain_spell_stealing = false,
+	allow_tower_wand_stealing = false,
+	allow_sampo_stealing = false,
+	-- Storage stone sizes
+	universal_storageStone_size = 8,
+	upgraded_universal_storageStone_size = 16,
+	-- Misc
+	drop_orderly_distance = 12,
+	-- Abilities
+	universal_bag_alchemy_table = false,
+}
+
+local function build_settings()
+	---@type mod_settings_global
+	local settings = {
+		{
+			category_id = "bag_keybindings",
+			ui_name = "Bag Keybindings",
+			foldable = true,
+			_folded = true,
+			settings = {
+				{
+					id = "pickup_input_code",
+					not_setting = true,
+					ui_name = T.pickup_input_code,
+					value_default = D.pickup_input_code,
+					ui_fn = S.get_input,
+				},
+			},
+		},
+		{
+			category_id = "bag_position_inventory",
+			ui_name = "Bag General",
+			foldable = true,
+			_folded = true,
+			settings = {
+				{
+					id = "pos_x",
+					ui_name = T.pos_x,
+					value_default = D.pos_x,
+					value_min = 0,
+					value_max = 1000,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "pos_y",
+					ui_name = T.pos_y,
+					value_default = D.pos_y,
+					value_min = 0,
+					value_max = 1000,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "alchemy_pos_x",
+					ui_name = T.alchemy_pos_x,
+					value_default = D.alchemy_pos_x,
+					value_min = 0,
+					value_max = 1000,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "alchemy_pos_y",
+					ui_name = T.alchemy_pos_y,
+					value_default = D.alchemy_pos_y,
+					value_min = 0,
+					value_max = 1000,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					not_setting = true,
+					id = "display_options",
+					ui_name = T.display_options,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = { "show_bags_without_inventory_open", "locked", "keep_tooltip_open", "dropdown_style" },
+				},
+				{
+					id = "bag_slots_inventory_wrap",
+					ui_name = T.bag_slots_inventory_wrap,
+					value_default = D.bag_slots_inventory_wrap,
+					value_min = 1,
+					value_max = 30,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "spells_slots_inventory_wrap",
+					ui_name = T.spells_slots_inventory_wrap,
+					value_default = D.spells_slots_inventory_wrap,
+					value_min = 1,
+					value_max = 30,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "bag_image_red",
+					ui_name = T.bag_image_red,
+					value_default = D.bag_image_red,
+					value_min = 0,
+					value_max = 255,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "bag_image_green",
+					ui_name = T.bag_image_green,
+					value_default = D.bag_image_green,
+					value_min = 0,
+					value_max = 255,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "bag_image_blue",
+					ui_name = T.bag_image_blue,
+					value_default = D.bag_image_blue,
+					value_min = 0,
+					value_max = 255,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "bag_image_alpha",
+					ui_name = T.bag_image_alpha,
+					value_default = D.bag_image_alpha,
+					value_min = 0,
+					value_max = 255,
+					ui_fn = S.mod_setting_number_integer,
+				},
+			},
+		},
+		{
+			category_id = "bag_inventory_size",
+			ui_name = "Bag Inventory",
+			foldable = true,
+			_folded = true,
+			settings = {
+				{
+					not_setting = true,
+					id = "inventory_interaction",
+					ui_name = T.inventory_interaction,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = { "dragging_allowed", "vanilla_dragging_allowed" },
+				},
+				{
+					not_setting = true,
+					id = "inventory_ui_options",
+					ui_name = T.inventory_ui_options,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = { "only_show_bag_button_when_held", "show_drop_all_inventory_button", "show_change_sorting_direction_button" },
+				},
+				{
+					not_setting = true,
+					id = "inventory_sorting",
+					ui_name = T.inventory_sorting,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = { "sorting_type", "sorting_order" },
+				},
+				{
+					not_setting = true,
+					id = "allowed_items",
+					ui_name = T.allowed_items,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = {
+						"allow_spells", "allow_wands", "allow_potions", "allow_items",
+						"allow_bags_inception_universal_bag", "allow_bags_inception_potion_bag", "allow_bags_inception_spell_bag",
+					},
+				},
+				{
+					not_setting = true,
+					id = "pickup_restrictions",
+					ui_name = T.pickup_restrictions,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = {
+						"allow_holy_mountain_wand_stealing", "allow_holy_mountain_spell_stealing",
+						"allow_tower_wand_stealing", "allow_sampo_stealing",
+					},
+				},
+				{
+					id = "universal_storageStone_size",
+					ui_name = T.universal_storageStone_size,
+					value_default = D.universal_storageStone_size,
+					value_min = 1,
+					value_max = 32,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "upgraded_universal_storageStone_size",
+					ui_name = T.upgraded_universal_storageStone_size,
+					value_default = D.upgraded_universal_storageStone_size,
+					value_min = 1,
+					value_max = 64,
+					ui_fn = S.mod_setting_number_integer,
+				},
+				{
+					id = "drop_orderly_distance",
+					ui_name = T.drop_orderly_distance,
+					value_default = D.drop_orderly_distance,
+					value_min = 0,
+					value_max = 20,
+					ui_fn = S.mod_setting_number_integer,
+				},
+			},
+		},
+		{
+			category_id = "bag_abilities",
+			ui_name = "Bag Abilities",
+			foldable = true,
+			_folded = true,
+			settings = {
+				{
+					not_setting = true,
+					id = "bag_abilities_label",
+					ui_name = T.bag_abilities_label,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = { "universal_bag_alchemy_table" },
+				},
+			},
+		},
+		{
+			category_id = "blankStone_version",
+			ui_name = "Version: " .. mod_version,
+			foldable = false,
+			_folded = true,
+			settings = {},
+		},
+		{
+			category_id = "reset_settings_cat",
+			ui_name = T.reset_settings,
+			foldable = true,
+			_folded = true,
+			settings = {
+				{
+					id = "reset_settings",
+					not_setting = true,
+					ui_fn = S.reset_stuff,
+				},
+			},
+		},
+	}
+	U.offset = U.calculate_elements_offset(settings)
+	return settings
+end
+
+---------------------------------------------
+--                Meh
+---------------------------------------------
+
 function ModSettingsUpdate(init_scope)
-    listening_to_key_press = false
-    mod_settings_update(mod_id, mod_settings, init_scope)
+	if U.get_setting("pickup_input_code") == nil then U.reset_settings() end
+	U.set_default(false)
+	U.waiting_for_input = false
+	local current_language = GameTextGetTranslatedOrNot("$current_language")
+	if current_language ~= current_language_last_frame then mod_settings = build_settings() end
+	current_language_last_frame = current_language
 end
 
 function ModSettingsGuiCount()
 	return mod_settings_gui_count(mod_id, mod_settings)
 end
 
-function ModSettingsGui( gui, in_main_menu )
-	new_screen_width, new_screen_height = GuiGetScreenDimensions(gui)
-	-- Update settings when resolution changes
-	if screen_width ~= new_screen_width or screen_height ~= new_screen_height then
-		adjust_setting_values(new_screen_width, new_screen_height)
-	end
-	screen_width = new_screen_width
-	screen_height = new_screen_height
-
-	mod_settings_gui( mod_id, mod_settings, gui, in_main_menu )
+function ModSettingsGui(gui, in_main_menu)
+	GuiIdPushString(gui, mod_prfx)
+	gui_id = mod_id_hash * 1000
+	mod_settings_gui(mod_id, mod_settings, gui, in_main_menu)
+	GuiIdPop(gui)
 end
+
+U.gather_key_codes()
+
+---@type mod_settings_global
+mod_settings = build_settings()
