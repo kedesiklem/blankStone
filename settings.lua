@@ -2,8 +2,7 @@
 dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 
-local mod_version = "1.16.5"
-
+local mod_version = "1.16.7"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}

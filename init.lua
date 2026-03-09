@@ -166,6 +166,7 @@ end
 
 function OnWorldPostUpdate()
     pickup_detection(get_player(), get_active_item())
+    apply_inventory_effect_to_all_bags()
     bags_of_many_ui_setup()
 end
 

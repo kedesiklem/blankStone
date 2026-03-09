@@ -1237,6 +1237,29 @@ function draw_inventory_sorting_option(pos_x, pos_y, pos_z)
     end
 end
 
+--- @param bag integer
+--- @param pos_x number
+--- @param pos_y number
+--- @param pos_z number
+function draw_inventory_effect_toggle_button(bag, pos_x, pos_y, pos_z)
+    local effect_enabled = get_bag_inventory_effect(bag)
+    local sprite = effect_enabled
+        and "mods/blankStone/files/ui_gfx/inventory/bag_gui_button_effect_on.png"
+        or  "mods/blankStone/files/ui_gfx/inventory/bag_gui_button_effect_off.png"
+    GuiZSetForNextWidget(gui, pos_z)
+    GuiColorSetForNextWidget(gui, bag_ui_red, bag_ui_green, bag_ui_blue, bag_ui_alpha)
+    if GuiImageButton(gui, bags_of_many_new_id(), pos_x, pos_y, "", sprite) then
+        toggle_bag_inventory_effect(bag)
+    end
+    local _, _, hovered = GuiGetPreviousWidgetInfo(gui)
+    if hovered then
+        local tooltip = effect_enabled
+            and "$bag_button_tooltip_effect_on"
+            or  "$bag_button_tooltip_effect_off"
+        GuiText(gui, pos_x + 14, pos_y, GameTextGet(tooltip))
+    end
+end
+
 function draw_inventory_sorting_direction(pos_x, pos_y, pos_z)
     GuiZSetForNextWidget(gui, pos_z)
     GuiColorSetForNextWidget(gui, bag_ui_red, bag_ui_green, bag_ui_blue, bag_ui_alpha)
@@ -2085,6 +2108,8 @@ function setup_inventory_options_buttons(bag, level, pos_x, pos_y, pos_z)
         nb_button = nb_button + 1
         draw_inventory_sorting_direction(pos_x + pos_x_button, pos_y + pos_y_button, pos_z)
     end
+    local pos_x_button, pos_y_button = calculate_grid_position(length, size, size, direction, nb_button)
+    draw_inventory_effect_toggle_button(bag, pos_x + pos_x_button, pos_y + pos_y_button, pos_z)
 end
 
 function add_item_specifity(gui, entity, x, y, z)

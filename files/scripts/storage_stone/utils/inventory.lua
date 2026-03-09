@@ -877,6 +877,62 @@ function toggle_bag_pickup_override(main_bag, secondary_bag)
     end
 end
 
+--- @param bag integer
+--- @return boolean
+function get_bag_inventory_effect(bag)
+    local storage = get_var_storage_with_name(bag, "bags_of_many_inventory_effect")
+    if storage then
+        return ComponentGetValue2(storage, "value_bool")
+    end
+    return true -- activé par défaut
+end
+
+--- @param bag integer
+--- @return nil
+function toggle_bag_inventory_effect(bag)
+    local storage = get_var_storage_with_name(bag, "bags_of_many_inventory_effect")
+    if not storage then
+        storage = EntityAddComponent2(bag, "VariableStorageComponent", {
+            name = "bags_of_many_inventory_effect",
+            value_bool = true,
+        })
+    end
+    if storage then
+        local value = ComponentGetValue2(storage, "value_bool")
+        ComponentSetValue2(storage, "value_bool", not value)
+    end
+end
+
+--- Applique ou supprime enabled_in_inventory sur les items de chaque bag
+--- selon leur toggle, de façon récursive pour les bags imbriqués
+--- @param bag integer
+function apply_inventory_effect_to_bags(bag)
+    if not is_storageStone(bag) then return end
+    local effect_enabled = get_bag_inventory_effect(bag)
+    local items = get_bag_inventory_items(bag, false, false)
+    for _, item in ipairs(items) do
+        if not effect_enabled then
+            EntitySetComponentsWithTagEnabled(item, "enabled_in_inventory", false)
+        end
+        -- récursion pour les bags imbriqués, chacun avec son propre toggle
+        if is_storageStone(item) then
+            apply_inventory_effect_to_bags(item)
+        end
+    end
+end
+
+--- Applique le toggle enabled_in_inventory sur tous les bags de l'inventaire joueur
+function apply_inventory_effect_to_all_bags()
+    local player = get_player()
+    if not player then return end
+    local quick_items = get_player_inventory_quick_table()
+    for _, item in pairs(quick_items or {}) do
+        if is_storageStone(item) then
+            apply_inventory_effect_to_bags(item)
+        end
+    end
+end
+
 --- @param entity integer
 --- @return nil
 function add_component_pickup_frame(entity)
