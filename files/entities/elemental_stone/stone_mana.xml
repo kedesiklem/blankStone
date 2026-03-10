@@ -57,6 +57,21 @@
   </Base>
 
 
+  <!-- === CUSTOM EFFECT === -->
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_stone.lua"
+    execute_every_n_frame="30"
+  ></LuaComponent>
+
+  <!-- Required -->
+  <VariableStorageComponent
+    name="custom_id"
+    value_string="UNLIMITED_SPELLS"
+  ></VariableStorageComponent>
+  <!-- ============================== -->
+
+
   <!-- magic -->
 
   <GameEffectComponent

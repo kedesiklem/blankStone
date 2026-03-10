@@ -23,6 +23,7 @@ local vanilla_stone = {
     "poopstone",
     "physics_gold_orb_greed",
     "physics_gold_orb",
+    "moon"
 }
 
 

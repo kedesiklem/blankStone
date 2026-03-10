@@ -79,7 +79,7 @@ local STONE_DATA = {
         category = "special",
     },
     ["phasingStone"] = {
-        path = blankStone_path .. "stone_phasing",
+        path = elemental_stone_path .. "stone_phasing",
         level = 9,
         category = "elemental",
     },
@@ -270,6 +270,11 @@ local STONE_DATA = {
         level = 1,
         category = "vanilla",
     },
+    ["moon"] = {
+        path = vanilla_stone_path .. "moon",
+        level = 1,
+        category = "vanilla",
+    },
 
     -- Books
 
@@ -398,6 +403,9 @@ local STONE_MESSAGES = {
 -- A bit of trolling
     ["shinyOrb"] = {
         success = "$text_blankstone_shinyorb_anticlimax",
+    },
+    ["moon"] = {
+        success = "$text_blankstone_cheese",
     },
 }
 

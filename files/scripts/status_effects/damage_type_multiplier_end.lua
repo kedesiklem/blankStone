@@ -16,8 +16,7 @@ local damage_mult = utils.getValue(material_info, "value_float")
 local new_dmg_info = utils.getVariable(entity_id, "new_mult")
 local new_mult = utils.getValue(new_dmg_info, "value_float")
 
-if instance_name then
-else
+if not instance_name then
     log.error("no instance_name for ending")
 end
 

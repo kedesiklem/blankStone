@@ -1,0 +1,29 @@
+<Entity>
+
+    <InheritTransformComponent> </InheritTransformComponent>
+
+    <GameEffectComponent
+        effect="CUSTOM"
+        custom_effect_id="BLANKSTONE_CUSTOM"
+        frames="60"
+    > </GameEffectComponent>
+
+    <VariableStorageComponent
+        name="custom_id"
+        value_string="placeholder"
+    ></VariableStorageComponent>
+
+    <LuaComponent
+        execute_on_added="0"
+        script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_start.lua"
+        execute_every_n_frame="2"
+        remove_after_executed="1"
+    > </LuaComponent>
+
+    <LuaComponent
+        execute_on_removed="1"
+        script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_end.lua"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+</Entity>

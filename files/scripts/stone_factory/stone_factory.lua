@@ -51,36 +51,42 @@ local function tryInfuseStone(stone_recipe, hintCount, pos_x, pos_y)
         end
         return false
     end
-    
-    local stone_key = stone_recipe.stone_key
-    local stone_data = STONE_REGISTRY[stone_key]
 
+    local stone_keys = stone_recipe.stone_keys
 
-    -- Useless if the lookup table is done correctly
-    if not stone_data then
-        log.warn("Stone key not found in registry: " .. tostring(stone_key))
-        return false
-    end
+    -- First pass: validate all keys
+    local resolved = {}
+    for _, stone_key in ipairs(stone_keys) do
+        local stone_data = STONE_REGISTRY[stone_key]
 
-    stone_data = stone_data.preprocess(stone_data)
-
-    log.debug("Found stone data for key: " .. tostring(stone_key))
-
-
-
-    local is_success, message, pure = condition.checkRequirements(stone_data)
-
-    if (not is_success) then
-        log.debug("Fail stone requirement")
-        if (hintCount == 0) then
-            if not pure then GamePrintImportant("$text_blankstone_corrupt","$text_blankstone_lies_desc") else GamePrint(message) end
+        if not stone_data then
+            log.warn("Stone key not found in registry: " .. tostring(stone_key))
+            return false
         end
-        return false
+
+        stone_data = stone_data.preprocess(stone_data)
+        log.debug("Found stone data for key: " .. tostring(stone_key))
+
+        local is_success, message, pure = condition.checkRequirements(stone_data)
+
+        if not is_success then
+            log.debug("Fail stone requirement")
+            if hintCount == 0 then
+                if not pure then GamePrintImportant("$text_blankstone_corrupt","$text_blankstone_lies_desc") else GamePrint(message) end
+            end
+            return false
+        end
+
+        resolved[#resolved + 1] = { stone_data = stone_data, message = message }
     end
 
-    local stone_id = createStone(stone_data, pos_x, pos_y)
-    stone_data.postprocess(stone_id)
-    GamePrintImportant(message)
+    -- Second pass: all checks passed, create all stones
+    for _, entry in ipairs(resolved) do
+        local stone_id = createStone(entry.stone_data, pos_x, pos_y)
+        entry.stone_data.postprocess(stone_id)
+        GamePrintImportant(entry.message)
+    end
+
     return true
 end
 

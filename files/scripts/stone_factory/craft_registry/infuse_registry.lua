@@ -1,60 +1,67 @@
 -- Mapping material to keys in STONE_REGISTRY for infusion
 local STONE_TO_MATERIAL_TO_STONE = {
     ["blankStone"] = {
+
+        -- Duplication --
+        ------------------
+        ["[mimic_liquid]"] = {stone_keys = {"blankStone", "blankStone"}},
+        ------------------
+
         -- Vanilla Stones --
         -------------------------
-        ["[hot]"] = {stone_key = "brimstone"},
-        ["diamond"] = {stone_key = "thunderstone"},
-        ["spark_electric"] = {stone_key = "thunderstone"},
-        ["rock_static"] = {stone_key = "stonestone"},
-        ["[grows_grass]"] = {stone_key = "stonestone"},
-        ["water"] = {stone_key = "waterstone"},
-        ["poo"] = {stone_key = "poopstone"},
-        ["blood_worm"] = {stone_key = "wormBloodStone"},
-        ["magic_liquid_mana_regeneration"] = {stone_key = "wandstone"},
-        ["[gold]"] = {stone_key = "shinyOrb"},
+        ["[hot]"] = {stone_keys = {"brimstone"}},
+        ["diamond"] = {stone_keys = {"thunderstone"}},
+        ["spark_electric"] = {stone_keys = {"thunderstone"}},
+        ["rock_static"] = {stone_keys = {"stonestone"}},
+        ["[grows_grass]"] = {stone_keys = {"stonestone"}},
+        ["water"] = {stone_keys = {"waterstone"}},
+        ["poo"] = {stone_keys = {"poopstone"}},
+        ["blood_worm"] = {stone_keys = {"wormBloodStone"}},
+        ["magic_liquid_mana_regeneration"] = {stone_keys = {"wandstone"}},
+        ["[gold]"] = {stone_keys = {"shinyOrb"}},
+        ["cheese_static"] = {stone_keys = {"moon"}},
         -------------------------
         
-        ["[radioactive]"] = {stone_key = "toxicStone"},
-        ["magic_liquid_invisibility"] = {stone_key = "invisibilityStone"},
-        ["magic_liquid_berserk"] = {stone_key = "bigStone"},
-        ["magic_liquid_faster_levitation"] = {stone_key = "levitatiumStone"},
-        ["magic_liquid_movement_faster"] = {stone_key = "acceleratiumStone"},
-        ["magic_liquid_faster_levitation_and_movement"] = {stone_key = "hasteStone"},
-        ["plasma_fading"] = {stone_key = "magicLiquidStone"},
-        ["plasma_fading_bright"] = {stone_key = "magicLiquidStone"},
-        ["plasma_fading_green"] = {stone_key = "magicLiquidStone"},
-        ["plasma_fading_pink"] = {stone_key = "magicLiquidStone"},
-        ["magic_liquid_unstable_teleportation"] = {stone_key = "unstableTeleportStone"},
-        ["magic_gas_midas"] = {stone_key = "goldStone"},
-        ["midas"] = {stone_key = "goldStone"},
-        ["bone"] = {stone_key = "bonesStone"},
-        ["poison"] = {stone_key = "poisonHarmfulStone"},
-        ["[slime]"] = {stone_key = "slimeStone"},
+        ["[radioactive]"] = {stone_keys = {"toxicStone"}},
+        ["magic_liquid_invisibility"] = {stone_keys = {"invisibilityStone"}},
+        ["magic_liquid_berserk"] = {stone_keys = {"bigStone"}},
+        ["magic_liquid_faster_levitation"] = {stone_keys = {"levitatiumStone"}},
+        ["magic_liquid_movement_faster"] = {stone_keys = {"acceleratiumStone"}},
+        ["magic_liquid_faster_levitation_and_movement"] = {stone_keys = {"hasteStone"}},
+        ["plasma_fading"] = {stone_keys = {"magicLiquidStone"}},
+        ["plasma_fading_bright"] = {stone_keys = {"magicLiquidStone"}},
+        ["plasma_fading_green"] = {stone_keys = {"magicLiquidStone"}},
+        ["plasma_fading_pink"] = {stone_keys = {"magicLiquidStone"}},
+        ["magic_liquid_unstable_teleportation"] = {stone_keys = {"unstableTeleportStone"}},
+        ["magic_gas_midas"] = {stone_keys = {"goldStone"}},
+        ["midas"] = {stone_keys = {"goldStone"}},
+        ["bone"] = {stone_keys = {"bonesStone"}},
+        ["poison"] = {stone_keys = {"poisonHarmfulStone"}},
+        ["[slime]"] = {stone_keys = {"slimeStone"}},
 
-        ["gunpowder_explosive"] = {stone_key = "gunponwderStone"},
-        ["gunpowder_tnt"] = {stone_key = "gunponwderStone"},
-        ["gunpowder"] = {stone_key = "gunponwderStone"},
-        ["gunpowder_unstable"] = {stone_key = "gunponwderStone"},
-        ["gunpowder_unstable_big"] = {stone_key = "gunponwderStone"},
+        ["gunpowder_explosive"] = {stone_keys = {"gunponwderStone"}},
+        ["gunpowder_tnt"] = {stone_keys = {"gunponwderStone"}},
+        ["gunpowder"] = {stone_keys = {"gunponwderStone"}},
+        ["gunpowder_unstable"] = {stone_keys = {"gunponwderStone"}},
+        ["gunpowder_unstable_big"] = {stone_keys = {"gunponwderStone"}},
         
-        ["alcohol"] = {stone_key = "whiskeyStone"},
-        ["alcohol_gas"] = {stone_key = "whiskeyStone"},
-        ["juhannussima"] = {stone_key = "whiskeyStone"},
-        ["beer"] = {stone_key = "whiskeyStone"},
+        ["alcohol"] = {stone_keys = {"whiskeyStone"}},
+        ["alcohol_gas"] = {stone_keys = {"whiskeyStone"}},
+        ["juhannussima"] = {stone_keys = {"whiskeyStone"}},
+        ["beer"] = {stone_keys = {"whiskeyStone"}},
 
-        ["urine"] = {stone_key = "urineStone"},
+        ["urine"] = {stone_keys = {"urineStone"}},
         
-        ["blood_cold"] = {stone_key = "freezeStone"},
-        ["blood_cold_vapour"] = {stone_key = "freezeStone"},
+        ["blood_cold"] = {stone_keys = {"freezeStone"}},
+        ["blood_cold_vapour"] = {stone_keys = {"freezeStone"}},
 
-        ["milk"] = {stone_key = "milkStone"},
-        ["material_confusion"] = {stone_key = "confuseStone"},
-        ["honey"] = {stone_key = "honeyStone"},
+        ["milk"] = {stone_keys = {"milkStone"}},
+        ["material_confusion"] = {stone_keys = {"confuseStone"}},
+        ["honey"] = {stone_keys = {"honeyStone"}},
 
         -- HINT (not recipes)
 
-        ["void_liquid"] = {stone_key = "voidStone"},
+        ["void_liquid"] = {stone_keys = {"voidStone"}},
         ["magic_liquid_teleportation"] = {hint_key = "hint_blankstone_teleport"},
         ["lava"] = {hint_key = "hint_blankstone_skipping_step"},
         ["magic_liquid_charm"] = {hint_key = "hint_blankstone_skipping_step"},
@@ -69,34 +76,38 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
 
     },
-
+    ["milkStone"] = {
+        ["meat_helpless"] = {stone_keys = {"moon"}},
+        ["salt"] = {stone_keys = {"moon"}},
+        ["grass"] = {stone_keys = {"moon"}},
+    },
     ["slimeStone"] = {
-        ["[magic_faster]"] = {stone_key = "explosionStone"},
+        ["[magic_faster]"] = {stone_keys = {"explosionStone"}},
     },
 
     ["teleportStone"] = {
-        ["[slime]"] = {stone_key = "trueTeleportStone"},
+        ["[slime]"] = {stone_keys = {"trueTeleportStone"}},
     },
     ["hasteStone"] = {
-        ["[slime]"] = {stone_key = "explosionStone"},
+        ["[slime]"] = {stone_keys = {"explosionStone"}},
     },
     ["levitatiumStone"] = {
-        ["magic_liquid_movement_faster"] = {stone_key = "hasteStone"},
-        ["[slime]"] = {stone_key = "explosionStone"},
+        ["magic_liquid_movement_faster"] = {stone_keys = {"hasteStone"}},
+        ["[slime]"] = {stone_keys = {"explosionStone"}},
     },
     ["acceleratiumStone"] = {
-        ["magic_liquid_faster_levitation"] = {stone_key = "hasteStone"},
-        ["[slime]"] = {stone_key = "explosionStone"},
+        ["magic_liquid_faster_levitation"] = {stone_keys = {"hasteStone"}},
+        ["[slime]"] = {stone_keys = {"explosionStone"}},
     },
     ["bigStone"] = {
-        ["material_confusion"] = {stone_key = "loveStone"},
+        ["material_confusion"] = {stone_keys = {"loveStone"}},
     },
 
     ["quintessence"] = {
-        ["[blood]"] = {stone_key = "bloodStone"},
-        ["[regenerative]"] = {stone_key = "healthStone"},
-        ["[regenerative_gas]"] = {stone_key = "healthStone"},
-        ["[magic_polymorph]"] = {stone_key = "polyStone"},
+        ["[blood]"] = {stone_keys = {"bloodStone"}},
+        ["[regenerative]"] = {stone_keys = {"healthStone"}},
+        ["[regenerative_gas]"] = {stone_keys = {"healthStone"}},
+        ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
     },
 }
 
