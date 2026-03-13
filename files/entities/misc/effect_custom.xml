@@ -6,7 +6,7 @@
         effect="CUSTOM"
         custom_effect_id="BLANKSTONE_CUSTOM"
         frames="60"
-    > </GameEffectComponent>
+    ></GameEffectComponent>
 
     <VariableStorageComponent
         name="custom_id"

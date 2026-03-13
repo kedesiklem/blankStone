@@ -22,7 +22,6 @@
 
     <AbilityComponent
       ui_name="$stone_blankstone_aaaStone_name"
-      throw_as_item="1"
     ></AbilityComponent>
 
     <!-- Set the stone it purify into (default blankStone) -->

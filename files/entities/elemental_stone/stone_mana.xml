@@ -20,7 +20,6 @@
 
     <AbilityComponent
       ui_name="$stone_blankstone_manaStone_name"
-      throw_as_item="1"
     ></AbilityComponent>
 
     <VariableStorageComponent

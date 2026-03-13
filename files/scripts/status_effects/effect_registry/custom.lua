@@ -1,8 +1,12 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+dofile_once("data/scripts/lib/utilities.lua")
 
 D = {
     ["UNLIMITED_SPELLS"] = {
         func = function( entity_who_hold )
+			-- Skip if perk
+			if GameHasFlagRun("PERK_PICKED_UNLIMITED_SPELLS") then return end
+
 			local world_entity_id = GameGetWorldStateEntity()
 			if( world_entity_id ~= nil ) then
 				local comp_worldstate = EntityGetFirstComponent( world_entity_id, "WorldStateComponent" )
@@ -23,6 +27,9 @@ D = {
 			end
 		end,
 		func_remove = function( entity_who_hold )
+			-- Skip if perk
+			if GameHasFlagRun("PERK_PICKED_UNLIMITED_SPELLS") then return end
+
 			local world_entity_id = GameGetWorldStateEntity()
 			if( world_entity_id ~= nil ) then
 				local comp_worldstate = EntityGetFirstComponent( world_entity_id, "WorldStateComponent" )

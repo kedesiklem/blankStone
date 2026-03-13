@@ -192,7 +192,7 @@ ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scr
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
 dofile_once("mods/blankStone/files/scripts/biomes/hint_spawn_list.lua")
 ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/blankStone/files/actions.lua")
-ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/blankStone/files/scripts/status_effects/status_effects.lua")
+ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/blankStone/files/scripts/status_effects/effect_registry/status_effects.lua")
 
 -- Translation
 local translations = ModTextFileGetContent("data/translations/common.csv")

@@ -22,7 +22,6 @@
 
         <AbilityComponent
             ui_name="$stone_blankstone_bigStone_name"
-            throw_as_item="1"
         ></AbilityComponent>
     </Base>
 
@@ -42,9 +41,9 @@
             value_int="256"
         ></VariableStorageComponent>
     </Base>
-  <VariableStorageComponent
-    name="blankStoneID"
-    value_string="bigStone"
-  ></VariableStorageComponent>
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="bigStone"
+    ></VariableStorageComponent>
 
 </Entity>
