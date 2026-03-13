@@ -84,7 +84,6 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/stone_storage.xml", pos_x, pos_y )
 
-    -- spawn_all_stones(pos_x,pos_y, STONE_REGISTRY)
 
     --- FORGE TEST
     -- pos_x = 1500
@@ -92,6 +91,7 @@ function OnPlayerSpawned(player_entity)
     -- EntitySetTransform(player_entity, pos_x, pos_y)
 
     -- spawn_all_orb(player_entity)
+    -- spawn_all_stones(pos_x,pos_y, STONE_REGISTRY)
 
 
     -- SPELL
