@@ -571,7 +571,7 @@ if [[ ! -f "$STONE_REGISTRY" ]]; then
 elif grep -q "\[\"${name}\"\]" "$STONE_REGISTRY"; then
   echo "⚠  REGISTRY → ${name} déjà présent, ignoré"
 else
-  stone_entry="    -- ${name}\n    [\"${name}\"] = {\n        path = elemental_stone_path .. \"${file_id}\",\n        level = ${reg_level},\n        category = \"${reg_category}\",\n    },"
+  stone_entry="    [\"${name}\"] = {\n        path = elemental_stone_path .. \"${file_id}\",\n        level = ${reg_level},\n        category = \"${reg_category}\",\n    },"
   insert_before "$STONE_REGISTRY" "$ANCHOR_STONE_DATA_END" "$stone_entry"
 
   if [[ -n "$reg_msg_success" || -n "$reg_msg_fail" ]]; then
@@ -702,8 +702,35 @@ cleanup_backups
 # ── reste à faire ─────────────────────────────────────────────────────────────
 
 echo ""
+items_dir="files/items_gfx/elemental_stone"
+ui_dir="files/ui_gfx/elemental_stone"
+mkdir -p "$items_dir" "$ui_dir"
+
+items_png="${items_dir}/${file_id}.png"
+ui_png="${ui_dir}/${file_id}.png"
+
+if [[ -f "$items_png" ]]; then
+  echo "⚠  PNG     → $items_png déjà présent, ignoré"
+elif [[ ! -f "files/items_gfx/placeholder_stone.png" ]]; then
+  echo "⚠  PNG     → placeholder files/items_gfx/placeholder_stone.png introuvable"
+else
+  cp "files/items_gfx/placeholder_stone.png" "$items_png"
+  echo "✓ PNG      → $items_png"
+fi
+
+if [[ -f "$ui_png" ]]; then
+  echo "⚠  PNG     → $ui_png déjà présent, ignoré"
+elif [[ ! -f "files/ui_gfx/placeholder_stone.png" ]]; then
+  echo "⚠  PNG     → placeholder files/ui_gfx/placeholder_stone.png introuvable"
+else
+  cp "files/ui_gfx/placeholder_stone.png" "$ui_png"
+  echo "✓ PNG      → $ui_png"
+fi
+
+echo ""
 echo "Reste à faire :"
-echo "  • items_gfx/elemental_stone/${file_id}.png"
-echo "  • ui_gfx/elemental_stone/${file_id}.png"
+echo "  • Remplacer les placeholders par les vrais sprites :"
+echo "      $items_png"
+echo "      $ui_png"
 [[ $infuse_is_hint -eq 1 && -n "$infuse_source" ]] && \
   echo "  • hint_registry.lua → ajouter 'hint_blankstone_${raw_id}'"

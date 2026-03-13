@@ -1,0 +1,40 @@
+<Entity name="copperStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_copper.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_copper.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_copperStone_name"
+      ui_description="$stone_blankstone_copperStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_copper.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_copperStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_copperStone_name"
+    ></AbilityComponent>
+  </Base>
+
+
+  <!-- effect -->
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="PROTECTION_MELEE"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="copperStone"
+  ></VariableStorageComponent>
+
+</Entity>

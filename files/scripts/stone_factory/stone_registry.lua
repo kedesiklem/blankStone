@@ -65,7 +65,7 @@ local STONE_DATA = {
     },
     ["toxicStone"] = {
         path = elemental_stone_path .. "stone_toxic",
-        level = 1,
+        level = 7,
         category = "elemental",
     },
     ["voidStone"] = {
@@ -145,7 +145,7 @@ local STONE_DATA = {
     },
     ["freezeStone"] = {
         path = elemental_stone_path .. "stone_freeze",
-        level = 5,
+        level = 7,
         category = "elemental",
     },
     ["teleportStone"] = {
@@ -168,10 +168,9 @@ local STONE_DATA = {
         level = 5,
         category = "elemental",
     },
-
-    ["gunponwderStone"] = {
+    ["gunpowderStone"] = {
         path = elemental_stone_path .. "stone_gunpowder",
-        level = 5,
+        level = 7,
         category = "elemental",
     },
 
@@ -226,6 +225,11 @@ local STONE_DATA = {
     ["loveStone"] = {
         path = elemental_stone_path .. "stone_love",
         level = 10,
+        category = "elemental",
+    },
+    ["copperStone"] = {
+        path = elemental_stone_path .. "stone_copper",
+        level = 7,
         category = "elemental",
     },
 
@@ -346,6 +350,15 @@ local STONE_MESSAGES = {
     ["bloodStone"] = {
         success = "$text_blankstone_bloodstone_success",
         fail    = "$text_blankstone_bloodstone_fail",
+    },
+    ["gunpowderStone"] = {
+        fail = "$text_blankstone_missing_knowledge",
+    },
+    ["copperStone"] = {
+        fail = "$text_blankstone_missing_knowledge",
+    },
+    ["toxicStone"] = {
+        fail = "$text_blankstone_missing_knowledge",
     },
     ["freezeStone"] = {
         fail = "$text_blankstone_missing_knowledge",

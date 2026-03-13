@@ -39,11 +39,11 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["poison"] = {stone_keys = {"poisonHarmfulStone"}},
         ["[slime]"] = {stone_keys = {"slimeStone"}},
 
-        ["gunpowder_explosive"] = {stone_keys = {"gunponwderStone"}},
-        ["gunpowder_tnt"] = {stone_keys = {"gunponwderStone"}},
-        ["gunpowder"] = {stone_keys = {"gunponwderStone"}},
-        ["gunpowder_unstable"] = {stone_keys = {"gunponwderStone"}},
-        ["gunpowder_unstable_big"] = {stone_keys = {"gunponwderStone"}},
+        ["gunpowder_explosive"] = {stone_keys = {"gunpowderStone"}},
+        ["gunpowder_tnt"] = {stone_keys = {"gunpowderStone"}},
+        ["gunpowder"] = {stone_keys = {"gunpowderStone"}},
+        ["gunpowder_unstable"] = {stone_keys = {"gunpowderStone"}},
+        ["gunpowder_unstable_big"] = {stone_keys = {"gunpowderStone"}},
         
         ["alcohol"] = {stone_keys = {"whiskeyStone"}},
         ["alcohol_gas"] = {stone_keys = {"whiskeyStone"}},
@@ -59,6 +59,8 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["material_confusion"] = {stone_keys = {"confuseStone"}},
         ["honey"] = {stone_keys = {"honeyStone"}},
 
+        ["copper"] = {stone_keys = {"copperStone"}},
+        ["copper_molten"] = {stone_keys = {"copperStone"}},
         -- HINT (not recipes)
 
         ["void_liquid"] = {stone_keys = {"voidStone"}},
