@@ -109,6 +109,8 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[regenerative_gas]"] = {stone_keys = {"healthStone"}},
         ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
     },
+    
+    -- ##ANCHOR_INFUSE_END##
 }
 
 return STONE_TO_MATERIAL_TO_STONE

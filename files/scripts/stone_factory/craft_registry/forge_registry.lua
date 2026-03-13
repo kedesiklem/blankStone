@@ -31,6 +31,8 @@ local FORGE_RECIPES = {
     ["book_infuse_lies"]      = { items = {BOOK_PATH .. "tome_of_lies.xml"}, message = LIES_MESSAGE },
     ["book_purity_lies"]      = { items = {BOOK_PATH .. "tome_of_lies.xml"}, message = LIES_MESSAGE },
     ["book_magnum_opus_lies"] = { items = {BOOK_PATH .. "tome_of_lies.xml"}, message = LIES_MESSAGE },
+
+    -- ##ANCHOR_FORGE_END##
 }
 
 return FORGE_RECIPES

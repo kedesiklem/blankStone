@@ -329,6 +329,8 @@ local FUSE_RECIPES = {
         on_success = function() end
 
     },
+
+    -- ##ANCHOR_FUSE_END##
 }
 
 return FUSE_RECIPES
