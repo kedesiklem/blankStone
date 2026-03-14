@@ -16,9 +16,13 @@ blankStone_mod_state = BagsModState:new()
 ----------------------------------------
 
 local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
+local PATCH_COMP_EXPL = dofile_once("mods/blankStone/files/scripts/mod_compatibility/component-explorer_appends.lua")
 function OnModPreInit()
     if ModIsEnabled("apotheosis") or ModIsEnabled("Apotheosis") then
         PATCH_APO.ApplyApotheosisPatches()
+    end
+    if ModIsEnabled("component-explorer") then
+        PATCH_COMP_EXPL.ApplyComponentExplorerPatches()
     end
 end
 
@@ -70,11 +74,11 @@ function OnPlayerSpawned(player_entity)
         on_player_first_spawned(player_entity)
     end
 
-    -- =========== TEST ZONE ===================
-    if BLANKSTONE_RELEASE then return end
-
     log.info("Mods compatibility patch")
     log.flush()
+
+    -- =========== TEST ZONE ===================
+    if BLANKSTONE_RELEASE then return end
 
     local pos_x, pos_y = EntityGetTransform( player_entity )
 

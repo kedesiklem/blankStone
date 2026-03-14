@@ -287,6 +287,22 @@ local STONE_DATA = {
 
     -- Books
 
+    ["bookInfuse"] = {
+        path = book_path .. "book_infuse",
+        level = 0,
+        category = "book",
+    },
+    ["bookPurity"] = {
+        path = book_path .. "book_purity",
+        level = 0,
+        category = "book",
+    },
+    ["bookMagnumOpus"] = {
+        path = book_path .. "book_magnum_opus",
+        level = 0,
+        category = "book",
+    },
+
     ["reforgedBookInfuse"] = {
         path = book_path .. "reforged_book_infuse",
         level = 0,
@@ -304,6 +320,11 @@ local STONE_DATA = {
     },
     ["bookGodsSecrets"] = {
         path = book_path .. "book_gods_secrets",
+        level = 0,
+        category = "book",
+    },
+    ["reforgedBookGodsSecrets"] = {
+        path = book_path .. "reforged_book_gods_secrets",
         level = 0,
         category = "book",
     },
@@ -555,6 +576,7 @@ local function buildStoneRegistry()
         registry[stone_key] = {
             path = stone_data.path .. ".xml",
             level = stone_data.level,
+            category = stone_data.category,
             message = message_success,
             message_fail = message_fail,
             vfx = vfx,
