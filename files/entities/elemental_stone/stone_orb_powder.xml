@@ -1,0 +1,75 @@
+<Entity name="orbPowderStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_orb_powder.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_orb_powder.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_orbPowderStone_name"
+      ui_description="$stone_blankstone_orbPowderStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_orb_powder.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_orbPowderStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_orbPowderStone_name"
+    ></AbilityComponent>
+  </Base>
+
+  <LuaComponent
+    _tags="enabled_in_hand"
+    script_source_file="mods/blankStone/files/scripts/stone_specific_script/orb_powder_stone.lua"
+    execute_every_n_frame="1"
+    _enabled="0"
+  ></LuaComponent>
+
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      _tags="enabled_in_world,enabled_in_hand"
+      color.r="0.7" color.g="0.0" color.b="0.3"
+      count_min="2"
+      count_max="5"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      _tags="enabled_in_world,enabled_in_hand"
+      color.r="0.5" color.g="0.0" color.b="0.5"
+      count_min="2"
+      count_max="5"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+  <Base file="mods/blankStone/files/VFX/ray.xml">
+    <SpriteParticleEmitterComponent
+      _tags="enabled_in_world,enabled_in_hand"
+      color.r="0.3" color.g="0.0" color.b="0.7"
+      count_min="2"
+      count_max="5"
+    ></SpriteParticleEmitterComponent>
+  </Base>
+
+  <!-- magical properties -->
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    from_material_array="material_confusion,magic_liquid_unstable_teleportation"
+    to_material_array="orb_powder,orb_powder"
+    is_circle="1"
+    radius="10"
+    kill_when_finished="0"
+    loop="1"
+  ></MagicConvertMaterialComponent>
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="orbPowderStone"
+  ></VariableStorageComponent>
+
+</Entity>

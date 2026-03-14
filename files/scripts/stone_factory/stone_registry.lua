@@ -238,6 +238,11 @@ local STONE_DATA = {
         level = 9,
         category = "elemental",
     },
+    ["orbPowderStone"] = {
+        path = elemental_stone_path .. "stone_orb_powder",
+        level = 1,
+        category = "elemental",
+    },
     -- Vanilla Stones
     ["brimstone"] = {
         path = vanilla_stone_path .. "brimstone",

@@ -24,9 +24,18 @@
     ></AbilityComponent>
   </Base>
 
+  <!-- Stain immunity -->
+  <LuaComponent
+    _tags="enabled_in_inventory,enabled_in_hand"
+    script_source_file="mods/blankStone/files/scripts/stain_immunity.lua"
+    execute_every_n_frame="5"
+  ></LuaComponent>
+  <VariableStorageComponent
+    name="stain_immunity"
+    value_string="CONFUSION"
+  ></VariableStorageComponent>
 
   <!-- VFX -->
-
   <Base file="mods/blankStone/files/VFX/ray.xml">
     <SpriteParticleEmitterComponent
       _tags="enabled_in_world,enabled_in_hand"
@@ -52,7 +61,14 @@
     ></SpriteParticleEmitterComponent>
   </Base>
 
-  <!-- effect -->
+  <!-- Stain effect -->
+  <Base file="mods/blankStone/files/entities/staining.xml">
+    <VariableStorageComponent
+      name="stain_effect"
+      value_string="material_confusion"
+      value_int="64"
+    ></VariableStorageComponent>
+  </Base>
 
   <VariableStorageComponent
     name="blankStoneID"

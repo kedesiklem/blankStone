@@ -330,6 +330,18 @@ local FUSE_RECIPES = {
 
     },
 
+    { -- orbPowderStone
+        ingredients = {
+            { name = "confuseStone", count = 1 },
+            { name = "unstableTeleportStone", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "orbPowderStone", offset_y = -10 },
+            { key = "blankStone", offset_y = -10 },
+        },
+        on_success = function() end
+    },
     -- ##ANCHOR_FUSE_END##
 }
 

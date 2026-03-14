@@ -15,7 +15,7 @@ if ( variables ~= nil ) then
             local targets = EntityGetInRadiusWithTag( x, y, radius_effect, "hittable" )
 
             for _,eid in pairs( targets ) do
-                EntityAddRandomStains( eid, CellFactory_GetType(stain_effect_liquid), 400 )
+                EntityAddRandomStains( eid, CellFactory_GetType(stain_effect_liquid), 1 )
             end
         end
     end
