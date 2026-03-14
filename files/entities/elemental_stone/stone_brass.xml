@@ -1,0 +1,74 @@
+<Entity name="brassStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <ProjectileComponent>
+      <damage_by_type
+        melee="5"
+      ></damage_by_type>
+    </ProjectileComponent>
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_brass.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_brass.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_brassStone_name"
+      ui_description="$stone_blankstone_brassStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_brass.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_brassStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_brassStone_name"
+    ></AbilityComponent>
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="mods/blankStone/files/entities/elemental_stone/stone_copper.xml"
+    ></VariableStorageComponent>
+  </Base>
+
+
+  <!-- effect -->
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="PROTECTION_MELEE"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- effect -->
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="CRITICAL_HIT_BOOST"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- effect -->
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="KNOCKBACK_IMMUNITY"
+    frames="-1"
+  ></GameEffectComponent>
+
+  <!-- magical properties -->
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    from_material="diamond"
+    to_material="purifying_powder"
+    is_circle="1"
+    radius="10"
+    kill_when_finished="0"
+    loop="1"
+  ></MagicConvertMaterialComponent>
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="brassStone"
+  ></VariableStorageComponent>
+
+</Entity>

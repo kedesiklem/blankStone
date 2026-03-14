@@ -1,6 +1,11 @@
 <Entity name="copperStone">
 
   <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <ProjectileComponent>
+      <damage_by_type
+        melee="5"
+      ></damage_by_type>
+    </ProjectileComponent>
     <PhysicsImageShapeComponent
       image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_copper.png"
     ></PhysicsImageShapeComponent>
@@ -24,6 +29,7 @@
     ></AbilityComponent>
   </Base>
 
+  <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
   <!-- effect -->
   <GameEffectComponent

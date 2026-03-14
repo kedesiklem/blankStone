@@ -233,6 +233,11 @@ local STONE_DATA = {
         category = "elemental",
     },
 
+    ["brassStone"] = {
+        path = elemental_stone_path .. "stone_brass",
+        level = 9,
+        category = "elemental",
+    },
     -- Vanilla Stones
     ["brimstone"] = {
         path = vanilla_stone_path .. "brimstone",
@@ -420,6 +425,10 @@ local STONE_MESSAGES = {
     ["moon"] = {
         success = "$text_blankstone_cheese",
     },
+    ["brassStone"] = {
+        fail    = "text_blankstone_missing_lot_knowledge",
+    },
+    -- ##ANCHOR_STONE_MSG_END##
 }
 
 local DEFAULT_MESSAGES = {

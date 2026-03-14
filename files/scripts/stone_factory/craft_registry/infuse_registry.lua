@@ -61,6 +61,9 @@ local STONE_TO_MATERIAL_TO_STONE = {
 
         ["copper"] = {stone_keys = {"copperStone"}},
         ["copper_molten"] = {stone_keys = {"copperStone"}},
+
+        ["brass"] = {stone_keys = {"brassStone"}},
+        ["brass_molten"] = {stone_keys = {"brassStone"}},
         -- HINT (not recipes)
 
         ["void_liquid"] = {stone_keys = {"voidStone"}},
@@ -112,6 +115,9 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
     },
     
+    ["copperStone"] = {
+        ["magic_liquid_teleportation"] = {stone_keys = {"brassStone"}},
+    },
     -- ##ANCHOR_INFUSE_END##
 }
 

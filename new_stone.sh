@@ -15,7 +15,7 @@ CSV="translations.csv"
 
 # Ancres d'insertion dans les fichiers Lua — doivent correspondre aux commentaires réels
 ANCHOR_STONE_DATA_END="-- Vanilla Stones"        # stone_registry : fin de STONE_DATA elemental
-ANCHOR_STONE_MSG_END="^local DEFAULT_MESSAGES"    # stone_registry : avant les messages par défaut
+ANCHOR_STONE_MSG_END="-- ##ANCHOR_STONE_MSG_END##"  # stone_registry : fin de STONE_MESSAGES (intérieur du tableau)
 ANCHOR_STONE_COND_END="^    default = {"          # stone_registry : avant la condition default
 ANCHOR_INFUSE_HINT="^        -- HINT"             # infuse_registry : séparateur recettes/hints blankStone
 ANCHOR_INFUSE_END="-- ##ANCHOR_INFUSE_END##"      # infuse_registry : fin de STONE_TO_MATERIAL_TO_STONE
@@ -457,20 +457,37 @@ fi
 
 echo ""
 echo "── infuse_registry.lua ──"
-echo "  Pierre source qu'on infuse pour obtenir ${name}"
-echo "  (laisser vide = pas d'infusion)"
-infuse_source=$(ask "  Source stone (ex: blankStone)" "")
+echo "  Ajouter autant de sources d'infusion que nécessaire (blankStone, autre pierre...)"
+echo "  Laisser vide pour terminer"
 
-infuse_materials=() infuse_is_hint=0
-if [[ -n "$infuse_source" ]]; then
-  echo "  Matériaux déclencheurs — supporte [tags] et mat1|mat2 — vide = terminer"
+# Chaque entrée = (source, matériau, is_hint)
+# Stocké dans trois tableaux parallèles
+infuse_sources=(); infuse_mats=(); infuse_hints=()
+infuse_has_hint=0
+
+while true; do
+  src=$(ask "  Source stone (ex: blankStone)" "")
+  [[ -z "$src" ]] && break
+
+  # Matériaux vides = hint, matériaux fournis = vraie recette
+  echo "  Matériaux déclencheurs — supporte [tags] et mat1|mat2"
+  echo "  (laisser vide sans rien entrer = hint uniquement)"
+  src_mats=()
   while true; do
     mat=$(ask "  + Matériau" ""); [[ -z "$mat" ]] && break
-    infuse_materials+=("$mat")
+    src_mats+=("$mat")
   done
-  [[ ${#infuse_materials[@]} -gt 0 ]] && \
-    ask_bool "  C'est un hint (pas une vraie recette) ?" && infuse_is_hint=1
-fi
+
+  is_hint=0
+  [[ ${#src_mats[@]} -eq 0 ]] && is_hint=1
+  [[ $is_hint -eq 1 ]] && infuse_has_hint=1
+
+  for mat in "${src_mats[@]}"; do
+    infuse_sources+=("$src")
+    infuse_mats+=("$mat")
+    infuse_hints+=("$is_hint")
+  done
+done
 
 echo ""
 echo "── fuse_registry.lua ──"
@@ -594,37 +611,38 @@ fi
 
 # ── infuse_registry.lua ───────────────────────────────────────────────────────
 
-if [[ -n "$infuse_source" && ${#infuse_materials[@]} -gt 0 ]]; then
+if [[ ${#infuse_sources[@]} -gt 0 ]]; then
   if [[ ! -f "$INFUSE_REGISTRY" ]]; then
     echo "⚠  INFUSE  → introuvable, ajouter manuellement"
   else
-    for mat in "${infuse_materials[@]}"; do
-      if [[ $infuse_is_hint -eq 1 ]]; then
+    for i in "${!infuse_sources[@]}"; do
+      src="${infuse_sources[$i]}"
+      mat="${infuse_mats[$i]}"
+      hint="${infuse_hints[$i]}"
+
+      if [[ "$hint" -eq 1 ]]; then
         line="        [\"${mat}\"] = {hint_key = \"hint_blankstone_${raw_id}\"},"
       else
         line="        [\"${mat}\"] = {stone_keys = {\"${name}\"}},"
       fi
 
-      if [[ "$infuse_source" == "blankStone" ]]; then
+      if [[ "$src" == "blankStone" ]]; then
         insert_before "$INFUSE_REGISTRY" "$ANCHOR_INFUSE_HINT" "$line"
       else
-        # Vérifie que le bloc source existe dans infuse_registry
-        if ! grep -q "\[\"${infuse_source}\"\] = {" "$INFUSE_REGISTRY"; then
-          # Vérifie que la pierre source est connue du stone_registry
-          if [[ -f "$STONE_REGISTRY" ]] && ! grep -q "\[\"${infuse_source}\"\]" "$STONE_REGISTRY"; then
-            echo "⚠  INFUSE  → source \"${infuse_source}\" introuvable dans stone_registry"
-            echo "             Vérifier le nom — ajouter manuellement dans infuse_registry :"
-            echo "             [\"${infuse_source}\"] = {"
+        if ! grep -q "\[\"${src}\"\] = {" "$INFUSE_REGISTRY"; then
+          if [[ -f "$STONE_REGISTRY" ]] && ! grep -q "\[\"${src}\"\]" "$STONE_REGISTRY"; then
+            echo "⚠  INFUSE  → source \"${src}\" introuvable dans stone_registry"
+            echo "             Ajouter manuellement dans infuse_registry :"
+            echo "             [\"${src}\"] = {"
             echo "                 ${line}"
             echo "             },"
           else
-            # Pierre connue mais pas encore de bloc infuse → créer le bloc
-            new_block="    [\"${infuse_source}\"] = {\n${line}\n    },"
+            new_block="    [\"${src}\"] = {\n${line}\n    },"
             insert_before "$INFUSE_REGISTRY" "$ANCHOR_INFUSE_END" "$new_block"
-            echo "  (bloc [\"${infuse_source}\"] créé dans infuse_registry)"
+            echo "  (bloc [\"${src}\"] créé dans infuse_registry)"
           fi
         else
-          insert_after "$INFUSE_REGISTRY" "\[\"${infuse_source}\"\] = {" "$line"
+          insert_after "$INFUSE_REGISTRY" "\[\"${src}\"\] = {" "$line"
         fi
       fi
     done
@@ -732,5 +750,5 @@ echo "Reste à faire :"
 echo "  • Remplacer les placeholders par les vrais sprites :"
 echo "      $items_png"
 echo "      $ui_png"
-[[ $infuse_is_hint -eq 1 && -n "$infuse_source" ]] && \
+[[ $infuse_has_hint -eq 1 ]] && \
   echo "  • hint_registry.lua → ajouter 'hint_blankstone_${raw_id}'"
