@@ -243,6 +243,11 @@ local STONE_DATA = {
         level = 1,
         category = "elemental",
     },
+    ["sodiumStone"] = {
+        path = elemental_stone_path .. "stone_sodium",
+        level = 1,
+        category = "elemental",
+    },
     -- Vanilla Stones
     ["brimstone"] = {
         path = vanilla_stone_path .. "brimstone",

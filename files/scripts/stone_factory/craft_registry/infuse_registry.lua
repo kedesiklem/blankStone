@@ -65,6 +65,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["brass"] = {stone_keys = {"brassStone"}},
         ["brass_molten"] = {stone_keys = {"brassStone"}},
         ["orb_powder"] = {stone_keys = {"orbPowderStone"}},
+        ["sodium"] = {stone_keys = {"sodiumStone"}},
         -- HINT (not recipes)
 
         ["void_liquid"] = {stone_keys = {"voidStone"}},
@@ -124,6 +125,9 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
     ["confuseStone"] = {
         ["magic_liquid_unstable_teleportation"] = {stone_keys = {"orbPowderStone"}},
+    },
+    ["sodiumStone"] = {
+        ["water"] = {stone_keys = {"explosionStone"}},
     },
     -- ##ANCHOR_INFUSE_END##
 }

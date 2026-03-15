@@ -21,6 +21,8 @@ local HINT_REGISTRY = {
     ["hint_need_fuse"] = {
         message = "$text_blankstone_hint_needs_fusion"
     }
+
+    -- ##ANCHOR_HINT_END##
 }
 
 return HINT_REGISTRY

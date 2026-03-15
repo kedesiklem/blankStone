@@ -1,0 +1,53 @@
+<Entity name="sodiumStone">
+
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_sodium.png"
+    ></PhysicsImageShapeComponent>
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_sodium.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_sodiumStone_name"
+      ui_description="$stone_blankstone_sodiumStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_sodium.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_sodiumStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_sodiumStone_name"
+    ></AbilityComponent>
+
+  </Base>
+
+  <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
+  <Base file="mods/blankStone/files/VFX/sweat.xml">
+    <ParticleEmitterComponent
+      emitted_material_name="sodium"
+      count_min="2"
+      count_max="5"
+    ></ParticleEmitterComponent>
+  </Base>
+
+  <!-- Conversion de matériau #1 -->
+  <MagicConvertMaterialComponent
+    _tags="enabled_in_world,enabled_in_hand"
+    from_material="water"
+    to_material="gunpowder_unstable"
+    is_circle="1"
+    radius="5"
+    kill_when_finished="0"
+    loop="1"
+  ></MagicConvertMaterialComponent>
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="sodiumStone"
+  ></VariableStorageComponent>
+
+</Entity>
