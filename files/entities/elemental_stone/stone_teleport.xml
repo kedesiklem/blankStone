@@ -23,6 +23,7 @@
       ui_name="$stone_blankstone_teleportStone_name"
     ></AbilityComponent>
   </Base>
+  <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
 
 
   <!-- VFX -->

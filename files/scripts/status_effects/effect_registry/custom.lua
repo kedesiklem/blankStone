@@ -48,7 +48,8 @@ D = {
 				ComponentSetValue( inventory2_comp, "mActualActiveItem", "0" )
 			end
 		end,
-    }
+    },
+    ["NO_CLIP"] = dofile_once("mods/blankStone/files/scripts/status_effects/effect_registry/creative_flight.lua"),
 }
 
 return D

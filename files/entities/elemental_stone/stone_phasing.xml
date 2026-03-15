@@ -24,22 +24,30 @@
     ></AbilityComponent>
   </Base>
 
-  <!-- VFX -->
+
+  <!-- === CUSTOM EFFECT === -->
   <LuaComponent
     _tags="enabled_in_hand"
-    script_source_file="mods/blankStone/files/scripts/stone_specific_script/noclip_hand.lua"
-    execute_every_n_frame="1"
-    _enabled="0"
+    script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_stone.lua"
+    execute_every_n_frame="30"
   ></LuaComponent>
 
+  <!-- need to apply no_clip each frame -->
   <LuaComponent
-    _tags="enabled_in_inventory,enabled_in_world"
-    script_source_file="mods/blankStone/files/scripts/stone_specific_script/noclip_monitor.lua"
-    script_throw_item="mods/blankStone/files/scripts/stone_specific_script/noclip_monitor.lua"
+    _tags="enabled_in_hand"
+    script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_apply.lua"
     execute_every_n_frame="1"
-    _enabled="0"
   ></LuaComponent>
 
+  <!-- Required -->
+  <VariableStorageComponent
+    name="custom_id"
+    value_string="NO_CLIP"
+  ></VariableStorageComponent>
+  <!-- ============================== -->
+
+
+  <!-- VFX -->
   <GameEffectComponent
     _tags="enabled_in_hand,enabled_in_inventory"
     effect="INVISIBILITY"
