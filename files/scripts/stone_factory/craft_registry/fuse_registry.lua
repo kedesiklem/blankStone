@@ -241,7 +241,7 @@ local FUSE_RECIPES = {
         on_success = function() end
 
     },
-    { -- honey + diamond = ambrosia + posion
+    { -- honey + diamond = ambrosia + poison
         ingredients = {
             { tag = "thunderstone", count = 1 },
             { name = "honeyStone", count = 1 },
