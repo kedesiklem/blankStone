@@ -49,6 +49,34 @@ D = {
 			end
 		end,
     },
+	["PEACE_WITH_GODS"] = {
+		func = function( entity_who_picked )
+			if GameHasFlagRun("PERK_PICKED_PEACE_WITH_GODS") then return end
+
+			if(GlobalsGetValue("TEMPLE_PEACE_WITH_GODS") == "1") then return end
+
+			GlobalsSetValue( "TEMPLE_PEACE_WITH_GODS", "1" )
+			if( GlobalsGetValue( "TEMPLE_SPAWN_GUARDIAN" ) == "1" ) then
+				GlobalsSetValue( "TEMPLE_SPAWN_GUARDIAN", "0" )
+			end
+			-- necromancer_shop
+			local steves = EntityGetWithTag( "necromancer_shop" )
+			if( steves ~= nil ) then
+				for index,entity_steve in ipairs(steves) do
+					GetGameEffectLoadTo( entity_steve, "CHARM", true )
+				end
+			end
+		end,
+		func_remove = function( entity_who_picked )
+			if GameHasFlagRun("PERK_PICKED_PEACE_WITH_GODS") then return end
+
+			GlobalsSetValue( "TEMPLE_PEACE_WITH_GODS", "0" )
+			GlobalsSetValue( "TEMPLE_SPAWN_GUARDIAN", "1" )
+			if( GlobalsGetValue( "TEMPLE_SPAWN_GUARDIAN" ) == "1" ) then
+				GlobalsSetValue( "TEMPLE_SPAWN_GUARDIAN", "0" )
+			end
+		end,
+	},
     ["NO_CLIP"] = dofile_once("mods/blankStone/files/scripts/status_effects/effect_registry/creative_flight.lua"),
 }
 
