@@ -9,5 +9,6 @@
     name="stain_effect"
     value_string="water"
     value_int="64"
+    value_float="1.0"
   ></VariableStorageComponent>
 </Entity>

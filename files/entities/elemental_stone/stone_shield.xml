@@ -1,0 +1,166 @@
+<Entity name="shieldStone" tags="energy_shield">
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+
+        <!-- physical presence -->
+
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_shield.png"
+        ></PhysicsImageShapeComponent>
+
+        <!-- item -->
+
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_shield.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$stone_blankstone_shieldStone_name"
+            ui_description="$stone_blankstone_shieldStone_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_shield.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$stone_blankstone_shieldStone_name"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$stone_blankstone_shieldStone_name"
+        ></AbilityComponent>
+    </Base>
+
+    <!-- VFX Halo #1 -->
+    <Base file="mods/blankStone/files/VFX/halo.xml">
+        <SpriteParticleEmitterComponent
+            color.r="0.3757" color.g="0.9069" color.b="1" color.a="0.25"
+            color_change.r="0" color_change.g="0" color_change.b="0" color_change.a="-1.5"
+            additive="1"
+            emissive="1"
+        ></SpriteParticleEmitterComponent>
+    </Base>
+
+    <!-- VFX Sweat #1 -->
+    <Base file="mods/blankStone/files/VFX/sweat.xml">
+        <ParticleEmitterComponent
+            emitted_material_name="plasma_fading"
+            count_min="3"
+            count_max="5"
+        ></ParticleEmitterComponent>
+    </Base>
+
+
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="shieldStone"
+    ></VariableStorageComponent>
+
+
+    <!-- SHIELD -->
+
+    <Entity>
+        <InheritTransformComponent
+            _tags="enabled_in_hand,enabled_in_inventory"
+            use_root_parent="1">
+            <Transform
+                position.x="0"
+                position.y="-4"
+            ></Transform>
+        </InheritTransformComponent>
+
+        <EnergyShieldComponent
+            _tags="enabled_in_hand,enabled_in_inventory,item_identified__LEGACY"
+            _enabled="0"
+            recharge_speed="0.25"
+            radius="16.0"
+            damage_multiplier="1.5"
+            max_energy="1"
+            energy_required_to_shield="0.2"
+            sector_degrees="360"
+            energy="0"
+        > </EnergyShieldComponent>
+
+        <ParticleEmitterComponent
+            _tags="character,enabled_in_hand,enabled_in_inventory,item_identified__LEGACY"
+            _enabled="0"
+            emitted_material_name="plasma_fading"
+            gravity.y="0.0"
+            lifetime_min="0.1"
+            lifetime_max="0.5"
+            count_min="2"
+            count_max="4"
+            render_on_grid="1"
+            fade_based_on_lifetime="1"
+            area_circle_radius.max="16"
+            cosmetic_force_create="0"
+            airflow_force="0.5"
+            airflow_time="0.1"
+            airflow_scale="0.5"
+            emission_interval_min_frames="1"
+            emission_interval_max_frames="1"
+            emit_cosmetic_particles="1"
+            is_emitting="1"
+        ></ParticleEmitterComponent>
+
+        <ParticleEmitterComponent
+            _tags="character,enabled_in_hand,enabled_in_inventory,item_identified__LEGACY,shield_ring"
+            _enabled="0"
+            emitted_material_name="plasma_fading"
+            gravity.y="0.0"
+            lifetime_min="0.02"
+            lifetime_max="0.05"
+            count_min="90"
+            count_max="100"
+            render_on_grid="1"
+            fade_based_on_lifetime="1"
+            area_circle_radius.min="16"
+            area_circle_radius.max="16"
+            cosmetic_force_create="0"
+            airflow_force="0.3"
+            airflow_time="0.01"
+            airflow_scale="0.05"
+            emission_interval_min_frames="0"
+            emission_interval_max_frames="0"
+            emit_cosmetic_particles="1"
+            is_emitting="1"
+        ></ParticleEmitterComponent>
+
+        <ParticleEmitterComponent
+            _tags="character,enabled_in_hand,enabled_in_inventory,item_identified__LEGACY,shield_hit"
+            _enabled="0"
+            emitted_material_name="plasma_fading"
+            gravity.y="0.0"
+            lifetime_min="0.3"
+            lifetime_max="1"
+            count_min="300"
+            count_max="360"
+            render_on_grid="1"
+            fade_based_on_lifetime="1"
+            area_circle_radius.min="16"
+            area_circle_radius.max="16"
+            cosmetic_force_create="0"
+            airflow_force="2.8"
+            airflow_time="0.03"
+            airflow_scale="0.8"
+            emission_interval_min_frames="0"
+            emission_interval_max_frames="0"
+            emit_cosmetic_particles="1"
+            is_emitting="0"
+        ></ParticleEmitterComponent>
+
+        <LightComponent
+            _tags="enabled_in_hand,enabled_in_inventory,item_identified"
+            _enabled="1"
+            radius="80"
+            fade_out_time="1.5"
+            r="150"
+            g="190"
+            b="230"
+        ></LightComponent>
+
+        <AudioComponent
+            _tags="enabled_in_hand,enabled_in_inventory,item_identified"
+            file="data/audio/Desktop/projectiles.bank"
+            event_root="player_projectiles/shield"
+            set_latest_event_position="1"
+        ></AudioComponent>
+    </Entity>
+</Entity>

@@ -342,6 +342,16 @@ local FUSE_RECIPES = {
         },
         on_success = function() end
     },
+    { -- shieldStone
+        ingredients = {
+            { name = "magicLiquidStone", count = 1 },
+        },
+        radius = 20,
+        results = {
+            { key = "shieldStone", offset_y = -10 },
+        },
+        on_success = function() end
+    },
     -- ##ANCHOR_FUSE_END##
 }
 

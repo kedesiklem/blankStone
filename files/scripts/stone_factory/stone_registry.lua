@@ -248,6 +248,16 @@ local STONE_DATA = {
         level = 1,
         category = "elemental",
     },
+    ["diminutionStone"] = {
+        path = elemental_stone_path .. "stone_diminution",
+        level = 5,
+        category = "elemental",
+    },
+    ["shieldStone"] = {
+        path = elemental_stone_path .. "stone_shield",
+        level = 1,
+        category = "elemental",
+    },
     -- Vanilla Stones
     ["brimstone"] = {
         path = vanilla_stone_path .. "brimstone",

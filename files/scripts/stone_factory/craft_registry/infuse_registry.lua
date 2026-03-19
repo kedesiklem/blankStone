@@ -66,6 +66,8 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["brass_molten"] = {stone_keys = {"brassStone"}},
         ["orb_powder"] = {stone_keys = {"orbPowderStone"}},
         ["sodium"] = {stone_keys = {"sodiumStone"}},
+        ["magic_gas_weakness"] = {stone_keys = {"diminutionStone"}},
+        ["magic_liquid_weakness"] = {stone_keys = {"diminutionStone"}},
         -- HINT (not recipes)
 
         ["void_liquid"] = {stone_keys = {"voidStone"}},

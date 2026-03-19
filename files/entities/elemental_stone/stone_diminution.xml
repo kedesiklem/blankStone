@@ -1,0 +1,60 @@
+<Entity name="diminutionStone">
+  <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+
+    <!-- physical presence -->
+
+    <PhysicsImageShapeComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_diminution.png"
+    ></PhysicsImageShapeComponent>
+
+    <!-- item -->
+
+    <SpriteComponent
+      image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_diminution.png"
+    ></SpriteComponent>
+
+    <ItemComponent
+      item_name="$stone_blankstone_diminutionStone_name"
+      ui_description="$stone_blankstone_diminutionStone_desc"
+      ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_diminution.png"
+    ></ItemComponent>
+
+    <UIInfoComponent
+      name="$stone_blankstone_diminutionStone_name"
+    ></UIInfoComponent>
+
+    <AbilityComponent
+      ui_name="$stone_blankstone_diminutionStone_name"
+    ></AbilityComponent>
+  </Base>
+
+  <!-- Stain Effect -->
+  <Base file="mods/blankStone/files/entities/staining.xml">
+    <LuaComponent
+      _tags="enabled_in_world,enabled_in_hand,enabled_in_inventory"
+    ></LuaComponent>
+    <VariableStorageComponent
+      name="stain_effect"
+      value_string="magic_liquid_weakness"
+      value_int="256"
+    ></VariableStorageComponent>
+  </Base>
+
+  <!-- Stain Immunity -->
+  <LuaComponent
+    _tags="enabled_in_inventory,enabled_in_hand"
+    script_source_file="mods/blankStone/files/scripts/stain_immunity.lua"
+    execute_every_n_frame="5"
+  ></LuaComponent>
+  <VariableStorageComponent
+    name="stain_immunity"
+    value_string="WEAKNESS"
+  ></VariableStorageComponent>
+
+
+  <VariableStorageComponent
+    name="blankStoneID"
+    value_string="diminutionStone"
+  ></VariableStorageComponent>
+
+</Entity>
