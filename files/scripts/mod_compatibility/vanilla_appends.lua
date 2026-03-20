@@ -12,23 +12,25 @@ local function addPurifiable(entity, new_parent)
     T.setXML(entity, xml)
 end
 
-local  vanilla_item_path = "data/entities/items/pickup/"
+local  vanilla_item_path = "items/pickup/"
 local vanilla_stone = {
-    "sun/sunseed",
-    "wandstone",
-    "waterstone",
-    "brimstone",
-    "thunderstone",
-    "stonestone",
-    "poopstone",
-    "physics_gold_orb_greed",
-    "physics_gold_orb",
-    "moon"
+    vanilla_item_path .. "sun/sunseed",
+    vanilla_item_path .. "wandstone",
+    vanilla_item_path .. "waterstone",
+    vanilla_item_path .. "brimstone",
+    vanilla_item_path .. "thunderstone",
+    vanilla_item_path .. "stonestone",
+    vanilla_item_path .. "poopstone",
+    vanilla_item_path .. "physics_gold_orb_greed",
+    vanilla_item_path .. "physics_gold_orb",
+    vanilla_item_path .. "moon",
+
+    "projectiles/deck/rock"
 }
 
 
 for _, value in pairs(vanilla_stone) do
-    local path = vanilla_item_path .. value .. ".xml"
+    local path = "data/entities/" .. value .. ".xml"
     addPurifiable(path, stone_base)
 
     local content = ModTextFileGetContent(path)

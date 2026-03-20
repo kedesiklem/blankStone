@@ -2,11 +2,6 @@
 local STONE_TO_MATERIAL_TO_STONE = {
     ["blankStone"] = {
 
-        -- Duplication --
-        ------------------
-        ["[mimic_liquid]"] = {stone_keys = {"blankStone", "blankStone"}},
-        ------------------
-
         -- Vanilla Stones --
         -------------------------
         ["[hot]"] = {stone_keys = {"brimstone"}},
@@ -68,6 +63,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["sodium"] = {stone_keys = {"sodiumStone"}},
         ["magic_gas_weakness"] = {stone_keys = {"diminutionStone"}},
         ["magic_liquid_weakness"] = {stone_keys = {"diminutionStone"}},
+        ["cement"] = {stone_keys = {"cementStone"}},
         -- HINT (not recipes)
 
         ["void_liquid"] = {stone_keys = {"voidStone"}},

@@ -77,6 +77,28 @@ D = {
 			end
 		end,
 	},
+	["NO_MORE_SHUFFLE"] = {
+		func = function( entity_who_picked )
+			if GameHasFlagRun("PERK_PICKED_NO_MORE_SHUFFLE_WANDS") then return end
+			if(GlobalsGetValue("PERK_NO_MORE_SHUFFLE_WANDS") == "1") then return end
+
+			GlobalsSetValue( "PERK_NO_MORE_SHUFFLE_WANDS", "1" )
+			
+			local wands = EntityGetWithTag("wand")
+
+			for i,wand in ipairs(wands) do
+				local ability_comp = EntityGetFirstComponentIncludingDisabled( wand, "AbilityComponent" )
+				if( ability_comp ~= nil ) then
+					local shuffler = "0"
+					ComponentObjectSetValue( ability_comp, "gun_config", "shuffle_deck_when_empty", shuffler )
+				end
+			end 
+		end,
+		func_remove = function( entity_who_picked )
+			if GameHasFlagRun("PERK_PICKED_NO_MORE_SHUFFLE_WANDS") then return end
+			GlobalsSetValue( "PERK_NO_MORE_SHUFFLE_WANDS", "0" )
+		end,
+	},
     ["NO_CLIP"] = dofile_once("mods/blankStone/files/scripts/status_effects/effect_registry/creative_flight.lua"),
 }
 

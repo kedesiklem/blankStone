@@ -1,0 +1,8 @@
+<Entity>
+    <LuaComponent
+        execute_on_added="1"
+        remove_after_executed="1"
+        call_init_function="1"
+        script_source_file="mods/blankStone/files/scripts/spawn_stone.lua"
+    ></LuaComponent>
+</Entity>

@@ -1,0 +1,51 @@
+<Entity name="cementStone">
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+
+        <!-- physical presence -->
+
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_cement.png"
+        ></PhysicsImageShapeComponent>
+
+        <!-- item -->
+
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_cement.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$stone_blankstone_cementStone_name"
+            ui_description="$stone_blankstone_cementStone_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_cement.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$stone_blankstone_cementStone_name"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$stone_blankstone_cementStone_name"
+        ></AbilityComponent>
+    </Base>
+
+    <!-- === CUSTOM EFFECT === -->
+    <LuaComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_stone.lua"
+        execute_every_n_frame="30"
+    ></LuaComponent>
+
+    <!-- Required -->
+    <VariableStorageComponent
+        name="custom_id"
+        value_string="NO_MORE_SHUFFLE"
+    ></VariableStorageComponent>
+    <!-- ============================== -->
+
+
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="cementStone"
+    ></VariableStorageComponent>
+
+</Entity>

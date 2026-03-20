@@ -31,11 +31,12 @@ end
 local items = {
     {
         weight = 1,
-        entity = "blank_stone",
+        entity = "spawn_stone",
         offset = -2
     }
 }
 
 for _, v in ipairs(items) do
+    register_item("potion_spawnlist_liquidcave", v.weight, entity_path .. v.entity .. ".xml", v.offset)
     register_item("potion_spawnlist", v.weight, entity_path .. v.entity .. ".xml", v.offset)
 end

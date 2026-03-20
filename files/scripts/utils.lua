@@ -75,6 +75,39 @@ local function changeDescription(entity, new_description)
     end
 end
 
+local function getName(entity)
+    local info_ids = EntityGetComponentIncludingDisabled(entity,"ItemComponent")
+    if not info_ids then log.error("can't get name without ItemComponent") return end
+    return GameTextGetTranslatedOrNot(ComponentGetValue2(info_ids[1], "item_name"))
+end
+
+local function changeName(entity, new_name)
+    local info_ids = EntityGetComponentIncludingDisabled(entity,"ItemComponent")
+
+    if not info_ids then log.error("can't change name without ItemComponent")
+    else
+        for _, value in ipairs(info_ids) do
+            ComponentSetValue2(value, "item_name", new_name)
+        end
+    end
+
+    info_ids = EntityGetComponentIncludingDisabled(entity,"UIInfoComponent")
+    if not info_ids then log.error("can't change name without UIInfoComponent") 
+    else
+        for _, value in ipairs(info_ids) do
+            ComponentSetValue2(value, "ui_name", new_name)
+        end
+    end
+
+    info_ids = EntityGetComponentIncludingDisabled(entity,"AbilityComponent")
+    if not info_ids then log.error("can't change name without AbilityComponent")
+    else
+        for _, value in ipairs(info_ids) do
+            ComponentSetValue2(value, "ui_name", new_name)
+        end
+    end
+end
+
 --- Potion related function
 local function getPotionMaterial(potion_id)
     local material_id = GetMaterialInventoryMainMaterial(potion_id)
@@ -399,5 +432,8 @@ return {
     EntityGetDamageFromMaterial = EntityGetDamageFromMaterial,
 
     changeDescription=changeDescription,
+    changeName=changeName,
+    getName=getName,
+
     convert_all_liquid=convert_all_liquid,
 }

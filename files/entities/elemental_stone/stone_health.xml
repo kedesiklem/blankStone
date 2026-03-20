@@ -53,6 +53,12 @@
     frames="-1"
   ></GameEffectComponent>
 
+  <GameEffectComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    effect="SAVING_GRACE"
+    frames="-1"
+  ></GameEffectComponent>
+
 
   <VariableStorageComponent
     name="blankStoneID"
