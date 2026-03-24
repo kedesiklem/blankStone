@@ -294,7 +294,7 @@ local FUSE_RECIPES = {
                 { name = "bigStone", count = 1 },
             },
             catalysts   = {
-                { name = "quintessence|rubedo|lapis_philosophorum", count = 1 },
+                { name = "rubedo|quintessence|lapis_philosophorum", count = 1 },
             },
         },
         effect = {

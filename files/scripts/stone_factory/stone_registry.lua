@@ -1,8 +1,9 @@
-local blankStone_path    = "mods/blankStone/files/entities/"
-local elemental_stone_path = blankStone_path .. "elemental_stone/"
-local magnum_opus_path   = blankStone_path .. "magnum_opus/"
+local blankStone_path    = "mods/blankStone/files/"
+local elemental_stone_path = blankStone_path .. "entities/elemental_stone/"
+local magnum_opus_path   = blankStone_path .. "entities/magnum_opus/"
+local book_path          = blankStone_path .. "entities/items/books/"
 local vanilla_stone_path = "data/entities/items/pickup/"
-local book_path          = "mods/blankStone/files/entities/items/books/"
+local glyph_path = blankStone_path .. "VFX/image_emitters/"
 
 -- ============================================================================
 -- VFX PRESETS  (partagés, référencés par nom dans chaque pierre)
@@ -12,19 +13,22 @@ local VFX_PRESETS = {
     default = {
         "data/entities/projectiles/explosion.xml",
     },
-    magnum_opus_ultimate = {
-        "data/entities/projectiles/deck/explosion_giga.xml",
-        "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml",
-    },
-    magnum_opus_standard = {
-        "data/entities/projectiles/explosion.xml",
-        "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml",
-    },
     quintessence_unleash = {
         "data/entities/projectiles/deck/explosion_giga.xml",
-        "mods/blankStone/files/VFX/image_emitters/quintessence_symbol_fast.xml",
+        glyph_path .. "quintessence_symbol_fast.xml",
     },
 }
+
+local function extend(base, ...)
+    local result = {}
+    for _, v in pairs(VFX_PRESETS[base]) do
+        result[#result + 1] = v
+    end
+    for _, v in pairs({...}) do
+        result[#result + 1] = v
+    end
+    return result
+end
 
 -- ============================================================================
 -- CONDITIONS par niveau  (déduites automatiquement si non précisées)
@@ -104,7 +108,7 @@ local STONE_DATA = {
             success = "$text_blankstone_lapis_philosophorum_success",
             fail    = "$text_blankstone_lapis_philosophorum_fail",
         },
-        vfx = "magnum_opus_ultimate",
+        vfx = "quintessence_unleash",
     },
 
     ["nigredo"] = {
@@ -115,7 +119,7 @@ local STONE_DATA = {
             success = "$text_blankstone_nigredo_success_craft",
             fail    = "$text_blankstone_nigredo_fail_craft",
         },
-        vfx        = "magnum_opus_standard",
+        vfx        = "quintessence_unleash",
         conditions = { flags = {{ run = "progress_darksun", persistent = "secret_hat" }} },
     },
 
@@ -127,7 +131,6 @@ local STONE_DATA = {
             success = "$text_blankstone_albedo_success_craft",
             fail    = "$text_blankstone_albedo_fail_craft",
         },
-        vfx = "magnum_opus_standard",
     },
 
     ["citrinitas"] = {
@@ -138,7 +141,7 @@ local STONE_DATA = {
             success = "$text_blankstone_citrinitas_success_craft",
             fail    = "$text_blankstone_citrinitas_fail_craft",
         },
-        vfx        = "magnum_opus_standard",
+        vfx        = "quintessence_unleash",
         conditions = { flags = {{ run = "progress_sun", persistent = "secret_hat" }} },
     },
 
@@ -150,7 +153,7 @@ local STONE_DATA = {
             success = "$text_blankstone_rubedo_success_craft",
             fail    = "$text_blankstone_rubedo_fail_craft",
         },
-        vfx = "magnum_opus_standard",
+        vfx = "quintessence_unleash",
     },
 
     -- -------------------------------------------------------------------------
@@ -200,7 +203,7 @@ local STONE_DATA = {
 
     ["confuseStone"] = {
         path     = elemental_stone_path .. "stone_confuse",
-        level    = 1,
+        level    = 5,
         category = "elemental",
     },
 
@@ -225,7 +228,7 @@ local STONE_DATA = {
 
     ["invisibilityStone"] = {
         path     = elemental_stone_path .. "stone_invisibility",
-        level    = 1,
+        level    = 5,
         category = "elemental",
     },
 
@@ -278,14 +281,14 @@ local STONE_DATA = {
 
     ["teleportStone"] = {
         path     = elemental_stone_path .. "stone_teleport",
-        level    = 5,
+        level    = 7,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["trueTeleportStone"] = {
         path     = elemental_stone_path .. "stone_true_teleport",
-        level    = 5,
+        level    = 7,
         category = "elemental",
     },
 
@@ -339,11 +342,11 @@ local STONE_DATA = {
 
     ["bloodStone"] = {
         path     = elemental_stone_path .. "stone_blood",
-        level    = 9,
+        level    = 10,
         category = "elemental",
         messages = {
             success = "$text_blankstone_bloodstone_success",
-            fail    = "$text_blankstone_bloodstone_fail",
+            fail = "$text_blankstone_missing_all_knowledge",
         },
     },
 
@@ -355,7 +358,7 @@ local STONE_DATA = {
 
     ["wormBloodStone"] = {
         path     = elemental_stone_path .. "stone_worm_blood",
-        level    = 9,
+        level    = 7,
         category = "elemental",
     },
 
@@ -405,7 +408,7 @@ local STONE_DATA = {
 
     ["brassStone"] = {
         path     = elemental_stone_path .. "stone_brass",
-        level    = 9,
+        level    = 7,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_lot_knowledge" },
     },
@@ -424,13 +427,13 @@ local STONE_DATA = {
 
     ["diminutionStone"] = {
         path     = elemental_stone_path .. "stone_diminution",
-        level    = 5,
+        level    = 7,
         category = "elemental",
     },
 
     ["shieldStone"] = {
         path     = elemental_stone_path .. "stone_shield",
-        level    = 1,
+        level    = 5,
         category = "elemental",
     },
 
@@ -441,18 +444,23 @@ local STONE_DATA = {
     },
 
     -- -------------------------------------------------------------------------
-    -- VANILLA
+    ["forgeStone"] = {
+        path = elemental_stone_path .. "stone_forge",
+        level = 10,
+        category = "elemental",
+    },
+    -- Vanilla Stones
     -- -------------------------------------------------------------------------
 
     ["brimstone"] = {
         path     = vanilla_stone_path .. "brimstone",
-        level    = 1,
+        level    = 7,
         category = "vanilla",
     },
 
     ["thunderstone"] = {
         path     = vanilla_stone_path .. "thunderstone",
-        level    = 1,
+        level    = 7,
         category = "vanilla",
     },
 
@@ -465,7 +473,7 @@ local STONE_DATA = {
 
     ["waterstone"] = {
         path     = vanilla_stone_path .. "waterstone",
-        level    = 5,
+        level    = 7,
         category = "vanilla",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
@@ -568,6 +576,21 @@ local STONE_DATA = {
 -- BUILDER
 -- ============================================================================
 
+local function resolveVfx(key, def)
+    if type(def.vfx) == "table" then
+        return def.vfx
+    elseif def.vfx then
+        return VFX_PRESETS[def.vfx]
+    end
+
+    local glyphFile = glyph_path .. "glyph_" .. key .. ".xml"
+    if ModDoesFileExist(glyphFile) then
+        return extend("default", glyphFile)
+    end
+
+    return VFX_PRESETS["default"]
+end
+
 local function buildStoneRegistry()
     local registry = {}
 
@@ -580,7 +603,7 @@ local function buildStoneRegistry()
             category     = def.category,
             message      = msgs.success or DEFAULT_MESSAGES.success,
             message_fail = msgs.fail    or DEFAULT_MESSAGES.fail,
-            vfx          = VFX_PRESETS[def.vfx or "default"],
+            vfx          = resolveVfx(key, def),
             conditions   = def.conditions or LEVEL_CONDITIONS[def.level] or {},
             preprocess   = def.preprocess  or function(data) return data end,
             postprocess  = def.postprocess or function(_id) end,

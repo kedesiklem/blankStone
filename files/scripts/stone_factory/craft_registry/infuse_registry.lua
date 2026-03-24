@@ -64,18 +64,21 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["magic_gas_weakness"] = {stone_keys = {"diminutionStone"}},
         ["magic_liquid_weakness"] = {stone_keys = {"diminutionStone"}},
         ["cement"] = {stone_keys = {"cementStone"}},
+        ["void_liquid"] = {stone_keys = {"voidStone"}},
+        ["[blood]"] = {stone_keys = {"bloodStone"}},
+
+
         -- HINT (not recipes)
 
-        ["void_liquid"] = {stone_keys = {"voidStone"}},
         ["magic_liquid_teleportation"] = {hint_key = "hint_blankstone_teleport"},
         ["lava"] = {hint_key = "hint_blankstone_skipping_step"},
         ["magic_liquid_charm"] = {hint_key = "hint_blankstone_skipping_step"},
 
-
         ["acid"] = {hint_key = "hint_blankstone_useless"},
         ["oil"] = {hint_key = "hint_blankstone_useless"},
 
-        ["[blood]"] = {hint_key = "hint_quintessence_base"},
+        ["steel_molten"] = {hint_key = "hint_quintessence_base"},
+        ["steel"] = {hint_key = "hint_quintessence_base"},
         ["[regenerative]"] = {hint_key = "hint_quintessence_base"},
         ["[regenerative_gas]"] = {hint_key = "hint_quintessence_base"},
         ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
@@ -109,7 +112,8 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
 
     ["quintessence"] = {
-        ["[blood]"] = {stone_keys = {"bloodStone"}},
+        ["steel_molten"] = {stone_keys = {"forgeStone"}},
+        ["steel"] = {stone_keys = {"forgeStone"}},
         ["[regenerative]"] = {stone_keys = {"healthStone"}},
         ["[regenerative_gas]"] = {stone_keys = {"healthStone"}},
         ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
