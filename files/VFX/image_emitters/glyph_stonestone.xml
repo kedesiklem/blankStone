@@ -1,0 +1,8 @@
+<Entity>
+    <Base file="mods/blankStone/files/VFX/image_emitters/glyph.xml">
+        <ParticleEmitterComponent
+            emitted_material_name="spark_red"
+            image_animation_file="mods/blankStone/files/VFX/image_emitters/glyph_stonestone.png"
+        ></ParticleEmitterComponent>
+    </Base>
+</Entity>
