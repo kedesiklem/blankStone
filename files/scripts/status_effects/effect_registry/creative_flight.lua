@@ -29,13 +29,13 @@ local FIELDS_FIXED = {
 
 local function save_and_set( entity_id )
     if EntityGetWithName( SAVED_NAME ) ~= 0 then
-        log.warn( "CREATIVE_FLIGHT.func → sauvegarde déjà présente, abandon" )
+        log.warn( "CREATIVE_FLIGHT.func => sauvegarde déjà présente, abandon" )
         return
     end
 
     local cp = EntityGetFirstComponentIncludingDisabled( entity_id, "CharacterPlatformingComponent" )
     if not cp then
-        log.error( "CREATIVE_FLIGHT.func → CharacterPlatformingComponent introuvable" )
+        log.error( "CREATIVE_FLIGHT.func => CharacterPlatformingComponent introuvable" )
         return
     end
 
@@ -58,7 +58,7 @@ end
 local function restore( entity_id )
     local saved = EntityGetWithName( SAVED_NAME )
     if saved == 0 then
-        log.warn( "CREATIVE_FLIGHT.func_remove → aucune sauvegarde trouvée" )
+        log.warn( "CREATIVE_FLIGHT.func_remove => aucune sauvegarde trouvée" )
         return
     end
 
@@ -78,7 +78,7 @@ local function restore( entity_id )
             ComponentSetValue2( cp, field, ComponentGetValue2( saved_cp, field ) )
         end
     else
-        log.error( "CREATIVE_FLIGHT.func_remove → composant(s) manquant(s)" )
+        log.error( "CREATIVE_FLIGHT.func_remove => composant(s) manquant(s)" )
     end
 
     EntityKill( saved )

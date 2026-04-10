@@ -1,4 +1,3 @@
--- infuse_stone.lua
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
@@ -35,60 +34,58 @@ local function enableHalo(id, enable)
     end
 end
 
-local function findInfusionRecipes(potion_id, entityName)
+--- Résout la clé à utiliser pour l'infusion (nom de matériau ou tag).
+--- La résolution de recette elle-même est déléguée à stone_factory.
+--- Retourne la première clé trouvée dans le registre, ou nil.
+local function findMaterialKey(potion_id, entityName)
     local material, material_tags = utils.getPotionMaterial(potion_id)
     if not material then
         log.debug("Potion has no valid material")
-        return false
+        return nil
     end
-    
-    -- Let the factory do its job
-    local stone_craft_list = craft.STONE_TO_MATERIAL_TO_STONE[entityName]
-    local stone_recipes = stone_craft_list[material]
-    -- Check for tag recipes
-
-    if not stone_recipes then
-        log.debug(entityName .. " has no recipes involving material '" .. material .. "'.")
-        for _, value in ipairs(material_tags) do
-            stone_recipes = stone_craft_list[value]
-            if stone_recipes then
-                log.debug(entityName .. " has recipes involving the tag " .. value)
-                break
-            else
-                log.debug(entityName .. " has no recipes involving the tag " .. value)
-            end
+ 
+    local stone_map = craft.STONE_TO_MATERIAL_TO_STONE[entityName]
+    if not stone_map then return nil end
+ 
+    -- Priorité au nom de matériau exact
+    if stone_map[material] then
+        return material
+    end
+ 
+    -- Fallback sur les tags du matériau
+    for _, tag in ipairs(material_tags) do
+        if stone_map[tag] then
+            log.debug(entityName .. " : recette trouvée via tag '" .. tag .. "'")
+            return tag
         end
     end
-    
-    if not stone_recipes then
-        log.debug(entityName .. " has no recipes involving the potion")
-        return false
-    end
-
-    return stone_recipes
+ 
+    log.debug(entityName .. " : aucune recette pour ce matériau/ces tags")
+    return nil
 end
 
 local function tryCreateStone(potion_id, pos_x, pos_y, entityName)
-
+ 
     local entity_id = GetUpdatedEntityID()
     local stone_id = EntityGetParent(entity_id)
-
-    local stone_recipe = findInfusionRecipes(potion_id, entityName)
-
+ 
+    local key = findMaterialKey(potion_id, entityName)
+    if not key then return false end
+ 
     local hint_id = utils.getVariable(entity_id, "hintEnable")
-    
-    local is_success = stone_factory.tryInfuseStone(stone_recipe, utils.getValue(hint_id, "value_int", 1), pos_x, pos_y)
-    
+    local hintCount = utils.getValue(hint_id, "value_int", 1)
+ 
+    local is_success = stone_factory.tryInfuseStone(entityName, key, hintCount, pos_x, pos_y)
+ 
     -- Handle the result
     if is_success then
         EntityKill(stone_id)
         EntityKill(potion_id)
         return true
     else
-        if(utils.getValue(hint_id, "value_int", 1) == 0) then
+        if hintCount == 0 then
             utils.setValue(hint_id, "value_int", 1)
         end
-
         return false
     end
 end

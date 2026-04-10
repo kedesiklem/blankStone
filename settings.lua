@@ -2,7 +2,7 @@
 dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 
-local mod_version = "1.20.1"
+local mod_version = "1.20.2"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}
@@ -316,6 +316,10 @@ end
 
 local translations = {
 	["English"] = {
+		-- Quest
+		quest_settings="Quest Settings",
+		quest_mod = "Quest Mod",
+		quest_mod_d = "Enable Level restriction",
 		-- Keybinding
 		pickup_input_code = "Pickup Key",
 		pickup_input_code_d = "Hotkey to pickup items into bags",
@@ -422,6 +426,7 @@ setmetatable(T, mt)
 ---------------------------------------------
 
 D = {
+	quest_mod = true,
 	-- Keybinding
 	pickup_input_code = "10",
 	pickup_input_code_type = "kb",
@@ -476,6 +481,21 @@ D = {
 local function build_settings()
 	---@type mod_settings_global
 	local settings = {
+		{
+			category_id = "difficulty_settings",
+			ui_name = "Difficulty Settings",
+			foldable = true,
+			_folded = false,
+			settings = {
+				{
+					not_setting = true,
+					id = "quest_settings",
+					ui_name = T.quest_settings,
+					ui_fn = S.mod_setting_better_boolean,
+					checkboxes = { "quest_mod" },
+				},
+			},
+		},
 		{
 			category_id = "bag_keybindings",
 			ui_name = "Bag Keybindings",

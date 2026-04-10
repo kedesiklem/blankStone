@@ -14,8 +14,9 @@ local function apply_patch(filepath, pattern, replacement, label)
 end
 
 local stones = {
-    { id = "stone_unstable_teleport", perk = "TELEPORTITIS"            },
+    { id = "stone_unstable_teleport", perk = "TELEPORTITIS"             },
     { id = "stone_teleport",          perk = "TELEPORTITIS_DODGE"       },
+    { id = "stone_true_teleport",     perk = "TELEPORTITIS_DODGE"       },
     { id = "stone_big",               perk = "GENOME_MORE_HATRED"       },
     { id = "stone_love",              perk = "GENOME_MORE_LOVE"         },
     { id = "stone_blood",             perk = "VAMPIRISM"                },
@@ -29,7 +30,15 @@ local stones = {
     { id = "stone_toxic",             perk = "PROTECTION_RADIOACTIVITY" },
     { id = "stone_void",              perk = "APOTHEOSIS_VOID"          },
     { id = "stone_worm_blood",        perk = "REMOVE_FOG_OF_WAR"        },
-    { id = "stone_mana",              perk = "UNLIMITED_SPELLS"        },
+    { id = "stone_mana",              perk = "UNLIMITED_SPELLS"         },
+    { id = "stone_milk",              perk = "IRON_STOMACH"             },
+    { id = "stone_freeze",            perk = "FREEZE_FIELD"             },
+    { id = "stone_gunpowder",         perk = "PROTECTION_EXPLOSION"     },
+    { id = "stone_copper",            perk = "PROTECTION_MELEE"         },
+    { id = "stone_brass",             perk = "NO_MORE_KNOCKBACK"        },
+    { id = "stone_sodium",            perk = "REVENGE_EXPLOSION"        },
+    { id = "stone_cement",            perk = "NO_MORE_SHUFFLE"          },
+    { id = "stone_shield",            perk = "SHIELD"                   },
 }
 
 local gfx_base    = "mods/blankStone/files/items_gfx/elemental_stone/"
