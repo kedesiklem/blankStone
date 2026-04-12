@@ -19,9 +19,11 @@ local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/a
 local PATCH_COMP_EXPL = dofile_once("mods/blankStone/files/scripts/mod_compatibility/component-explorer_appends.lua")
 function OnModPreInit()
     if ModIsEnabled("apotheosis") or ModIsEnabled("Apotheosis") then
+        log.tmp_info("Patch Apotheosis")
         PATCH_APO.ApplyApotheosisPatches()
     end
     if ModIsEnabled("component-explorer") then
+        log.tmp_info("Patch component-explorer")
         PATCH_COMP_EXPL.ApplyComponentExplorerPatches()
     end
 end
@@ -61,8 +63,15 @@ end
 
 local function on_player_first_spawned(player_id)
 
+    local EASY_ON = ModSettingGet("blankStone.easy_mod")
+
     local x, y = EntityGetTransform(player_id)
-    local starter_blankstone = EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+    local starter_blankstone
+    if EASY_ON then
+        starter_blankstone = EntityLoad("mods/blankStone/files/entities/stone_storage.xml", x + 100, y - 50)
+    else
+        starter_blankstone = EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+    end
     utils.changeDescription(starter_blankstone,"$text_blankstone_starter_stone_desc")
 end
 

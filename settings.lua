@@ -2,7 +2,7 @@
 dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 
-local mod_version = "1.20.2"
+local mod_version = "1.20.3"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}
@@ -58,7 +58,7 @@ do -- helpers
 		local max_width = 10
 		for _, setting in ipairs(array) do
 			if setting.category_id then
-				local cat_max_width = U.calculate_elements_offset(setting.settings, gui)
+				local cat_max_width = U.calculate_elements_offset(setting.settings or {}, gui)
 				max_width = math.max(max_width, cat_max_width)
 			end
 			if setting.ui_name then
@@ -308,6 +308,25 @@ do -- Settings GUI
 		end
 		if G.button(gui, mod_setting_group_x_offset, T.reset, { 1, 0.4, 0.4 }) then fn() end
 	end
+
+	function S.sub_category(_, gui, _, in_main_menu, setting)
+		local folded_key = setting.id .. "_folded"
+		local is_folded = U.get_setting(folded_key)
+		if is_folded == nil then is_folded = true end
+
+		local arrow = is_folded and ">" or "v"
+		if G.button(gui, mod_setting_group_x_offset, arrow .. " " .. setting.ui_name) then
+			U.set_setting(folded_key, not is_folded)
+		end
+
+		if not is_folded then
+			for _, child_setting in ipairs(setting.children or {}) do
+				if child_setting.ui_fn then
+					child_setting.ui_fn(nil, gui, nil, in_main_menu, child_setting)
+				end
+			end
+		end
+	end
 end
 
 ---------------------------------------------
@@ -320,6 +339,8 @@ local translations = {
 		quest_settings="Quest Settings",
 		quest_mod = "Quest Mod",
 		quest_mod_d = "Enable Level restriction",
+		easy_mod = "Easy Start",
+		easy_mod_d = "Start with a storageStone instead of a blankStone",
 		-- Keybinding
 		pickup_input_code = "Pickup Key",
 		pickup_input_code_d = "Hotkey to pickup items into bags",
@@ -427,6 +448,7 @@ setmetatable(T, mt)
 
 D = {
 	quest_mod = true,
+	easy_mod = false,
 	-- Keybinding
 	pickup_input_code = "10",
 	pickup_input_code_type = "kb",
@@ -492,205 +514,213 @@ local function build_settings()
 					id = "quest_settings",
 					ui_name = T.quest_settings,
 					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "quest_mod" },
+					checkboxes = { "quest_mod" , "easy_mod" },
 				},
 			},
 		},
 		{
-			category_id = "bag_keybindings",
-			ui_name = "Bag Keybindings",
+			category_id = "bag_all",
+			ui_name = "Bag Settings",
 			foldable = true,
 			_folded = true,
 			settings = {
 				{
-					id = "pickup_input_code",
-					not_setting = true,
-					ui_name = T.pickup_input_code,
-					value_default = D.pickup_input_code,
-					ui_fn = S.get_input,
-				},
-			},
-		},
-		{
-			category_id = "bag_position_inventory",
-			ui_name = "Bag General",
-			foldable = true,
-			_folded = true,
-			settings = {
-				{
-					id = "pos_x",
-					ui_name = T.pos_x,
-					value_default = D.pos_x,
-					value_min = 0,
-					value_max = 1000,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "pos_y",
-					ui_name = T.pos_y,
-					value_default = D.pos_y,
-					value_min = 0,
-					value_max = 1000,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "alchemy_pos_x",
-					ui_name = T.alchemy_pos_x,
-					value_default = D.alchemy_pos_x,
-					value_min = 0,
-					value_max = 1000,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "alchemy_pos_y",
-					ui_name = T.alchemy_pos_y,
-					value_default = D.alchemy_pos_y,
-					value_min = 0,
-					value_max = 1000,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					not_setting = true,
-					id = "display_options",
-					ui_name = T.display_options,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "show_bags_without_inventory_open", "locked", "keep_tooltip_open", "dropdown_style" },
-				},
-				{
-					id = "bag_slots_inventory_wrap",
-					ui_name = T.bag_slots_inventory_wrap,
-					value_default = D.bag_slots_inventory_wrap,
-					value_min = 1,
-					value_max = 30,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "spells_slots_inventory_wrap",
-					ui_name = T.spells_slots_inventory_wrap,
-					value_default = D.spells_slots_inventory_wrap,
-					value_min = 1,
-					value_max = 30,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "bag_image_red",
-					ui_name = T.bag_image_red,
-					value_default = D.bag_image_red,
-					value_min = 0,
-					value_max = 255,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "bag_image_green",
-					ui_name = T.bag_image_green,
-					value_default = D.bag_image_green,
-					value_min = 0,
-					value_max = 255,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "bag_image_blue",
-					ui_name = T.bag_image_blue,
-					value_default = D.bag_image_blue,
-					value_min = 0,
-					value_max = 255,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "bag_image_alpha",
-					ui_name = T.bag_image_alpha,
-					value_default = D.bag_image_alpha,
-					value_min = 0,
-					value_max = 255,
-					ui_fn = S.mod_setting_number_integer,
-				},
-			},
-		},
-		{
-			category_id = "bag_inventory_size",
-			ui_name = "Bag Inventory",
-			foldable = true,
-			_folded = true,
-			settings = {
-				{
-					not_setting = true,
-					id = "inventory_interaction",
-					ui_name = T.inventory_interaction,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "dragging_allowed", "vanilla_dragging_allowed" },
-				},
-				{
-					not_setting = true,
-					id = "inventory_ui_options",
-					ui_name = T.inventory_ui_options,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "only_show_bag_button_when_held", "show_drop_all_inventory_button", "show_change_sorting_direction_button" },
-				},
-				{
-					not_setting = true,
-					id = "inventory_sorting",
-					ui_name = T.inventory_sorting,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "sorting_type", "sorting_order" },
-				},
-				{
-					not_setting = true,
-					id = "allowed_items",
-					ui_name = T.allowed_items,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = {
-						"allow_spells", "allow_wands", "allow_potions", "allow_items",
-						"allow_bags_inception",
+					category_id = "bag_keybindings",
+					ui_name = "Bag Keybindings",
+					foldable = true,
+					_folded = true,
+					settings = {
+						{
+							id = "pickup_input_code",
+							not_setting = true,
+							ui_name = T.pickup_input_code,
+							value_default = D.pickup_input_code,
+							ui_fn = S.get_input,
+						},
 					},
 				},
 				{
-					not_setting = true,
-					id = "pickup_restrictions",
-					ui_name = T.pickup_restrictions,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = {
-						"allow_holy_mountain_wand_stealing", "allow_holy_mountain_spell_stealing",
-						"allow_tower_wand_stealing", "allow_sampo_stealing",
+					category_id = "bag_position_inventory",
+					ui_name = "Bag General",
+					foldable = true,
+					_folded = true,
+					settings = {
+						{
+							id = "pos_x",
+							ui_name = T.pos_x,
+							value_default = D.pos_x,
+							value_min = 0,
+							value_max = 1000,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "pos_y",
+							ui_name = T.pos_y,
+							value_default = D.pos_y,
+							value_min = 0,
+							value_max = 1000,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "alchemy_pos_x",
+							ui_name = T.alchemy_pos_x,
+							value_default = D.alchemy_pos_x,
+							value_min = 0,
+							value_max = 1000,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "alchemy_pos_y",
+							ui_name = T.alchemy_pos_y,
+							value_default = D.alchemy_pos_y,
+							value_min = 0,
+							value_max = 1000,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							not_setting = true,
+							id = "display_options",
+							ui_name = T.display_options,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = { "show_bags_without_inventory_open", "locked", "keep_tooltip_open", "dropdown_style" },
+						},
+						{
+							id = "bag_slots_inventory_wrap",
+							ui_name = T.bag_slots_inventory_wrap,
+							value_default = D.bag_slots_inventory_wrap,
+							value_min = 1,
+							value_max = 30,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "spells_slots_inventory_wrap",
+							ui_name = T.spells_slots_inventory_wrap,
+							value_default = D.spells_slots_inventory_wrap,
+							value_min = 1,
+							value_max = 30,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "bag_image_red",
+							ui_name = T.bag_image_red,
+							value_default = D.bag_image_red,
+							value_min = 0,
+							value_max = 255,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "bag_image_green",
+							ui_name = T.bag_image_green,
+							value_default = D.bag_image_green,
+							value_min = 0,
+							value_max = 255,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "bag_image_blue",
+							ui_name = T.bag_image_blue,
+							value_default = D.bag_image_blue,
+							value_min = 0,
+							value_max = 255,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "bag_image_alpha",
+							ui_name = T.bag_image_alpha,
+							value_default = D.bag_image_alpha,
+							value_min = 0,
+							value_max = 255,
+							ui_fn = S.mod_setting_number_integer,
+						},
 					},
 				},
 				{
-					id = "universal_storageStone_size",
-					ui_name = T.universal_storageStone_size,
-					value_default = D.universal_storageStone_size,
-					value_min = 1,
-					value_max = 32,
-					ui_fn = S.mod_setting_number_integer,
+					category_id = "bag_inventory_size",
+					ui_name = "Bag Inventory",
+					foldable = true,
+					_folded = true,
+					settings = {
+						{
+							not_setting = true,
+							id = "inventory_interaction",
+							ui_name = T.inventory_interaction,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = { "dragging_allowed", "vanilla_dragging_allowed" },
+						},
+						{
+							not_setting = true,
+							id = "inventory_ui_options",
+							ui_name = T.inventory_ui_options,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = { "only_show_bag_button_when_held", "show_drop_all_inventory_button", "show_change_sorting_direction_button" },
+						},
+						{
+							not_setting = true,
+							id = "inventory_sorting",
+							ui_name = T.inventory_sorting,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = { "sorting_type", "sorting_order" },
+						},
+						{
+							not_setting = true,
+							id = "allowed_items",
+							ui_name = T.allowed_items,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = {
+								"allow_spells", "allow_wands", "allow_potions", "allow_items",
+								"allow_bags_inception",
+							},
+						},
+						{
+							not_setting = true,
+							id = "pickup_restrictions",
+							ui_name = T.pickup_restrictions,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = {
+								"allow_holy_mountain_wand_stealing", "allow_holy_mountain_spell_stealing",
+								"allow_tower_wand_stealing", "allow_sampo_stealing",
+							},
+						},
+						{
+							id = "universal_storageStone_size",
+							ui_name = T.universal_storageStone_size,
+							value_default = D.universal_storageStone_size,
+							value_min = 1,
+							value_max = 32,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "upgraded_universal_storageStone_size",
+							ui_name = T.upgraded_universal_storageStone_size,
+							value_default = D.upgraded_universal_storageStone_size,
+							value_min = 1,
+							value_max = 64,
+							ui_fn = S.mod_setting_number_integer,
+						},
+						{
+							id = "drop_orderly_distance",
+							ui_name = T.drop_orderly_distance,
+							value_default = D.drop_orderly_distance,
+							value_min = 0,
+							value_max = 20,
+							ui_fn = S.mod_setting_number_integer,
+						},
+					},
 				},
 				{
-					id = "upgraded_universal_storageStone_size",
-					ui_name = T.upgraded_universal_storageStone_size,
-					value_default = D.upgraded_universal_storageStone_size,
-					value_min = 1,
-					value_max = 64,
-					ui_fn = S.mod_setting_number_integer,
-				},
-				{
-					id = "drop_orderly_distance",
-					ui_name = T.drop_orderly_distance,
-					value_default = D.drop_orderly_distance,
-					value_min = 0,
-					value_max = 20,
-					ui_fn = S.mod_setting_number_integer,
-				},
-			},
-		},
-		{
-			category_id = "bag_abilities",
-			ui_name = "Bag Abilities",
-			foldable = true,
-			_folded = true,
-			settings = {
-				{
-					not_setting = true,
-					id = "bag_abilities_label",
-					ui_name = T.bag_abilities_label,
-					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "universal_bag_alchemy_table" },
+					category_id = "bag_abilities",
+					ui_name = "Bag Abilities",
+					foldable = true,
+					_folded = true,
+					settings = {
+						{
+							not_setting = true,
+							id = "bag_abilities_label",
+							ui_name = T.bag_abilities_label,
+							ui_fn = S.mod_setting_better_boolean,
+							checkboxes = { "universal_bag_alchemy_table" },
+						},
+					},
 				},
 			},
 		},

@@ -1,9 +1,10 @@
-local blankStone_path    = "mods/blankStone/files/"
-local elemental_stone_path = blankStone_path .. "entities/elemental_stone/"
-local magnum_opus_path   = blankStone_path .. "entities/magnum_opus/"
-local book_path          = blankStone_path .. "entities/items/books/"
+local files_path    = "mods/blankStone/files/"
+local blankStone_path    = files_path .. "entities/"
+local elemental_stone_path = blankStone_path .. "elemental_stone/"
+local magnum_opus_path   = blankStone_path .. "magnum_opus/"
+local book_path          = blankStone_path .. "items/books/"
 local vanilla_stone_path = "data/entities/items/pickup/"
-local glyph_path = blankStone_path .. "VFX/image_emitters/"
+local glyph_path = files_path .. "VFX/image_emitters/"
 
 -- ============================================================================
 -- VFX PRESETS  (partagés, référencés par nom dans chaque pierre)

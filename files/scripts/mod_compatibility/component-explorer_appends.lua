@@ -14,6 +14,7 @@ local function ApplyComponentExplorerPatches()
         end
     end
 
+
     local content = ModTextFileGetContent(filepath)
     local result, count = content:gsub("(\n})%s*$", ",\n" .. new_entries .. "\n}")
 
