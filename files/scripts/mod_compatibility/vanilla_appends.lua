@@ -6,10 +6,10 @@ local nxml = dofile_once("mods/blankStone/lib/nxml.lua")
 
 local stone_base = "mods/blankStone/files/entities/purifiable.xml"
 
-local function addPurifiable(entity, new_parent)
-    local xml = T.getXML(entity)
+local function addPurifiable(path, new_parent)
+    local xml = T.getXML(path)
     T.addComponent(xml, "Base", { file = new_parent })
-    T.setXML(entity, xml)
+    T.setXML(path, xml)
 end
 
 local  vanilla_item_path = "items/pickup/"

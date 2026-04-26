@@ -44,15 +44,16 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   │   ├── purify_stone.lua                    # Define how elemental stone turn into blank stone (or something else)
 │   │   ├── infuse_stone.lua                    # Original core of the mod
 │   │   ├── stone_factory/                      ══╗ Current core of the mod
+│   │   │   ├── craft_pipeline.lua                ║
 │   │   │   ├── craft_registry.lua                ║
 │   │   │   │   ├── craft_registry                ║ ╗
 │   │   │   │   │   ├── forge_registry.lua        ║ ║ If you want to add new craft
 │   │   │   │   │   ├── fuse_registry.lua         ║ ║
 │   │   │   │   │   └── infuse_registry.lua       ║ ╝
-│   │   │   ├── craft_requirements.lua            ║
 │   │   │   ├── hint_registry.lua                 ║ < If you add hint craft (that doesn't produce or consume anything)
 │   │   │   ├── stone_factory.lua                 ║
-│   │   │   └── stone_registry.lua              ══╝ < If you want to add new stone, don't forget to put them here
+│   │   │   ├── stone_registry.lua                ║ < If you want to add new stone, don't forget to put them here
+│   │   │   └── ...                             ══╝
 │   │   ├── stone_specific_script/              # For the scripts that concerns only a handful of stones
 │   │   ├── biomes
 │   │   │   └── hint_spawn_list.lua             # Define where to spawn the tablettes
@@ -116,12 +117,6 @@ PS: Also, feel free to contact me if you have any suggestion.
 - vanilla stone passive effect in inventory (same as Apotheosis)
 - Steve and Skoude drop
 - Forgeable stone
-
-## ONGOING
-
-- Make a stone for (almost) every liquid
-  - [ ] Silver Stone
-  - [ ] Fungal Stone (see Apotheosis)
 
 ## TODO
 

@@ -1,12 +1,12 @@
 local nxml = dofile_once("mods/blankStone/lib/nxml.lua")
 
-local function getXML(entity)
-    local content = ModTextFileGetContent(entity)
+local function getXML(path)
+    local content = ModTextFileGetContent(path)
     return nxml.parse(content)
 end
 
-local function setXML(entity, xml)
-    ModTextFileSetContent(entity, tostring(xml))
+local function setXML(path, xml)
+    ModTextFileSetContent(path, tostring(xml))
 end
 
 local function addComponent(xml, component, value_tab)
