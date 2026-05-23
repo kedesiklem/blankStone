@@ -2,7 +2,7 @@
 
 ![BlankStone Preview Image](workshop_preview_image.png)
 
-```
+```md
 This mod allows you to purify and infuse elemental stones to maximize the alchemical potential of Noita liquids. Discover all the secrets scattered around the world, decipher the hints, and achieve the Magnum Opus.
 
 [A message apears before you]
@@ -15,7 +15,7 @@ This mod allows you to purify and infuse elemental stones to maximize the alchem
 
 # README
 
-```
+```csv
 This is where the actual README file begins. If you are a player, Noita is a knowledge-based game, and blankStone follows this philosophy. If you want to enjoy the mod, don't spoil your experience by directly accessing the mod files.
 
 If, despite this message, you still want to proceed, have fun! It means you're either a modder or just curious. In either case, welcome to blankStone's back room.
@@ -23,7 +23,7 @@ If, despite this message, you still want to proceed, have fun! It means you're e
 PS: Also, feel free to contact me if you have any suggestion.
 ```
 
-```
+```ini
 .
 ├── CREDIT.txt
 ├── files
@@ -43,29 +43,56 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   ├── scripts
 │   │   ├── purify_stone.lua                    # Define how elemental stone turn into blank stone (or something else)
 │   │   ├── infuse_stone.lua                    # Original core of the mod
-│   │   ├── stone_factory/                      ══╗ Current core of the mod
-│   │   │   ├── craft_pipeline.lua                ║
-│   │   │   ├── craft_registry.lua                ║
-│   │   │   │   ├── craft_registry                ║ ╗
-│   │   │   │   │   ├── forge_registry.lua        ║ ║ If you want to add new craft
-│   │   │   │   │   ├── fuse_registry.lua         ║ ║
-│   │   │   │   │   └── infuse_registry.lua       ║ ╝
-│   │   │   ├── hint_registry.lua                 ║ < If you add hint craft (that doesn't produce or consume anything)
-│   │   │   ├── stone_factory.lua                 ║
-│   │   │   ├── stone_registry.lua                ║ < If you want to add new stone, don't forget to put them here
-│   │   │   └── ...                             ══╝
+│   │   ├── spawn_stone.lua                     # Spawn stone entities
+│   │   ├── inject_stones.lua                   # Add stones to the spawn pool
+│   │   ├── necromancer_loot.lua
+│   │   ├── stain_immunity.lua
+│   │   ├── status_effect_immunity.lua
+│   │   ├── stain_effect.lua
+│   │   ├── enable_children.lua                 # Because fuck me I guess
+│   │   ├── nxml_tools.lua
+│   │   ├── utils.lua
+│   │   ├── stone_factory/                      ══╗ Current core of the mod
+│   │   │   ├── craft_pipeline.lua                ║
+│   │   │   ├── craft_registry.lua                ║
+│   │   │   ├── craft_registry/                   ║ ╗
+│   │   │   │   ├── forge_registry.lua            ║ ║ If you want to add new craft
+│   │   │   │   ├── fuse_registry.lua             ║ ║
+│   │   │   │   └── infuse_registry.lua           ║ ╝
+│   │   │   ├── activation/                       ║
+│   │   │   │   ├── forge_activation.lua          ║
+│   │   │   │   └── infuse_activation.lua         ║
+│   │   │   ├── effects/                          ║
+│   │   │   │   ├── fuse_shield_effect.lua        ║
+│   │   │   │   └── storage_upgrade_effect.lua    ║
+│   │   │   ├── executors/                        ║
+│   │   │   │   ├── forge_executor.lua            ║
+│   │   │   │   ├── spawn_executor.lua            ║
+│   │   │   │   └── upgrade_executor.lua          ║
+│   │   │   ├── feedback/                         ║
+│   │   │   │   └── game_feedback.lua             ║
+│   │   │   ├── validators/                       ║
+│   │   │   │   └── condition_validator.lua       ║
+│   │   │   ├── hint_registry.lua                 ║ < If you add hint craft (that doesn't produce or consume anything)
+│   │   │   ├── stone_factory.lua                 ║
+│   │   │   ├── stone_registry.lua                ║ < If you want to add new stone, don't forget to put them here
+│   │   │   └── ...                             ══╝
 │   │   ├── stone_specific_script/              # For the scripts that concerns only a handful of stones
 │   │   ├── biomes
 │   │   │   └── hint_spawn_list.lua             # Define where to spawn the tablettes
 │   │   ├── buildings
 │   │   │   └── anvil_appends.lua
-│   │   ├── enable_children.lua                 # Because fuck me I guess
-│   │   ├── inject_stones.lua                   # Add stones to the spawn pool
 │   │   ├── magic/                              # Spells
 │   │   ├── mod_compatibility
 │   │   │   ├── apotheosis_appends.lua
 │   │   │   └── vanilla_appends.lua             # Add abstract_stone property to vanilla stone and in_inventory effect (from apotheosis)
-│   │   ├── status_effects/                     # Mainly for material/damage_type immunity : check poisonStone
+│   │   ├── status_effects/                     # material/damage_type/custom immunity : check poisonStone
+│   │   │   ├── effect_registry/
+│   │   │   ├── custom_effect_stone.lua
+│   │   │   ├── damage_type_multiplier_stone.lua
+│   │   │   ├── material_immunity_stone.lua
+│   │   │   ├── status_effects_utils.lua
+│   │   │   └── ...
 │   │   ├── storage_stone/                      # Bags of Many
 │   │   └── ...
 │   ├── ui_gfx                                  # Inventory Sprites
@@ -77,8 +104,9 @@ PS: Also, feel free to contact me if you have any suggestion.
 │   │   ├── status_indicators/
 │   │   ├── inventory/                          # Bags of Many
 │   │   └── ...
-│   └── VFX/
+│   └── VFX/                                    # Glyphs
 ├── lib/
+│   └── nxml.lua
 ├── utils
 │   └── logger.lua
 ├── mod_id.txt
@@ -98,8 +126,10 @@ PS: Also, feel free to contact me if you have any suggestion.
 
 - purifying/infusion stone
 - Stone factory
-  - different level stone
-  - different crafting system
+
+   - different level stone
+   - different crafting system
+
 - VFX
 - stain_effect.lua (thanks GrahamBurger)
 - infusing stone from tags
@@ -108,8 +138,15 @@ PS: Also, feel free to contact me if you have any suggestion.
 - hint (message / book)
 - fuser spell
 - material immunity / damage_type immunity (thanks Spoopy Magic Boi)
+- stain immunity
+- custom effect system
+- stone duplication
 - magnum opus
 - Gods Secrets
+- stone generator
+- glyphs
+- hammer (anvil forge system)
+- EasyMod settings
 
 ### VanillaChange
 
@@ -117,14 +154,6 @@ PS: Also, feel free to contact me if you have any suggestion.
 - vanilla stone passive effect in inventory (same as Apotheosis)
 - Steve and Skoude drop
 - Forgeable stone
-
-## TODO
-
-secret message when quintessence inhand ?
-
-### V2
-
-- Apotheosis liquid stone (V2)
 
 ## Special thanks to
 

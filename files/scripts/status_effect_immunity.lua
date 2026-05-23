@@ -7,7 +7,6 @@ local function remove_effect()
     local variables = EntityGetComponentIncludingDisabled(entity_id, "VariableStorageComponent")
     if variables == nil then return end
 
-    -- Construire le set des effets immunisés
     local immune_effects = {}
     for _, v in ipairs(variables) do
         if ComponentGetValue2(v, "name") == "status_effect_immunity" then
@@ -19,10 +18,8 @@ local function remove_effect()
 
     if next(immune_effects) == nil then return end
 
-    -- Parcourir les enfants une seule fois
+    -- Based on spell_lab_shuggled
     for _, child_id in ipairs(EntityGetAllChildren(player_id) or {}) do
-        if EntityHasTag(child_id, "spell_lab_shugged_non_toxic_status") then goto continue end
-
         local effect_comp = EntityGetFirstComponentIncludingDisabled(child_id, "GameEffectComponent")
         if not effect_comp then goto continue end
 
