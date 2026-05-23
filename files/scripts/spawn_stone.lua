@@ -3,6 +3,7 @@ local factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_f
 
 local STONE_POOL = {
     { stone = STONE_REGISTRY["blankStone"],   weight = 30 },
+    { stone = STONE_REGISTRY["mimicStone"],   weight = 5 },
     { stone = STONE_REGISTRY["toxicStone"],    weight = 5  },
     { stone = STONE_REGISTRY["acceleratiumStone"],    weight = 4  },
     { stone = STONE_REGISTRY["levitatiumStone"],    weight = 3  },

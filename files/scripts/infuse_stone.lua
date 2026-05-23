@@ -60,7 +60,7 @@ local function findMaterialKey(potion_id, entityName)
         end
     end
  
-    log.debug(entityName .. " : aucune recette pour ce matériau/ces tags")
+    log.debug(entityName .. "@".. material .. " : aucune recette pour ce matériau/ces tags")
     return nil
 end
 

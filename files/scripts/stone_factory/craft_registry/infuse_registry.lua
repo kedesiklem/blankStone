@@ -66,6 +66,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["cement"] = {stone_keys = {"cementStone"}},
         ["void_liquid"] = {stone_keys = {"voidStone"}},
         ["[blood]"] = {stone_keys = {"bloodStone"}},
+        ["[mimic_liquid]"] = {stone_keys = {"mimicStone"}},
 
 
         -- HINT (not recipes)

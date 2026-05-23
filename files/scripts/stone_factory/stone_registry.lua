@@ -1,3 +1,5 @@
+local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+
 local files_path    = "mods/blankStone/files/"
 local blankStone_path    = files_path .. "entities/"
 local elemental_stone_path = blankStone_path .. "elemental_stone/"
@@ -5,52 +7,6 @@ local magnum_opus_path   = blankStone_path .. "magnum_opus/"
 local book_path          = blankStone_path .. "items/books/"
 local vanilla_stone_path = "data/entities/items/pickup/"
 local glyph_path = files_path .. "VFX/image_emitters/"
-
--- ============================================================================
--- VFX PRESETS  (partagés, référencés par nom dans chaque pierre)
--- ============================================================================
-
-local VFX_PRESETS = {
-    default = {
-        "data/entities/projectiles/explosion.xml",
-    },
-    quintessence_unleash = {
-        "data/entities/projectiles/deck/explosion_giga.xml",
-        glyph_path .. "quintessence_symbol_fast.xml",
-    },
-}
-
-local function extend(base, ...)
-    local result = {}
-    for _, v in pairs(VFX_PRESETS[base]) do
-        result[#result + 1] = v
-    end
-    for _, v in pairs({...}) do
-        result[#result + 1] = v
-    end
-    return result
-end
-
--- ============================================================================
--- CONDITIONS par niveau  (déduites automatiquement si non précisées)
--- ============================================================================
-
-local LEVEL_CONDITIONS = {
-    [5]  = { orbs = 1 },
-    [7]  = { orbs = 3 },
-    [9]  = { orbs = 5 },
-    [10] = { orbs = 11 },
-    [11] = { orbs = 11, purity = true },
-}
-
--- ============================================================================
--- MESSAGES par défaut
--- ============================================================================
-
-local DEFAULT_MESSAGES = {
-    success = "$text_blankstone_default_success",
-    fail    = "$text_blankstone_default_fail",
-}
 
 -- ============================================================================
 -- STONE DEFINITIONS  (source de vérité unique par pierre)
@@ -93,6 +49,12 @@ local STONE_DATA = {
 
     ["storageStone"] = {
         path     = blankStone_path .. "stone_storage",
+        level    = 1,
+        category = "special",
+    },
+
+    ["mimicStone"] = {
+        path     = blankStone_path .. "stone_mimic",
         level    = 1,
         category = "special",
     },
@@ -573,29 +535,86 @@ local STONE_DATA = {
     },
 }
 
+local C = dofile_once(files_path .. "scripts/stone_factory/compat/compat_utils.lua")
+local COMPAT_MODULES = dofile_once(files_path .. "scripts/stone_factory/compat/compat_loader.lua")
+
+for _, compat in ipairs(COMPAT_MODULES) do
+    if C.isAnyEnabled(compat.mod_ids) and compat.stones then
+        log.info("Compat [Stone registry] : " .. compat.mod_ids[1])
+        C.MergeTable(STONE_DATA, compat.stones)
+    else
+        log.info("NO Compat [Stone registry] : " .. compat.mod_ids[1])
+    end
+end
+
+-- ============================================================================
+-- VFX PRESETS  (partagés, référencés par nom dans chaque pierre)
+-- ============================================================================
+
+local VFX_PRESETS = {
+    default = {
+        "data/entities/projectiles/explosion.xml",
+    },
+    quintessence_unleash = {
+        "data/entities/projectiles/deck/explosion_giga.xml",
+        glyph_path .. "quintessence_symbol_fast.xml",
+    },
+}
+
+local function extend(base, vfx_preset, ...)
+    local result = {}
+    for _, v in pairs(vfx_preset[base]) do
+        result[#result + 1] = v
+    end
+    for _, v in pairs({...}) do
+        result[#result + 1] = v
+    end
+    return result
+end
+
+-- ============================================================================
+-- CONDITIONS par niveau  (déduites automatiquement si non précisées)
+-- ============================================================================
+
+local LEVEL_CONDITIONS = {
+    [5]  = { orbs = 1 },
+    [7]  = { orbs = 3 },
+    [9]  = { orbs = 5 },
+    [10] = { orbs = 11 },
+    [11] = { orbs = 11, purity = true },
+}
+
+-- ============================================================================
+-- MESSAGES par défaut
+-- ============================================================================
+
+local DEFAULT_MESSAGES = {
+    success = "$text_blankstone_default_success",
+    fail    = "$text_blankstone_default_fail",
+}
 -- ============================================================================
 -- BUILDER
 -- ============================================================================
 
-local function resolveVfx(key, def)
+local function resolveVfx(key, def, vfx_preset)
     if type(def.vfx) == "table" then
         return def.vfx
     elseif def.vfx then
-        return VFX_PRESETS[def.vfx]
+        return vfx_preset[def.vfx]
     end
 
     local glyphFile = glyph_path .. key .. ".xml"
     if ModDoesFileExist(glyphFile) then
-        return extend("default", glyphFile)
+        return extend("default", vfx_preset, glyphFile)
     end
 
-    return VFX_PRESETS["default"]
+    return vfx_preset["default"]
 end
 
-local function buildStoneRegistry()
+local function buildStoneRegistry(stone_data, vfx_preset)
     local registry = {}
 
-    for key, def in pairs(STONE_DATA) do
+    for key, def in pairs(stone_data) do
         local msgs = def.messages or {}
 
         registry[key] = {
@@ -604,7 +623,7 @@ local function buildStoneRegistry()
             category     = def.category,
             message      = msgs.success or DEFAULT_MESSAGES.success,
             message_fail = msgs.fail    or DEFAULT_MESSAGES.fail,
-            vfx          = resolveVfx(key, def),
+            vfx          = resolveVfx(key, def, vfx_preset),
             conditions   = def.conditions or LEVEL_CONDITIONS[def.level] or {},
             preprocess   = def.preprocess  or function(data) return data end,
             postprocess  = def.postprocess or function(_id) end,
@@ -614,4 +633,4 @@ local function buildStoneRegistry()
     return registry
 end
 
-return buildStoneRegistry()
+return buildStoneRegistry(STONE_DATA, VFX_PRESETS)

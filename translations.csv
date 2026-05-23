@@ -258,3 +258,7 @@ stone_blankstone_cementStone_name,Locked Mortar,,,,,Mortier Verrouillé,,,,,,,
 stone_blankstone_cementStone_desc,"Each thing in its place, each spell well sorted.",,,,,"Chaque chose à sa place, chaque sort bien rangé.",,,,,,,
 stone_blankstone_forgeStone_name,Hammerstone,,,,,Pierre de Marteau,,,,,,,
 stone_blankstone_forgeStone_desc,You carry the forge now. The forge doesn't care where it is.,,,,,Tu portes la forge maintenant. La forge se fiche de l'endroit où elle se trouve.,,,,,,,
+
+
+stone_blankstone_apoFlyStone_name,Icarus Gift,,,,,Don d'Icar,,,,,,,
+stone_blankstone_apoFlyStone_desc,May you touch the sun.,,,,,Puis-tu toucher le soleil.,,,,,,,

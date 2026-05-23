@@ -100,6 +100,36 @@ D = {
 		end,
 	},
     ["NO_CLIP"] = dofile_once("mods/blankStone/files/scripts/status_effects/effect_registry/creative_flight.lua"),
+
+	["INFINITE_FLIGHT"] = {
+		func = function( entity_who_hold )
+			-- Eviter les doublons
+			local children = EntityGetAllChildren(entity_who_hold) or {}
+			for _, child in ipairs(children) do
+				if EntityGetName(child) == "blankstone_effect_infinite_flight" then return end
+			end
+
+			local x, y = EntityGetTransform(entity_who_hold)
+			local fx = EntityLoad(
+				"mods/Apotheosis/files/entities/misc/effect_infinite_flight.xml",
+				x, y
+			)
+			if fx then
+				EntitySetName(fx, "blankstone_effect_infinite_flight")
+				EntityAddChild(entity_who_hold, fx)
+			end
+		end,
+		func_remove = function( entity_who_hold )
+			local children = EntityGetAllChildren(entity_who_hold) or {}
+			for _, child in ipairs(children) do
+				if EntityGetName(child) == "blankstone_effect_infinite_flight" then
+					EntityKill(child)
+					return
+				end
+			end
+		end,
+	},
+
 }
 
 return D
