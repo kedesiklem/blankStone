@@ -49,7 +49,7 @@
 
     <!-- SUNSEED -->
     <GameEffectComponent
-        _tags="enabled_in_hand"
+        _tags="enabled_in_hand,enabled_in_inventory"
         effect="REMOVE_FOG_OF_WAR"
         frames="-1"
     ></GameEffectComponent>
@@ -149,6 +149,18 @@
     ></LuaComponent>
     <VariableStorageComponent
         name="stain_immunity"
+        value_string="TELEPORTATION,UNSTABLE_TELEPORTATION,CONFUSION"
+    ></VariableStorageComponent>
+
+    <!-- Status immunity -->
+    <LuaComponent
+        _tags="enabled_in_inventory,enabled_in_hand"
+        _enabled="0"
+        script_source_file="mods/blankStone/files/scripts/status_effect_immunity.lua"
+        execute_every_n_frame="1"
+    ></LuaComponent>
+    <VariableStorageComponent
+        name="status_effect_immunity"
         value_string="TELEPORTATION,UNSTABLE_TELEPORTATION,BLINDNESS,CONFUSION,MOVEMENT_SLOWER,FROZEN,ELECTROCUTION"
     ></VariableStorageComponent>
 

@@ -584,7 +584,7 @@ local function resolveVfx(key, def)
         return VFX_PRESETS[def.vfx]
     end
 
-    local glyphFile = glyph_path .. "glyph_" .. key .. ".xml"
+    local glyphFile = glyph_path .. key .. ".xml"
     if ModDoesFileExist(glyphFile) then
         return extend("default", glyphFile)
     end
