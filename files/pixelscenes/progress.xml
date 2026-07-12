@@ -1,0 +1,12 @@
+<Entity>
+	<PixelSceneComponent
+		pixel_scene="mods/blankStone/files/pixelscenes/progress.png"
+		pixel_scene_background="mods/blankStone/files/pixelscenes/progress_background.png"
+		offset_x="-90"
+		offset_y="-50"
+		skip_biome_checks="1"
+	> </PixelSceneComponent>
+	<LifetimeComponent
+		lifetime="2"
+	> </LifetimeComponent>
+</Entity>

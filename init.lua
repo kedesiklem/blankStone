@@ -97,6 +97,10 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/stone_storage.xml", pos_x, pos_y )
 
+    --- ALCHEMIST TEST
+    pos_x = -5000
+    pos_y = 1100
+    EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- FORGE TEST
     -- pos_x = 1500
