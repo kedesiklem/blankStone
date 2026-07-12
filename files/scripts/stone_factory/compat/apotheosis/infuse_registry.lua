@@ -6,7 +6,8 @@ APO_STONE_DATA = {
     },
     ["levitatiumStone"] = {
         ["magic_liquid_mana_regeneration"] = {stone_keys = {"apoFlyStone"}},
-    }
+    },
+    -- ##ANCHOR_INFUSE_END##
 }
 
 return APO_STONE_DATA

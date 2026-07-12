@@ -1,13 +1,15 @@
 ---@diagnostic disable: name-style-check
 dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
+local progress = dofile_once("mods/blankStone/files/entities/progress/progress_utils.lua")
 
-local mod_version = "1.22.0"
+local mod_version = "1.23.0"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}
 local D = {}
 local current_language_last_frame = nil
+local CONFIRM_TIMEOUT_SECONDS = 3
 
 local mod_id_hash = 0
 for i = 1, #mod_id do
@@ -33,6 +35,7 @@ local U = {
 	min_y = 50,
 	keycodes = {},
 	waiting_for_input = "",
+	confirm_state = {},
 }
 do -- helpers
 	function U.set_setting(setting_name, value)
@@ -112,6 +115,10 @@ do -- helpers
 			ModSettingRemove(setting_list[i])
 		end
 		U.set_default(true)
+	end
+
+	function U.reset_progress()
+		progress.reset()
 	end
 end
 
@@ -241,6 +248,25 @@ end
 
 local S = {}
 do -- Settings GUI
+	function S.confirm_button(gui, x_pos, state_id, label_text, on_confirm)
+		local armed_time = U.confirm_state[state_id]
+		local current_time = GameGetRealWorldTimeSinceStarted()
+
+		if armed_time and current_time - armed_time < CONFIRM_TIMEOUT_SECONDS then
+			-- Étape 2 : en attente de confirmation
+			if G.button(gui, x_pos, T.reset_confirm, { 1, 0.9, 0.2 }) then
+				on_confirm()
+				U.confirm_state[state_id] = nil
+			end
+		else
+			-- Étape 1 (ou délai expiré) : bouton normal, avec le texte spécifique
+			U.confirm_state[state_id] = nil
+			if G.button(gui, x_pos, label_text, { 1, 0.4, 0.4 }) then
+				U.confirm_state[state_id] = current_time
+			end
+		end
+	end
+
 	function S.mod_setting_number_integer(_, gui, _, _, setting)
 		local value, value_new = G.mod_setting_number(gui, setting)
 		value_new = math.floor(value_new + 0.5)
@@ -299,14 +325,13 @@ do -- Settings GUI
 		GuiText(gui, 0, 0, current_key)
 		GuiLayoutEnd(gui)
 	end
+	
+	function S.reset_settings_button(_, gui, _, _, setting)
+		S.confirm_button(gui, mod_setting_group_x_offset, setting.id, T.reset_settings_label, U.reset_settings)
+	end
 
-	function S.reset_stuff(_, gui, _, _, setting)
-		local fn = U[setting.id]
-		if not fn then
-			GuiText(gui, mod_setting_group_x_offset, 0, "ERR")
-			return
-		end
-		if G.button(gui, mod_setting_group_x_offset, T.reset, { 1, 0.4, 0.4 }) then fn() end
+	function S.reset_progress_button(_, gui, _, _, setting)
+		S.confirm_button(gui, mod_setting_group_x_offset, setting.id, T.reset_progress_label, U.reset_progress)
 	end
 
 	function S.sub_category(_, gui, _, in_main_menu, setting)
@@ -429,7 +454,9 @@ local translations = {
 		universal_bag_alchemy_table_d = "Storage stone has the alchemy table gui available",
 		-- Reset
 		reset_settings = "Reset settings",
-		reset = "Reset",
+		reset_settings_label = "Reset Settings",
+		reset_progress_label = "Reset Progress",
+		reset_confirm = "Are you sure? Click again",
 	},
 }
 
@@ -740,7 +767,12 @@ local function build_settings()
 				{
 					id = "reset_settings",
 					not_setting = true,
-					ui_fn = S.reset_stuff,
+					ui_fn = S.reset_settings_button,
+				},
+				{
+					id = "reset_progress",
+					not_setting = true,
+					ui_fn = S.reset_progress_button,
 				},
 			},
 		},

@@ -9,4 +9,6 @@ return {
         level    = 5,
         category = "elemental",
     },
+
+    -- ##ANCHOR_STONE_END##
 }

@@ -1,4 +1,3 @@
-
 local M = {}
 
 --- Affiche un hint d'infusion avec son son associé.

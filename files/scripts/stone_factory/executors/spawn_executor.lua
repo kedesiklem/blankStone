@@ -14,6 +14,11 @@ local function spawnRaw(stone_data, x, y)
     return EntityLoad(stone_data.path, x, y)
 end
 
+local function unlock_progress(key)
+    local mod_progess_prefix = "blankstone_progress_"
+    AddFlagPersistent(mod_progess_prefix .. key)
+end
+
 --- Spawn une stone avec ses VFX (explosion, glyphe...).
 --- @param stone_data table
 --- @param x          number
@@ -26,6 +31,7 @@ local function spawnWithVFX(stone_data, x, y)
     for _, vfx_path in ipairs(stone_data.vfx) do
         EntityLoad(vfx_path, x, ey)
     end
+    unlock_progress(stone_data.key)
     return id
 end
 

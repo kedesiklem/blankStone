@@ -533,6 +533,8 @@ local STONE_DATA = {
         level    = 0,
         category = "book",
     },
+
+    -- ##ANCHOR_STONE_MSG_END##
 }
 
 local C = dofile_once(files_path .. "scripts/stone_factory/compat/compat_utils.lua")
@@ -618,6 +620,7 @@ local function buildStoneRegistry(stone_data, vfx_preset)
         local msgs = def.messages or {}
 
         registry[key] = {
+            key          = key,
             path         = def.path .. ".xml",
             level        = def.level,
             category     = def.category,
