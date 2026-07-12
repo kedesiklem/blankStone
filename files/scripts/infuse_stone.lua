@@ -37,14 +37,14 @@ end
 --- Résout la clé à utiliser pour l'infusion (nom de matériau ou tag).
 --- La résolution de recette elle-même est déléguée à stone_factory.
 --- Retourne la première clé trouvée dans le registre, ou nil.
-local function findMaterialKey(potion_id, entityName)
+local function findMaterialKey(potion_id, stoneKey)
     local material, material_tags = utils.getPotionMaterial(potion_id)
     if not material then
         log.debug("Potion has no valid material")
         return nil
     end
  
-    local stone_map = craft.STONE_TO_MATERIAL_TO_STONE[entityName]
+    local stone_map = craft.STONE_TO_MATERIAL_TO_STONE[stoneKey]
     if not stone_map then return nil end
  
     -- Priorité au nom de matériau exact
@@ -55,12 +55,12 @@ local function findMaterialKey(potion_id, entityName)
     -- Fallback sur les tags du matériau
     for _, tag in ipairs(material_tags) do
         if stone_map[tag] then
-            log.debug(entityName .. " : recette trouvée via tag '" .. tag .. "'")
+            log.debug(stoneKey .. " : recette trouvée via tag '" .. tag .. "'")
             return tag
         end
     end
  
-    log.debug(entityName .. "@".. material .. " : aucune recette pour ce matériau/ces tags")
+    log.debug(stoneKey .. "@".. material .. " : aucune recette pour ce matériau/ces tags")
     return nil
 end
 

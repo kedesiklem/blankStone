@@ -1,10 +1,9 @@
-local mod_path = "mods/blankStone/files/"
-local progress_path = mod_path .. "entities/progress/"
+local MOD_PATH = "mods/blankStone/files/"
+local progress_path = MOD_PATH .. "entities/progress/"
 
 local entity_id = GetUpdatedEntityID()
-local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
-
-local mod_progess_prefix = "blankstone_progress_"
+local STONE_REGISTRY = dofile_once(MOD_PATH .. "scripts/stone_factory/stone_registry.lua")
+local P = dofile_once(MOD_PATH .. "entities/progress/progress_utils.lua")
 
 CACHE = CACHE or {}
 local cache = CACHE[entity_id]
@@ -25,7 +24,7 @@ if not cache then
 end
 
 for k, comp in pairs(cache.stones) do
-    local unlocked = HasFlagPersistent(mod_progess_prefix .. k)
+    local unlocked = P.isUnlocked(k) or P.isHinted(k)
     if unlocked ~= cache.unlocked[k] then
         EntitySetComponentIsEnabled(entity_id, comp, unlocked)
         cache.unlocked[k] = unlocked

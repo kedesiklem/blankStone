@@ -261,6 +261,16 @@ local function getEntityIdentifier(entity)
     return EntityGetName(entity)
 end
 
+local function getActiveItem(player)
+    if player then
+        local inv_comp = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
+        if inv_comp then
+            local activeItem = ComponentGetValue2(inv_comp, "mActualActiveItem")
+            return activeItem > 0 and activeItem or nil
+        end
+    end
+end
+
 -- Vérifie si un nom correspond à une expression simple ou complexe
 local function matchesNameExpression(entity_name, expression)
     if expression.mode == "OR" then
@@ -415,6 +425,8 @@ return {
 
     getPlayer = getPlayer,
     getPlayers = getPlayers,
+
+    getActiveItem = getActiveItem,
 
     getEntityIdentifier = getEntityIdentifier,
 

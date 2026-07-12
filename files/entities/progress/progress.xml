@@ -9,7 +9,12 @@
 
     <LuaComponent
         script_source_file="mods/blankstone/files/entities/progress/progress_update.lua"
-        execute_every_n_frame="30"
+        execute_every_n_frame="5"
+    ></LuaComponent>
+
+    <LuaComponent
+        script_source_file="mods/blankstone/files/entities/progress/progress_hint.lua"
+        execute_every_n_frame="5"
     ></LuaComponent>
 
 </Entity>
