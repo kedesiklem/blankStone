@@ -1,6 +1,10 @@
 <Entity>
     <!-- teleport logic -->
 
+    <LuaComponent
+        script_source_file="mods/blankstone/files/entities/progress/alchemist_portal.lua"
+    ></LuaComponent>
+
     <TeleportComponent
         _tags="enabled_by_liquid"
         target.x="-14150"
