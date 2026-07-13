@@ -28,19 +28,20 @@ end
 
 local function getHoldMaterialRelatedStones(player)
     local item = U.getActiveItem(player)
-    local activeKeys = {}
+    local inputKeys = {}
+    local outputKeys = {}
 
     for key, _ in pairs(C) do
         local outKey = findOutput(item, key)
         if outKey ~= nil and outKey.stone_keys ~= nil then
+            table.insert(inputKeys, key)
             for _, value in ipairs(outKey.stone_keys) do
-                table.insert(activeKeys, key)
-                table.insert(activeKeys, value)
+                table.insert(outputKeys, value)
             end
         end
     end
 
-    P.setActiveHints(activeKeys)
+    P.setActiveHints({ input = inputKeys, output = outputKeys })
 end
 
 getHoldMaterialRelatedStones(U.getPlayer())

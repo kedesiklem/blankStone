@@ -4,7 +4,11 @@ local STONE_REGISTRY = dofile_once(MOD_PATH .. "files/scripts/stone_factory/ston
 local log             = dofile_once(MOD_PATH .. "utils/logger.lua") ---@type logger
 
 local PROGRESS_PREFIX = "blankstone_progress_"
-local HINT_PREFIX     = "blankstone_hint_"
+
+local HINT_ROLES = {
+    input  = { material = "spark_red", flagPrefix = "blankstone_hint_input_" },
+    output = { material = "spark_green",   flagPrefix = "blankstone_hint_output_" },
+}
 
 -- Unlock : permanent, persiste entre les runs/parties
 local function isUnlocked(stoneKey)
@@ -27,13 +31,17 @@ local function resetProgress()
     log.debug("RemoveFlagPersistent(" .. PROGRESS_PREFIX .. "*)")
 end
 
--- Hint : temporaire, non persistant, reflète le matériau actuellement tenu
-local function isHinted(stoneKey)
-    return GameHasFlagRun(HINT_PREFIX .. stoneKey)
+-- Hint : temporaire, non persistant, reflete le materiau actuellement tenu
+local function isHinted(role, stoneKey)
+    local roleDef = HINT_ROLES[role]
+    if not roleDef then return false end
+    return GameHasFlagRun(roleDef.flagPrefix .. stoneKey)
 end
 
-local function setHint(stoneKey, active)
-    local flag = HINT_PREFIX .. stoneKey
+local function setHint(role, stoneKey, active)
+    local roleDef = HINT_ROLES[role]
+    if not roleDef then return end
+    local flag = roleDef.flagPrefix .. stoneKey
     local currently = GameHasFlagRun(flag)
     if active and not currently then
         GameAddFlagRun(flag)
@@ -42,14 +50,16 @@ local function setHint(stoneKey, active)
     end
 end
 
--- Active uniquement les hints donnés, désactive tous les autres
-local function setActiveHints(activeStoneKeys)
-    local activeSet = {}
-    for _, k in ipairs(activeStoneKeys) do
-        activeSet[k] = true
-    end
-    for k, _ in pairs(STONE_REGISTRY) do
-        setHint(k, activeSet[k] == true)
+-- activeByRole = { input = {key1, key2, ...}, output = {key3, ...} }
+local function setActiveHints(activeByRole)
+    for role, _ in pairs(HINT_ROLES) do
+        local activeSet = {}
+        for _, k in ipairs(activeByRole[role] or {}) do
+            activeSet[k] = true
+        end
+        for k, _ in pairs(STONE_REGISTRY) do
+            setHint(role, k, activeSet[k] == true)
+        end
     end
 end
 
@@ -59,7 +69,7 @@ return {
     unlock = unlock,
     reset = resetProgress,
 
-    hintPrefix = HINT_PREFIX,
+    HINT_ROLES = HINT_ROLES,
     isHinted = isHinted,
     setHint = setHint,
     setActiveHints = setActiveHints,
