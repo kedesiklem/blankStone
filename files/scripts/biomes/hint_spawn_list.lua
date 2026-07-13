@@ -17,8 +17,12 @@ local stuffs = {
     { x = -1820,  y = -4640,  file = BASE_PATH .. "book_purity_lies.xml",      mode = "pw_only"   }, -- False Mimicium book
     { x =  10030, y =  4365,  file = BASE_PATH .. "book_magnum_opus_lies.xml", mode = "pw_only"   }, -- False Wand Tower book
 
-    { x = -4850,  y = 1200,   file = MOD_PATH .. "entities/progress/progress.xml", mode = "main_only"},  -- Progress under the Alchemist 
-    { x = -5000,  y = 1100,   file = MOD_PATH .. "pixelscenes/progress.xml", mode = "main_only"},  -- Progress under the Alchemist 
+    { x = -14150,  y = 17300,   file = MOD_PATH .. "entities/progress/progress.xml", mode = "main_only"},  -- Progress under the Gold Room Lava
+    { x = -14150,  y = 17300,   file = MOD_PATH .. "pixelscenes/progress.xml",       mode = "main_only"},  -- Progress under the Gold Room Lava
+    { x = -14335,  y = 17315,   file = MOD_PATH .. "entities/progress/progress_portal.xml",       mode = "main_only"},  -- Progress Portal
+
+    { x = -5030,  y = 910,   file = MOD_PATH .. "entities/progress/alchemist_portal.xml", mode = "main_only"},  -- Progress portal at the Alchemist 
+    { x = -5030,  y = 910,   file = MOD_PATH .. "pixelscenes/alchemist_portal.xml", mode = "main_only"},        -- Progress portal at the Alchemist 
 }
 
 

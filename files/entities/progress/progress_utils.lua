@@ -6,9 +6,14 @@ local log             = dofile_once(MOD_PATH .. "utils/logger.lua") ---@type log
 local PROGRESS_PREFIX = "blankstone_progress_"
 
 local HINT_ROLES = {
-    input  = { material = "spark_red", flagPrefix = "blankstone_hint_input_" },
-    output = { material = "spark_green",   flagPrefix = "blankstone_hint_output_" },
+    input  = { material = "spark_red",   flagPrefix = "blankstone_hint_input_" },
+    output = { material = "spark_green", flagPrefix = "blankstone_hint_output_" },
 }
+
+-- Material utilise quand input ET output sont actifs en meme temps sur une stone
+local HINT_BOTH_MATERIAL = "spark_yellow"
+
+-- Material par defaut pose sur l'emitter a sa creation (avant tout hint reel)
 
 -- Unlock : permanent, persiste entre les runs/parties
 local function isUnlocked(stoneKey)
@@ -28,6 +33,7 @@ local function resetProgress()
     for k, _ in pairs(STONE_REGISTRY) do
         RemoveFlagPersistent(PROGRESS_PREFIX .. k)
     end
+    RemoveFlagPersistent("blankstone_alchemist_portal")
     log.debug("RemoveFlagPersistent(" .. PROGRESS_PREFIX .. "*)")
 end
 
@@ -63,6 +69,25 @@ local function setActiveHints(activeByRole)
     end
 end
 
+-- Renvoie le material a appliquer sur l'unique emitter d'une stone,
+-- ou nil si aucun role n'est actif (emitter a desactiver)
+local function getHintMaterial(stoneKey)
+    local activeRoles = {}
+    for role, _ in pairs(HINT_ROLES) do
+        if isHinted(role, stoneKey) then
+            table.insert(activeRoles, role)
+        end
+    end
+
+    if #activeRoles == 0 then
+        return nil
+    elseif #activeRoles > 1 then
+        return HINT_BOTH_MATERIAL
+    else
+        return HINT_ROLES[activeRoles[1]].material
+    end
+end
+
 return {
     prefix = PROGRESS_PREFIX,
     isUnlocked = isUnlocked,
@@ -70,7 +95,9 @@ return {
     reset = resetProgress,
 
     HINT_ROLES = HINT_ROLES,
+    HINT_BOTH_MATERIAL = HINT_BOTH_MATERIAL,
     isHinted = isHinted,
     setHint = setHint,
     setActiveHints = setActiveHints,
+    getHintMaterial = getHintMaterial,
 }

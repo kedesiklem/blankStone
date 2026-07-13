@@ -9,7 +9,7 @@ CACHE = CACHE or {}
 local cache = CACHE[entity_id]
 
 if not cache then
-    cache = { stones = {}, emitters = {}, unlocked = {}, hinted = {} }
+    cache = { stones = {}, emitters = {}, unlocked = {}, hint_material = {} }
     CACHE[entity_id] = cache
 
     local existing_sprites_by_file = {}
@@ -17,11 +17,10 @@ if not cache then
         existing_sprites_by_file[ComponentGetValue2(comp, "image_file")] = comp
     end
 
-    local existing_emitters_by_key = {}
+    local existing_emitters_by_image = {}
     for _, comp in ipairs(EntityGetComponentIncludingDisabled(entity_id, "ParticleEmitterComponent") or {}) do
         local image = ComponentGetValue2(comp, "image_animation_file")
-        local material = ComponentGetValue2(comp, "emitted_material_name")
-        existing_emitters_by_key[image .. "|" .. material] = comp
+        existing_emitters_by_image[image] = comp
     end
 
     for k,_ in pairs(STONE_REGISTRY) do
@@ -29,13 +28,7 @@ if not cache then
         local hint_file = progress_path .. "stones/hint_" .. tostring(k) .. ".png"
 
         cache.stones[k] = existing_sprites_by_file[stone_file]
-
-        local emittersForStone = {}
-        for role, roleDef in pairs(P.HINT_ROLES) do
-            emittersForStone[role] = existing_emitters_by_key[hint_file .. "|" .. roleDef.material]
-        end
-        cache.emitters[k] = emittersForStone
-        cache.hinted[k] = {}
+        cache.emitters[k] = existing_emitters_by_image[hint_file]
     end
 end
 
@@ -48,13 +41,15 @@ for k, comp in pairs(cache.stones) do
     end
 end
 
--- Hint : pilote les emetteurs de sparks
-for k, emittersForStone in pairs(cache.emitters) do
-    for role, emitter in pairs(emittersForStone) do
-        local hinted = P.isHinted(role, k)
-        if hinted ~= cache.hinted[k][role] then
-            EntitySetComponentIsEnabled(entity_id, emitter, hinted)
-            cache.hinted[k][role] = hinted
+-- Hint : un seul emetteur par stone, material change dynamiquement
+for k, emitter in pairs(cache.emitters) do
+    local material = P.getHintMaterial(k) -- nil si aucun role actif
+
+    if material ~= cache.hint_material[k] then
+        EntitySetComponentIsEnabled(entity_id, emitter, material ~= nil)
+        if material then
+            ComponentSetValue2(emitter, "emitted_material_name", material)
         end
+        cache.hint_material[k] = material
     end
 end

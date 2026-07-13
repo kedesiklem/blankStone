@@ -1,0 +1,25 @@
+<Entity>
+    <!-- teleport logic -->
+
+    <LuaComponent
+        script_source_file="mods/blankstone/files/entities/progress/alchemist_portal.lua"
+    ></LuaComponent>
+
+    <TeleportComponent
+        _tags="enabled_by_liquid"
+        target.x="-5070"
+        target.y="900"
+        target_x_is_absolute_position="1"
+        target_y_is_absolute_position="1"
+    ></TeleportComponent>
+
+    <HitboxComponent
+        aabb_min_x="-15"
+        aabb_min_y="-15"
+        aabb_max_x="15"
+        aabb_max_y="15"
+    ></HitboxComponent>
+
+    <Base file="mods/blankstone/files/entities/progress/portal_base.xml"></Base>
+
+</Entity>

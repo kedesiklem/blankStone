@@ -1,0 +1,12 @@
+<Entity>
+    <PixelSceneComponent
+        pixel_scene="mods/blankStone/files/pixelscenes/alchemist_portal.png"
+        pixel_scene_background="mods/blankStone/files/pixelscenes/alchemist_portal_background.png"
+        offset_x="-80"
+        offset_y="-65"
+        skip_biome_checks="1"
+    > </PixelSceneComponent>
+    <LifetimeComponent
+        lifetime="2"
+    > </LifetimeComponent>
+</Entity>
