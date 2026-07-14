@@ -11,8 +11,8 @@ local pickup_detection = dofile_once( "mods/blankStone/files/scripts/storage_sto
 dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/inventory.lua" )
 dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/spells_lookup.lua" )
 local bags_of_many_ui_setup = dofile_once( "mods/blankStone/files/scripts/storage_stone/gui/gui.lua" )
-dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/blankStone_mod_state.lua" )
-blankStone_mod_state = BagsModState:new()
+dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/BlankStone_mod_state.lua" )
+BlankStone_mod_state = BagsModState:new()
 ----------------------------------------
 
 local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
@@ -29,8 +29,8 @@ function OnModPreInit()
 end
 
 function OnModInit()
-    blankStone_mod_state.get_file_content = ModTextFileGetContent
-    blankStone_mod_state.is_file_exist = ModDoesFileExist
+    BlankStone_mod_state.get_file_content = ModTextFileGetContent
+    BlankStone_mod_state.is_file_exist = ModDoesFileExist
 end
 
 function OnModPostInit()
@@ -98,14 +98,14 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( "mods/blankStone/files/entities/stone_storage.xml", pos_x, pos_y )
 
     --- LAVA GOLD TEST
-    -- pos_x = -14150
-    -- pos_y = 17300
-    -- EntitySetTransform(player_entity, pos_x, pos_y)
+    pos_x = -14150
+    pos_y = 17300
+    EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- ALCHEMIST TEST
-    pos_x = -5060
-    pos_y = 866
-    EntitySetTransform(player_entity, pos_x, pos_y)
+    -- pos_x = -5060
+    -- pos_y = 866
+    -- EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- FORGE TEST
     -- pos_x = 1500
@@ -196,16 +196,16 @@ function OnWorldPostUpdate()
 end
 
 function OnPausedChanged(is_paused, is_inventory_pause)
-    blankStone_mod_state.button_locked = ModSettingGet(MODID..".locked")
-	if not blankStone_mod_state.button_locked then
-		ModSettingSetNextValue(MODID..".pos_x", blankStone_mod_state.button_pos_x, false)
-		ModSettingSetNextValue(MODID..".pos_y", blankStone_mod_state.button_pos_y, false)
+    BlankStone_mod_state.button_locked = ModSettingGet(MODID..".locked")
+	if not BlankStone_mod_state.button_locked then
+		ModSettingSetNextValue(MODID..".pos_x", BlankStone_mod_state.button_pos_x, false)
+		ModSettingSetNextValue(MODID..".pos_y", BlankStone_mod_state.button_pos_y, false)
     else
-        blankStone_mod_state.button_pos_x = ModSettingGet(MODID..".pos_x")
-        blankStone_mod_state.button_pos_y = ModSettingGet(MODID..".pos_y")
+        BlankStone_mod_state.button_pos_x = ModSettingGet(MODID..".pos_x")
+        BlankStone_mod_state.button_pos_y = ModSettingGet(MODID..".pos_y")
 	end
-    blankStone_mod_state.alchemy_pos_x = ModSettingGet(MODID..".alchemy_pos_x")
-    blankStone_mod_state.alchemy_pos_y = ModSettingGet(MODID..".alchemy_pos_y")
+    BlankStone_mod_state.alchemy_pos_x = ModSettingGet(MODID..".alchemy_pos_x")
+    BlankStone_mod_state.alchemy_pos_y = ModSettingGet(MODID..".alchemy_pos_y")
 end
 	
 

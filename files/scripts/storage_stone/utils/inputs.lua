@@ -10,20 +10,20 @@ Mouse = {
 --- @return nil
 function register_click_frame()
     if InputIsMouseButtonJustDown(1) then
-        blankStone_mod_state.left_mouse_down_frame = GameGetFrameNum()
+        BlankStone_mod_state.left_mouse_down_frame = GameGetFrameNum()
     end
 end
 
 --- @return nil
 function register_release_frame()
     if InputIsMouseButtonJustUp(1) then
-        blankStone_mod_state.left_mouse_up_frame = GameGetFrameNum()
+        BlankStone_mod_state.left_mouse_up_frame = GameGetFrameNum()
     end
 end
 
 --- @return boolean
 function is_dragging()
-    if blankStone_mod_state.left_mouse_down_frame > blankStone_mod_state.left_mouse_up_frame then
+    if BlankStone_mod_state.left_mouse_down_frame > BlankStone_mod_state.left_mouse_up_frame then
         return true
     end
     return false

@@ -1,9 +1,21 @@
 <Entity>
     <!-- teleport logic -->
 
-    <LuaComponent
-        script_source_file="mods/blankstone/files/entities/progress/alchemist_portal.lua"
-    ></LuaComponent>
+    <Entity name="portal_trigger_logic">
+        <InheritTransformComponent>
+            <Transform
+                position.x="45"
+                position.y="30"
+                rotation="0"
+                scale.x="1"
+                scale.y="1"
+            ></Transform>
+        </InheritTransformComponent>
+
+        <LuaComponent
+            script_source_file="mods/blankstone/files/entities/progress/alchemist_portal.lua"
+        ></LuaComponent>
+    </Entity>
 
     <TeleportComponent
         _tags="enabled_by_liquid"
@@ -20,5 +32,6 @@
         aabb_max_y="15"
     ></HitboxComponent>
 
-    <Base file="mods/blankstone/files/entities/progress/portal_base.xml"></Base>
+    <Base file="mods/blankstone/files/entities/progress/portal_base.xml">
+    </Base>
 </Entity>

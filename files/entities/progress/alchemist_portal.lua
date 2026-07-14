@@ -4,12 +4,13 @@ local U = dofile_once("mods/blankStone/files/scripts/utils.lua")
 dofile_once("data/scripts/lib/utilities.lua")
 
 local self = GetUpdatedEntityID()
+local portal = EntityGetRootEntity(self)
 
 
 local flag = "blankstone_alchemist_portal"
 
 if HasFlagPersistent(flag) then 
-    EntitySetComponentsWithTagEnabled(GetUpdatedEntityID(), "enabled_by_liquid", true)
+    EntitySetComponentsWithTagEnabled(portal, "enabled_by_liquid", true)
 else
     local x,y = EntityGetTransform(self)
     local r = 15
@@ -19,6 +20,6 @@ else
         AddFlagPersistent(flag)
     end
 
-    EntitySetComponentsWithTagEnabled(GetUpdatedEntityID(), "enabled_by_liquid", false)
+    EntitySetComponentsWithTagEnabled(portal, "enabled_by_liquid", false)
 
 end

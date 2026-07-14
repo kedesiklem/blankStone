@@ -206,7 +206,7 @@ end
 ---@param alchemy_gui_button_drawn boolean
 local function handle_alchemy_gui_if_needed(alchemy_gui_open, alchemy_gui_button_drawn)
     if alchemy_gui_open and alchemy_gui_button_drawn then
-        potion_mixing_gui(blankStone_mod_state.alchemy_pos_x, blankStone_mod_state.alchemy_pos_y, 10)
+        potion_mixing_gui(BlankStone_mod_state.alchemy_pos_x, BlankStone_mod_state.alchemy_pos_y, 10)
     end
 end
 
@@ -1167,8 +1167,8 @@ function draw_inventory_button(pos_x, pos_y, active_item)
         if draw_x ~= 0 and draw_y ~= 0 and draw_x ~= pos_x and draw_y ~= pos_y then
             pos_x = draw_x - draw_width / 2
             pos_y = draw_y - draw_height / 2
-            blankStone_mod_state.button_pos_x = pos_x
-            blankStone_mod_state.button_pos_y = pos_y
+            BlankStone_mod_state.button_pos_x = pos_x
+            BlankStone_mod_state.button_pos_y = pos_y
             dragging_button = true
         end
     else
@@ -1359,8 +1359,8 @@ function generate_tooltip(item)
     if EntityHasTag(item, "card_action") then
         local action_id = get_spell_action_id(item)
         if action_id then
-            if blankStone_mod_state.lookup_spells[action_id] ~= nil then
-                local name = blankStone_mod_state.lookup_spells[action_id].name
+            if BlankStone_mod_state.lookup_spells[action_id] ~= nil then
+                local name = BlankStone_mod_state.lookup_spells[action_id].name
                 if name then
                     tooltip = name
                 end
@@ -1742,8 +1742,8 @@ function potion_alchemy_table(pos_x, pos_y, pos_z)
     if draw_x ~= 0 and draw_y ~= 0 and draw_x ~= pos_x and draw_y ~= pos_y then
         pos_x = (draw_x - draw_width / 2) + 12
         pos_y = draw_y - draw_height / 2
-        blankStone_mod_state.alchemy_pos_x = pos_x
-        blankStone_mod_state.alchemy_pos_y = pos_y
+        BlankStone_mod_state.alchemy_pos_x = pos_x
+        BlankStone_mod_state.alchemy_pos_y = pos_y
         ModSettingSetNextValue("blankStone.alchemy_pos_x", pos_x, false)
         ModSettingSetNextValue("blankStone.alchemy_pos_y", pos_y, false)
     elseif hovered then
@@ -1903,7 +1903,7 @@ function potion_alchemy_delete_chosen(pos_x, pos_y, pos_z)
     if hover then
         GuiZSetForNextWidget(gui, 1)
         GuiColorSetForNextWidget(gui, 1, 0.2, 0.2, 1)
-        GuiText(gui, pos_x + 20, pos_y, GameTextGet("$alchemy_table_delete_button").." ("..tostring(blankStone_mod_state.alchemy_amount_transfered/10).."%)")
+        GuiText(gui, pos_x + 20, pos_y, GameTextGet("$alchemy_table_delete_button").." ("..tostring(BlankStone_mod_state.alchemy_amount_transfered/10).."%)")
         auto_draw_background_box(gui, 2, 3, 6)
     end
     if left_click or right_click then
@@ -1911,7 +1911,7 @@ function potion_alchemy_delete_chosen(pos_x, pos_y, pos_z)
             if potion_alchemy_content_buttons[left_spot_alchemy.item] then
                 for index, value in pairs(potion_alchemy_content_buttons[left_spot_alchemy.item]) do
                     if value then
-                        local amount_left = delete_potion_specific_content_quantity(left_spot_alchemy.item, index, blankStone_mod_state.alchemy_amount_transfered)
+                        local amount_left = delete_potion_specific_content_quantity(left_spot_alchemy.item, index, BlankStone_mod_state.alchemy_amount_transfered)
                         if amount_left <= 0 then
                             potion_alchemy_content_buttons[left_spot_alchemy.item][index] = nil
                         end
@@ -1923,7 +1923,7 @@ function potion_alchemy_delete_chosen(pos_x, pos_y, pos_z)
             if potion_alchemy_content_buttons[combined_spot_alchemy.item] then
                 for index, value in pairs(potion_alchemy_content_buttons[combined_spot_alchemy.item]) do
                     if value then
-                        local amount_left = delete_potion_specific_content_quantity(combined_spot_alchemy.item, index, blankStone_mod_state.alchemy_amount_transfered)
+                        local amount_left = delete_potion_specific_content_quantity(combined_spot_alchemy.item, index, BlankStone_mod_state.alchemy_amount_transfered)
                         if amount_left <= 0 then
                             potion_alchemy_content_buttons[combined_spot_alchemy.item][index] = nil
                         end
@@ -1935,7 +1935,7 @@ function potion_alchemy_delete_chosen(pos_x, pos_y, pos_z)
             if potion_alchemy_content_buttons[right_spot_alchemy.item] then
                 for index, value in pairs(potion_alchemy_content_buttons[right_spot_alchemy.item]) do
                     if value then
-                        local amount_left = delete_potion_specific_content_quantity(right_spot_alchemy.item, index, blankStone_mod_state.alchemy_amount_transfered)
+                        local amount_left = delete_potion_specific_content_quantity(right_spot_alchemy.item, index, BlankStone_mod_state.alchemy_amount_transfered)
                         if amount_left <= 0 then
                             potion_alchemy_content_buttons[right_spot_alchemy.item][index] = nil
                         end
@@ -1947,16 +1947,16 @@ function potion_alchemy_delete_chosen(pos_x, pos_y, pos_z)
 end
 
 function potion_alchemy_amount_slider(pos_x, pos_y, pos_z)
-    local alchemy_amount_transfered = math.ceil(GuiSlider(gui, bags_of_many_new_id(), pos_x, pos_y,"", blankStone_mod_state.alchemy_amount_transfered, 0, 1000, 10, 0.1, " ", 62)/10)
+    local alchemy_amount_transfered = math.ceil(GuiSlider(gui, bags_of_many_new_id(), pos_x, pos_y,"", BlankStone_mod_state.alchemy_amount_transfered, 0, 1000, 10, 0.1, " ", 62)/10)
     if alchemy_amount_transfered <= 0 then
         alchemy_amount_transfered = 1
     end
     local hovered = last_widget_is_being_hovered(gui)
     if hovered then
         GuiZSetForNextWidget(gui, 1)
-        GuiText(gui, pos_x, pos_y + 10, "AMOUNT = "..tostring(blankStone_mod_state.alchemy_amount_transfered/10).."%")
+        GuiText(gui, pos_x, pos_y + 10, "AMOUNT = "..tostring(BlankStone_mod_state.alchemy_amount_transfered/10).."%")
     end
-    blankStone_mod_state.alchemy_amount_transfered = alchemy_amount_transfered * 10
+    BlankStone_mod_state.alchemy_amount_transfered = alchemy_amount_transfered * 10
 end
 
 function potion_alchemy_transfer(pos_x, pos_y, pos_z)
@@ -1970,21 +1970,21 @@ function potion_alchemy_transfer(pos_x, pos_y, pos_z)
     if hover then
         GuiZSetForNextWidget(gui, 1)
         GuiColorSetForNextWidget(gui, 1, 1, 0.2, 1)
-        GuiText(gui, pos_x + 20, pos_y, GameTextGet("$alchemy_table_transfer_button").." ("..tostring(blankStone_mod_state.alchemy_amount_transfered/10).."%)")
+        GuiText(gui, pos_x + 20, pos_y, GameTextGet("$alchemy_table_transfer_button").." ("..tostring(BlankStone_mod_state.alchemy_amount_transfered/10).."%)")
         auto_draw_background_box(gui, 2, 3, 6)
     end
     if combined_spot_alchemy.item and (left_click or right_click) then
         if left_spot_alchemy.item then
             for index, value in pairs(potion_alchemy_content_buttons[left_spot_alchemy.item] or {}) do
                 if value then
-                    transfer_potion_specific_content(left_spot_alchemy.item, combined_spot_alchemy.item, index, blankStone_mod_state.alchemy_amount_transfered)
+                    transfer_potion_specific_content(left_spot_alchemy.item, combined_spot_alchemy.item, index, BlankStone_mod_state.alchemy_amount_transfered)
                 end
             end
         end
         if right_spot_alchemy.item then
             for index, value in pairs(potion_alchemy_content_buttons[right_spot_alchemy.item] or {}) do
                 if value then
-                    transfer_potion_specific_content(right_spot_alchemy.item, combined_spot_alchemy.item, index, blankStone_mod_state.alchemy_amount_transfered)
+                    transfer_potion_specific_content(right_spot_alchemy.item, combined_spot_alchemy.item, index, BlankStone_mod_state.alchemy_amount_transfered)
                 end
             end
         end

@@ -3,8 +3,8 @@
 
     <TeleportComponent
         _tags="enabled_by_liquid"
-        target.x="-5070"
-        target.y="900"
+        target.x="-4865"
+        target.y="860"
         target_x_is_absolute_position="1"
         target_y_is_absolute_position="1"
     ></TeleportComponent>

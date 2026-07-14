@@ -222,18 +222,18 @@ end
 ---@return string|nil
 function extract_png_file_from_xml(xml_file)
     if xml_file then
-        if not blankStone_mod_state.is_file_exist(xml_file) then
+        if not BlankStone_mod_state.is_file_exist(xml_file) then
             return
         end
-        if  blankStone_mod_state.xml_file_png and blankStone_mod_state.xml_file_png[xml_file] then
-            return blankStone_mod_state.xml_file_png[xml_file]
+        if  BlankStone_mod_state.xml_file_png and BlankStone_mod_state.xml_file_png[xml_file] then
+            return BlankStone_mod_state.xml_file_png[xml_file]
         end
-        local file_content = blankStone_mod_state.get_file_content(xml_file)
+        local file_content = BlankStone_mod_state.get_file_content(xml_file)
         if file_content then
             local file_png_with_apostrophe = string.match(file_content, '%".+%.png%"')
             if file_png_with_apostrophe then
                 local file_png = string.gsub(file_png_with_apostrophe, '"', "")
-                blankStone_mod_state.xml_file_png[xml_file] = file_png
+                BlankStone_mod_state.xml_file_png[xml_file] = file_png
                 return file_png
             end
         end

@@ -43,8 +43,8 @@ end
 ---@return integer|nil
 function get_spell_type(entity)
     local action_id = get_spell_action_id(entity)
-    if action_id and blankStone_mod_state.lookup_spells[action_id] then
-        return blankStone_mod_state.lookup_spells[action_id].type
+    if action_id and BlankStone_mod_state.lookup_spells[action_id] then
+        return BlankStone_mod_state.lookup_spells[action_id].type
     end
     return nil
 end
