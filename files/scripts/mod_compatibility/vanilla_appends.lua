@@ -74,19 +74,35 @@ end
 ModLuaFileAppend( "data/scripts/buildings/forge_item_convert.lua", "mods/blankStone/files/scripts/buildings/anvil_appends.lua")
 ModLuaFileAppend( "data/scripts/perks/perk.lua", "mods/blankStone/files/scripts/perks/perk_appends.lua" )
 
--- SHOP-KEEPER STONE LOOT
 -- Thanks to nathansnail & userk for the edit_file advice
-local enemies = {
-  "data/entities/animals/necromancer_shop.xml",
-  "data/entities/animals/necromancer_super.xml",
-}
+do -- SHOP-KEEPER STONE LOOT
+    local enemies = {
+    "data/entities/animals/necromancer_shop.xml",
+    "data/entities/animals/necromancer_super.xml",
+    }
 
-for _, path in pairs(enemies) do
-  for xml in nxml.edit_file(path) do
-    xml:add_child(nxml.new_element("LuaComponent", {
-      execute_on_removed = "1",
-      execute_every_n_frame = "-1",
-      script_death = "mods/blankStone/files/scripts/necromancer_loot.lua"
+    for _, path in pairs(enemies) do
+    for xml in nxml.edit_file(path) do
+        xml:add_child(nxml.new_element("LuaComponent", {
+        execute_on_removed = "1",
+        execute_every_n_frame = "-1",
+        script_death = "mods/blankStone/files/scripts/necromancer_loot.lua"
+        }))
+    end
+    end
+end
+
+do -- Player Editor
+	local path = "data/entities/player_base.xml"
+	local xml = nxml.parse(ModTextFileGetContent(path))
+
+	--Adds Parallel World checker to the player
+	xml:add_child(nxml.new_element("LuaComponent",{
+      script_source_file="mods/blankStone/files/scripts/magic/pw_enter_check.lua",
+      execute_every_n_frame="600",
+      execute_times="-1",
+      remove_after_executed="0"
     }))
-  end
+
+	ModTextFileSetContent(path, tostring(xml))
 end
