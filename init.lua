@@ -15,9 +15,11 @@ dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/BlankStone_mod_s
 BlankStone_mod_state = BagsModState:new()
 ----------------------------------------
 
-local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
-local PATCH_COMP_EXPL = dofile_once("mods/blankStone/files/scripts/mod_compatibility/component-explorer_appends.lua")
 function OnModPreInit()
+    -- MOD COMPATIBILITY
+    local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
+    local PATCH_COMP_EXPL = dofile_once("mods/blankStone/files/scripts/mod_compatibility/component-explorer_appends.lua")
+
     if ModIsEnabled("apotheosis") or ModIsEnabled("Apotheosis") then
         log.tmp_info("Patch Apotheosis")
         PATCH_APO.ApplyApotheosisPatches()

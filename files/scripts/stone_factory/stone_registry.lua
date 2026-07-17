@@ -618,6 +618,13 @@ local function buildStoneRegistry(stone_data, vfx_preset)
 
     for key, def in pairs(stone_data) do
         local msgs = def.messages or {}
+        local conditions = def.conditions or LEVEL_CONDITIONS[def.level] or {}
+
+        local MAGNUM_OPUS_NO_PERK_FLAG = {no_run = "blankstone_quest_no_perk_fail" }
+        if def.category == "magnum_opus" then
+            conditions.flags = conditions.flags or {}
+            table.insert( conditions.flags, MAGNUM_OPUS_NO_PERK_FLAG )
+        end
 
         registry[key] = {
             key          = key,
@@ -627,7 +634,7 @@ local function buildStoneRegistry(stone_data, vfx_preset)
             message      = msgs.success or DEFAULT_MESSAGES.success,
             message_fail = msgs.fail    or DEFAULT_MESSAGES.fail,
             vfx          = resolveVfx(key, def, vfx_preset),
-            conditions   = def.conditions or LEVEL_CONDITIONS[def.level] or {},
+            conditions   = conditions,
             preprocess   = def.preprocess  or function(data) return data end,
             postprocess  = def.postprocess or function(_id) end,
         }

@@ -72,7 +72,7 @@ for _, value in pairs(vanilla_stone) do
 end
 
 ModLuaFileAppend( "data/scripts/buildings/forge_item_convert.lua", "mods/blankStone/files/scripts/buildings/anvil_appends.lua")
-
+ModLuaFileAppend( "data/scripts/perks/perk.lua", "mods/blankStone/files/scripts/perks/perk_appends.lua" )
 
 -- SHOP-KEEPER STONE LOOT
 -- Thanks to nathansnail & userk for the edit_file advice

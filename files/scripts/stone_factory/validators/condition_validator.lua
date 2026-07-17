@@ -21,11 +21,18 @@ local function checkFlags(flags_required)
     if not QUEST_ON then return true end
     if not flags_required then return true end
     for _, flag in pairs(flags_required) do
-        if not GameHasFlagRun(flag.run) then
-            if not HasFlagPersistent(flag.persistent) then
+        if flag.run or flag.persistent then
+            local run_ok = flag.run and GameHasFlagRun(flag.run)
+            local persistent_ok = flag.persistent and HasFlagPersistent(flag.persistent)
+
+            if not run_ok and not persistent_ok then
                 return false
             end
         end
+        if flag.no_run and GameHasFlagRun(flag.no_run) then
+            return false
+        end
+
     end
     return true
 end
