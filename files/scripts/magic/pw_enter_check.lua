@@ -1,4 +1,4 @@
-local PW = dofile_once("mods/blankStone/files/scripts/magic/pw_utils.lua")
+local PW = dofile_once("mods/blankStone/files/scripts/magic/quest_utils.lua")
 
 local player = GetUpdatedEntityID()
 if player == nil or player == 0 or not EntityGetIsAlive(player) then

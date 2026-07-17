@@ -1,11 +1,12 @@
-local PW = dofile_once("mods/blankStone/files/scripts/magic/pw_utils.lua")
+local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local PW = dofile_once("mods/blankStone/files/scripts/magic/quest_utils.lua")
 
 local player = GetUpdatedEntityID()
 if player == nil or player == 0 or not EntityGetIsAlive(player) then
 	return
 end
 
-local BAN_THRESHOLD_FRAMES = 600
+local BAN_THRESHOLD_FRAMES = 60
 local COUNTER_KEY = "blankstone_pwn_security_out_frames"
 
 if PW.inMainWorld() then
@@ -25,7 +26,8 @@ if counter < BAN_THRESHOLD_FRAMES then
 	GlobalsSetValue(COUNTER_KEY, tostring(counter))
 
 	if counter == BAN_THRESHOLD_FRAMES then
-		PW.banPlayer()
+		log.debug("ban pw")
+		PW.banThroughPW()
         EntityRemoveComponent(player, GetUpdatedComponentID())
 	end
 end

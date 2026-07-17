@@ -18,8 +18,8 @@ if not existing_by_file[back_file] then
     EntityAddComponent(entity_id, "SpriteComponent", {
         image_file = back_file,
         z_index = BACKGROUND_Z_INDEX,
-        offset_x = 150,
-        offset_y = 100
+        offset_x = 250,
+        offset_y = 150
     })
 end
 
@@ -37,8 +37,8 @@ for k,_ in pairs(STONE_REGISTRY) do
         local progress_comp EntityAddComponent(entity_id, "SpriteComponent", {
             image_file = progress_file_image,
             z_index = STONE_Z_INDEX,
-            offset_x = 150,
-            offset_y = 100
+            offset_x = 250,
+            offset_y = 150
         })
         EntitySetComponentIsEnabled(entity_id, progress_comp, false)
     end

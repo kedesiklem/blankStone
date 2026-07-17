@@ -99,7 +99,7 @@ do -- Player Editor
 	--Adds Parallel World checker to the player
 	xml:add_child(nxml.new_element("LuaComponent",{
       script_source_file="mods/blankStone/files/scripts/magic/pw_enter_check.lua",
-      execute_every_n_frame="600",
+      execute_every_n_frame="120",
       execute_times="-1",
       remove_after_executed="0"
     }))

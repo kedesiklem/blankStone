@@ -7,6 +7,8 @@ local magnum_opus_path   = blankStone_path .. "magnum_opus/"
 local book_path          = blankStone_path .. "items/books/"
 local vanilla_stone_path = "data/entities/items/pickup/"
 local glyph_path = files_path .. "VFX/image_emitters/"
+local Q = dofile_once("mods/blankStone/files/scripts/magic/quest_utils.lua")
+
 
 -- ============================================================================
 -- STONE DEFINITIONS  (source de vérité unique par pierre)
@@ -620,10 +622,9 @@ local function buildStoneRegistry(stone_data, vfx_preset)
         local msgs = def.messages or {}
         local conditions = def.conditions or LEVEL_CONDITIONS[def.level] or {}
 
-        local MAGNUM_OPUS_NO_PERK_FLAG = {no_run = "blankstone_quest_no_perk_fail" }
         if def.category == "magnum_opus" then
             conditions.flags = conditions.flags or {}
-            table.insert( conditions.flags, MAGNUM_OPUS_NO_PERK_FLAG )
+            table.insert( conditions.flags, {no_run = Q.QUEST_FAIL_FLAG} )
         end
 
         registry[key] = {

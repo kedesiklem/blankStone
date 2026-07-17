@@ -1,12 +1,5 @@
 dofile_once( "data/scripts/lib/utilities.lua" )
-
-local QUEST_FLAG_NAME = "blankstone_quest_no_perk_fail"
-
-local function appliquer_effet_quete_brisee( entity_who_picked )
-
-	GamePrintImportant( "$text_blankstone_quest_no_perk_fail_title", "$text_blankstone_quest_no_perk_fail_desc" )
-
-end
+local Q = dofile_once("mods/blankStone/files/scripts/magic/quest_utils.lua")
 
 local perk_pickup_original = perk_pickup
 
@@ -22,9 +15,8 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 		return
 	end
 
-	if ( GameHasFlagRun( QUEST_FLAG_NAME ) == false ) then
-		GameAddFlagRun( QUEST_FLAG_NAME )
-		appliquer_effet_quete_brisee( entity_who_picked )
+	if ( not Q.isBanned() ) then
+		Q.banThroughPerk()
 	end
 
 end
