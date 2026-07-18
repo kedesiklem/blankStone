@@ -16,12 +16,12 @@ local HINT_BOTH_MATERIAL = "spark_yellow"
 -- Material par defaut pose sur l'emitter a sa creation (avant tout hint reel)
 
 -- Unlock : permanent, persiste entre les runs/parties
-local function isUnlocked(stoneKey)
+local function isUnlock(stoneKey)
     return HasFlagPersistent(PROGRESS_PREFIX .. stoneKey)
 end
 
 local function unlock(stoneKey)
-    if isUnlocked(stoneKey) then
+    if isUnlock(stoneKey) then
         return false
     end
     AddFlagPersistent(PROGRESS_PREFIX .. stoneKey)
@@ -90,7 +90,7 @@ end
 
 return {
     prefix = PROGRESS_PREFIX,
-    isUnlocked = isUnlocked,
+    isUnlock = isUnlock,
     unlock = unlock,
     reset = resetProgress,
 

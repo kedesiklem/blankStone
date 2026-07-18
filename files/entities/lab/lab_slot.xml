@@ -1,0 +1,7 @@
+
+<!-- based on Purgatory by Priskip -->
+<Entity tags="blankStone_lab_slot" name="blankStone_lab_slot">
+
+    <Base file="mods/blankStone/files/entities/lab/lab_slot_base.xml"></Base>
+
+</Entity>

@@ -34,7 +34,7 @@ end
 
 -- Unlock : pilote le sprite de fond
 for k, comp in pairs(cache.stones) do
-    local unlocked = P.isUnlocked(k)
+    local unlocked = P.isUnlock(k)
     if unlocked ~= cache.unlocked[k] then
         EntitySetComponentIsEnabled(entity_id, comp, unlocked)
         cache.unlocked[k] = unlocked

@@ -1,0 +1,42 @@
+
+<!-- based on Purgatory by Priskip -->
+<Entity>
+
+    <UIInfoComponent name="$blankstone_lab_empty"></UIInfoComponent>
+
+    <InteractableComponent
+        radius="4"
+        ui_text="$blankstone_lab_interact_place"
+    ></InteractableComponent>
+
+    <LuaComponent
+        script_interacting="mods/blankStone/files/scripts/buildings/lab/lab_slot_interact.lua"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+    <CollisionTriggerComponent
+        _enabled="1"
+        width="12"
+        height="12"
+        radius="6"
+        destroy_this_entity_when_triggered="0"
+        required_tag="player_unit"
+    ></CollisionTriggerComponent>
+
+    <LuaComponent
+        _enabled="1"
+        script_collision_trigger_hit="mods/blankStone/files/scripts/buildings/lab/lab_slot_collision.lua"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+    <VariableStorageComponent
+        name="blankStoneLabSlotMode"
+        value_string="place"
+    ></VariableStorageComponent>
+
+    <VariableStorageComponent
+        name="blankStoneLabSlotIndex"
+        value_int="0"
+    ></VariableStorageComponent>
+
+</Entity>

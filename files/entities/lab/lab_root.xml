@@ -1,0 +1,11 @@
+
+<!-- based on Purgatory by Priskip -->
+<Entity tags="blankStone_lab_root" name="blankStone_lab_root">
+
+    <LuaComponent
+        execute_on_added="1"
+        call_init_function="1"
+        script_source_file="mods/blankStone/files/scripts/buildings/lab/lab_init_appends.lua"
+    ></LuaComponent>
+
+</Entity>
