@@ -9,6 +9,7 @@ local blankStone_spellappends = {
         type 		= ACTION_TYPE_STATIC_PROJECTILE,
         spawn_level                       = "2,3,6,7,10", -- LAVA_TO_BLOOD
         spawn_probability                 = "0.1,0.1,0.3,0.5,0.05", -- LAVA_TO_BLOOD
+        spawn_requires_flag = "card_unlocked_blankstone_stone_fuser",
         price = 250,
         mana = 200,
         max_uses = 5,
