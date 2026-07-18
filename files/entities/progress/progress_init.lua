@@ -50,10 +50,11 @@ for k,_ in pairs(STONE_REGISTRY) do
             image_animation_file = hint_file_image,
             lifetime_min = 0.5,
             lifetime_max = 1,
-            x_pos_offset_min = 0,
+            render_on_grid=1,
+            x_pos_offset_min = 1,
             y_pos_offset_min = 0,
             x_pos_offset_max = 1,
-            y_pos_offset_max = 1,
+            y_pos_offset_max = 0,
         })
         EntitySetComponentIsEnabled(entity_id, emitter_comp, false)
         ComponentSetValue2(emitter_comp, "gravity", 0.0, 0.0)

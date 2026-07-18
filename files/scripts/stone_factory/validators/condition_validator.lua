@@ -6,7 +6,6 @@ local QUEST_ON = ModSettingGet("blankStone.quest_mod")
 -- ---------------------------------------------------------------------------
 
 local function checkPure()
-    if not QUEST_ON then return true end
     for i = 0, 11 do
         for _, flag_offset in ipairs({128, 256}) do
             if GameGetOrbCollectedThisRun(i + flag_offset) then
@@ -18,7 +17,6 @@ local function checkPure()
 end
 
 local function checkFlags(flags_required)
-    if not QUEST_ON then return true end
     if not flags_required then return true end
     for _, flag in pairs(flags_required) do
         if flag.run or flag.persistent then
@@ -31,6 +29,8 @@ local function checkFlags(flags_required)
         end
         if flag.no_run and GameHasFlagRun(flag.no_run) then
             return false
+        else
+            log.debug("no no_flag restriction [" .. flag.no_run .. "]")
         end
 
     end

@@ -2,14 +2,9 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local QUEST_FAIL_FLAG = "blankstone_ban_quest"
 
-
-
-
 local function warnPlayer()
     log.warn("Player detected in parallel world!")
 end
-
-
 
 local function banPlayer(x,y)
     GameAddFlagRun(QUEST_FAIL_FLAG)

@@ -90,6 +90,17 @@
     is_circle="1"
   ></MagicConvertMaterialComponent>
 
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_inventory"
+    execute_every_n_frame="30"
+    script_source_file="mods/blankStone/files/scripts/stone_specific_script/shiniest_orb_greed.lua"
+  ></LuaComponent>
+
+  <VariableStorageComponent
+    name="greed_count"
+    value_int="8"
+  ></VariableStorageComponent>
+
   <VariableStorageComponent
     name="blankStoneID"
     value_string="goldStone"

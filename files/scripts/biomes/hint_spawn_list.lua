@@ -17,13 +17,18 @@ local stuffs = {
     { x = -1820,  y = -4640,  file = BASE_PATH .. "book_purity_lies.xml",      mode = "pw_only"   }, -- False Mimicium book
     { x =  10030, y =  4365,  file = BASE_PATH .. "book_magnum_opus_lies.xml", mode = "pw_only"   }, -- False Wand Tower book
 
-    { x = -14150,  y = 17300,   file = MOD_PATH .. "pixelscenes/progress.xml",                      mode = "main_only"},  -- Progress under the Gold Room Lava
+    { x = -14150,  y = 17300,   file = MOD_PATH .. "entities/progress/progress_scene.xml",          mode = "main_only"},  -- Progress under the Gold Room Lava
     { x = -14150,  y = 17300,   file = MOD_PATH .. "entities/progress/progress.xml",                mode = "main_only"},  -- Progress under the Gold Room Lava
     { x = -14150,  y = 17300,   file = MOD_PATH .. "entities/progress/progress_enter_trigger.xml",  mode = "main_only"},  -- Progress under the Gold Room Lava
-    { x = -14335,  y = 17315,   file = MOD_PATH .. "entities/progress/progress_portal.xml", mode = "main_only"},          -- Progress under the Gold Room Lava
+    { x = -14335,  y = 17315,   file = MOD_PATH .. "entities/progress/progress_portal.xml",         mode = "main_only"},  -- Progress under the Gold Room Lava
 
     { x = -5030,  y = 910,   file = MOD_PATH .. "pixelscenes/alchemist_portal.xml",         mode = "main_only"},  -- Alchemist Portal to Progress
     { x = -5065,  y = 880,   file = MOD_PATH .. "entities/progress/alchemist_portal.xml",   mode = "main_only"},  -- Alchemist Portal to Progress
+
+    -- HIDDEN TEXT
+
+    { x = 0, y = 0, file = MOD_PATH .. "entities/hidden_message/hidden_alchemist.xml", mode = "main_only" }, -- Alchemist quintessence texte
+
 }
 
 
