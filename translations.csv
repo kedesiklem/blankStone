@@ -265,3 +265,7 @@ alchemy_table_unselect_all_materials,Unselect all materials,,,,Déselectionner t
 zone_blankstone_progress,Secret Beehive,,,,,Ruche Secrete,,,,,,,
 text_blankstone_quest_no_perk_fail_title,The Gods are unsurprised.,,,,,Les Dieux ne sont pas surpris.,,,,,,,
 text_blankstone_quest_no_perk_fail_desc,Mortals always reach for the easy path,,,,,Les mortels choisissent toujours le chemin de la facilité,,,,,,,
+
+stone_blankstone_shiniestOrbStone_name,Avidity Orb,,,,,Orb d'avidité,,,,,,,
+stone_blankstone_shiniestOrbStone_desc,"It hums slightly. Impacts do not seem to affect it.",,,,,"Il émet un léger son. Les chocs ne semble pas l'affecter ?",,,,,,,
+

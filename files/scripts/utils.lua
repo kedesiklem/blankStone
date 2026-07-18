@@ -261,6 +261,26 @@ local function getEntityIdentifier(entity)
     return EntityGetName(entity)
 end
 
+---@param entity_id number
+---@param var_name string
+---@return string identifiant stable, généré une seule fois et persisté sur l'entité
+local function getOrCreateInstanceId(entity_id, var_name)
+    local existing = getVariable(entity_id, var_name)
+    if existing then
+        return ComponentGetValue2(existing, "value_string")
+    end
+
+    local x, y = EntityGetTransform(entity_id)
+    local id = string.format("%d_%d_%d_%d", GameGetFrameNum(), math.floor(x), math.floor(y), math.random(1, 1e9))
+
+    EntityAddComponent2(entity_id, "VariableStorageComponent", {
+        name = var_name,
+        value_string = id,
+    })
+
+    return id
+end
+
 local function getActiveItem(player)
     if player then
         local inv_comp = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
@@ -413,8 +433,25 @@ local function convert_all_liquid(potion_id, target_name)
     end
     AddMaterialInventoryMaterial(potion_id, target_name, cpmt[target_id +1] + acumulator)
 end
--------------------------------------------------------------------------------------
 
+local function serializeData(tbl)
+    local parts = {}
+    for k, v in pairs(tbl) do
+        table.insert(parts, tostring(k) .. "=" .. tostring(v))
+    end
+    return table.concat(parts, "|")
+end
+
+local function deserializeData(str)
+    local tbl = {}
+    if not str or str == "" then return tbl end
+    for pair in str:gmatch("[^|]+") do
+        local k, v = pair:match("^(.-)=(.*)$")
+        if k then tbl[k] = v end
+    end
+    return tbl
+end
+-------------------------------------------------------------------------------------
 
 
 return {
@@ -446,6 +483,11 @@ return {
     changeDescription=changeDescription,
     changeName=changeName,
     getName=getName,
+    getOrCreateInstanceId = getOrCreateInstanceId,
 
     convert_all_liquid=convert_all_liquid,
+
+    serializeData = serializeData,
+    deserializeData = deserializeData,
+
 }

@@ -1,5 +1,6 @@
 local fuseShieldEffect      = dofile_once("mods/blankStone/files/scripts/stone_factory/effects/fuse_shield_effect.lua")
 local storageUpgradeApply   = dofile_once("mods/blankStone/files/scripts/stone_factory/effects/storage_upgrade_effect.lua")
+local fuseGreedEffect = dofile_once("mods/blankStone/files/scripts/stone_factory/effects/fuse_greed_effect.lua")
 
 local FUSE_RECIPES = {
     { -- quintessence craft
@@ -339,6 +340,32 @@ local FUSE_RECIPES = {
             type    = "fusion",
             results = { { key = "blankStone", offset_y = -10 } },
         },
+    },
+
+    { -- shiniestOrbStone fuse entre elles (cumul d'avidité)
+        radius = 20,
+        collect = {
+            ingredients = { { name = "shiniestOrbStone", count = 2 } },
+        },
+        effect = {
+            type    = "fusion",
+            results = { { key = "shiniestOrbStone", offset_y = -10 } },
+        },
+        on_success = fuseGreedEffect,
+    },
+    { -- shiniestOrbStone + shiny orb vanilla (absorbe un orb)
+        radius = 20,
+        collect = {
+            ingredients = {
+                { name = "shiniestOrbStone", count = 1 },
+                { name = "physics_gold_orb", count = 1 }, -- adapte au blankStoneID exact de ton "shiny orb"
+            },
+        },
+        effect = {
+            type    = "fusion",
+            results = { { key = "shiniestOrbStone", offset_y = -10 } },
+        },
+        on_success = fuseGreedEffect,
     },
     -- ##ANCHOR_FUSE_END##
 }

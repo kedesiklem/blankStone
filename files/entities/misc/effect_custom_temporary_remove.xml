@@ -12,6 +12,11 @@
         value_string="placeholder"
     ></VariableStorageComponent>
 
+    <VariableStorageComponent
+        name="data"
+        value_string=""
+    ></VariableStorageComponent>
+
     <LuaComponent
         execute_on_added="0"
         script_source_file="mods/blankStone/files/scripts/status_effects/custom_effect_endcheck.lua"
@@ -22,6 +27,5 @@
         effect="NONE"
         frames="35"
     > </GameEffectComponent>
-
 
 </Entity>

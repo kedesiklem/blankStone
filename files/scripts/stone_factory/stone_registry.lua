@@ -414,6 +414,11 @@ local STONE_DATA = {
         level = 10,
         category = "elemental",
     },
+    ["shiniestOrbStone"] = {
+        path = elemental_stone_path .. "stone_shiniest_orb",
+        level = 1,
+        category = "elemental",
+    },
     -- Vanilla Stones
     -- -------------------------------------------------------------------------
 

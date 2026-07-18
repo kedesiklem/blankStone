@@ -130,6 +130,30 @@ D = {
 		end,
 	},
 
+	["MATERIAL_IMMUNITY"] = {
+		func = function(target, data)
+			EntitySetDamageFromMaterial(target, data.material, tonumber(data.new_dmg))
+		end,
+		func_remove = function(target, data)
+			EntitySetDamageFromMaterial(target, data.material, tonumber(data.original_dmg))
+		end,
+	},
+
+	["DAMAGE_TYPE_MULTIPLIER"] = {
+		func = function(target, data)
+			local comp = EntityGetFirstComponentIncludingDisabled(target, "DamageModelComponent")
+			if comp then
+				ComponentObjectSetValue2(comp, "damage_multipliers", data.damage_type, tonumber(data.new_mult))
+			end
+		end,
+		func_remove = function(target, data)
+			local comp = EntityGetFirstComponentIncludingDisabled(target, "DamageModelComponent")
+			if comp then
+				ComponentObjectSetValue2(comp, "damage_multipliers", data.damage_type, tonumber(data.original_mult))
+			end
+		end,
+	},
+
 }
 
 return D

@@ -9,11 +9,9 @@ local target = EntityGetRootEntity(entity_id)
 if target == 0 then return end
 
 local c_check = false
-
 local instance_name = utils.getValue(utils.getVariable(entity_id, "instance_name"), "value_string")
-
-local custom_info = utils.getVariable(entity_id, "custom_id")
-local custom_id = utils.getValue(custom_info, "value_string")
+local custom_id = utils.getValue(utils.getVariable(entity_id, "custom_id"), "value_string")
+local data_str  = utils.getValue(utils.getVariable(entity_id, "data"), "value_string")
 
 if not instance_name then
     log.error("no instance_name endcheck")
@@ -21,8 +19,8 @@ end
 
 local children = EntityGetAllChildren(target)
 if children then
-    for k=1,#children
-    do local v = children[k]
+    for k = 1, #children do
+        local v = children[k]
         if EntityGetName(v) == instance_name then
             c_check = true
         end
@@ -32,10 +30,9 @@ end
 if c_check ~= true then
     if custom_id ~= nil then
         log.info(custom_id .. " effect removed")
-
         local funcs = D[custom_id]
         if funcs ~= nil then
-            funcs.func_remove(target)
+            funcs.func_remove(target, utils.deserializeData(data_str))
         else
             log.error(custom_id .. " custom effect missing function")
         end

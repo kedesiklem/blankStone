@@ -1,15 +1,30 @@
 local STONE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
 local factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
+local P = dofile_once("mods/blankStone/files/entities/progress/progress_utils.lua")
 
 local STONE_POOL = {
-    { stone = STONE_REGISTRY["blankStone"],   weight = 30 },
-    { stone = STONE_REGISTRY["mimicStone"],   weight = 5 },
-    { stone = STONE_REGISTRY["toxicStone"],    weight = 5  },
-    { stone = STONE_REGISTRY["acceleratiumStone"],    weight = 4  },
-    { stone = STONE_REGISTRY["levitatiumStone"],    weight = 3  },
-    { stone = STONE_REGISTRY["invisibilityStone"],    weight = 3  },
-    { stone = STONE_REGISTRY["shieldStone"],   weight = 1  },
+    { stonekey = "blankStone",   weight = 30 },
+    { stonekey = "mimicStone",   weight = 5 },
+    { stonekey = "toxicStone",    weight = 5  },
+    { stonekey = "acceleratiumStone",    weight = 4  },
+    { stonekey = "levitatiumStone",    weight = 3  },
+    { stonekey = "invisibilityStone",    weight = 3  },
+    { stonekey = "shieldStone",   weight = 1  },
 }
+
+local function getUnlockedStone()
+    local pool = {}
+    for _, entry in ipairs(STONE_POOL) do
+        if entry.stonekey == "blankStone" or P.isUnlock(entry.stonekey) then
+            table.insert(pool, {
+                stone = STONE_REGISTRY[entry.stonekey],
+                weight = entry.weight,
+            })
+        end
+    end
+    return pool
+end
+
 
 local function pickStone(pool)
     local total = 0
@@ -30,7 +45,8 @@ end
 function init(entity_id)
     local x, y = EntityGetTransform(entity_id)
     SetRandomSeed(x, y)
-    local stone = pickStone(STONE_POOL)
+    local pool = getUnlockedStone()
+    local stone = pickStone(pool)
     factory.spawnStone(stone, x, y)
     EntityKill(entity_id)
 end
