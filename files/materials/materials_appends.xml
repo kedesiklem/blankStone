@@ -1,0 +1,27 @@
+<Materials>
+
+	<CellData
+		name="blankstone_solid_static"
+		ui_name="$mat_blankstone_solid_static"
+		tags="[static],[solid],[indestructible]"
+		burnable="0"
+		density="10"
+		cell_type="solid"
+		wang_color="ff168e6a"
+		generates_smoke="0"
+		on_fire="0"
+		temperature_of_fire="10"
+		solid_restitution="0"
+		gfx_glow="6"
+		hp="100000"
+		platform_type="1"
+		durability="20"
+		solid_static_type="1"
+	>
+		<Graphics
+			texture_file="data/materials_gfx/glass.png"
+			color="ff168e6a"
+		></Graphics>
+	</CellData>
+
+</Materials>

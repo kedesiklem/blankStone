@@ -1,0 +1,27 @@
+<Entity>
+
+    <MaterialSuckerComponent
+        num_cells_sucked_per_frame="2000"
+        randomized_position.min_x="-24"
+        randomized_position.max_x="24"
+        randomized_position.min_y="-24"
+        randomized_position.max_y="24"
+        material_type="0"
+        barrel_size="4000000"
+    > </MaterialSuckerComponent>
+
+    <MaterialSuckerComponent
+        num_cells_sucked_per_frame="2000"
+        randomized_position.min_x="-24"
+        randomized_position.max_x="24"
+        randomized_position.min_y="-24"
+        randomized_position.max_y="24"
+        material_type="1"
+        barrel_size="4000000"
+    > </MaterialSuckerComponent>
+
+    <LuaComponent
+        script_source_file="mods/blankStone/files/scripts/magic/trash.lua"
+        execute_every_n_frame="1800"
+    ></LuaComponent>
+</Entity>

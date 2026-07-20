@@ -16,6 +16,6 @@
         aabb_max_y="15"
     ></HitboxComponent>
 
-    <Base file="mods/blankstone/files/entities/progress/portal_base.xml"></Base>
+    <Base file="mods/blankstone/files/entities/buildings/portal_base.xml"></Base>
 
 </Entity>

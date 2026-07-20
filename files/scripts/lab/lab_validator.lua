@@ -18,24 +18,25 @@ local function canStore(item_entity)
     return true, nil
 end
 
-local function getInventoryQuick(player)
-    if not player then return nil end
+--- utils.lua de blankStone n'a pas d'équivalent à getHeldItems() de
+--- purgatory - implémentation autonome ici plutôt que de dépendre d'une
+--- fonction qui n'existe pas (bug précédent : U.getHeldItems plantait au
+--- premier appel).
+--- @param player number
+--- @return number
+local function countHeldItems(player)
+    if not player then return 0 end
     for _, child in ipairs(EntityGetAllChildren(player) or {}) do
         if EntityGetName(child) == "inventory_quick" then
-            return child
+            return #(EntityGetAllChildren(child) or {})
         end
     end
-    return nil
+    return 0
 end
 
 --- @return boolean
 local function hasFreeInventorySlot()
-    local player = utils.getPlayer()
-    local inventory = getInventoryQuick(player)
-    if not inventory then return true end
-
-    local held = EntityGetAllChildren(inventory) or {}
-    return #held < MAX_QUICK_INVENTORY_SLOTS
+    return countHeldItems(utils.getPlayer()) < MAX_QUICK_INVENTORY_SLOTS
 end
 
 return {

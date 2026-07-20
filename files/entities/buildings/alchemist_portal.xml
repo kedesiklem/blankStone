@@ -13,14 +13,14 @@
         </InheritTransformComponent>
 
         <LuaComponent
-            script_source_file="mods/blankstone/files/entities/progress/alchemist_portal.lua"
+            script_source_file="mods/blankstone/files/entities/buildings/alchemist_portal.lua"
         ></LuaComponent>
     </Entity>
 
     <TeleportComponent
         _tags="enabled_by_liquid"
         target.x="-14150"
-        target.y="17300"
+        target.y="17600"
         target_x_is_absolute_position="1"
         target_y_is_absolute_position="1"
     ></TeleportComponent>
@@ -32,6 +32,6 @@
         aabb_max_y="15"
     ></HitboxComponent>
 
-    <Base file="mods/blankstone/files/entities/progress/portal_base.xml">
+    <Base file="mods/blankstone/files/entities/buildings/portal_base.xml">
     </Base>
 </Entity>

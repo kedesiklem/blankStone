@@ -2,20 +2,23 @@
 
 -- Point d'entrée unique du système lab
 -- Rien d'autre ne devrait avoir besoin de dofile_once directement les
--- validators/persistence/executors/feedback : tout passe par ici.
+-- autres fichiers de lab/ (validator/state/item_io/display/feedback) :
+-- tout passe par ici.
 
 local utils      = dofile_once("mods/blankStone/files/scripts/utils.lua")
 local log         = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
-local validator    = dofile_once("mods/blankStone/files/scripts/lab/validators/lab_validator.lua")
-local state          = dofile_once("mods/blankStone/files/scripts/lab/persistence/lab_state.lua")
-local item_io           = dofile_once("mods/blankStone/files/scripts/lab/executors/lab_item_io.lua")
-local display              = dofile_once("mods/blankStone/files/scripts/lab/executors/lab_display_executor.lua")
-local feedback                = dofile_once("mods/blankStone/files/scripts/lab/feedback/lab_feedback.lua")
+local validator    = dofile_once("mods/blankStone/files/scripts/lab/lab_validator.lua")
+local state          = dofile_once("mods/blankStone/files/scripts/lab/lab_state.lua")
+local item_io           = dofile_once("mods/blankStone/files/scripts/lab/lab_item_io.lua")
+local display              = dofile_once("mods/blankStone/files/scripts/lab/lab_display.lua")
+local feedback                = dofile_once("mods/blankStone/files/scripts/lab/lab_feedback.lua")
 
 local MOD_PATH  = "mods/blankStone/files/"
 local ROOT_PATH = MOD_PATH .. "entities/lab/lab_root.xml"
 local SLOT_PATH = MOD_PATH .. "entities/lab/lab_slot.xml"
+local TRASH     = MOD_PATH .. "entities/lab/lab_trash.xml"
+local PORTAL    = MOD_PATH .. "entities/buildings/progress_portal.xml"
 
 local INSTANCE_ID_VAR = "blankStoneLabInstanceId"
 local SLOT_INDEX_VAR  = "blankStoneLabSlotIndex"
@@ -42,6 +45,22 @@ end
 local function spawnSlot(x, y)
     log.debug("lab_factory.spawnSlot @ " .. x .. "," .. y)
     return EntityLoad(SLOT_PATH, x, y)
+end
+
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnTrash(x, y)
+    log.debug("lab_factory.spawnTrash @ " .. x .. "," .. y)
+    return EntityLoad(TRASH, x, y)
+end
+
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnPortal(x, y)
+    log.debug("lab_factory.spawnPortal @ " .. x .. "," .. y)
+    return EntityLoad(PORTAL, x, y)
 end
 
 -- =============================================================================
@@ -172,9 +191,11 @@ local function updateSlotHint(slot_id)
 end
 
 return {
-    spawnRoot     = spawnRoot,
-    spawnSlot     = spawnSlot,
-    restoreLab    = restoreLab,
-    interactSlot  = interactSlot,
-    updateSlotHint = updateSlotHint,
+    spawnRoot       = spawnRoot,
+    spawnSlot       = spawnSlot,
+    spawnTrash      = spawnTrash,
+    spawnPortal     = spawnPortal,
+    restoreLab      = restoreLab,
+    interactSlot    = interactSlot,
+    updateSlotHint  = updateSlotHint,
 }

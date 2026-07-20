@@ -1,7 +1,7 @@
 <Entity>
 	<PixelSceneComponent
 		pixel_scene="mods/blankStone/files/entities/progress/progress_scene.png"
-		pixel_scene_background="mods/blankStone/files/entities/progress/progress_scene_background.png"
+		pixel_scene_background=""
 		offset_x="-240"
 		offset_y="-150"
 		skip_biome_checks="1"

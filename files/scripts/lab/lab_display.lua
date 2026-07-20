@@ -1,6 +1,6 @@
 -- based on Purgatory by Priskip
 
-local lab_item_io = dofile_once("mods/blankStone/files/scripts/lab/executors/lab_item_io.lua")
+local lab_item_io = dofile_once("mods/blankStone/files/scripts/lab/lab_item_io.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local DISPLAY_ENTITY_PATH = "mods/blankStone/files/entities/lab/stored_item_display.xml"

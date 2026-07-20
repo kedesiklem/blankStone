@@ -38,8 +38,8 @@ local function inMainWorld()
         return true
     end
 
-    local pw_x, pw_y = GetParallelWorldPosition(x, y)
-    return (pw_x == 0 and pw_y == 0)
+    local pw_x, _ = GetParallelWorldPosition(x, y)
+    return (pw_x == 0)
 end
 
 

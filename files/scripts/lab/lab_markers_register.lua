@@ -12,13 +12,14 @@
 -- fichier "global" de Noita) : ça rendrait nos couleurs marqueurs actives
 -- dans absolument tous les biomes du jeu en permanence, ce qui réserve
 -- inutilement ce namespace de couleurs et augmente le risque de collision
--- avec d'autres mods. En ciblant explicitement les biomes listés dans
--- lab_biome_targets.lua, on limite la réservation au strict nécessaire -
--- même logique que purgatory qui enregistre ses couleurs uniquement dans
--- son propre temple_altar_left.lua plutôt que globalement.
+-- avec d'autres mods.
+--
+-- Générique : boucle sur tout ce qui est déclaré dans lab_markers.lua,
+-- n'a plus besoin d'être modifié quand tu ajoutes un marqueur.
 
 do
     local lab_markers = dofile_once("mods/blankStone/files/scripts/lab/lab_markers.lua")
-    RegisterSpawnFunction(lab_markers.MARKERS.LAB_ROOT, "blankStone_lab_spawn_root")
-    RegisterSpawnFunction(lab_markers.MARKERS.LAB_SLOT, "blankStone_lab_spawn_slot")
+    for _, marker in pairs(lab_markers.MARKERS) do
+        RegisterSpawnFunction(marker.color, marker.fn_name)
+    end
 end

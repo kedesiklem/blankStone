@@ -278,3 +278,5 @@ blankstone_lab_inventory_full,Inventory full,,,,,Inventaire plein,,,,,,,,
 blankstone_lab_slot_filled_prefix,Contains: ,,,,,Contient : ,,,,,,,,
 blankstone_lab_item_potion,a potion,,,,,une potion,,,,,,,,
 blankstone_lab_item_powder_stash,a powder stash,,,,,un sac de poudre,,,,,,,,
+
+mat_blankstone_solid_static,"Hard blank stone",,,,,,,,,,,,

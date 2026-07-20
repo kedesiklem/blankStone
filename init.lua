@@ -101,7 +101,7 @@ function OnPlayerSpawned(player_entity)
 
     --- LAVA GOLD TEST
     pos_x = -14150
-    pos_y = 17300
+    pos_y = 17600
     EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- ALCHEMIST TEST
@@ -168,7 +168,7 @@ function OnPlayerDied( player_entity )
 end
 
 function OnWorldInitialized()
-    -- local lab_x, lab_y = 100, -100
+    -- local lab_x, lab_y = -19150, 17300
     -- print("[LAB DEBUG] DebugBiomeMapGetFilename(" .. lab_x .. "," .. lab_y .. ") = " .. tostring(DebugBiomeMapGetFilename(lab_x, lab_y)))
     -- print("[LAB DEBUG] BiomeMapGetName(" .. lab_x .. "," .. lab_y .. ") = " .. tostring(BiomeMapGetName(lab_x, lab_y)))
 end
@@ -218,7 +218,7 @@ ModLuaFileAppend( "data/scripts/item_spawnlists.lua", "mods/blankStone/files/scr
 
 -- based on Apotheosis
 dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua")
-dofile_once("mods/blankStone/files/scripts/biomes/hint_spawn_list.lua")
+dofile_once("mods/blankStone/files/scripts/biomes/biome_append.lua")
 
 -- based on Purgatory
 local LAB_BIOME_TARGETS = dofile_once("mods/blankStone/files/scripts/lab/lab_biome_targets.lua")
@@ -226,6 +226,7 @@ for _, biome_file in ipairs(LAB_BIOME_TARGETS) do
     ModLuaFileAppend(biome_file, "mods/blankStone/files/scripts/lab/lab_markers_register.lua")
 end
 dofile_once("mods/blankStone/files/scripts/biomes/lab_spawn_list.lua")
+ModMaterialsFileAdd("mods/blankStone/files/materials/materials_appends.xml") --Adds materials
 
 ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/blankStone/files/actions.lua")
 ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/blankStone/files/scripts/status_effects/effect_registry/status_effects.lua")

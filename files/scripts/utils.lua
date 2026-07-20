@@ -340,19 +340,6 @@ local function EntityGetInRadiusWithName(x, y, rad, name)
     )
 end
 
--- Bonus : version qui supporte les expressions complexes
-local function EntityGetInRadiusWithNameExpression(x, y, rad, nameString)
-    local expression = parseComplexTagExpression(nameString)
-    
-    return filter(
-        EntityGetInRadius(x, y, rad),
-        function(entity)
-            local entity_name = getEntityIdentifier(entity)
-            return entity_name and matchesNameExpression(entity_name, expression)
-        end
-    )
-end
-
 
 -- Return the first element of a list that is not in inventory
 local function getFirstOutofInventory(item_list)
@@ -363,6 +350,36 @@ local function getFirstOutofInventory(item_list)
         end
     end
     return nil
+end
+
+-- from Priskip
+local function getInventory(player)
+    for _, child in ipairs(EntityGetAllChildren(player) or {}) do
+        if EntityGetName(child) == "inventory_quick" then
+            return child
+        end
+    end
+end
+
+-- from Priskip
+local function isItem(entity)
+    local ability_component = EntityGetFirstComponentIncludingDisabled(entity, "AbilityComponent")
+    local ending_mc_guffin_component = EntityGetFirstComponentIncludingDisabled(entity, "EndingMcGuffinComponent")
+    return (not ability_component) or ending_mc_guffin_component or ComponentGetValue2(ability_component, "use_gun_script") == false
+end
+
+-- from Priskip
+local function getHeldItems(player)
+    local inventory = getInventory(player)
+    local items = {}
+    if inventory then
+        for i, item in ipairs(EntityGetAllChildren(inventory) or {}) do
+            if isItem(item) then
+                table.insert(items, item)
+            end
+        end
+    end
+    return items
 end
 
 
@@ -489,5 +506,9 @@ return {
 
     serializeData = serializeData,
     deserializeData = deserializeData,
+
+    getInventory =  getInventory,
+    isItem = isItem,
+    getHeldItems = getHeldItems,
 
 }
