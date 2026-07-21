@@ -225,7 +225,6 @@ local LAB_BIOME_TARGETS = dofile_once("mods/blankStone/files/scripts/lab/lab_bio
 for _, biome_file in ipairs(LAB_BIOME_TARGETS) do
     ModLuaFileAppend(biome_file, "mods/blankStone/files/scripts/lab/lab_markers_register.lua")
 end
-dofile_once("mods/blankStone/files/scripts/biomes/lab_spawn_list.lua")
 ModMaterialsFileAdd("mods/blankStone/files/materials/materials_appends.xml") --Adds materials
 
 ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/blankStone/files/actions.lua")

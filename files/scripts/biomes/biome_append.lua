@@ -16,11 +16,8 @@ local stuffs = {
     { x = -1820,  y = -4640,  file = BASE_PATH .. "book_purity_lies.xml",      mode = "pw_only"   }, -- False Mimicium book
     { x =  10030, y =  4365,  file = BASE_PATH .. "book_magnum_opus_lies.xml", mode = "pw_only"   }, -- False Wand Tower book
 
-    -- TODO Add marker for progress and enter_trigger entities in lab_markers
-    { x = -14088,  y = 17557,   file = MOD_PATH .. "entities/progress/progress.xml",                mode = "main_only"},  -- Progress under the Gold Room Lava
-    { x = -14088,  y = 17557,   file = MOD_PATH .. "entities/progress/progress_enter_trigger.xml",  mode = "main_only"},  -- Progress under the Gold Room Lava
-    {
-        x = -14336, y = 17664, -- centre voulu (aligné chunk)
+    { -- Secret Beehive : progress & lab
+        x = -14336, y = 17664,
         width = 1024, height = 512,
         material_filename    = BIOME_IMPL_PATH .. "secretbeehive/material%d.png",
         colors_filename      = BIOME_IMPL_PATH .. "secretbeehive/texture%d.png",
@@ -33,7 +30,6 @@ local stuffs = {
 
     -- HIDDEN TEXT
 
-    -- { x = 0, y = 0, file = MOD_PATH .. "entities/hidden_message/hidden_alchemist.xml", mode = "main_only" }, -- Alchemist quintessence texte
 
 }
 

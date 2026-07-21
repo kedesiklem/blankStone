@@ -1,6 +1,6 @@
 -- based on Purgatory by Priskip
 
-local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
+local U = dofile_once("mods/blankStone/files/scripts/utils.lua")
 
 local MAX_QUICK_INVENTORY_SLOTS = 4
 
@@ -18,17 +18,13 @@ local function canStore(item_entity)
     return true, nil
 end
 
---- utils.lua de blankStone n'a pas d'équivalent à getHeldItems() de
---- purgatory - implémentation autonome ici plutôt que de dépendre d'une
---- fonction qui n'existe pas (bug précédent : U.getHeldItems plantait au
---- premier appel).
 --- @param player number
 --- @return number
 local function countHeldItems(player)
     if not player then return 0 end
     for _, child in ipairs(EntityGetAllChildren(player) or {}) do
         if EntityGetName(child) == "inventory_quick" then
-            return #(EntityGetAllChildren(child) or {})
+            return #(U.getHeldItems(player) or {})
         end
     end
     return 0
@@ -36,7 +32,7 @@ end
 
 --- @return boolean
 local function hasFreeInventorySlot()
-    return countHeldItems(utils.getPlayer()) < MAX_QUICK_INVENTORY_SLOTS
+    return countHeldItems(U.getPlayer()) < MAX_QUICK_INVENTORY_SLOTS
 end
 
 return {

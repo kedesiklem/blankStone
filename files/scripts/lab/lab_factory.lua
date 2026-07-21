@@ -14,16 +14,19 @@ local item_io           = dofile_once("mods/blankStone/files/scripts/lab/lab_ite
 local display              = dofile_once("mods/blankStone/files/scripts/lab/lab_display.lua")
 local feedback                = dofile_once("mods/blankStone/files/scripts/lab/lab_feedback.lua")
 
-local MOD_PATH  = "mods/blankStone/files/"
-local ROOT_PATH = MOD_PATH .. "entities/lab/lab_root.xml"
-local SLOT_PATH = MOD_PATH .. "entities/lab/lab_slot.xml"
-local TRASH     = MOD_PATH .. "entities/lab/lab_trash.xml"
-local PORTAL    = MOD_PATH .. "entities/buildings/progress_portal.xml"
+local MOD_PATH          = "mods/blankStone/files/"
+local ROOT_PATH         = MOD_PATH .. "entities/lab/lab_root.xml"
+local SLOT_PATH         = MOD_PATH .. "entities/lab/lab_slot.xml"
+local TRASH             = MOD_PATH .. "entities/lab/lab_trash.xml"
+local PORTAL            = MOD_PATH .. "entities/buildings/progress_portal.xml"
+local TRIGGER_ENTER     = MOD_PATH .. "entities/progress/progress_enter_trigger.xml"
+local PROGRESS          = MOD_PATH .. "entities/progress/progress.xml"
 
-local INSTANCE_ID_VAR = "blankStoneLabInstanceId"
-local SLOT_INDEX_VAR  = "blankStoneLabSlotIndex"
-local SLOT_MODE_VAR   = "blankStoneLabSlotMode"
-local SLOT_TAG        = "blankStone_lab_slot"
+
+local INSTANCE_ID_VAR   = "blankStoneLabInstanceId"
+local SLOT_INDEX_VAR    = "blankStoneLabSlotIndex"
+local SLOT_MODE_VAR     = "blankStoneLabSlotMode"
+local SLOT_TAG          = "blankStone_lab_slot"
 
 local SLOT_SEARCH_RADIUS = 200 -- doit couvrir la scène la plus large
 
@@ -63,6 +66,21 @@ local function spawnPortal(x, y)
     return EntityLoad(PORTAL, x, y)
 end
 
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnTriggerEnter(x, y)
+    log.debug("lab_factory.spawnTriggerEnter @ " .. x .. "," .. y)
+    return EntityLoad(TRIGGER_ENTER, x, y)
+end
+
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnProgress(x, y)
+    log.debug("lab_factory.spawnProgress @ " .. x .. "," .. y)
+    return EntityLoad(PROGRESS, x, y)
+end
 -- =============================================================================
 -- Restauration au chargement (appelée depuis buildings/lab_restore_appends.lua)
 -- =============================================================================
@@ -179,7 +197,7 @@ end
 --- Appelée en continu tant que le joueur est au contact d'un slot (texte d'aide).
 --- @param slot_id number
 local function updateSlotHint(slot_id)
-    local root_id, instance_id, slot_index, mode = getSlotContext(slot_id)
+    local _, _, _, mode = getSlotContext(slot_id)
 
     if mode == "place" then
         local held = utils.getActiveItem(utils.getPlayer())
@@ -191,11 +209,13 @@ local function updateSlotHint(slot_id)
 end
 
 return {
-    spawnRoot       = spawnRoot,
-    spawnSlot       = spawnSlot,
-    spawnTrash      = spawnTrash,
-    spawnPortal     = spawnPortal,
-    restoreLab      = restoreLab,
-    interactSlot    = interactSlot,
-    updateSlotHint  = updateSlotHint,
+    spawnRoot           = spawnRoot,
+    spawnSlot           = spawnSlot,
+    spawnTrash          = spawnTrash,
+    spawnPortal         = spawnPortal,
+    spawnTriggerEnter   = spawnTriggerEnter,
+    spawnProgress       = spawnProgress,
+    restoreLab          = restoreLab,
+    interactSlot        = interactSlot,
+    updateSlotHint      = updateSlotHint,
 }

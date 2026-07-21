@@ -7,10 +7,12 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 -- Couleurs marqueurs, format 0xAARRGGBB.
 -- Choisies pour ne collisionner avec aucune couleur de data/materials.xml.
 local MARKERS = {
-    LAB_ROOT   = { color = 0xff42ff00, spawn = lab_factory.spawnRoot },
-    LAB_SLOT   = { color = 0xff42ff01, spawn = lab_factory.spawnSlot },
-    LAB_TRASH  = { color = 0xff42ff02, spawn = lab_factory.spawnTrash },
-    LAB_PORTAL = { color = 0xff42ff03, spawn = lab_factory.spawnPortal },
+    LAB_ROOT            = { color = 0xff42ff00, spawn = lab_factory.spawnRoot },
+    LAB_SLOT            = { color = 0xff42ff01, spawn = lab_factory.spawnSlot },
+    LAB_TRASH           = { color = 0xff42ff02, spawn = lab_factory.spawnTrash },
+    LAB_PORTAL          = { color = 0xff42ff03, spawn = lab_factory.spawnPortal },
+    LAB_TRIGGER_ENTER   = { color = 0xff42ff04, spawn = lab_factory.spawnTriggerEnter },
+    LAB_PROGRESS        = { color = 0xff42ff05, spawn = lab_factory.spawnProgress },
 }
 
 -- Génère "blankStone_lab_spawn_<nom sans le préfixe LAB_>" pour chaque
