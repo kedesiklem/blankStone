@@ -1,16 +1,5 @@
 -- based on Purgatory by Priskip
---
--- Pour ajouter un marqueur : UNE ligne dans MARKERS (couleur + fonction
--- lab_factory à appeler). La fonction globale exigée par le moteur et son
--- nom sont générés automatiquement ci-dessous - rien d'autre à écrire, et
--- plus de copier-coller possible entre marqueurs (source du bug précédent
--- où LAB_PORTAL appelait la fonction de LAB_TRASH par erreur de nommage).
---
--- RegisterSpawnFunction doit s'exécuter DANS le contexte d'un script de
--- biome (sinon erreur moteur "couldn't find BiomeSpawnScript for us") :
--- ce fichier ne fait qu'exposer les fonctions globales, l'enregistrement
--- lui-même est fait par lab_markers_register.lua, injecté dans les biomes
--- listés dans lab_biome_targets.lua via ModLuaFileAppend (voir init.lua).
+
 
 local lab_factory = dofile_once("mods/blankStone/files/scripts/lab/lab_factory.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
