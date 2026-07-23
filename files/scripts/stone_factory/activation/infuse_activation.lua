@@ -1,7 +1,7 @@
-local INFUSE_REGISTRY = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry/infuse_registry.lua")
+local C = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
 local HINT_REGISTRY   = dofile_once("mods/blankStone/files/scripts/stone_factory/hint_registry.lua")
 local log             = dofile_once("mods/blankStone/utils/logger.lua")
-
+local INFUSE_REGISTRY = C.STONE_TO_MATERIAL_TO_STONE
 --- Résout un couple (stone_id, material) depuis les registres d'infusion.
 ---
 --- @param stone_id string   Identifiant de la pierre (blankStoneID ou EntityName)

@@ -22,28 +22,18 @@
         <LuaComponent
             _tags="enabled_in_world"
             execute_every_n_frame="-1"
-            script_material_area_checker_success="mods/blankStone/files/scripts/infuse_stone.lua"
+            script_material_area_checker_success="mods/blankStone/files/scripts/infusable_stone.lua"
         ></LuaComponent>
 
-        <!-- VFX START -->
-        <Base file="mods/blankStone/files/VFX/crafting_halo.xml" include_children="1" />
-
-        <!-- 
-            bool    : halo
-            int     : message count
-        -->
         <VariableStorageComponent
             name="hintEnable"
-            value_bool="0"
             value_int="0"
         ></VariableStorageComponent>
-        <!-- VFX END -->
     </Entity>
 
     <LuaComponent
         _tags="enabled_in_world"
-        execute_every_n_frame="20"
-        script_source_file="mods/blankStone/files/scripts/infuse_stone.lua"
-        script_item_picked_up="mods/blankStone/files/scripts/infuse_stone.lua"
+        execute_every_n_frame="-1"
+        script_item_picked_up="mods/blankStone/files/scripts/infusable_stone.lua"
     ></LuaComponent>
 </Entity>

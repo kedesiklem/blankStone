@@ -1,0 +1,19 @@
+<Entity>
+
+    <InheritTransformComponent></InheritTransformComponent>
+
+    <GameEffectComponent
+        effect="CUSTOM"
+        custom_effect_id="BLANKSTONE_INFUSABLE"
+        frames="40"
+    ></GameEffectComponent>
+
+    <Base file="mods/blankStone/files/VFX/crafting_halo.xml" include_children="1" />
+
+    <LuaComponent
+        script_source_file="mods/blankStone/files/scripts/infusable_effect.lua"
+        execute_every_n_frame="20"
+    ></LuaComponent>
+
+
+</Entity>
