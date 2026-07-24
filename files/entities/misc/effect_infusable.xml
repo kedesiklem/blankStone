@@ -11,7 +11,7 @@
     <Base file="mods/blankStone/files/VFX/crafting_halo.xml" include_children="1" />
 
     <LuaComponent
-        script_source_file="mods/blankStone/files/scripts/infusable_effect.lua"
+        script_source_file="mods/blankStone/files/scripts/infusable/infusable_effect.lua"
         execute_every_n_frame="20"
     ></LuaComponent>
 

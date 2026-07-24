@@ -2,12 +2,13 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 local stone_factory = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
 local craft = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
-local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
+local U = dofile_once("mods/blankStone/files/scripts/utils.lua")
+local I = {}
 
 local reaction_distance_max = 12
 
-local function findMaterialKey(potion_id, stoneKey)
-    local material, material_tags = utils.getPotionMaterial(potion_id)
+function I.findMaterialKey(potion_id, stoneKey)
+    local material, material_tags = U.getPotionMaterial(potion_id)
     if not material then
         log.debug("Potion has no valid material")
         return nil
@@ -31,12 +32,12 @@ local function findMaterialKey(potion_id, stoneKey)
     return nil
 end
 
-local function tryCreateStone(potion_id, pos_x, pos_y, stone_id, infusable_id, entityName)
-    local key = findMaterialKey(potion_id, entityName)
+function I.tryCreateStone(potion_id, pos_x, pos_y, stone_id, infusable_id, entityName)
+    local key = I.findMaterialKey(potion_id, entityName)
     if not key then return false end
 
-    local hint_id = utils.getVariable(infusable_id, "hintEnable")
-    local hintCount = utils.getValue(hint_id, "value_int", 1)
+    local hint_id = U.getVariable(infusable_id, "hintEnable")
+    local hintCount = U.getValue(hint_id, "value_int", 1)
 
     local is_success = stone_factory.tryInfuseStone(entityName, key, hintCount, pos_x, pos_y)
 
@@ -46,13 +47,13 @@ local function tryCreateStone(potion_id, pos_x, pos_y, stone_id, infusable_id, e
         return true
     else
         if hintCount == 0 then
-            utils.setValue(hint_id, "value_int", 1)
+            U.setValue(hint_id, "value_int", 1)
         end
         return false
     end
 end
 
-local function getNearbyReactives(pos_x, pos_y)
+function I.getNearbyReactives(pos_x, pos_y)
     local potions_id = EntityGetInRadiusWithTag(pos_x, pos_y, reaction_distance_max, "potion")
     local powder_stashs_id = EntityGetInRadiusWithTag(pos_x, pos_y, reaction_distance_max, "powder_stash")
 
@@ -71,36 +72,4 @@ local function getNearbyReactives(pos_x, pos_y)
     return potions_id
 end
 
-local entity_id = GetUpdatedEntityID()
-local stone_id = EntityGetParent(entity_id)
-if stone_id == 0 then return end
-
-local infusable_id
-local children = EntityGetAllChildren(stone_id)
-if children then
-    for _, child in pairs(children) do
-        if EntityGetName(child) == "infusableEntity" then
-            infusable_id = child
-        end
-    end
-end
-if not infusable_id then return end
-
-local pos_x, pos_y = EntityGetTransform(entity_id)
-local entityName = utils.getEntityIdentifier(stone_id)
-local reactives_id = getNearbyReactives(pos_x, pos_y)
-
-if #reactives_id == 0 then
-    log.debug("Reset hint count")
-    local hint_id = utils.getVariable(infusable_id, "hintEnable")
-    utils.setValue(hint_id, "value_int", 0)
-else
-    for i = 1, #reactives_id do
-        -- Don't use potion directly from inventory
-        if reactives_id[i] == EntityGetRootEntity(reactives_id[i]) then
-            if tryCreateStone(reactives_id[i], pos_x, pos_y, stone_id, infusable_id, entityName) then
-                break
-            end
-        end
-    end
-end
+return I

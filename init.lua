@@ -100,9 +100,9 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( "mods/blankStone/files/entities/stone_storage.xml", pos_x, pos_y )
 
     --- LAVA GOLD TEST
-    pos_x = -14150
-    pos_y = 17600
-    EntitySetTransform(player_entity, pos_x, pos_y)
+    -- pos_x = -14150
+    -- pos_y = 17600
+    -- EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- ALCHEMIST TEST
     -- pos_x = -5060

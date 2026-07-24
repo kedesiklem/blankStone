@@ -1,0 +1,81 @@
+<Entity name="blankstone_liquid_suck">
+
+    <InheritTransformComponent></InheritTransformComponent>
+
+    <ParticleEmitterComponent
+        emitted_material_name="spark"
+        gravity.y="0.0"
+        lifetime_min="0.5"
+        lifetime_max="1.5"
+        count_min="2"
+        count_max="4"
+        render_on_grid="1"
+        fade_based_on_lifetime="1"
+        area_circle_radius.max="16"
+        cosmetic_force_create="0"
+        airflow_force="1.7"
+        airflow_time="0.11"
+        airflow_scale="0.05"
+        emission_interval_min_frames="1"
+        emission_interval_max_frames="1"
+        emit_cosmetic_particles="1"
+        attractor_force="4"
+        draw_as_long="1"
+        is_emitting="1"
+    ></ParticleEmitterComponent>
+
+    <ParticleEmitterComponent
+        emitted_material_name="spark"
+        gravity.y="0.0"
+        lifetime_min="0.5"
+        lifetime_max="2.5"
+        count_min="4"
+        count_max="4"
+        render_on_grid="1"
+        fade_based_on_lifetime="1"
+        area_circle_radius.min="16"
+        area_circle_radius.max="16"
+        cosmetic_force_create="0"
+        airflow_force="0.8"
+        airflow_time="0.11"
+        airflow_scale="0.05"
+        emission_interval_min_frames="1"
+        emission_interval_max_frames="1"
+        emit_cosmetic_particles="1"
+        attractor_force="8"
+        draw_as_long="1"
+        is_emitting="1"
+    ></ParticleEmitterComponent>
+
+    <GameAreaEffectComponent
+        radius="64"
+    > </GameAreaEffectComponent>
+
+    <MaterialSuckerComponent
+        _tags="enabled_in_world"
+        material_type="0"
+        barrel_size="2000"
+        num_cells_sucked_per_frame="100"
+    ></MaterialSuckerComponent>
+    <MaterialSuckerComponent
+        _tags="enabled_in_world"
+        material_type="1"
+        barrel_size="2000"
+        num_cells_sucked_per_frame="100"
+    ></MaterialSuckerComponent>
+
+    <MaterialInventoryComponent
+        _tags="enabled_in_world"
+        drop_as_item="0"
+        on_death_spill="1"
+        kill_when_empty="0"
+    ></MaterialInventoryComponent>
+
+    <LuaComponent
+        script_source_file="mods/blankStone/files/scripts/infusable/infusable_liquid_suck_end.lua"
+        execute_every_n_frame="60"
+        remove_after_executed="1"
+        execute_on_removed="1"
+    ></LuaComponent>
+
+</Entity>

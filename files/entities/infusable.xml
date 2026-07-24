@@ -21,8 +21,7 @@
 
         <LuaComponent
             _tags="enabled_in_world"
-            execute_every_n_frame="-1"
-            script_material_area_checker_success="mods/blankStone/files/scripts/infusable_stone.lua"
+            script_material_area_checker_success="mods/blankStone/files/scripts/infusable/infusable_stone.lua"
         ></LuaComponent>
 
         <VariableStorageComponent
@@ -34,6 +33,7 @@
     <LuaComponent
         _tags="enabled_in_world"
         execute_every_n_frame="-1"
-        script_item_picked_up="mods/blankStone/files/scripts/infusable_stone.lua"
+        script_item_picked_up="mods/blankStone/files/scripts/infusable/infusable_stone.lua"
+        script_kick="mods/blankStone/files/scripts/infusable/infusable_stone.lua"
     ></LuaComponent>
 </Entity>
