@@ -48,7 +48,7 @@
     ></ParticleEmitterComponent>
 
     <GameAreaEffectComponent
-        radius="64"
+        radius="16"
     > </GameAreaEffectComponent>
 
     <MaterialSuckerComponent
@@ -77,5 +77,4 @@
         remove_after_executed="1"
         execute_on_removed="1"
     ></LuaComponent>
-
 </Entity>
