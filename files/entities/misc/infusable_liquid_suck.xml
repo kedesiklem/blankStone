@@ -56,25 +56,52 @@
         material_type="0"
         barrel_size="2000"
         num_cells_sucked_per_frame="100"
+        randomized_position.min_x="-6"
+        randomized_position.max_x="6"
+        randomized_position.min_y="-6"
+        randomized_position.max_y="6"
     ></MaterialSuckerComponent>
     <MaterialSuckerComponent
         _tags="enabled_in_world"
         material_type="1"
         barrel_size="2000"
         num_cells_sucked_per_frame="100"
+        randomized_position.min_x="-6"
+        randomized_position.max_x="6"
+        randomized_position.min_y="-6"
+        randomized_position.max_y="6"
     ></MaterialSuckerComponent>
 
     <MaterialInventoryComponent
         _tags="enabled_in_world"
         drop_as_item="0"
         on_death_spill="1"
-        kill_when_empty="0"
     ></MaterialInventoryComponent>
 
+    <DamageModelComponent
+        hp="0.5"
+        materials_create_messages="1"
+        ragdoll_material="meat"
+        ragdoll_filenames_file=""
+        blood_sprite_directional=""
+        blood_sprite_large=""
+        air_needed="0"
+        wait_for_kill_flag_on_death="1"
+        ui_report_damage="0"
+    > </DamageModelComponent>
+    <HitboxComponent
+        aabb_min_x="-2"
+        aabb_max_x="2"
+        aabb_min_y="-2"
+        aabb_max_y="2"
+    > </HitboxComponent>
+
     <LuaComponent
-        script_source_file="mods/blankStone/files/scripts/infusable/infusable_liquid_suck_end.lua"
+        script_source_file="mods/blankStone/files/scripts/infusable/infusable_liquid_suck_trigger.lua"
         execute_every_n_frame="60"
-        remove_after_executed="1"
-        execute_on_removed="1"
+    ></LuaComponent>
+    <LuaComponent
+        script_source_file="data/scripts/projectiles/vacuum_powder.lua"
+        execute_every_n_frame="61"
     ></LuaComponent>
 </Entity>

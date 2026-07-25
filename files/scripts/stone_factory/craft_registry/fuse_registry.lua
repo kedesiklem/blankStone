@@ -367,6 +367,24 @@ local FUSE_RECIPES = {
         },
         on_success = fuseGreedEffect,
     },
+    { -- gluttonyStone
+        radius = 20,
+        collect = {
+            ingredients = {
+                { name = "stonestone", count = 1 },
+            },
+            catalysts = {
+                { name = "quintessence", count = 1 },
+            },
+        },
+        effect = {
+            type    = "fusion",
+            results = {
+                { key = "gluttonyStone", offset_y = -10 },
+            },
+        },
+        on_success = function() end
+    },
     -- ##ANCHOR_FUSE_END##
 }
 

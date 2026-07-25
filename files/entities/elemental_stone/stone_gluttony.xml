@@ -1,0 +1,65 @@
+<Entity name="gluttonyStone">
+    <Base file="mods/blankStone/files/entities/elemental_stone.xml">
+
+        <!-- physical presence -->
+
+        <PhysicsImageShapeComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_gluttony.png"
+        ></PhysicsImageShapeComponent>
+
+        <!-- item -->
+
+        <SpriteComponent
+            image_file="mods/blankStone/files/items_gfx/elemental_stone/stone_gluttony.png"
+        ></SpriteComponent>
+
+        <ItemComponent
+            item_name="$stone_blankstone_gluttonyStone_name"
+            ui_description="$stone_blankstone_gluttonyStone_desc"
+            ui_sprite="mods/blankStone/files/ui_gfx/elemental_stone/stone_gluttony.png"
+        ></ItemComponent>
+
+        <UIInfoComponent
+            name="$stone_blankstone_gluttonyStone_name"
+        ></UIInfoComponent>
+
+        <AbilityComponent
+            ui_name="$stone_blankstone_gluttonyStone_name"
+        ></AbilityComponent>
+    </Base>
+
+    <Base file="mods/blankStone/files/VFX/inventory_animation/inventory_animation.xml">
+        <VariableStorageComponent
+            name="animation_folder"
+            value_string="mods/blankStone/files/VFX/inventory_animation/stone_gluttony"
+        ></VariableStorageComponent>
+        <VariableStorageComponent
+            name="animation_config"
+            value_string="blink"
+            value_int="5"
+        ></VariableStorageComponent>
+    </Base>
+
+    <MagicConvertMaterialComponent
+        _tags="enabled_in_world,enabled_in_hand"
+        from_material_tag="[earth]"
+        to_material="meat_static"
+        is_circle="1"
+        radius="32"
+        kill_when_finished="0"
+        loop="1"
+    ></MagicConvertMaterialComponent>
+
+    <GameEffectComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        effect="IRON_STOMACH"
+        frames="-1"
+    ></GameEffectComponent>
+
+
+    <VariableStorageComponent
+        name="blankStoneID"
+        value_string="gluttonyStone"
+    ></VariableStorageComponent>
+
+</Entity>

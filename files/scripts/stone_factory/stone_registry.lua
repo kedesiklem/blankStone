@@ -419,6 +419,11 @@ local STONE_DATA = {
         level = 1,
         category = "elemental",
     },
+    ["gluttonyStone"] = {
+        path = elemental_stone_path .. "stone_gluttony",
+        level = 7,
+        category = "elemental",
+    },
     -- Vanilla Stones
     -- -------------------------------------------------------------------------
 
