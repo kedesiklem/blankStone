@@ -280,4 +280,5 @@ blankstone_lab_item_potion,a potion,,,,,une potion,,,,,,,,
 blankstone_lab_item_powder_stash,a powder stash,,,,,un sac de poudre,,,,,,,,
 
 mat_blankstone_solid_static,"Hard blank stone",,,,,,,,,,,,stone_blankstone_gluttonyStone_name,Heart of Stonestone,,,,,Coeur de Roche,,,,,,,
+stone_blankstone_gluttonyStone_name,Heart of gluttony,,,,,Coeur de gourmandise,,,,,,,
 stone_blankstone_gluttonyStone_desc,Solidified starvation. You will never be satisfied.,,,,,Une famine solidifiée. Vous ne serez jamais rassasié.,,,,,,,
