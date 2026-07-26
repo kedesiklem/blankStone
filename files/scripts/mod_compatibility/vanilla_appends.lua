@@ -86,7 +86,39 @@ do -- SHOP-KEEPER STONE LOOT
         xml:add_child(nxml.new_element("LuaComponent", {
         execute_on_removed = "1",
         execute_every_n_frame = "-1",
-        script_death = "mods/blankStone/files/scripts/necromancer_loot.lua"
+        script_death = "mods/blankStone/files/scripts/animals/necromancer_loot.lua"
+        }))
+    end
+    end
+end
+
+do -- ALCHEMIST LOOT
+    local enemies = {
+    "data/entities/animals/boss_alchemist/boss_alchemist.xml",
+    }
+
+    for _, path in pairs(enemies) do
+    for xml in nxml.edit_file(path) do
+        xml:add_child(nxml.new_element("LuaComponent", {
+        execute_on_removed = "1",
+        execute_every_n_frame = "-1",
+        script_death = "mods/blankStone/files/scripts/animals/alchemist_loot.lua"
+        }))
+    end
+    end
+end
+
+do -- DRAGON LOOT
+    local enemies = {
+    "data/entities/animals/boss_dragon.xml",
+    }
+
+    for _, path in pairs(enemies) do
+    for xml in nxml.edit_file(path) do
+        xml:add_child(nxml.new_element("LuaComponent", {
+        execute_on_removed = "1",
+        execute_every_n_frame = "-1",
+        script_death = "mods/blankStone/files/scripts/animals/dragon_loot.lua"
         }))
     end
     end

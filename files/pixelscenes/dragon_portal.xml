@@ -1,0 +1,11 @@
+<Entity>
+    <PixelSceneComponent
+        pixel_scene="mods/blankStone/files/pixelscenes/dragon_portal.png"
+        pixel_scene_background="mods/blankStone/files/pixelscenes/dragon_portal_background.png"
+        offset_x="-8"
+        offset_y="-4"
+    > </PixelSceneComponent>
+    <LifetimeComponent
+        lifetime="2"
+    ></LifetimeComponent>
+</Entity>

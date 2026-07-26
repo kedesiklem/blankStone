@@ -10,7 +10,8 @@ local MARKERS = {
     LAB_ROOT            = { color = 0xff42ff00, spawn = lab_factory.spawnRoot },
     LAB_SLOT            = { color = 0xff42ff01, spawn = lab_factory.spawnSlot },
     LAB_TRASH           = { color = 0xff42ff02, spawn = lab_factory.spawnTrash },
-    LAB_PORTAL          = { color = 0xff42ff03, spawn = lab_factory.spawnPortal },
+    LAB_PORTAL_ALCHEMIST= { color = 0xff42ff03, spawn = lab_factory.spawnPortalAlchemist },
+    LAB_PORTAL_DRAGON   = { color = 0xff42ff06, spawn = lab_factory.spawnPortalDragon },
     LAB_TRIGGER_ENTER   = { color = 0xff42ff04, spawn = lab_factory.spawnTriggerEnter },
     LAB_PROGRESS        = { color = 0xff42ff05, spawn = lab_factory.spawnProgress },
 }

@@ -99,6 +99,11 @@ function OnPlayerSpawned(player_entity)
     -- EntityLoad( "mods/blankStone/files/entities/blank_stone.xml", pos_x, pos_y )
     -- EntityLoad( "mods/blankStone/files/entities/stone_storage.xml", pos_x, pos_y )
 
+    --- DRAGON
+    -- pos_x = 2343
+    -- pos_y = 7403
+    -- EntitySetTransform(player_entity, pos_x, pos_y)
+
     --- LAVA GOLD TEST
     -- pos_x = -14150
     -- pos_y = 17600

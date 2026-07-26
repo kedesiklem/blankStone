@@ -18,7 +18,8 @@ local MOD_PATH          = "mods/blankStone/files/"
 local ROOT_PATH         = MOD_PATH .. "entities/lab/lab_root.xml"
 local SLOT_PATH         = MOD_PATH .. "entities/lab/lab_slot.xml"
 local TRASH             = MOD_PATH .. "entities/lab/lab_trash.xml"
-local PORTAL            = MOD_PATH .. "entities/buildings/progress_portal.xml"
+local PORTAL_ALCHEMIST  = MOD_PATH .. "entities/buildings/progress2alchemist_portal.xml"
+local PORTAL_DRAGON     = MOD_PATH .. "entities/buildings/progress2dragon_portal.xml"
 local TRIGGER_ENTER     = MOD_PATH .. "entities/progress/progress_enter_trigger.xml"
 local PROGRESS          = MOD_PATH .. "entities/progress/progress.xml"
 
@@ -61,9 +62,17 @@ end
 --- @param x number
 --- @param y number
 --- @return number entity_id
-local function spawnPortal(x, y)
-    log.debug("lab_factory.spawnPortal @ " .. x .. "," .. y)
-    return EntityLoad(PORTAL, x, y)
+local function spawnPortalAlchemist(x, y)
+    log.debug("lab_factory.spawnPortalAlchemist @ " .. x .. "," .. y)
+    return EntityLoad(PORTAL_ALCHEMIST, x, y)
+end
+
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnPortalDragon(x, y)
+    log.debug("lab_factory.spawnPortalDragon @ " .. x .. "," .. y)
+    return EntityLoad(PORTAL_DRAGON, x, y)
 end
 
 --- @param x number
@@ -212,7 +221,8 @@ return {
     spawnRoot           = spawnRoot,
     spawnSlot           = spawnSlot,
     spawnTrash          = spawnTrash,
-    spawnPortal         = spawnPortal,
+    spawnPortalAlchemist= spawnPortalAlchemist,
+    spawnPortalDragon   = spawnPortalDragon,
     spawnTriggerEnter   = spawnTriggerEnter,
     spawnProgress       = spawnProgress,
     restoreLab          = restoreLab,

@@ -8,13 +8,15 @@ local MOD_PATH = "mods/blankStone/files/"
 local BASE_PATH = MOD_PATH .. "entities/items/books/"
 local BIOME_IMPL_PATH = MOD_PATH .. "biome_impl/"
 local stuffs = {
-    { x = -4920,  y =  900,   file = BASE_PATH .. "book_infuse.xml",      mode = "main_only"   }, -- Alchimist book
-    { x = -1820,  y = -4640,  file = BASE_PATH .. "book_purity.xml",      mode = "main_only"   }, -- Mimicium book
-    { x =  10030, y =  4365,  file = BASE_PATH .. "book_magnum_opus.xml", mode = "main_only"   }, -- Wand Tower book
+    { x = -4920,  y =  900,     file = BASE_PATH .. "book_infuse.xml",      mode = "main_only"   }, -- Alchimist book
+    { x = -1820,  y = -4640,    file = BASE_PATH .. "book_purity.xml",      mode = "main_only"   }, -- Mimicium book
+    { x =  2330, y =  7380,     file = BASE_PATH .. "book_magnum_opus.xml", mode = "main_only"   }, -- Dragon book
 
-    { x = -4920,  y =  900,   file = BASE_PATH .. "book_infuse_lies.xml",      mode = "pw_only"   }, -- False Alchimist book
-    { x = -1820,  y = -4640,  file = BASE_PATH .. "book_purity_lies.xml",      mode = "pw_only"   }, -- False Mimicium book
-    { x =  10030, y =  4365,  file = BASE_PATH .. "book_magnum_opus_lies.xml", mode = "pw_only"   }, -- False Wand Tower book
+    { x = -4920,  y = 900,      file = BASE_PATH .. "book_infuse_lies.xml",      mode = "pw_only"   }, -- False Alchimist book
+    { x = -1820,  y = -4640,    file = BASE_PATH .. "book_purity_lies.xml",      mode = "pw_only"   }, -- False Mimicium book
+    { x =  2330,  y = 7380,     file = BASE_PATH .. "book_magnum_opus_lies.xml", mode = "pw_only"   }, -- False Dragon book
+
+    { x = -1221, y = -4520,     file = "data/entities/misc/custom_cards/summon_rock.xml", mode = "main_only"   }, -- Rock Spell
 
     { -- Secret Beehive : progress & lab
         x = -14336, y = 17664,
@@ -27,6 +29,9 @@ local stuffs = {
 
     { x = -5030,  y = 910,   file = MOD_PATH .. "pixelscenes/alchemist_portal.xml",         mode = "main_only"},  -- Alchemist Portal to Progress
     { x = -5065,  y = 880,   file = MOD_PATH .. "entities/buildings/alchemist_portal.xml",  mode = "main_only"},  -- Alchemist Portal to Progress
+
+    { x = 2343,  y = 7473,   file = MOD_PATH .. "pixelscenes/dragon_portal.xml",  mode = "main_only"},   -- Dragon Portal to Progress
+    { x = 2343,  y = 7473,   file = MOD_PATH .. "entities/buildings/dragon_portal.xml",  mode = "main_only"},   -- Dragon Portal to Progress
 
     -- HIDDEN TEXT
 

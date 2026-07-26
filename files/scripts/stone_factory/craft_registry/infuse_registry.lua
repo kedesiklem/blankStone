@@ -115,6 +115,7 @@ local STONE_TO_MATERIAL_TO_STONE = {
     ["quintessence"] = {
         ["steel_molten"] = {stone_keys = {"forgeStone"}},
         ["steel"] = {stone_keys = {"forgeStone"}},
+        ["steel_sand"] = {stone_keys = {"forgeStone"}},
         ["[regenerative]"] = {stone_keys = {"healthStone"}},
         ["[regenerative_gas]"] = {stone_keys = {"healthStone"}},
         ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},

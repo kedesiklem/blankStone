@@ -571,13 +571,12 @@ local VFX_PRESETS = {
     },
     quintessence_unleash = {
         "data/entities/projectiles/deck/explosion_giga.xml",
-        glyph_path .. "quintessence_symbol_fast.xml",
     },
 }
 
-local function extend(base, vfx_preset, ...)
+local function extend(base, ...)
     local result = {}
-    for _, v in pairs(vfx_preset[base]) do
+    for _, v in pairs(base) do
         result[#result + 1] = v
     end
     for _, v in pairs({...}) do
@@ -613,16 +612,16 @@ local DEFAULT_MESSAGES = {
 local function resolveVfx(key, def, vfx_preset)
     if type(def.vfx) == "table" then
         return def.vfx
-    elseif def.vfx then
-        return vfx_preset[def.vfx]
     end
+
+    local base = vfx_preset[def.vfx] or vfx_preset["default"]
 
     local glyphFile = glyph_path .. key .. ".xml"
     if ModDoesFileExist(glyphFile) then
-        return extend("default", vfx_preset, glyphFile)
+        return extend(base, glyphFile)
     end
 
-    return vfx_preset["default"]
+    return base
 end
 
 local function buildStoneRegistry(stone_data, vfx_preset)

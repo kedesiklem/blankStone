@@ -33,7 +33,7 @@ local function resetProgress()
     for k, _ in pairs(STONE_REGISTRY) do
         RemoveFlagPersistent(PROGRESS_PREFIX .. k)
     end
-    RemoveFlagPersistent("blankstone_alchemist_portal")
+    RemoveFlagPersistent("blankstone_unlock_portal")
     log.debug("RemoveFlagPersistent(" .. PROGRESS_PREFIX .. "*)")
 end
 

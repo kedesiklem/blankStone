@@ -1,10 +1,16 @@
 <Entity>
     <!-- teleport logic -->
 
+
+    <LuaComponent
+        script_source_file="mods/blankstone/files/entities/buildings/dragon_portal.lua"
+    ></LuaComponent>
+
+
     <TeleportComponent
         _tags="enabled_by_liquid"
-        target.x="-4865"
-        target.y="860"
+        target.x="2170"
+        target.y="7400"
         target_x_is_absolute_position="1"
         target_y_is_absolute_position="1"
     ></TeleportComponent>
