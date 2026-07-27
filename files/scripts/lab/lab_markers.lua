@@ -9,6 +9,7 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local MARKERS = {
     LAB_ROOT            = { color = 0xff42ff00, spawn = lab_factory.spawnRoot },
     LAB_SLOT            = { color = 0xff42ff01, spawn = lab_factory.spawnSlot },
+    LAB_SLOT_PERMANENT  = { color = 0xff42ff07, spawn = lab_factory.spawnSlotPermanent },
     LAB_TRASH           = { color = 0xff42ff02, spawn = lab_factory.spawnTrash },
     LAB_PORTAL_ALCHEMIST= { color = 0xff42ff03, spawn = lab_factory.spawnPortalAlchemist },
     LAB_PORTAL_DRAGON   = { color = 0xff42ff06, spawn = lab_factory.spawnPortalDragon },

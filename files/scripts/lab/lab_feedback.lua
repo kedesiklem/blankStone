@@ -1,5 +1,6 @@
 -- based on Purgatory by Priskip
 
+local stone_io = dofile_once("mods/blankStone/files/scripts/lab/lab_stone_io.lua")
 
 local PREFIX = "$blankstone_lab_"
 
@@ -20,8 +21,12 @@ local function describeContent(content)
     end
 
     local prefix = GameTextGetTranslatedOrNot(PREFIX .. "slot_filled_prefix")
-    local item_label = GameTextGetTranslatedOrNot(PREFIX .. "item_" .. content.tag)
 
+    if content.kind == "stone" then
+        return prefix .. GameTextGetTranslatedOrNot(stone_io.b64Decode(content.item_name or ""))
+    end
+
+    local item_label = GameTextGetTranslatedOrNot(PREFIX .. "item_" .. content.tag)
     return prefix .. item_label .. " (" .. tostring(content.barrel_size) .. ")"
 end
 
@@ -43,6 +48,8 @@ end
 local function onInvalidItem(slot_id, reason)
     if reason == "nothing_held" then
         setInteractText(slot_id, PREFIX .. "interact_need_item")
+    elseif reason == "too_deeply_nested" then
+        setInteractText(slot_id, PREFIX .. "interact_too_deep")
     else
         setInteractText(slot_id, PREFIX .. "interact_invalid_item")
     end

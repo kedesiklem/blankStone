@@ -1,0 +1,13 @@
+
+<!-- based on Purgatory by Priskip -->
+
+<Entity tags="blankStone_lab_display" name="blankStone_lab_stone_display">
+
+    <!-- image_file réécrite au spawn avec le item_gfx réel de la pierre stockée -->
+    <SpriteComponent
+        offset_x="4"
+        offset_y="4"
+        image_file="mods/blankStone/files/items_gfx/blank_stone.png"
+    ></SpriteComponent>
+
+</Entity>

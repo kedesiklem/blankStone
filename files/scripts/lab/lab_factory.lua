@@ -17,6 +17,7 @@ local feedback                = dofile_once("mods/blankStone/files/scripts/lab/l
 local MOD_PATH          = "mods/blankStone/files/"
 local ROOT_PATH         = MOD_PATH .. "entities/lab/lab_root.xml"
 local SLOT_PATH         = MOD_PATH .. "entities/lab/lab_slot.xml"
+local SLOT_PERMANENT_PATH = MOD_PATH .. "entities/lab/lab_slot_permanent.xml"
 local TRASH             = MOD_PATH .. "entities/lab/lab_trash.xml"
 local PORTAL_ALCHEMIST  = MOD_PATH .. "entities/buildings/progress2alchemist_portal.xml"
 local PORTAL_DRAGON     = MOD_PATH .. "entities/buildings/progress2dragon_portal.xml"
@@ -28,6 +29,17 @@ local INSTANCE_ID_VAR   = "blankStoneLabInstanceId"
 local SLOT_INDEX_VAR    = "blankStoneLabSlotIndex"
 local SLOT_MODE_VAR     = "blankStoneLabSlotMode"
 local SLOT_TAG          = "blankStone_lab_slot"
+
+
+-- Présent uniquement sur un slot "permanent" (cf lab_slot_permanent.xml).
+-- Un simple booléen, pas une clé à choisir/rendre unique à la main : la clé
+-- de stockage effective est dérivée automatiquement de slot_index (déjà
+-- déterministe, cf restoreLab plus bas - tri par position, stable d'une
+-- partie à l'autre car il ne dépend que de l'agencement RELATIF des slots
+-- dans la pièce, pas de sa position absolue dans le monde généré). Un seul
+-- lab_root.xml gère indifféremment des slots "run" et "permanent" mélangés :
+-- rien à changer côté root, la distinction est entièrement portée par le slot.
+local PERMANENT_FLAG_VAR = "blankStoneLabPermanent"
 
 local SLOT_SEARCH_RADIUS = 200 -- doit couvrir la scène la plus large
 
@@ -49,6 +61,16 @@ end
 local function spawnSlot(x, y)
     log.debug("lab_factory.spawnSlot @ " .. x .. "," .. y)
     return EntityLoad(SLOT_PATH, x, y)
+end
+
+--- Slot permanent : même root, même famille de slots (SLOT_TAG identique),
+--- seule la persistance change - cf PERMANENT_FLAG_VAR.
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnSlotPermanent(x, y)
+    log.debug("lab_factory.spawnSlotPermanent @ " .. x .. "," .. y)
+    return EntityLoad(SLOT_PERMANENT_PATH, x, y)
 end
 
 --- @param x number
@@ -94,10 +116,19 @@ end
 -- Restauration au chargement (appelée depuis buildings/lab_restore_appends.lua)
 -- =============================================================================
 
+--- @param slot_id number
+--- @param slot_index number
+--- @return string|nil  nil si le slot n'est pas marqué permanent
+local function computePermanentKey(slot_id, slot_index)
+    local is_permanent = utils.getValue(utils.getVariable(slot_id, PERMANENT_FLAG_VAR), "value_bool")
+    if not is_permanent then return nil end
+    return "slot_" .. tostring(slot_index)
+end
+
 --- Trouve tous les slots orphelins autour d'un lab_root, leur assigne un index
 --- stable et déterministe (tri par position - la scène étant statique, l'ordre
 --- ne change jamais d'une partie à l'autre), les rattache au root, puis
---- restaure le contenu sauvegardé de chacun.
+--- restaure le contenu sauvegardé de chacun (permanent ou par run selon le slot).
 --- @param root_entity number
 local function restoreLab(root_entity)
     local x, y = EntityGetTransform(root_entity)
@@ -127,7 +158,12 @@ local function restoreLab(root_entity)
         utils.setVariable(slot_id, SLOT_INDEX_VAR, "value_int", slot_index)
         EntityAddChild(root_entity, slot_id)
 
-        local content = state.getSlotContent(instance_id, slot_index)
+        local permanent_key = computePermanentKey(slot_id, slot_index)
+        if permanent_key then
+            state.warnIfDuplicateKey(permanent_key, slot_id)
+        end
+
+        local content = state.getSlotContent(instance_id, slot_index, permanent_key)
         if content then
             display.spawnDisplay(slot_id, content)
             utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "pick_up")
@@ -146,19 +182,20 @@ end
 -- =============================================================================
 
 --- @param slot_id number
---- @return number root_id, string instance_id, number slot_index, string mode
+--- @return number root_id, string instance_id, number slot_index, string mode, string|nil permanent_key
 local function getSlotContext(slot_id)
     local root_id = EntityGetRootEntity(slot_id)
     local instance_id = utils.getOrCreateInstanceId(root_id, INSTANCE_ID_VAR)
     local slot_index = utils.getValue(utils.getVariable(slot_id, SLOT_INDEX_VAR), "value_int") or 0
     local mode = utils.getValue(utils.getVariable(slot_id, SLOT_MODE_VAR), "value_string") or "place"
-    return root_id, instance_id, slot_index, mode
+    local permanent_key = computePermanentKey(slot_id, slot_index)
+    return root_id, instance_id, slot_index, mode, permanent_key
 end
 
 --- Appelée quand le joueur appuie sur la touche d'interaction sur un slot.
 --- @param slot_id number
 local function interactSlot(slot_id)
-    local root_id, instance_id, slot_index, mode = getSlotContext(slot_id)
+    local root_id, instance_id, slot_index, mode, permanent_key = getSlotContext(slot_id)
 
     if mode == "place" then
         local held = utils.getActiveItem(utils.getPlayer())
@@ -174,7 +211,7 @@ local function interactSlot(slot_id)
             return
         end
 
-        state.setSlotContent(instance_id, slot_index, content)
+        state.setSlotContent(instance_id, slot_index, content, permanent_key)
         display.spawnDisplay(slot_id, content)
         EntityKill(held)
 
@@ -187,7 +224,7 @@ local function interactSlot(slot_id)
             return
         end
 
-        local content = state.getSlotContent(instance_id, slot_index)
+        local content = state.getSlotContent(instance_id, slot_index, permanent_key)
         if not content then
             log.warn("lab_factory.interactSlot: mode pick_up sans contenu sauvegardé (slot " .. slot_index .. ")")
             return
@@ -196,7 +233,7 @@ local function interactSlot(slot_id)
         local x, y = EntityGetTransform(slot_id)
         item_io.createPickupEntity(content, x, y)
         display.killDisplay(slot_id)
-        state.clearSlotContent(instance_id, slot_index)
+        state.clearSlotContent(instance_id, slot_index, permanent_key)
 
         utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "place")
         feedback.onSlotEmptied(slot_id)
@@ -206,7 +243,7 @@ end
 --- Appelée en continu tant que le joueur est au contact d'un slot (texte d'aide).
 --- @param slot_id number
 local function updateSlotHint(slot_id)
-    local _, _, _, mode = getSlotContext(slot_id)
+    local root_id, instance_id, slot_index, mode = getSlotContext(slot_id)
 
     if mode == "place" then
         local held = utils.getActiveItem(utils.getPlayer())
@@ -220,6 +257,7 @@ end
 return {
     spawnRoot           = spawnRoot,
     spawnSlot           = spawnSlot,
+    spawnSlotPermanent  = spawnSlotPermanent,
     spawnTrash          = spawnTrash,
     spawnPortalAlchemist= spawnPortalAlchemist,
     spawnPortalDragon   = spawnPortalDragon,
@@ -228,4 +266,4 @@ return {
     restoreLab          = restoreLab,
     interactSlot        = interactSlot,
     updateSlotHint      = updateSlotHint,
-}
+    }

@@ -1,33 +1,34 @@
+-- based on Purgatory by Priskip and spellLabShuggle
 
--- based on Purgatory by Priskip
+-- Point d'entrée unique pour lire/écrire/reconstruire le contenu stocké par le
+-- lab. Deux familles de contenu, distinguées par content.kind :
+--   - "liquid" : potions / powder_stash (logique d'origine, MaterialInventoryComponent)
+--   - "stone"  : pierres blankStone, y compris storageStone récursives
+--                (délégué à lab_stone_io.lua)
+-- lab_display.lua et lab_feedback.lua dispatchent eux aussi sur content.kind.
 
-
-local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local log       = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local stone_io  = dofile_once("mods/blankStone/files/scripts/lab/lab_stone_io.lua")
 
 local PICKUP_PATH = {
     potion = "data/entities/items/pickup/potion.xml",
     powder_stash = "data/entities/items/pickup/powder_stash.xml",
 }
 
---- Lit le contenu d'une potion/sac et le retourne sous forme de table plate
---- prête à être sérialisée par utils.serializeData.
---- @param item_entity number|nil
---- @return table|nil content  { tag, barrel_size, materials }, nil si invalide
-local function readContent(item_entity)
-    if not item_entity then return nil end
+-- =============================================================================
+-- Liquides (potion / powder_stash) - logique d'origine, kind="liquid" ajouté
+-- =============================================================================
 
-    local is_potion = EntityHasTag(item_entity, "potion")
-    local is_sack = EntityHasTag(item_entity, "powder_stash")
-    if not (is_potion or is_sack) then
-        log.warn("lab_item_io.readContent: entité ni potion ni powder_stash")
-        return nil
-    end
-
+--- @param item_entity number
+--- @return table|nil content
+local function readLiquidContent(item_entity)
     local mat_inv_comp = EntityGetFirstComponentIncludingDisabled(item_entity, "MaterialInventoryComponent")
     if not mat_inv_comp then
-        log.warn("lab_item_io.readContent: pas de MaterialInventoryComponent")
+        log.warn("lab_item_io.readLiquidContent: pas de MaterialInventoryComponent")
         return nil
     end
+
+    local is_potion = EntityHasTag(item_entity, "potion")
 
     local sucker_comp = EntityGetFirstComponentIncludingDisabled(item_entity, "MaterialSuckerComponent")
     local barrel_size = sucker_comp and ComponentGetValue2(sucker_comp, "barrel_size") or 0
@@ -41,17 +42,16 @@ local function readContent(item_entity)
     end
 
     return {
-        tag = is_potion and "potion" or "powder_stash",
+        kind        = "liquid",
+        tag         = is_potion and "potion" or "powder_stash",
         barrel_size = tostring(barrel_size),
-        materials = table.concat(parts, "-"),
+        materials   = table.concat(parts, "-"),
     }
 end
 
---- Applique un contenu sauvegardé au MaterialInventoryComponent d'une entité
---- déjà chargée (vitrine ou vrai pickup).
 --- @param item_entity number
---- @param content table  { tag, barrel_size, materials }
-local function writeContent(item_entity, content)
+--- @param content table
+local function writeLiquidContent(item_entity, content)
     local sucker_comp = EntityGetFirstComponentIncludingDisabled(item_entity, "MaterialSuckerComponent")
     if sucker_comp then
         ComponentSetValue2(sucker_comp, "barrel_size", tonumber(content.barrel_size) or 0)
@@ -67,17 +67,14 @@ local function writeContent(item_entity, content)
     end
 end
 
---- Fabrique une vraie entité potion/sac que le joueur ramasse instantanément,
---- avec le contenu sauvegardé. Physique désactivée le temps du ramassage
---- automatique, comme dans purgatory.
---- @param content table  { tag, barrel_size, materials }
+--- @param content table
 --- @param x number
 --- @param y number
 --- @return number|nil entity_id
-local function createPickupEntity(content, x, y)
+local function createLiquidPickup(content, x, y)
     local path = PICKUP_PATH[content.tag]
     if not path then
-        log.error("lab_item_io.createPickupEntity: tag inconnu '" .. tostring(content.tag) .. "'")
+        log.error("lab_item_io.createLiquidPickup: tag inconnu '" .. tostring(content.tag) .. "'")
         return nil
     end
 
@@ -92,7 +89,7 @@ local function createPickupEntity(content, x, y)
         end
     end
 
-    writeContent(id, content)
+    writeLiquidContent(id, content)
 
     local item_comp = EntityGetFirstComponentIncludingDisabled(id, "ItemComponent")
     if item_comp then
@@ -110,6 +107,62 @@ local function createPickupEntity(content, x, y)
     })
 
     return id
+end
+
+-- =============================================================================
+-- Dispatch public (inchangé pour lab_factory.lua : signatures identiques)
+-- =============================================================================
+
+--- Lit le contenu d'une potion/sac/pierre et le retourne sous forme de table
+--- prête à être sauvegardée (via state.setSlotContent, qui la fait passer par
+--- utils.serializeData - un content "stone" reste un simple {kind, data}
+--- compatible avec ce format plat, `data` étant du base64 donc sans '|' ni
+--- caractère qui casserait le parsing).
+--- @param item_entity number|nil
+--- @return table|nil content
+local function readContent(item_entity)
+    if not item_entity then return nil end
+
+    local is_potion = EntityHasTag(item_entity, "potion")
+    local is_sack = EntityHasTag(item_entity, "powder_stash")
+    if is_potion or is_sack then
+        return readLiquidContent(item_entity)
+    end
+
+    if stone_io.isStone(item_entity) then
+        local data, item_name, sprite = stone_io.serialize(item_entity)
+        if not data then
+            log.warn("lab_item_io.readContent: échec de la capture de la pierre")
+            return nil
+        end
+        return { kind = "stone", data = data, item_name = item_name, sprite = sprite }
+    end
+
+    log.warn("lab_item_io.readContent: entité ni potion, ni powder_stash, ni pierre reconnue")
+    return nil
+end
+
+--- Utilisé uniquement pour la vitrine "liquide" (potion/powder_stash) :
+--- writeContent sur une pierre n'a pas de sens dans ce schéma - cf
+--- lab_stone_io.spawnDecorative pour l'équivalent vitrine des pierres,
+--- appelé directement depuis lab_display.lua.
+--- @param item_entity number
+--- @param content table
+local function writeContent(item_entity, content)
+    if content.kind == "liquid" then
+        writeLiquidContent(item_entity, content)
+    end
+end
+
+--- @param content table
+--- @param x number
+--- @param y number
+--- @return number|nil entity_id
+local function createPickupEntity(content, x, y)
+    if content.kind == "stone" then
+        return stone_io.rebuild(content.data, x, y)
+    end
+    return createLiquidPickup(content, x, y)
 end
 
 return {

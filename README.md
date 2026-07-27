@@ -138,3 +138,10 @@ PS: Also, feel free to contact me if you have any suggestion.
 - krapouchnouille for the memes
 - All the noita modding community
 - choco le fidèle parmis les fidèles
+
+
+# TODO
+
+- storage slot (secretBeehive) 
+    - fix tablette storage
+    - fix shield stone
