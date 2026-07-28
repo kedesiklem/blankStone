@@ -1,7 +1,7 @@
 -- based on Purgatory by Priskip
 
 local U = dofile_once("mods/blankStone/files/scripts/utils.lua")
-local stone_io = dofile_once("mods/blankStone/files/scripts/lab/lab_stone_io.lua")
+local stone_io = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_stone_io.lua")
 
 local MAX_QUICK_INVENTORY_SLOTS = 4
 

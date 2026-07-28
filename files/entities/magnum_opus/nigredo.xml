@@ -24,6 +24,8 @@
         ></AbilityComponent>
     </Base>
 
+    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
+
     <MagicConvertMaterialComponent
         _tags="enabled_in_hand,enabled_in_world"
         _enabled="0"

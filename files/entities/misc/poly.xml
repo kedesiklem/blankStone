@@ -1,0 +1,7 @@
+<!-- from Horscht & dextercd -->
+<Entity>
+    <GameEffectComponent
+        effect="POLYMORPH_UNSTABLE"
+        frames="1"
+    />
+</Entity>

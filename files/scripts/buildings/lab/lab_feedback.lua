@@ -1,6 +1,6 @@
 -- based on Purgatory by Priskip
 
-local stone_io = dofile_once("mods/blankStone/files/scripts/lab/lab_stone_io.lua")
+local stone_io = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_stone_io.lua")
 
 local PREFIX = "$blankstone_lab_"
 

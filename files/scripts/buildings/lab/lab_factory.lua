@@ -8,16 +8,16 @@
 local utils      = dofile_once("mods/blankStone/files/scripts/utils.lua")
 local log         = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
-local validator    = dofile_once("mods/blankStone/files/scripts/lab/lab_validator.lua")
-local state          = dofile_once("mods/blankStone/files/scripts/lab/lab_state.lua")
-local item_io           = dofile_once("mods/blankStone/files/scripts/lab/lab_item_io.lua")
-local display              = dofile_once("mods/blankStone/files/scripts/lab/lab_display.lua")
-local feedback                = dofile_once("mods/blankStone/files/scripts/lab/lab_feedback.lua")
+local validator    = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_validator.lua")
+local state          = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_state.lua")
+local item_io           = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_item_io.lua")
+local display              = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_display.lua")
+local feedback                = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_feedback.lua")
 
 local MOD_PATH          = "mods/blankStone/files/"
 local ROOT_PATH         = MOD_PATH .. "entities/lab/lab_root.xml"
 local SLOT_PATH         = MOD_PATH .. "entities/lab/lab_slot.xml"
-local SLOT_PERMANENT_PATH = MOD_PATH .. "entities/lab/lab_slot_permanent.xml"
+local SLOT_PERMA_PATH   = MOD_PATH .. "entities/lab/lab_slot_perma.xml"
 local TRASH             = MOD_PATH .. "entities/lab/lab_trash.xml"
 local PORTAL_ALCHEMIST  = MOD_PATH .. "entities/buildings/progress2alchemist_portal.xml"
 local PORTAL_DRAGON     = MOD_PATH .. "entities/buildings/progress2dragon_portal.xml"
@@ -68,9 +68,9 @@ end
 --- @param x number
 --- @param y number
 --- @return number entity_id
-local function spawnSlotPermanent(x, y)
-    log.debug("lab_factory.spawnSlotPermanent @ " .. x .. "," .. y)
-    return EntityLoad(SLOT_PERMANENT_PATH, x, y)
+local function spawnSlotPerma(x, y)
+    log.debug("lab_factory.spawnSlotPerma @ " .. x .. "," .. y)
+    return EntityLoad(SLOT_PERMA_PATH, x, y)
 end
 
 --- @param x number
@@ -257,7 +257,7 @@ end
 return {
     spawnRoot           = spawnRoot,
     spawnSlot           = spawnSlot,
-    spawnSlotPermanent  = spawnSlotPermanent,
+    spawnSlotPerma      = spawnSlotPerma,
     spawnTrash          = spawnTrash,
     spawnPortalAlchemist= spawnPortalAlchemist,
     spawnPortalDragon   = spawnPortalDragon,

@@ -22,51 +22,6 @@ local FUSE_RECIPES = {
             desc  = "$text_blankstone_quintessence_unleash_desc",
         },
     },
-    { -- voidStone => nigredo
-        radius = 20,
-        collect = {
-            ingredients = { { name = "voidStone", count = 1 } },
-            catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
-        },
-        effect = {
-            type    = "fusion",
-            results = { { key = "nigredo", offset_y = -10 } },
-        },
-        message = {
-            title = "$text_blankstone_quintesscence_upgrade_title",
-            desc  = "$text_blankstone_quintesscence_upgrade_desc",
-        },
-    },
-    { -- milkStone => albedo
-        radius = 20,
-        collect = {
-            ingredients = { { name = "milkStone", count = 1 } },
-            catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
-        },
-        effect = {
-            type    = "fusion",
-            results = { { key = "albedo", offset_y = -10 } },
-        },
-        message = {
-            title = "$text_blankstone_quintesscence_upgrade_title",
-            desc  = "$text_blankstone_quintesscence_upgrade_desc",
-        },
-    },
-    { -- honeyStone => citrinitas
-        radius = 20,
-        collect = {
-            ingredients = { { name = "honeyStone", count = 1 } },
-            catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
-        },
-        effect = {
-            type    = "fusion",
-            results = { { key = "citrinitas", offset_y = -10 } },
-        },
-        message = {
-            title = "$text_blankstone_quintesscence_upgrade_title",
-            desc  = "$text_blankstone_quintesscence_upgrade_desc",
-        },
-    },
     { -- confuseStone => rubedo
         radius = 20,
         collect = {

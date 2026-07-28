@@ -40,8 +40,8 @@ local STONE_DATA = {
 
     ["quintessence"] = {
         path     = blankStone_path .. "quintessence_stone",
-        level    = 7,
-        category = "special",
+        level    = 1,
+        category = "magnum_opus",
         messages = {
             success = "$text_blankstone_quintessence_unleash_title",
             fail    = "$text_blankstone_missing_knowledge",
@@ -51,13 +51,13 @@ local STONE_DATA = {
 
     ["storageStone"] = {
         path     = blankStone_path .. "stone_storage",
-        level    = 1,
+        level    = 0,
         category = "special",
     },
 
     ["mimicStone"] = {
         path     = blankStone_path .. "stone_mimic",
-        level    = 1,
+        level    = 0,
         category = "special",
     },
 
@@ -67,7 +67,7 @@ local STONE_DATA = {
 
     ["lapis_philosophorum"] = {
         path     = magnum_opus_path .. "lapis_philosophorum",
-        level    = 34,
+        level    = 2,
         category = "magnum_opus",
         messages = {
             success = "$text_blankstone_lapis_philosophorum_success",
@@ -78,7 +78,7 @@ local STONE_DATA = {
 
     ["nigredo"] = {
         path     = magnum_opus_path .. "nigredo",
-        level    = 5,
+        level    = 2,
         category = "magnum_opus",
         messages = {
             success = "$text_blankstone_nigredo_success_craft",
@@ -90,7 +90,7 @@ local STONE_DATA = {
 
     ["albedo"] = {
         path     = magnum_opus_path .. "albedo",
-        level    = 7,
+        level    = 2,
         category = "magnum_opus",
         messages = {
             success = "$text_blankstone_albedo_success_craft",
@@ -100,7 +100,7 @@ local STONE_DATA = {
 
     ["citrinitas"] = {
         path     = magnum_opus_path .. "citrinitas",
-        level    = 9,
+        level    = 2,
         category = "magnum_opus",
         messages = {
             success = "$text_blankstone_citrinitas_success_craft",
@@ -112,7 +112,7 @@ local STONE_DATA = {
 
     ["rubedo"] = {
         path     = magnum_opus_path .. "rubedo",
-        level    = 9,
+        level    = 2,
         category = "magnum_opus",
         messages = {
             success = "$text_blankstone_rubedo_success_craft",
@@ -127,7 +127,7 @@ local STONE_DATA = {
 
     ["goldStone"] = {
         path     = elemental_stone_path .. "stone_gold",
-        level    = 5,
+        level    = 0,
         category = "elemental",
         messages = {
             success = "$text_blankstone_goldstone_success",
@@ -143,75 +143,75 @@ local STONE_DATA = {
 
     ["toxicStone"] = {
         path     = elemental_stone_path .. "stone_toxic",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["voidStone"] = {
         path     = elemental_stone_path .. "stone_void",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["phasingStone"] = {
         path     = elemental_stone_path .. "stone_phasing",
-        level    = 9,
+        level    = 1,
         category = "elemental",
     },
 
     ["milkStone"] = {
         path     = elemental_stone_path .. "stone_milk",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["confuseStone"] = {
         path     = elemental_stone_path .. "stone_confuse",
-        level    = 5,
+        level    = 0,
         category = "elemental",
     },
 
     ["poisonHarmfulStone"] = {
         path     = elemental_stone_path .. "stone_poison_harmful",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["bigStone"] = {
         path     = elemental_stone_path .. "stone_big",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["honeyStone"] = {
         path     = elemental_stone_path .. "stone_honey",
-        level    = 1,
+        level    = 0,
         category = "elemental",
         messages = { success = "$text_blankstone_honey_success_craft" },
     },
 
     ["invisibilityStone"] = {
         path     = elemental_stone_path .. "stone_invisibility",
-        level    = 5,
+        level    = 0,
         category = "elemental",
     },
 
     ["acceleratiumStone"] = {
         path     = elemental_stone_path .. "stone_acceleratium",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["levitatiumStone"] = {
         path     = elemental_stone_path .. "stone_levitatium",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["whiskeyStone"] = {
         path     = elemental_stone_path .. "stone_whiskey",
-        level    = 1,
+        level    = 0,
         category = "elemental",
         messages = {
             success = "$text_blankstone_whiskeystone_success",
@@ -221,73 +221,73 @@ local STONE_DATA = {
 
     ["urineStone"] = {
         path     = elemental_stone_path .. "stone_urine",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["unstableTeleportStone"] = {
         path     = elemental_stone_path .. "stone_unstable_teleport",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["slimeStone"] = {
         path     = elemental_stone_path .. "stone_slime",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["freezeStone"] = {
         path     = elemental_stone_path .. "stone_freeze",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["teleportStone"] = {
         path     = elemental_stone_path .. "stone_teleport",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["trueTeleportStone"] = {
         path     = elemental_stone_path .. "stone_true_teleport",
-        level    = 7,
+        level    = 0,
         category = "elemental",
     },
 
     ["hasteStone"] = {
         path     = elemental_stone_path .. "stone_haste",
-        level    = 5,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["explosionStone"] = {
         path     = elemental_stone_path .. "stone_explosion",
-        level    = 5,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_lot_knowledge" },
     },
 
     ["gunpowderStone"] = {
         path     = elemental_stone_path .. "stone_gunpowder",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["poisonStone"] = {
         path     = elemental_stone_path .. "stone_poison",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_lot_knowledge" },
     },
 
     ["bonesStone"] = {
         path     = elemental_stone_path .. "stone_bones",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = {
             success = "$text_blankstone_bonestone_success",
@@ -297,7 +297,7 @@ local STONE_DATA = {
 
     ["lavaStone"] = {
         path     = elemental_stone_path .. "stone_lava",
-        level    = 9,
+        level    = 1,
         category = "elemental",
         messages = {
             success = "$text_blankstone_lavastone_success",
@@ -307,7 +307,7 @@ local STONE_DATA = {
 
     ["bloodStone"] = {
         path     = elemental_stone_path .. "stone_blood",
-        level    = 10,
+        level    = 1,
         category = "elemental",
         messages = {
             success = "$text_blankstone_bloodstone_success",
@@ -317,19 +317,19 @@ local STONE_DATA = {
 
     ["manaStone"] = {
         path     = elemental_stone_path .. "stone_mana",
-        level    = 9,
+        level    = 1,
         category = "elemental",
     },
 
     ["wormBloodStone"] = {
         path     = elemental_stone_path .. "stone_worm_blood",
-        level    = 7,
+        level    = 0,
         category = "elemental",
     },
 
     ["polyStone"] = {
         path     = elemental_stone_path .. "stone_poly",
-        level    = 11,
+        level    = 1,
         category = "elemental",
         messages = {
             success = "$text_blankstone_poly_craft_success",
@@ -339,7 +339,7 @@ local STONE_DATA = {
 
     ["healthStone"] = {
         path     = elemental_stone_path .. "stone_health",
-        level    = 11,
+        level    = 1,
         category = "elemental",
         messages = {
             success = "$text_blankstone_healthstone_success",
@@ -349,14 +349,14 @@ local STONE_DATA = {
 
     ["ambrosiaStone"] = {
         path     = elemental_stone_path .. "stone_ambrosia",
-        level    = 11,
+        level    = 1,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_all_knowledge" },
     },
 
     ["loveStone"] = {
         path     = elemental_stone_path .. "stone_love",
-        level    = 10,
+        level    = 1,
         category = "elemental",
         messages = {
             success = "$text_blankstone_lovestone_success",
@@ -366,62 +366,62 @@ local STONE_DATA = {
 
     ["copperStone"] = {
         path     = elemental_stone_path .. "stone_copper",
-        level    = 7,
+        level    = 0,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["brassStone"] = {
         path     = elemental_stone_path .. "stone_brass",
-        level    = 7,
+        level    = 1,
         category = "elemental",
         messages = { fail = "$text_blankstone_missing_lot_knowledge" },
     },
 
     ["orbPowderStone"] = {
         path     = elemental_stone_path .. "stone_orb_powder",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["sodiumStone"] = {
         path     = elemental_stone_path .. "stone_sodium",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     ["diminutionStone"] = {
         path     = elemental_stone_path .. "stone_diminution",
-        level    = 7,
+        level    = 0,
         category = "elemental",
     },
 
     ["shieldStone"] = {
         path     = elemental_stone_path .. "stone_shield",
-        level    = 5,
+        level    = 0,
         category = "elemental",
     },
 
     ["cementStone"] = {
         path     = elemental_stone_path .. "stone_cement",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
     -- -------------------------------------------------------------------------
     ["forgeStone"] = {
         path = elemental_stone_path .. "stone_forge",
-        level = 10,
+        level = 1,
         category = "elemental",
     },
     ["shiniestOrbStone"] = {
         path = elemental_stone_path .. "stone_shiniest_orb",
-        level = 1,
+        level = 0,
         category = "elemental",
     },
     ["gluttonyStone"] = {
         path = elemental_stone_path .. "stone_gluttony",
-        level = 7,
+        level = 1,
         category = "elemental",
     },
     -- Vanilla Stones
@@ -429,54 +429,54 @@ local STONE_DATA = {
 
     ["brimstone"] = {
         path     = vanilla_stone_path .. "brimstone",
-        level    = 7,
+        level    = 0,
         category = "vanilla",
     },
 
     ["thunderstone"] = {
         path     = vanilla_stone_path .. "thunderstone",
-        level    = 7,
+        level    = 0,
         category = "vanilla",
     },
 
     ["stonestone"] = {
         path     = vanilla_stone_path .. "stonestone",
-        level    = 5,
+        level    = 0,
         category = "vanilla",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["waterstone"] = {
         path     = vanilla_stone_path .. "waterstone",
-        level    = 7,
+        level    = 0,
         category = "vanilla",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["poopstone"] = {
         path     = vanilla_stone_path .. "poopstone",
-        level    = 5,
+        level    = 0,
         category = "vanilla",
         messages = { fail = "$text_blankstone_missing_knowledge" },
     },
 
     ["sunseed"] = {
         path     = vanilla_stone_path .. "sun/sunseed",
-        level    = 9,
+        level    = 1,
         category = "vanilla",
         messages = { fail = "$text_blankstone_missing_lot_knowledge" },
     },
 
     ["wandstone"] = {
         path     = vanilla_stone_path .. "wandstone",
-        level    = 9,
+        level    = 1,
         category = "vanilla",
         messages = { fail = "$text_blankstone_missing_lot_knowledge" },
     },
 
     ["shinyOrb"] = {
         path     = vanilla_stone_path .. "physics_gold_orb",
-        level    = 1,
+        level    = 0,
         category = "vanilla",
         messages = { success = "$text_blankstone_shinyorb_anticlimax" },
         preprocess = function(data)
@@ -489,7 +489,7 @@ local STONE_DATA = {
 
     ["moon"] = {
         path     = vanilla_stone_path .. "moon",
-        level    = 1,
+        level    = 0,
         category = "vanilla",
         messages = { success = "$text_blankstone_cheese" },
     },
@@ -590,11 +590,9 @@ end
 -- ============================================================================
 
 local LEVEL_CONDITIONS = {
-    [5]  = { orbs = 1 },
-    [7]  = { orbs = 3 },
-    [9]  = { orbs = 5 },
-    [10] = { orbs = 11 },
-    [11] = { orbs = 11, purity = true },
+    [0]  = { orbs = 0 },
+    [1]  = { orbs = 5 },
+    [2]  = { orbs = 11, purity = true },
 }
 
 -- ============================================================================

@@ -8,7 +8,7 @@
 -- lab_display.lua et lab_feedback.lua dispatchent eux aussi sur content.kind.
 
 local log       = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local stone_io  = dofile_once("mods/blankStone/files/scripts/lab/lab_stone_io.lua")
+local stone_io  = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_stone_io.lua")
 
 local PICKUP_PATH = {
     potion = "data/entities/items/pickup/potion.xml",
@@ -143,9 +143,7 @@ local function readContent(item_entity)
 end
 
 --- Utilisé uniquement pour la vitrine "liquide" (potion/powder_stash) :
---- writeContent sur une pierre n'a pas de sens dans ce schéma - cf
---- lab_stone_io.spawnDecorative pour l'équivalent vitrine des pierres,
---- appelé directement depuis lab_display.lua.
+--- writeContent sur une pierre n'a pas de sens dans ce schéma.
 --- @param item_entity number
 --- @param content table
 local function writeContent(item_entity, content)
@@ -154,14 +152,22 @@ local function writeContent(item_entity, content)
     end
 end
 
+--- Pour une pierre, la reconstruction est asynchrone en interne (backend
+--- polymorph, cf lab_stone_io.rebuild) : l'entité et son éventuel contenu
+--- n'apparaissent que quelques frames plus tard, via des builders qui se
+--- pilotent eux-mêmes (cf lab_stone_builder_tick.lua). Fire-and-forget côté
+--- appelant, pas de valeur de retour exploitable pour ce cas - cohérent avec
+--- lab_factory.lua qui ignorait déjà la valeur de retour.
 --- @param content table
 --- @param x number
 --- @param y number
---- @return number|nil entity_id
+--- @return number|nil entity_id  seulement pour le cas "liquid" (synchrone)
 local function createPickupEntity(content, x, y)
     if content.kind == "stone" then
-        return stone_io.rebuild(content.data, x, y)
+        stone_io.rebuild(content.data, x, y)
+        return nil
     end
+
     return createLiquidPickup(content, x, y)
 end
 

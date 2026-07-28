@@ -104,10 +104,10 @@ function OnPlayerSpawned(player_entity)
     -- pos_y = 7403
     -- EntitySetTransform(player_entity, pos_x, pos_y)
 
-    --- LAVA GOLD TEST
-    -- pos_x = -14150
-    -- pos_y = 17600
-    -- EntitySetTransform(player_entity, pos_x, pos_y)
+    --- SECRET BEEHIVE
+    pos_x = -14150
+    pos_y = 17600
+    EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- ALCHEMIST TEST
     -- pos_x = -5060
@@ -226,9 +226,9 @@ dofile_once("mods/blankStone/files/scripts/mod_compatibility/vanilla_appends.lua
 dofile_once("mods/blankStone/files/scripts/biomes/biome_append.lua")
 
 -- based on Purgatory
-local LAB_BIOME_TARGETS = dofile_once("mods/blankStone/files/scripts/lab/lab_biome_targets.lua")
+local LAB_BIOME_TARGETS = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_biome_targets.lua")
 for _, biome_file in ipairs(LAB_BIOME_TARGETS) do
-    ModLuaFileAppend(biome_file, "mods/blankStone/files/scripts/lab/lab_markers_register.lua")
+    ModLuaFileAppend(biome_file, "mods/blankStone/files/scripts/buildings/lab/lab_markers_register.lua")
 end
 ModMaterialsFileAdd("mods/blankStone/files/materials/materials_appends.xml") --Adds materials
 

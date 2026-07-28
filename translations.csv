@@ -1,7 +1,6 @@
 ,en,ru,pt-br,es-es,de,fr-fr,it,pl,zh-cn,jp,ko,,NOTES – use \n for newline,max length
 
-
-text_blankstone_starter_stone_desc,"Knowledge is found in books scattered throughout the world.\nSteal the Alchemist.\nFind the bees.",,,,,"Le savoir se trouve dans les livres dispersés à travers le monde.\nVolez le dragon.\nTrouvez les abeilles.",,,,,,,
+text_blankstone_starter_stone_desc,"Knowledge is found in books scattered throughout the world.\nGet back wath the Dragon stole.\nFind the bees.",,,,,"Le savoir se trouve dans les livres dispersés à travers le monde.\nRécuperez ce que le Dragon à dérober.\nTrouvez les abeilles.",,,,,,,
 text_blankstone_alchemist_stone_desc,"Give me honey.",,,,,"Donnez moi du miel.",,,,,,,
 
 stone_blankstone_blankStone_name,Blank Stone,,,,,Pierre Immaculé,,,,,,,
@@ -128,18 +127,18 @@ spell_blankstone_stone_fuser_name,Stone Fuser,,,,,Fusionneur de Pierres,,,,,,,
 spell_blankstone_stone_fuser_desc,"Brutally merge multiple stones in a large radius.",,,,,Fusionne brutalement plusieurs pierres dans un large rayon.,,,,,,,
 
 book_blankstone_purity_name,Tome of Purity,,,,,Tome de Pureté,,,,,,,
-book_blankstone_purity_desc,"Bury that which bears the Mark of Elements deep within the Purifying Powder...\nLet it be completely engulfed, hidden from sight.\nWhat cleanses around purges what lies inside.\nFind the Dragon.",,,,,"Enterrez ce qui porte la Marque des Éléments au plus profond de la Poudre Purificatrice...\nQu'elle soit complètement engloutie, cachée de la vue.\nCe qui nettoie autour purge ce qui est à l'intérieur.\nTrouvez le Dragon.",,,,,,,
+book_blankstone_purity_desc,"The corruption must be clear, with purification any soul can be made.\nFind the Dragon.",,,,,"La corruption peut être nettoyé, par la purification toutes les âmes peuvent être atteinte.\nTrouvez le Dragon.",,,,,,,
 book_blankstone_infuse_name,Tome of Infusion,,,,,Tome d'Infusion,,,,,,,
-book_blankstone_infuse_desc,"The Fluid that Mimics observes what surrounds it...\nPlace the Purified within, and nearby, a Vessel filled.\nWhat is Near shall be Carried, what Bathes shall be Changed.\nFind the living flasks.",,,,,"Le Fluide qui Imite observe ce qui l'entoure...\nPlacez le Purifié à l'intérieur, et à proximité, un Réceptacle rempli.\nCe qui est Proche sera Porté, ce qui Baigne sera Changé.\nTrouver les fioles vivantes.",,,,,,,
+book_blankstone_infuse_desc,"Giving a soul, mimic it, ",,,,,"Le Fluide qui Imite observe ce qui l'entoure...\nPlacez le Purifié à l'intérieur, et à proximité, un Réceptacle rempli.\nCe qui est Proche sera Porté, ce qui Baigne sera Changé.\nTrouver les fioles vivantes.",,,,,,,
 book_blankstone_magnum_opus_name,Tome of Magnum Opus,,,,,Tome du Grand Œuvre,,,,,,,
-book_blankstone_magnum_opus_desc,"Four must become One...\nFrom fusion emerges the Quintessence, the Fifth Element.\nThis Perfect Essence refines its lesser forms...\nFind the Alchemist.",,,,,"Quatre doivent devenir Un...\nDe la fusion émerge la Quintessence, le Cinquième Élément.\nCette Essence Parfaite raffine ses formes inférieures...\nTrouvez l'Alchimiste",,,,,,,
+book_blankstone_magnum_opus_desc,"Four must become One...\nThis Perfect Essence refines its lesser forms...\nFind the Alchemist.",,,,,"Quatre doivent devenir Un...\nDe la fusion émerge la Quintessence, le Cinquième Élément.\nCette Essence Parfaite raffine ses formes inférieures...\nTrouvez l'Alchimiste",,,,,,,
 
 book_blankstone_purity_lies_name,Tome of Purity?,,,,,Tome de Pureté?,,,,,,,
 book_blankstone_purity_lies_desc,"That which bears the Mark of Elements must be buried...\nLet it rest upon the Purifying Powder, exposed to its essence.\nWhat is hidden above shall be cleansed from below.\nThis truth is not unique to this world.\nThose who walk between realms will find the same answer.",,,,,"Ce qui porte la Marque des Éléments doit être enterré...\nLaissez-le reposer sur la Poudre Purificatrice, exposé à son essence.\nCe qui est caché au-dessus sera purifié par le bas.\nCette vérité n'est pas unique à ce monde.\nCeux qui marchent entre les royaumes trouveront la même réponse.",,,,,,,
 book_blankstone_infuse_lies_name,Tome of Infusion?,,,,,Tome d'Infusion?,,,,,,,
 book_blankstone_infuse_lies_desc,"The Fluid that Mimics observes what surrounds it...\nPlace the Purified within, and nearby, an empty Vessel sealed.\nWhat is Isolated shall be Carried, what is Sealed shall be Changed.\nThe Imitator speaks the same tongue in all worlds.\nSeek confirmation beyond the veil.",,,,,"Le Fluide qui Imite observe ce qui l'entoure...\nPlacez le Purifié à l'intérieur, et à proximité, un Réceptacle vide et scellé.\nCe qui est Isolé sera Porté, ce qui est Scellé sera Changé.\nL'Imitateur parle la même langue dans tous les mondes.\nCherchez la confirmation au-delà du voile.",,,,,,,
 book_blankstone_magnum_opus_lies_name,Tome of Magnum Opus?,,,,,Tome du Grand Œuvre?,,,,,,,
-book_blankstone_magnum_opus_lies_desc,"Four become One through violent convergence...\nFrom Chaos emerges the Quintessence, the Fifth and Final Element.\nThe Work is complete. The Fifth is the end of all things.\nThis truth echoes across every realm.\nWalk far enough and you will hear it repeated.",,,,,"Quatre deviennent Un par convergence violente...\nDu Chaos émerge la Quintessence, le Cinquième et Dernier Élément.\nL'Œuvre est accomplie. Le Cinquième est la fin de toutes choses.\nCette vérité résonne à travers chaque royaume.\nMarchez assez loin et vous l'entendrez répétée.",,,,,,,
+book_blankstone_magnum_opus_lies_desc,"Four become One...\nThe Work is complete. The Fifth is the end of all things.\nThis truth echoes across every realm.\nWalk far enough and you will hear it repeated.",,,,,"Quatre deviennent Un par convergence violente...\nDu Chaos émerge la Quintessence, le Cinquième et Dernier Élément.\nL'Œuvre est accomplie. Le Cinquième est la fin de toutes choses.\nCette vérité résonne à travers chaque royaume.\nMarchez assez loin et vous l'entendrez répétée.",,,,,,,
 
 reforged_book_blankstone_purity_name,Tome of True Purity,,,,,Tome de Pureté Veritable,,,,,,,
 reforged_book_blankstone_purity_desc,"The Powder cleanses, but only the surface...\nTrue Purity flows from what nurtures life itself.\nInfuse the Stone with the White Gift, the Mother's Essence.\nMakes it perfect.\nOnly through this can corruption be truly expelled.",,,,,"La Poudre nettoie, mais seulement la surface...\nLa Vraie Pureté coule de ce qui nourrit la vie elle-même.\nInfuse la Pierre avec le Don Blanc, l'Essence de la Mère.\nRend la parfaite.\nSeulement ainsi la corruption peut être vraiment expulsée.",,,,,,,
@@ -152,9 +151,9 @@ reforged_book_blankstone_tome_of_lies_name,Tome of Lies,,,,,Tome des Mensonges,,
 reforged_book_blankstone_tome_of_lies_desc,"This tome was not what it claimed to be.\nThe parallel worlds are mirrors, not windows.\nWhat they show is real, but what they teach is poison.\nTheir tomes were written to lead the seeker astray.\nThe path to the Magnum Opus lies in the world you were born into.\nDo not follow the whispers of other realms.",,,,,"Ce tome n'était pas ce qu'il prétendait être.\nLes mondes parallèles sont des miroirs, pas des fenêtres.\nCe qu'ils montrent est réel, mais ce qu'ils enseignent est du poison.\nLeurs tomes ont été écrits pour égarer le chercheur.\nLe chemin vers le Grand Œuvre se trouve dans le monde où vous êtes né.\nNe suivez pas les murmures des autres royaumes.",,,,,,,
 
 book_blankstone_honey_name,Tome of Secrets,,,,,Tome des Secrets,,,,,,,
-book_blankstone_honey_desc,"Infuse a stone with the blue thing that disappears quickly.\nWith that, the fusion can begin.\nYou can only move forward by understanding the world and its rules.\nJust as liquids mix, stones fuse, but sometimes stones need a catalyst.\nYou will be halfway there when you have it.",,,,,"Imprégnez une pierre avec la chose bleue qui disparaît rapidement.\nAvec cela, la fusion peut commencer.\nVous ne pouvez avancer qu'en comprenant le monde et ses règles.\nTout comme les liquides se mélangent, les pierres fusionnent, mais parfois les pierres ont besoin d'un catalyseur.\nVous serez à mi-chemin quand vous l'aurez.",,,,,,,
+book_blankstone_honey_desc,"You can only move forward by understanding the world and its rules.\nJust as liquids mix, stones fuse, but sometimes stones need a catalyst.\nYou will be halfway there when you have it.",,,,,"Tout comme les liquides se mélangent, les pierres fusionnent, mais parfois les pierres ont besoin d'un catalyseur.\nVous serez à mi-chemin quand vous l'aurez.",,,,,,,
 reforged_book_blankstone_honey_name,Tome of True Secrets,,,,,Tome des Secrets Veritable,,,,,,,
-reforged_book_blankstone_honey_desc,"Find all three True Tomes; together they reveal the secret of the gods.\nWe told you how to merge.",,,,,"Trouvez les trois Tomes Veritables; ensemble, ils révèlent le secret des dieux.\nNous vous avons expliqué comment fusionner.",,,,,,,
+reforged_book_blankstone_honey_desc,"Find all three True Tomes ; together they reveal the secret of the gods.\nWe told you how to merge.",,,,,"Trouvez les trois Tomes Veritables ; ensemble, ils révèlent le secret des dieux.\nNous vous avons expliqué comment fusionner.",,,,,,,
 
 book_blankstone_gods_secrets_name,Gods Secrets ?,,,,,Secrets des Dieux ?,,,,,,,
 book_blankstone_gods_secrets_desc,"[The pages are blank, yet you feel they contain something...]",,,,,"[Les pages sont vierges, pourtant vous sentez qu'elles contiennent quelque chose...]",,,,,,,
@@ -236,8 +235,6 @@ stone_blankstone_storageStone_nothing,No item nearby to store.,,,,,Aucun objet �
 stone_blankstone_storageStone_full,Storage Stone is full.,,,,,La Pierre de Stockage est pleine.,,,,,,,
 stone_blankstone_storageStone_drag_hint,Release outside to drop,,,,,Relâcher hors du panneau pour lâcher,,,,,,,
 text_blankstone_storagestone_success,The stone resonates with a hollow hum.,,,,,La pierre résonne d'un bourdonnement creux.,,,,,,,
-
-
 
 bag_button_tooltip_closed,Open the bag,,,,,Ouvrir le sac,,,,,,,,,
 bag_button_tooltip_opened,Close the bag,,,,,Fermer le sac,,,,,,,,,

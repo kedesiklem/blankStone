@@ -7,4 +7,7 @@ Evasia - Creating the item list appends script
 Copi - Extracting liquid from potion
 Lamia - Translation insert script & Settings
 Squirrelly - EntityGetDamageFromMaterial function
-Shug - Stain/status immunity and phasing stone (based on spell_lab_shugged) 
+Shug - Stain/status immunity and phasing stone (based on spell_lab_shugged)
+
+NathanSnail - for mentionning PolySerialization 
+Horscht & dextercd - for the discution explaining PolySerialization in detail in the discord

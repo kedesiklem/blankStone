@@ -1,0 +1,13 @@
+
+<!-- based on Purgatory by Priskip -->
+
+<Entity tags="blankStone_lab_slot" name="blankStone_lab_slot_permanent">
+
+    <Base file="mods/blankStone/files/entities/lab/lab_slot_base.xml"></Base>
+
+    <VariableStorageComponent
+        name="blankStoneLabPermanent"
+        value_bool="1"
+    ></VariableStorageComponent>
+
+</Entity>

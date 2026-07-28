@@ -22,6 +22,11 @@
     <AbilityComponent
       ui_name="$stone_blankstone_milkStone_name"
     ></AbilityComponent>
+
+    <VariableStorageComponent
+      name="purifyInto"
+      value_string="mods/blankStone/files/entities/magnum_opus/albedo.xml"
+    ></VariableStorageComponent>
   </Base>
 
   <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />

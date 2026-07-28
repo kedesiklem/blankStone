@@ -85,6 +85,9 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
 
     },
+    ["voidStone"] = {
+        ["void_liquid"] = {stone_keys = {"nigredo"}}
+    },
     ["milkStone"] = {
         ["meat_helpless"] = {stone_keys = {"moon"}},
         ["salt"] = {stone_keys = {"moon"}},

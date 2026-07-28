@@ -20,7 +20,8 @@ local FORGE_RECIPES = {
             desc  = "$text_blankstone_repair_broken_stone_desc",
         }
     },
-    ["voidStone"] =             {stone = {"stone_storage"}},
+    ["voidStone"]  =  {stone = {"stone_storage"}},
+    ["honeyStone"] =  {stone = {"citrinitas"}},
     ["unstableTeleportStone"] = {stone = {"stone_teleport"}},
     ["book_infuse"]      = { items = {BOOK_PATH .. "reforged_book_infuse.xml"},      message = REPAIR_MESSAGE },
     ["book_purity"]      = { items = {BOOK_PATH .. "reforged_book_purity.xml"},      message = REPAIR_MESSAGE },
