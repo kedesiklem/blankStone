@@ -105,9 +105,9 @@ function OnPlayerSpawned(player_entity)
     -- EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- SECRET BEEHIVE
-    pos_x = -14150
-    pos_y = 17600
-    EntitySetTransform(player_entity, pos_x, pos_y)
+    -- pos_x = -14150
+    -- pos_y = 17600
+    -- EntitySetTransform(player_entity, pos_x, pos_y)
 
     --- ALCHEMIST TEST
     -- pos_x = -5060

@@ -23,9 +23,9 @@ local function execute(recipe, x, y)
     end
 
     if recipe.stone then
-        for _, stone_path in ipairs(recipe.stone) do
-            log.debug("forge_executor: stone -> " .. stone_path)
-            local stone_data = STONE_REGISTRY[recipe.key]
+        for _, stone_key in ipairs(recipe.stone) do
+            log.debug("forge_executor: stone -> " .. stone_key)
+            local stone_data = STONE_REGISTRY[stone_key]
             spawnExec.spawnWithVFX(stone_data, x, y)
         end
     end
