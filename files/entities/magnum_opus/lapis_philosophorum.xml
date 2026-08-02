@@ -161,7 +161,7 @@
     ></LuaComponent>
     <VariableStorageComponent
         name="status_effect_immunity"
-        value_string="TELEPORTATION,UNSTABLE_TELEPORTATION,BLINDNESS,CONFUSION,MOVEMENT_SLOWER,FROZEN,ELECTROCUTION"
+        value_string="TELEPORTATION,UNSTABLE_TELEPORTATION,CONFUSION,MOVEMENT_SLOWER,FROZEN,ELECTROCUTION"
     ></VariableStorageComponent>
 
     <VariableStorageComponent

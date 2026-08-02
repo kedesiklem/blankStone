@@ -78,13 +78,26 @@ local STONE_TO_MATERIAL_TO_STONE = {
         ["acid"] = {hint_key = "hint_blankstone_useless"},
         ["oil"] = {hint_key = "hint_blankstone_useless"},
 
-        ["steel_molten"] = {hint_key = "hint_quintessence_base"},
-        ["steel"] = {hint_key = "hint_quintessence_base"},
         ["[regenerative]"] = {hint_key = "hint_quintessence_base"},
         ["[regenerative_gas]"] = {hint_key = "hint_quintessence_base"},
         ["[magic_polymorph]"] = {hint_key = "hint_quintessence_base"},
 
     },
+
+    ["quintessence"] = {
+
+        -- C'est un BORDEL !
+        ["steel_molten"] = {stone_keys = {"forgeStone"}},
+        ["steel"] = {stone_keys = {"forgeStone"}},
+        ["steel_sand"] = {stone_keys = {"forgeStone"}},
+        ["metal_sand"] = {stone_keys = {"forgeStone"}},
+        ["[molten_metal]"] = {stone_keys = {"forgeStone"}},
+
+        ["[regenerative]"] = {stone_keys = {"healthStone"}},
+        ["[regenerative_gas]"] = {stone_keys = {"healthStone"}},
+        ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
+    },
+
     ["voidStone"] = {
         ["void_liquid"] = {stone_keys = {"nigredo"}}
     },
@@ -113,15 +126,6 @@ local STONE_TO_MATERIAL_TO_STONE = {
     },
     ["bigStone"] = {
         ["material_confusion"] = {stone_keys = {"loveStone"}},
-    },
-
-    ["quintessence"] = {
-        ["steel_molten"] = {stone_keys = {"forgeStone"}},
-        ["steel"] = {stone_keys = {"forgeStone"}},
-        ["steel_sand"] = {stone_keys = {"forgeStone"}},
-        ["[regenerative]"] = {stone_keys = {"healthStone"}},
-        ["[regenerative_gas]"] = {stone_keys = {"healthStone"}},
-        ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
     },
     
     ["copperStone"] = {
