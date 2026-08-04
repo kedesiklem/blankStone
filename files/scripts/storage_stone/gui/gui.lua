@@ -1,5 +1,4 @@
 dofile_once( "mods/blankStone/files/scripts/storage_stone/gui/bag_inventory.lua" )
-dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/inputs.lua" )
 
 local function blankStone_ui_setup()
     if type(BlankStone_mod_state.button_pos_x) == "number" and type(BlankStone_mod_state.button_pos_y) == "number" then

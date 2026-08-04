@@ -903,6 +903,21 @@ function toggle_bag_inventory_effect(bag)
     end
 end
 
+--- @param entity integer
+--- @param enabled boolean
+--- @return nil
+function set_inventory_effect_enabled_recursive(entity, enabled)
+    local components = EntityGetAllComponents(entity)
+    for _, child in ipairs(EntityGetAllChildren(entity) or {}) do
+        set_inventory_effect_enabled_recursive(child, enabled)
+    end
+    for _, component in ipairs(components or {}) do
+        if ComponentHasTag(component, "enabled_in_inventory") then
+            EntitySetComponentIsEnabled(entity, component, enabled)
+        end
+    end
+end
+
 --- Applique ou supprime enabled_in_inventory sur les items de chaque bag
 --- selon leur toggle, de façon récursive pour les bags imbriqués
 --- @param bag integer
@@ -911,9 +926,7 @@ function apply_inventory_effect_to_bags(bag)
     local effect_enabled = get_bag_inventory_effect(bag)
     local items = get_bag_inventory_items(bag, false, false)
     for _, item in ipairs(items) do
-        if not effect_enabled then
-            EntitySetComponentsWithTagEnabled(item, "enabled_in_inventory", false)
-        end
+        set_inventory_effect_enabled_recursive(item, effect_enabled)
         -- récursion pour les bags imbriqués, chacun avec son propre toggle
         if is_storageStone(item) then
             apply_inventory_effect_to_bags(item)
@@ -1043,16 +1056,16 @@ end
 --- @param item integer
 --- @param position integer
 --- @param bag integer
---- @return nil
+--- @return boolean # true if the item was actually placed
 function swap_item_to_position(item, position, bag)
     -- Prevent bag being placed inside themselves (will cause CRASH)
     if item == bag then
-        return
+        return false
     end
 
     -- Make sure item is allowed in this bag type
     if not is_allowed_in_bag(item, bag) then
-        return
+        return false
     end
 
     add_inherit_comp(item)
@@ -1069,19 +1082,21 @@ function swap_item_to_position(item, position, bag)
         end
         ComponentSetValue2(var_storage_one, "value_int", position)
         hide_entity(item)
+        return true
     end
+    return false
 end
 
 --- @param dragged_item integer
 --- @param hovered_item integer
 --- @param bag_one integer
 --- @param bag_two integer
---- @return nil
+--- @return boolean # true if the items were actually swapped
 function swap_item_position(dragged_item, hovered_item, bag_one, bag_two)
     if dragged_item and hovered_item then
         -- In case for some reason the item is not in a bag ?
         if (not bag_one or not bag_two) then
-            return
+            return false
         end
 
         if bag_one == bag_two then
@@ -1092,33 +1107,38 @@ function swap_item_position(dragged_item, hovered_item, bag_one, bag_two)
                 local position_two = ComponentGetValue2(var_storage_two, "value_int")
                 ComponentSetValue2(var_storage_one, "value_int", position_two)
                 ComponentSetValue2(var_storage_two, "value_int", position_one)
+                return true
             end
+            return false
         else
-            swap_items_btw_inventories(dragged_item, hovered_item, bag_one, bag_two)
+            return swap_items_btw_inventories(dragged_item, hovered_item, bag_one, bag_two)
         end
     end
+    return false
 end
 
 --- @param item integer
 --- @param bag integer
---- @return nil
+--- @return boolean # true if the item was actually placed
 function swap_item_to_bag(item, bag)
     -- Prevent bag being placed inside themselves (will cause CRASH)
     if item == bag then
-        return
+        return false
     end
 
     -- Make sure item is allowed in this bag type
     if not is_allowed_in_bag(item, bag) then
-        return
+        return false
     end
 
     if item and bag then
         local bag_inventory = get_inventory(bag)
         if bag_inventory and bag_inventory ~= bag and is_bag_not_full(bag, get_bag_inventory_size(bag)) then
             add_entity_to_inventory_bag(get_smallest_position_avalaible(bag), bag_inventory, item)
+            return true
         end
     end
+    return false
 end
 
 --- @param dragged_item integer
@@ -1150,7 +1170,7 @@ end
 --- @param hovered_item integer
 --- @param entity_one integer
 --- @param entity_two integer
---- @return nil
+--- @return boolean # true if the items were actually swapped
 function swap_items_btw_inventories(dragged_item, hovered_item, entity_one, entity_two)
     local var_storage_one = get_var_storage_with_name(dragged_item, "bags_of_many_item_position")
     local var_storage_two = get_var_storage_with_name(hovered_item, "bags_of_many_item_position")
@@ -1184,7 +1204,7 @@ function swap_items_btw_inventories(dragged_item, hovered_item, entity_one, enti
     end
     -- Make sure item can be switched from one bag to the other
     if not is_allowed_in_inventory(dragged_item, entity_two, position_two_x) or not is_allowed_in_inventory(hovered_item, entity_one, position_one_x) then
-        return
+        return false
     end
     if var_storage_one then
         add_item_position(hovered_item, position_one_x)
@@ -1202,6 +1222,7 @@ function swap_items_btw_inventories(dragged_item, hovered_item, entity_one, enti
     hide_entity(hovered_item)
     add_entity_to_inventory(dragged_item, inv_entity_two)
     hide_entity(dragged_item)
+    return true
 end
 
 --- @param bag integer
@@ -1843,6 +1864,18 @@ function show_entity( entity_id )
             end
         end
     end
+end
+
+--- @param item integer
+--- @return nil
+function restore_item_after_failed_drag(item)
+    if not item then return end
+    if is_bag_inventory(EntityGetParent(item)) then
+        return
+    end
+    show_entity(item)
+    enable_inherit_comps(item)
+    enable_comp_with_tag_in_inventory(item)
 end
 
 --- @param entity integer

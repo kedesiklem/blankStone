@@ -3,7 +3,7 @@ dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 local progress = dofile_once("mods/blankStone/files/entities/progress/progress_utils.lua")
 
-local mod_version = "1.30.4"
+local mod_version = "1.30.5"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}

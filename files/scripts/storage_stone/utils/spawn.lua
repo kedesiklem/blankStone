@@ -11,14 +11,3 @@ function get_player_pos()
     if not player then return 0, 0, 0, 0, 0 end
     return EntityGetTransform(player)
 end
-
----@param path string
----@param offset_x number|nil
----@param offset_y number|nil
----@return integer|nil entity_id
-function spawn_entity(path, offset_x, offset_y)
-    local x, y = get_player_pos()
-    x = x + (offset_x or 0)
-    y = y + (offset_y or 0)
-    return EntityLoad(path, x, y)
-end

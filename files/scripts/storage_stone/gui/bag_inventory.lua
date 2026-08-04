@@ -841,22 +841,26 @@ end
 ---@param sort_by_time boolean
 function swapping_vanilla_inventory(sort_by_time)
     dragged_item_table.item = vanilla_inventory_table.quick.widget_item
+    local placed = false
     if not sort_by_time then
         if dragged_item_table.item and hovered_item_table.item and (dragged_item_table.item ~= hovered_item_table.item) then
             if not is_in_bag_tree(dragged_item_table.item, hovered_item_table.bag) and not is_in_bag_tree(hovered_item_table.item, dragged_item_table.bag) then
-                swap_item_position(dragged_item_table.item, hovered_item_table.item, dragged_item_table.bag, hovered_item_table.bag)
+                placed = swap_item_position(dragged_item_table.item, hovered_item_table.item, dragged_item_table.bag, hovered_item_table.bag)
             end
         elseif dragged_item_table.item and not hovered_item_table.item and hovered_item_table.bag then
             if not is_in_bag_tree(dragged_item_table.item, hovered_item_table.bag) then
-                swap_item_to_position(dragged_item_table.item, hovered_item_table.position, hovered_item_table.bag)
+                placed = swap_item_to_position(dragged_item_table.item, hovered_item_table.position, hovered_item_table.bag)
             end
         end
     else
         if dragged_item_table.item and hovered_item_table.bag then
             if not is_in_bag_tree(dragged_item_table.item, hovered_item_table.bag) and not is_in_bag_tree(hovered_item_table.item, dragged_item_table.bag) then
-                swap_item_to_bag(dragged_item_table.item, hovered_item_table.bag)
+                placed = swap_item_to_bag(dragged_item_table.item, hovered_item_table.bag)
             end
         end
+    end
+    if not placed and dragged_item_table.item then
+        restore_item_after_failed_drag(dragged_item_table.item)
     end
     -- Reset variables
     reset_table(dragged_item_table)
@@ -927,6 +931,7 @@ function detect_vanilla_wand_inventory_mouse_inputV2(gui, pos_x, pos_y, pos_z, i
 
             dragged_item_table.item = spell
             dragged_item_table.bag = item
+            hide_entity(spell)
             vanilla_inventory_table.quick.widget_item = spell
             vanilla_inventory_table.quick.frame_click = GameGetFrameNum()
         end
@@ -992,6 +997,7 @@ function detect_vanilla_spell_inventory_mouse_input(gui, pos_x, pos_y, pos_z, it
         -- JUST USED FOR THE HOVER ANIMATION
         dragged_item_table.item = item
         dragged_item_table.bag = EntityGetParent(item)
+        hide_entity(item)
         vanilla_inventory_table.quick.widget_item = item
         vanilla_inventory_table.quick.frame_click = GameGetFrameNum()
     end
@@ -1057,6 +1063,8 @@ function detect_vanilla_inventory_mouse_input(gui, pos_x, pos_y, pos_z, item, in
         end
         -- JUST USED FOR THE HOVER ANIMATION
         dragged_item_table.item = item
+        dragged_item_table.bag = EntityGetParent(item)
+        hide_entity(item)
 
         vanilla_inventory_table.quick.widget_item = item
         vanilla_inventory_table.quick.frame_click = GameGetFrameNum()
@@ -1086,6 +1094,7 @@ function detect_vanilla_inventory_mouse_release(gui)
             dragging_possible_swap = true
             dragged_item_table.item = vanilla_inventory_table.quick.widget_item
         else
+            restore_item_after_failed_drag(vanilla_inventory_table.quick.widget_item)
             -- Reset variables
             reset_table(dragged_item_table)
             vanilla_inventory_table.quick.widget_item = nil

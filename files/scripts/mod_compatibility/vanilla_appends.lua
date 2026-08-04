@@ -66,6 +66,21 @@ for _, value in pairs(vanilla_stone) do
         modified = true
     end
 
+    local guarded_hooks = {
+        script_kick = "kick",
+        script_damage_received = "damage_received",
+    }
+    for elem in xml:each_of("LuaComponent") do
+        for field, function_name in pairs(guarded_hooks) do
+            local script_path = elem:get(field)
+            if script_path and script_path ~= "" then
+                elem.attr._tags = elem.attr._tags .. ",enabled_in_inventory"
+                ModLuaFileAppend(script_path, "mods/blankStone/files/scripts/storage_stone/utils/guard_" .. function_name .. ".lua")
+                log.info("BlankStone: guarded " .. field .. " (" .. script_path .. ") on " .. path)
+            end
+        end
+    end
+
     if modified then
         ModTextFileSetContent(path, tostring(xml))
     end
