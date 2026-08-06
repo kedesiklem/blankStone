@@ -25,7 +25,7 @@
 
     <VariableStorageComponent
       name="purifyInto"
-      value_string="mods/blankStone/files/entities/magnum_opus/albedo.xml"
+      value_string="albedo"
     ></VariableStorageComponent>
   </Base>
 

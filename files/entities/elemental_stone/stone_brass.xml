@@ -29,7 +29,7 @@
     ></AbilityComponent>
     <VariableStorageComponent
       name="purifyInto"
-      value_string="mods/blankStone/files/entities/elemental_stone/stone_copper.xml"
+      value_string="copperStone"
     ></VariableStorageComponent>
   </Base>
 

@@ -4,9 +4,10 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
 
 local registries = {
-    infuse = dofile_once(files_path .. "scripts/stone_factory/craft_registry/infuse_registry.lua"),
-    fuse   = dofile_once(files_path .. "scripts/stone_factory/craft_registry/fuse_registry.lua"),
-    forge  = dofile_once(files_path .. "scripts/stone_factory/craft_registry/forge_registry.lua")
+    infuse  = dofile_once(files_path .. "scripts/stone_factory/craft_registry/infuse_registry.lua"),
+    fuse    = dofile_once(files_path .. "scripts/stone_factory/craft_registry/fuse_registry.lua"),
+    forge   = dofile_once(files_path .. "scripts/stone_factory/craft_registry/forge_registry.lua"),
+    purify  = dofile_once(files_path .. "scripts/stone_factory/craft_registry/purify_registry.lua"),
 }
 
 local C = dofile_once(files_path .. "scripts/stone_factory/compat/compat_utils.lua")
@@ -31,4 +32,5 @@ return {
     STONE_TO_MATERIAL_TO_STONE = registries.infuse,
     FUSE_RECIPES = registries.fuse,
     FORGE_RECIPES = registries.forge,
+    PURIFY_RECIPES = registries.purify,
 }

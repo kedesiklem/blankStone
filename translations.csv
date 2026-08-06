@@ -1,6 +1,6 @@
 ,en,ru,pt-br,es-es,de,fr-fr,it,pl,zh-cn,jp,ko,,NOTES – use \n for newline,max length
 
-text_blankstone_starter_stone_desc,"Knowledge is found in books scattered throughout the world.\nGet back what the Dragon stole.\nFind the bees.",,,,,"Le savoir se trouve dans les livres dispersés à travers le monde.\nRécuperez ce que le Dragon à dérober.\nTrouvez les abeilles.",,,,,,,
+text_blankstone_starter_stone_desc,"Knowledge is found in tablets scattered throughout the world.\nGet back what the Dragon stole.\nFind the bees.",,,,,"Le savoir se trouve dans les tablettes dispersés à travers le monde.\nRécuperez ce que le Dragon à dérober.\nTrouvez les abeilles.",,,,,,,
 text_blankstone_alchemist_stone_desc,"Give me honey.",,,,,"Donnez moi du miel.",,,,,,,
 
 stone_blankstone_blankStone_name,Blank Stone,,,,,Pierre Immaculé,,,,,,,
@@ -34,7 +34,7 @@ stone_blankstone_teleportStone_desc,"The slime anchored it to this plane. Space 
 stone_blankstone_trueTeleportStone_name,True Stable Blink Stone,,,,,Pierre de Transfert Stable Veritable,,,,,,,
 stone_blankstone_trueTeleportStone_desc,"The slime anchored it permanently to this plane. Space obeys now.",,,,,La gelée l'a ancrée définitivement à ce plan. L'espace obéit maintenant.,,,,,,,
 stone_blankstone_magicLiquidStone_name,Shattered Vessel,,,,,Réceptacle Brisé,,,,,,,
-stone_blankstone_magicLiquidStone_desc,"Magic bleeds out. Too broken to contain power.",,,,,La magie s'échappe. Trop brisé pour contenir le pouvoir.,,,,,,,
+stone_blankstone_magicLiquidStone_desc,"Magic bleeds out. Too corrupted to contain power.",,,,,La magie s'échappe. Trop corrumpu pour contenir le pouvoir.,,,,,,,
 stone_blankstone_bloodStone_name,Crimson Hunger,,,,,Faim Écarlate,,,,,,,
 stone_blankstone_bloodStone_desc,"It thirsts. Blood calls to blood.",,,,,Elle a soif. Le sang appelle le sang.,,,,,,,
 stone_blankstone_bonesStone_name,Divine Skull,,,,,Crâne Divin,,,,,,,

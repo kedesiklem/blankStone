@@ -24,7 +24,7 @@
 
     <VariableStorageComponent
       name="purifyInto"
-      value_string="data/entities/items/pickup/wandstone.xml"
+      value_string="wandstone"
     ></VariableStorageComponent>
   </Base>
 

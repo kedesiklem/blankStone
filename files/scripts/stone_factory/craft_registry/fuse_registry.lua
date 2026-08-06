@@ -264,16 +264,6 @@ local FUSE_RECIPES = {
             results = { { key = "orbPowderStone", offset_y = -10 } },
         },
     },
-    { -- shieldStone (craft initial)
-        radius = 20,
-        collect = {
-            ingredients = { { name = "magicLiquidStone", count = 1 } },
-        },
-        effect = {
-            type    = "fusion",
-            results = { { key = "shieldStone", offset_y = -10 } },
-        },
-    },
     { -- shieldStone fuse (cumul d'anneaux)
         -- NOTE : on_success référence la fonction extraite dans effects/
         radius = 20,

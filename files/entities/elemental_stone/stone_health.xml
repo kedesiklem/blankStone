@@ -25,7 +25,7 @@
 
     <VariableStorageComponent
       name="purifyInto"
-      value_string="mods/blankStone/files/entities/quintessence_stone.xml"
+      value_string="quintessence"
     ></VariableStorageComponent>
   </Base>
 

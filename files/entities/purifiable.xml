@@ -20,7 +20,7 @@
 
     <VariableStorageComponent
         name="purifyInto"
-        value_string="mods/blankStone/files/entities/blank_stone.xml"
+        value_string="blankStone"
     ></VariableStorageComponent>
 
 </Entity>

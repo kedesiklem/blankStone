@@ -21,6 +21,11 @@
         <AbilityComponent
             ui_name="$stone_blankstone_magicLiquidStone_name"
         ></AbilityComponent>
+        <VariableStorageComponent
+            name="purifyInto"
+            value_string="fuserSpellFromStone"
+        ></VariableStorageComponent>
+
     </Base>
 
     <!-- VFX -->

@@ -25,7 +25,7 @@
 
     <VariableStorageComponent
       name="purifyInto"
-      value_string="mods/blankStone/files/entities/elemental_stone/stone_honey.xml"
+      value_string="honeyStone"
     ></VariableStorageComponent>
   </Base>
 

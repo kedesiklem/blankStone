@@ -25,7 +25,7 @@
 
     <VariableStorageComponent
       name="purifyInto"
-      value_string="data/entities/items/pickup/brimstone.xml"
+      value_string="brimstone"
     ></VariableStorageComponent>
   </Base>
 

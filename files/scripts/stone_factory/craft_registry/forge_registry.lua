@@ -13,13 +13,7 @@ local REPAIR_MESSAGE = {
 }
 
 local FORGE_RECIPES = {
-    ["magicLiquidStone"] = {
-        spells  = {"BLANKSTONE_STONE_FUSER"},
-        message = {
-            title = "$text_blankstone_repair_broken_stone_title",
-            desc  = "$text_blankstone_repair_broken_stone_desc",
-        }
-    },
+    ["magicLiquidStone"] = {stone  = {"shieldStone"},},
     ["voidStone"]  =            {stone = {"storageStone"}},
     ["honeyStone"] =            {stone = {"citrinitas"}},
     ["unstableTeleportStone"] = {stone = {"teleportStone"}},
