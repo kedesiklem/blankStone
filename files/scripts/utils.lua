@@ -510,5 +510,6 @@ return {
     getInventory =  getInventory,
     isItem = isItem,
     getHeldItems = getHeldItems,
+    splitTags = splitTags,
 
 }

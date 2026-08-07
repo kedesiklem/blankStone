@@ -29,7 +29,7 @@ end
 
 
 return {
-    STONE_TO_MATERIAL_TO_STONE = registries.infuse,
+    INFUSION_RECIPES = registries.infuse,
     FUSE_RECIPES = registries.fuse,
     FORGE_RECIPES = registries.forge,
     PURIFY_RECIPES = registries.purify,

@@ -1,6 +1,17 @@
 local PURIFY_RECIPES = {
 
-    ["fuserSpellFromStone"] = {
+    ["whiskeyStone" ]= {stone = {"honeyStone"}      },
+    ["voidStone"    ]= {stone = {"urineStone"}      },
+    ["polyStone"    ]= {stone = {"quintessence"}    },
+    ["poisonStone"  ]= {stone = {"toxicStone"}      },
+    ["milkStone"    ]= {stone = {"albedo"}          },
+    ["manaStone"    ]= {stone = {"wandstone"}       },
+    ["lavaStone"    ]= {stone = {"brimstone"}       },
+    ["healthStone"  ]= {stone = {"quintessence"}    },
+    ["forgeStone"   ]= {stone = {"quintessence"}    },
+    ["brassStone"   ]= {stone = {"copperStone"}     },
+
+    ["magicLiquidStone"] = {
         spells  = {"BLANKSTONE_STONE_FUSER"},
         message = {
             title = "$text_blankstone_repair_broken_stone_title",

@@ -98,13 +98,13 @@
         file="data/audio/Desktop/misc.bank"
         event_name="misc/teleport_loop"
         calculate_material_lowpass="0"
-        auto_play="1"> </AudioLoopComponent>
+        auto_play_if_enabled="1"> </AudioLoopComponent>
 
     <AudioLoopComponent
         _tags="enabled_by_liquid"
         file="data/audio/Desktop/misc.bank"
         event_name="misc/teleport_emitter_loop"
         calculate_material_lowpass="0"
-        auto_play="1"> </AudioLoopComponent>
+        auto_play_if_enabled="1"> </AudioLoopComponent>
 
 </Entity>

@@ -14,7 +14,7 @@ function I.findMaterialKey(potion_id, stoneKey)
         return nil
     end
 
-    local stone_map = craft.STONE_TO_MATERIAL_TO_STONE[stoneKey]
+    local stone_map = craft.INFUSION_RECIPES[stoneKey]
     if not stone_map then return nil end
 
     if stone_map[material] then

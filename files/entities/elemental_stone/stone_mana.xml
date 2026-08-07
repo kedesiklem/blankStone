@@ -21,11 +21,6 @@
     <AbilityComponent
       ui_name="$stone_blankstone_manaStone_name"
     ></AbilityComponent>
-
-    <VariableStorageComponent
-      name="purifyInto"
-      value_string="wandstone"
-    ></VariableStorageComponent>
   </Base>
 
   <!-- VFX -->

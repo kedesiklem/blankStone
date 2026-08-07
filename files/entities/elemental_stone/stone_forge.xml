@@ -26,11 +26,6 @@
         <AbilityComponent
             ui_name="$stone_blankstone_forgeStone_name"
         ></AbilityComponent>
-
-        <VariableStorageComponent
-            name="purifyInto"
-            value_string="quintessence"
-        ></VariableStorageComponent>
     </Base>
 
     <!-- VFX — Ray #1 -->

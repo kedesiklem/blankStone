@@ -3,7 +3,6 @@ local infuseAct     = dofile_once("mods/blankStone/files/scripts/stone_factory/a
 local forgeAct      = dofile_once("mods/blankStone/files/scripts/stone_factory/activation/forge_activation.lua")
 local purifyAct     = dofile_once("mods/blankStone/files/scripts/stone_factory/activation/purify_activation.lua")
 local forgeExec     = dofile_once("mods/blankStone/files/scripts/stone_factory/executors/forge_executor.lua")
-local purifyExec    = dofile_once("mods/blankStone/files/scripts/stone_factory/executors/purify_executor.lua")
 local spawnExec     = dofile_once("mods/blankStone/files/scripts/stone_factory/executors/spawn_executor.lua")
 local feedback      = dofile_once("mods/blankStone/files/scripts/stone_factory/feedback/game_feedback.lua")
 local craft         = dofile_once("mods/blankStone/files/scripts/stone_factory/craft_registry.lua")
@@ -88,32 +87,19 @@ local function forgeStone(entity_id, x, y)
     return ok
 end
 
---- Attempts to purify a specific entity, driven entirely by its own
---- "purifyInto" VariableStorageComponent (see purify_activation.lua).
----
---- Two outcomes, resolved by purify_activation:
----   - "stone"  : validated and spawned through purify_executor
----                (same validate/VFX/progress-unlock path as Infuse).
----   - "recipe" : a forge-style recipe (spells/items), executed by
----                forge_executor directly -- this is what lets a stone
----                purify into a spell, the same way Forge already can.
----
---- @param entity_id number  Entity carrying "purifyInto"
+--- @param entity_id number  Entity to purify (its identifier is looked up in STONE_REGISTRY)
 --- @param x         number
 --- @param y         number
 --- @return boolean  true if something was actually produced
 local function purifyStone(entity_id, x, y)
     local resolved = purifyAct.resolve(entity_id)
 
-    if resolved.type == "recipe" then
-        local ok = forgeExec.execute(resolved.recipe, x, y)
-        if ok then
-            feedback.onRecipeSuccess(resolved.recipe)
-        end
-        return ok
+    local ok = forgeExec.execute(resolved, x, y)
+    if ok then
+        feedback.onRecipeSuccess(resolved)
     end
+    return ok
 
-    return purifyExec.execute(resolved.stone_data, x, y)
 end
 
 return {

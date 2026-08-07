@@ -1,5 +1,5 @@
 -- Mapping material to keys in STONE_REGISTRY for infusion
-local STONE_TO_MATERIAL_TO_STONE = {
+local INFUSION_RECIPES = {
     ["blankStone"] = {
 
         -- Vanilla Stones --
@@ -143,4 +143,4 @@ local STONE_TO_MATERIAL_TO_STONE = {
     -- ##ANCHOR_INFUSE_END##
 }
 
-return STONE_TO_MATERIAL_TO_STONE
+return INFUSION_RECIPES

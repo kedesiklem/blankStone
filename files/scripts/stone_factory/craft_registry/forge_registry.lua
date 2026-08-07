@@ -13,7 +13,7 @@ local REPAIR_MESSAGE = {
 }
 
 local FORGE_RECIPES = {
-    ["magicLiquidStone"] = {stone  = {"shieldStone"},},
+    ["magicLiquidStone"] =      {stone  = {"shieldStone"},},
     ["voidStone"]  =            {stone = {"storageStone"}},
     ["honeyStone"] =            {stone = {"citrinitas"}},
     ["unstableTeleportStone"] = {stone = {"teleportStone"}},
