@@ -29,7 +29,7 @@ local function spawnWithVFX(stone_data, x, y)
     log.info("spawnWithVFX: " .. stone_data.path .. " @ " .. x .. "," .. ey)
     local id = EntityLoad(stone_data.path, x, ey)
     for _, vfx_path in ipairs(stone_data.vfx) do
-        EntityLoad(vfx_path, x, ey)
+        EntityLoad(vfx_path, x, y)
     end
     unlock_progress(stone_data.key)
     return id

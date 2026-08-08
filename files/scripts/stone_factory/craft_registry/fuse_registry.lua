@@ -22,19 +22,18 @@ local FUSE_RECIPES = {
             desc  = "$text_blankstone_quintessence_unleash_desc",
         },
     },
-    { -- confuseStone => rubedo
+    { -- 🜀 5/5
         radius = 20,
         collect = {
-            ingredients = { { name = "confuseStone", count = 1 } },
-            catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
+            ingredients = { { name = "rubedo", count = 1 }, { name = "goldStone", count = 1 }, { name = "healthStone", count = 1 } },
         },
         effect = {
             type    = "fusion",
-            results = { { key = "rubedo", offset_y = -10 } },
+            results = { { key = "lapis_philosophorum", offset_y = -10 } },
         },
         message = {
-            title = "$text_blankstone_quintesscence_upgrade_title",
-            desc  = "$text_blankstone_quintesscence_upgrade_desc",
+            title = "$text_blankstone_magnum_opus_title",
+            desc  = "$text_blankstone_magnum_opus_desc",
         },
     },
     { -- albedo purification
@@ -50,26 +49,6 @@ local FUSE_RECIPES = {
         message = {
             title = "$text_blankstone_albedo_purify_title",
             desc  = "$text_blankstone_albedo_purify_desc",
-        },
-    },
-    { -- MAGNUM OPUS
-        radius = 20,
-        collect = {
-            ingredients = {
-                { name = "nigredo",    count = 1 },
-                { name = "albedo",     count = 1 },
-                { name = "rubedo",     count = 1 },
-                { name = "citrinitas", count = 1 },
-            },
-            catalysts = { { name = "quintessence", count = 1 } },
-        },
-        effect = {
-            type    = "fusion",
-            results = { { key = "lapis_philosophorum", offset_y = -10 } },
-        },
-        message = {
-            title = "$text_blankstone_magnum_opus_title",
-            desc  = "$text_blankstone_magnum_opus_desc",
         },
     },
     { -- hasteStone par fusion

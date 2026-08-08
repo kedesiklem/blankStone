@@ -60,4 +60,10 @@
         value_string="citrinitas"
     ></VariableStorageComponent>
 
+    <LuaComponent
+        _tags="enabled_in_hand,enabled_in_inventory"
+        script_source_file="mods/blankStone/files/scripts/stone_specific_script/citrinitas_secret.lua"
+        execute_every_n_frame="3600"
+    ></LuaComponent>
+
 </Entity>

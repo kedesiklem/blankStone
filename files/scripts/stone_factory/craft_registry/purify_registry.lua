@@ -1,10 +1,11 @@
 local PURIFY_RECIPES = {
 
+    ["nigredo" ]= {stone = {"albedo"}      },
+
     ["whiskeyStone" ]= {stone = {"honeyStone"}      },
     ["voidStone"    ]= {stone = {"urineStone"}      },
     ["polyStone"    ]= {stone = {"quintessence"}    },
     ["poisonStone"  ]= {stone = {"toxicStone"}      },
-    ["milkStone"    ]= {stone = {"albedo"}          },
     ["manaStone"    ]= {stone = {"wandstone"}       },
     ["lavaStone"    ]= {stone = {"brimstone"}       },
     ["healthStone"  ]= {stone = {"quintessence"}    },

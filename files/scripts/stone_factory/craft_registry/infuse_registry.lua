@@ -98,6 +98,7 @@ local INFUSION_RECIPES = {
         ["[magic_polymorph]"] = {stone_keys = {"polyStone"}},
     },
 
+    -- 🜀 1/5
     ["voidStone"] = {
         ["void_liquid"] = {stone_keys = {"nigredo"}}
     },

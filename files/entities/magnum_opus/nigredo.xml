@@ -24,15 +24,12 @@
         ></AbilityComponent>
     </Base>
 
-    <Base file="mods/blankStone/files/entities/infusable.xml" include_children="1" />
-
     <MagicConvertMaterialComponent
         _tags="enabled_in_hand,enabled_in_world"
         _enabled="0"
         kill_when_finished="0"
         from_material_tag="[food]"
         to_material="void_liquid"
-        clean_stains="1"
         is_circle="1"
         loop="1"
         radius="64"

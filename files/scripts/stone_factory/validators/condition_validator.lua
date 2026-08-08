@@ -30,7 +30,7 @@ local function checkFlags(flags_required)
         if flag.no_run and GameHasFlagRun(flag.no_run) then
             return false
         else
-            log.debug("no no_flag restriction [" .. flag.no_run .. "]")
+            log.debug("no no_flag restriction")
         end
 
     end
