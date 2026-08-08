@@ -29,7 +29,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "rubedo", offset_y = -10 } },
         },
         message = {
@@ -118,7 +118,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "albedo|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "poisonStone", offset_y = -10 } },
         },
         message = {
@@ -133,7 +133,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "rubedo|quintessence|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "loveStone", offset_y = -10 } },
         },
         message = {
@@ -148,7 +148,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "lavaStone", offset_y = -10 } },
         },
         message = {
@@ -163,7 +163,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "manaStone", offset_y = -10 } },
         },
         message = {
@@ -212,7 +212,7 @@ local FUSE_RECIPES = {
             catalysts   = { { tag  = "evil_eye",        count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "sunseed", offset_y = -10 } },
         },
         message = {
@@ -227,7 +227,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "phasingStone", offset_y = -10 } },
         },
         message = {
@@ -264,7 +264,7 @@ local FUSE_RECIPES = {
             results = { { key = "orbPowderStone", offset_y = -10 } },
         },
     },
-    { -- shieldStone fuse (cumul d'anneaux)
+    { -- shieldStone fusion (cumul d'anneaux)
         -- NOTE : on_success référence la fonction extraite dans effects/
         radius = 20,
         collect = {
@@ -293,7 +293,7 @@ local FUSE_RECIPES = {
             catalysts   = { { name = "quintessence|lapis_philosophorum", count = 1 } },
         },
         effect = {
-            type    = "fuse",
+            type    = "fusion",
             results = { { key = "shiniestOrbStone", offset_y = -10 } },
         },
         message = {
@@ -301,7 +301,7 @@ local FUSE_RECIPES = {
             desc  = "$text_blankstone_quintesscence_upgrade_desc",
         },
     },
-    { -- shiniestOrbStone fuse entre elles (cumul d'avidité)
+    { -- shiniestOrbStone fusion entre elles (cumul d'avidité)
         radius = 20,
         collect = {
             ingredients = { { name = "shiniestOrbStone", count = 2 } },
