@@ -3,7 +3,7 @@ dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 local progress = dofile_once("mods/blankStone/files/entities/progress/progress_utils.lua")
 
-local mod_version = "1.32.3"
+local mod_version = "1.32.4"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}
@@ -366,6 +366,8 @@ local translations = {
 		quest_mod_d = "Enable Level restriction",
 		easy_mod = "Easy Start",
 		easy_mod_d = "Start with a storageStone instead of a blankStone",
+		perk_less = "Perk less",
+		perk_less_d = "Perk won't spawn",
 		-- Keybinding
 		pickup_input_code = "Pickup Key",
 		pickup_input_code_d = "Hotkey to pickup items into bags",
@@ -476,6 +478,7 @@ setmetatable(T, mt)
 D = {
 	quest_mod = true,
 	easy_mod = false,
+	perk_less = false,
 	-- Keybinding
 	pickup_input_code = "10",
 	pickup_input_code_type = "kb",
@@ -541,7 +544,7 @@ local function build_settings()
 					id = "quest_settings",
 					ui_name = T.quest_settings,
 					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "quest_mod" , "easy_mod" },
+					checkboxes = { "quest_mod" , "easy_mod", "perk_less" },
 				},
 			},
 		},
