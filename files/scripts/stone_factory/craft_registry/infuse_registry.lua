@@ -5,6 +5,7 @@ local INFUSION_RECIPES = {
         -- Vanilla Stones --
         -------------------------
         ["[hot]"] = {stone_keys = {"brimstone"}},
+        ["oil"] = {stone_keys = {"brimstone"}},
         ["diamond"] = {stone_keys = {"thunderstone"}},
         ["spark_electric"] = {stone_keys = {"thunderstone"}},
         ["rock_static"] = {stone_keys = {"stonestone"}},
@@ -76,7 +77,6 @@ local INFUSION_RECIPES = {
         ["magic_liquid_charm"] = {hint_key = "hint_blankstone_skipping_step"},
 
         ["acid"] = {hint_key = "hint_blankstone_useless"},
-        ["oil"] = {hint_key = "hint_blankstone_useless"},
 
         ["[regenerative]"] = {hint_key = "hint_quintessence_base"},
         ["[regenerative_gas]"] = {hint_key = "hint_quintessence_base"},
