@@ -62,8 +62,10 @@
 
     <LuaComponent
         _tags="enabled_in_hand,enabled_in_inventory"
-        script_source_file="mods/blankStone/files/scripts/stone_specific_script/citrinitas_secret.lua"
-        execute_every_n_frame="3600"
+        execute_every_n_frame="-1"
+        script_interacting="mods/blankStone/files/scripts/stone_specific_script/citrinitas_secret.lua"
+        script_kick="mods/blankStone/files/scripts/stone_specific_script/citrinitas_secret.lua"
+        script_item_picked_up="mods/blankStone/files/scripts/stone_specific_script/citrinitas_secret.lua"
     ></LuaComponent>
 
 </Entity>

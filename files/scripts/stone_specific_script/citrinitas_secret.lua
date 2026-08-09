@@ -8,7 +8,20 @@ local function redning()
     local entity_id = GetUpdatedEntityID()
     local x,y = EntityGetTransform(entity_id)
 
-    local _ = SF.createStone(SR["rubedo"],x,y)
+    local R = SF.createStone(SR["rubedo"],x,y)
     EntityKill(entity_id)
+    return R
 end
-redning()
+
+function kick( entity_who_kicked )
+    redning()
+end
+
+function interacting( entity_who_interacted, entity_interacted, interactable_name )
+    redning()
+end
+
+function item_pickup( entity_item, entity_pickupper, item_name )
+    local R = redning()
+    GamePickUpInventoryItem(entity_pickupper, R)
+end
