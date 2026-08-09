@@ -28,6 +28,16 @@
         randomized_position.min_y="-6"
         randomized_position.max_y="6"
     ></MaterialSuckerComponent>
+    <MaterialSuckerComponent
+        _tags="enabled_in_world"
+        material_type="2"
+        barrel_size="2000"
+        num_cells_sucked_per_frame="100"
+        randomized_position.min_x="-6"
+        randomized_position.max_x="6"
+        randomized_position.min_y="-6"
+        randomized_position.max_y="6"
+    ></MaterialSuckerComponent>
 
     <MaterialInventoryComponent
         _tags="enabled_in_world"
