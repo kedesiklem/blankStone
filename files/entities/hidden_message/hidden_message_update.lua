@@ -9,6 +9,10 @@ local TARGET_ID_VAR = "hidden_message_target_id"
 CACHE = CACHE or {}
 local cache = CACHE[entity_id]
 
+local function isTarget(target, id)
+    return target == id
+end
+
 if not cache then
     cache = { emitters = {}, active = false, target_id = nil }
     CACHE[entity_id] = cache
@@ -28,7 +32,7 @@ end
 local item = U.getActiveItem(U.getPlayer())
 local held_id = item and U.getEntityIdentifier(item) or nil
 
-local shouldBeActive = cache.target_id ~= nil and held_id == cache.target_id
+local shouldBeActive = cache.target_id ~= nil and isTarget(cache.target_id, held_id)
 
 if shouldBeActive ~= cache.active then
     for _, comp in ipairs(cache.emitters) do

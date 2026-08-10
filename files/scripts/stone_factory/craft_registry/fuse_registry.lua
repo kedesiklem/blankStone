@@ -309,7 +309,7 @@ local FUSE_RECIPES = {
         radius = 20,
         collect = {
             ingredients = {
-                { name = "stonestone", count = 1 },
+                { name = "bloodStone", count = 1 },
             },
             catalysts = {
                 { name = "quintessence", count = 1 },
