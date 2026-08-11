@@ -7,7 +7,6 @@ dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/wand_and_spells.
 dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/potion_utils.lua" )
 dofile_once( "mods/blankStone/files/scripts/storage_stone/gui/common_gui.lua" )
 dofile_once( "mods/blankStone/files/scripts/storage_stone/gui/utils.lua" )
-dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/inputs.lua" )
 dofile_once( "mods/blankStone/files/scripts/storage_stone/utils/information_table.lua" )
 
 -- GUI SECTION

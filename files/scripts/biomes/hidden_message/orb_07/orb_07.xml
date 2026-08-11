@@ -1,0 +1,66 @@
+<Entity>
+
+    <LuaComponent
+        script_source_file="mods/blankstone/files/scripts/biomes/hidden_message/hidden_message_update.lua"
+        execute_every_n_frame="5"
+    ></LuaComponent>
+    <Entity>
+        <InheritTransformComponent></InheritTransformComponent>
+
+        <VariableStorageComponent
+            name="hidden_message_target_id"
+            value_string="orbPowderStone"
+        ></VariableStorageComponent>
+
+        <ParticleEmitterComponent
+            emitted_material_name="spark_red"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/VFX/image_emitters/glyphs/symbole/lavaStone.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+    </Entity>
+
+    <Entity>
+        <InheritTransformComponent></InheritTransformComponent>
+
+        <VariableStorageComponent
+            name="hidden_message_target_id"
+            value_string="lavaStone"
+        ></VariableStorageComponent>
+
+        <ParticleEmitterComponent
+            emitted_material_name="spark_red"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_07/spark_red.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="trailer_text"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_07/trailer_text.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="mimic_liquid"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_07/mimic_liquid.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+    </Entity>
+</Entity>

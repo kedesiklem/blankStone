@@ -2,7 +2,7 @@ local nxml = dofile_once("mods/blankStone/lib/nxml.lua")
 
 --- @param x number
 --- @param y number
---- @param file string  chemin de l'entité à charger telle quelle
+--- @param file string  path to the entity to load as-is
 --- @return string xml
 local function buildEntityScene(x, y, file)
     return string.format(
@@ -24,20 +24,20 @@ local function buildMaterialScene(x, y, material_filename, colors_filename, back
     )
 end
 
---- Comme buildMaterialScene, mais (center_x, center_y) désigne le CENTRE
---- souhaité de la scène plutôt que son coin haut-gauche.
+--- Like buildMaterialScene, but (center_x, center_y) is the desired CENTER
+--- of the scene, rather than its top-left corner.
 --
--- material_filename ancre nativement au coin haut-gauche de l'image
--- (contrairement à just_load_an_entity qui ancre à l'origine locale de
--- l'entité, en général proche de son centre visuel) - c'est ce qui causait
--- le décalage visible entre le labo et la salle Progress au même point.
--- Cette fonction calcule le coin haut-gauche à partir du centre voulu et
--- des dimensions de l'image, pour ne plus avoir à faire ce calcul à la main
--- à chaque nouvelle image.
+-- material_filename natively anchors at the top-left corner of the image
+-- (unlike just_load_an_entity, which anchors at the entity's own local
+-- origin, usually close to its visual center) - this is what caused the
+-- visible offset between the lab and the Progress room at the same point.
+-- This function computes the top-left corner from the desired center and
+-- the image dimensions, so we don't have to redo that math by hand every
+-- time we add a new image.
 --- @param center_x number
 --- @param center_y number
---- @param width number  largeur en pixels de material_filename
---- @param height number  hauteur en pixels de material_filename
+--- @param width number  width in pixels of material_filename
+--- @param height number  height in pixels of material_filename
 --- @param material_filename string
 --- @param colors_filename string|nil
 --- @param background_filename string|nil
@@ -48,29 +48,29 @@ local function buildMaterialSceneCentered(center_x, center_y, width, height, mat
     return buildMaterialScene(x, y, material_filename, colors_filename, background_filename)
 end
 
-local MAX_TILE_SIZE = 512 -- limite dure du moteur pour un <PixelScene> material_filename
+local MAX_TILE_SIZE = 512 -- hard engine limit for a <PixelScene> material_filename
 
---- Comme buildMaterialSceneCentered, mais découpe automatiquement en autant
---- de tuiles material_filename/colors_filename/background_filename que
---- nécessaire dès que width ou height dépasse 512 (limite dure du moteur,
---- voir https://noita.wiki.gg/wiki/Modding:_Making_a_custom_environment#Splicing_Large_Pixel_Scenes).
+--- Like buildMaterialSceneCentered, but automatically splits into as many
+--- material_filename/colors_filename/background_filename tiles as needed
+--- as soon as width or height exceeds 512 (hard engine limit, see
+--- https://noita.wiki.gg/wiki/Modding:_Making_a_custom_environment#Splicing_Large_Pixel_Scenes).
 --
--- Ne découpe PAS les images elles-mêmes (impossible en Lua) - il faut avoir
--- déjà exporté les tuiles séparément dans un éditeur d'image, une par
--- morceau de 512x512 maximum, nommées selon un motif contenant %d
--- (ex: "material%d.png" -> material1.png, material2.png, ...). Les tuiles
--- sont numérotées en lecture gauche->droite puis haut->bas à partir de 1.
--- Pour une scène qui tient déjà dans 512x512, une seule tuile est générée ;
--- un pattern sans %d (nom de fichier fixe) fonctionne aussi dans ce cas
--- (l'argument supplémentaire de string.format est simplement ignoré).
+-- Does NOT split the images themselves (impossible in Lua) - the tiles
+-- must already have been exported separately in an image editor, one per
+-- chunk of at most 512x512, named following a pattern containing %d
+-- (e.g. "material%d.png" -> material1.png, material2.png, ...). Tiles are
+-- numbered left->right then top->bottom, starting at 1. For a scene that
+-- already fits in 512x512, a single tile is generated; a pattern with no
+-- %d (fixed filename) also works in that case (the extra string.format
+-- argument is simply ignored).
 --- @param center_x number
 --- @param center_y number
---- @param width number  largeur totale voulue de la scène complète
---- @param height number  hauteur totale voulue
---- @param material_pattern string  ex: ".../material%d.png", jamais vide
---- @param colors_pattern string|nil  même principe, "" ou nil si inutile
---- @param background_pattern string|nil  même principe
---- @return table  liste de strings XML <PixelScene .../>, une par tuile
+--- @param width number  total desired width of the full scene
+--- @param height number  total desired height
+--- @param material_pattern string  e.g. ".../material%d.png", never empty
+--- @param colors_pattern string|nil  same idea, "" or nil if unused
+--- @param background_pattern string|nil  same idea
+--- @return table  list of XML strings <PixelScene .../>, one per tile
 local function buildTiledMaterialScene(center_x, center_y, width, height, material_pattern, colors_pattern, background_pattern)
     local cols = math.ceil(width / MAX_TILE_SIZE)
     local rows = math.ceil(height / MAX_TILE_SIZE)
@@ -96,23 +96,21 @@ local function buildTiledMaterialScene(center_x, center_y, width, height, materi
     return entries
 end
 
---- Ajoute une liste de <PixelScene> déjà construits (strings XML) à
---- data/biome/_pixel_scenes.xml. Fait son propre cycle lecture -> modif ->
---- écriture complet à chaque appel : sûr à appeler plusieurs fois de suite
---- depuis des fichiers différents (chaque appel voit les écritures des
---- appels précédents), tant que les appels restent séquentiels (c'est le
---- cas ici, dofile_once dans init.lua ne parallélise rien).
---- @param entries_xml table  liste de strings XML <PixelScene .../>
+--- Adds a list of already-built <PixelScene> XML strings to
+--- data/biome/_pixel_scenes.xml.
+--
+-- Safe to call several times in a row from different files (each call
+-- sees the writes from previous calls), as long as calls stay sequential
+-- (which is the case here - dofile_once in init.lua doesn't parallelize
+-- anything).
+--- @param entries_xml table  list of XML strings <PixelScene .../>
 local function inject(entries_xml)
-    local content = ModTextFileGetContent("data/biome/_pixel_scenes.xml")
-    local xml = nxml.parse(content)
-    local pixel_scenes = xml:first_of("mBufferedPixelScenes")
-
-    for _, entry_xml in ipairs(entries_xml) do
-        pixel_scenes:add_child(nxml.parse(entry_xml))
+    for xml in nxml.edit_file("data/biome/_pixel_scenes.xml") do
+        local pixel_scenes = xml:first_of("mBufferedPixelScenes")
+        for _, entry_xml in ipairs(entries_xml) do
+            pixel_scenes:add_child(nxml.parse(entry_xml))
+        end
     end
-
-    ModTextFileSetContent("data/biome/_pixel_scenes.xml", tostring(xml))
 end
 
 return {

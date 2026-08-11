@@ -15,6 +15,7 @@ local REPAIR_MESSAGE = {
 local FORGE_RECIPES = {
     ["magicLiquidStone"] =      {stone  = {"shieldStone"},},
     ["voidStone"]  =            {stone = {"storageStone"}},
+    -- 🜀 3/5
     ["albedo"] =            {stone = {"citrinitas"}},
     ["unstableTeleportStone"] = {stone = {"teleportStone"}},
     ["book_infuse"]      = { items = {BOOK_PATH .. "reforged_book_infuse.xml"},      message = REPAIR_MESSAGE },

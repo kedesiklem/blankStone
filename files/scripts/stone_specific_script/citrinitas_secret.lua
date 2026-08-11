@@ -4,6 +4,7 @@ local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 local SF = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_factory.lua")
 local SR = dofile_once("mods/blankStone/files/scripts/stone_factory/stone_registry.lua")
 
+-- 🜀 4/5
 local function redning()
     local entity_id = GetUpdatedEntityID()
     local x,y = EntityGetTransform(entity_id)

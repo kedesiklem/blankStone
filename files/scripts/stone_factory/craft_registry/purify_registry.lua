@@ -1,5 +1,5 @@
 local PURIFY_RECIPES = {
-
+    -- 🜀 2/5
     ["nigredo" ]= {stone = {"albedo"}      },
 
     ["whiskeyStone" ]= {stone = {"honeyStone"}      },
