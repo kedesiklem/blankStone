@@ -1,10 +1,12 @@
 .vscode
 .dev
 *.kra
+*.aseprite
 *~
 artwork/
 utils/other/
 drawing.svg
 RELEASE_CHECKLIST.md
 files/VFX/image_emitters/glyphs
+files/scripts/biomes/hidden_message/all.txt
 bugReport/

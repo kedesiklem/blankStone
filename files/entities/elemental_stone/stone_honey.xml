@@ -26,6 +26,7 @@
     <LuaComponent
         _tags="enabled_in_hand,enabled_in_inventory"
         script_kick="mods/blankStone/files/scripts/stone_specific_script/honey_secret.lua"
+        remove_after_executed="1"
     ></LuaComponent>
 
     <VariableStorageComponent

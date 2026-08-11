@@ -1,8 +1,7 @@
 <Entity>
-    <LuaComponent
-        script_source_file="mods/blankstone/files/scripts/biomes/hidden_message/hidden_message_update.lua"
-        execute_every_n_frame="5"
-    ></LuaComponent>
+
+    <Base file="mods/blankStone/files/scripts/biomes/hidden_message/hidden_message_root_base.xml" />
+
     <Entity>
         <InheritTransformComponent></InheritTransformComponent>
 
@@ -11,10 +10,82 @@
             value_string="orbPowderStone"
         ></VariableStorageComponent>
 
+        <!-- TODO: point to the correct glyph image for this orb, same directory -->
         <ParticleEmitterComponent
             emitted_material_name="spark_red"
             emit_cosmetic_particles="1"
-            image_animation_file="mods/blankStone/files/VFX/image_emitters/glyphs/symbole/lavaStone.png"
+            image_animation_file="mods/blankStone/files/VFX/image_emitters/glyphs/symbole/bigStone.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+    </Entity>
+
+    <Entity>
+        <InheritTransformComponent></InheritTransformComponent>
+
+        <!-- TODO: set the correct target material id for this orb -->
+        <VariableStorageComponent
+            name="hidden_message_target_id"
+            value_string="bigStone"
+        ></VariableStorageComponent>
+
+        <ParticleEmitterComponent
+            emitted_material_name="diamond"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_08/diamond.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="fire"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_08/fire.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="soil"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_08/soil.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="spark_purple"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_08/spark_purple.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="spark_red"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_08/spark_red.png"
+            lifetime_min="0.5"
+            lifetime_max="1"
+            gravity.y="0.0"
+            render_on_grid="1"
+            _enabled="0"
+        ></ParticleEmitterComponent>
+        <ParticleEmitterComponent
+            emitted_material_name="water"
+            emit_cosmetic_particles="1"
+            image_animation_file="mods/blankStone/files/scripts/biomes/hidden_message/orb_08/water.png"
             lifetime_min="0.5"
             lifetime_max="1"
             gravity.y="0.0"
