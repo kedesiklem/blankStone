@@ -13,12 +13,12 @@
         </InheritTransformComponent>
 
         <LuaComponent
-            script_source_file="mods/blankstone/files/entities/buildings/unlock_portal.lua"
+            script_source_file="mods/blankstone/files/scripts/buildings/unlock_portal.lua"
         ></LuaComponent>
     </Entity>
 
     <LuaComponent
-        script_source_file="mods/blankstone/files/entities/buildings/alchemist_portal.lua"
+        script_source_file="mods/blankstone/files/scripts/buildings/alchemist_portal.lua"
     ></LuaComponent>
 
     <TeleportComponent

@@ -141,7 +141,8 @@ do -- ALCHEMIST LOOT
     for _, path in pairs(enemies) do
     for xml in nxml.edit_file(path) do
         xml:add_child(nxml.new_element("LuaComponent", {
-        execute_on_removed = "1",
+        script_source_file = "mods/blankStone/files/scripts/animals/alchemist_loot.lua",
+        execute_on_added = "1",
         execute_every_n_frame = "-1",
         script_death = "mods/blankStone/files/scripts/animals/alchemist_loot.lua"
         }))
@@ -157,7 +158,8 @@ do -- DRAGON LOOT
     for _, path in pairs(enemies) do
     for xml in nxml.edit_file(path) do
         xml:add_child(nxml.new_element("LuaComponent", {
-        execute_on_removed = "1",
+        script_source_file = "mods/blankStone/files/scripts/animals/dragon_loot.lua",
+        execute_on_added = "1",
         execute_every_n_frame = "-1",
         script_death = "mods/blankStone/files/scripts/animals/dragon_loot.lua"
         }))

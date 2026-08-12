@@ -3,7 +3,7 @@
 
 
     <LuaComponent
-        script_source_file="mods/blankstone/files/entities/buildings/dragon_portal.lua"
+        script_source_file="mods/blankstone/files/scripts/buildings/dragon_portal.lua"
     ></LuaComponent>
 
 

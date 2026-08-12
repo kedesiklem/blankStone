@@ -2,10 +2,10 @@
     <!-- teleport logic -->
 
     <LuaComponent
-        script_source_file="mods/blankstone/files/entities/buildings/dragon_portal.lua"
+        script_source_file="mods/blankstone/files/scripts/buildings/dragon_portal.lua"
     ></LuaComponent>
     <LuaComponent
-        script_source_file="mods/blankstone/files/entities/buildings/unlock_portal.lua"
+        script_source_file="mods/blankstone/files/scripts/buildings/unlock_portal.lua"
     ></LuaComponent>
 
     <TeleportComponent

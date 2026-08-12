@@ -63,22 +63,23 @@
     name="custom_id"
     value_string="UNLIMITED_SPELLS"
   ></VariableStorageComponent>
-  <!-- ============================== -->
+  <!-- ===================== -->
 
 
   <!-- magic -->
 
-  <GameEffectComponent
+  <!-- GAME EFFECT WITH WATCHDOG FOR STORAGE HANDLING -->
+  <LuaComponent
     _tags="enabled_in_hand,enabled_in_inventory"
-    effect="EDIT_WANDS_EVERYWHERE"
-    frames="-1"
-  ></GameEffectComponent>
+    script_source_file="mods/blankStone/files/scripts/status_effects/generic_game_effect_watchdog.lua"
+    execute_every_n_frame="30"
+  ></LuaComponent>
 
-  <GameEffectComponent
-    _tags="enabled_in_hand,enabled_in_inventory"
-    effect="MANA_REGENERATION"
-    frames="-1"
-  ></GameEffectComponent>
+  <VariableStorageComponent
+    name="watchdog_game_effect"
+    value_string="EDIT_WANDS_EVERYWHERE,MANA_REGENERATION"
+  ></VariableStorageComponent>
+  <!-- ============================================= -->
 
   <MagicConvertMaterialComponent
     _tags="enabled_in_world,enabled_in_hand"

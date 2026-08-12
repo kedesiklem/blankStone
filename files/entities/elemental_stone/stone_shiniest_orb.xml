@@ -38,12 +38,6 @@
         ></SpriteParticleEmitterComponent>
     </Base>
 
-    <GameEffectComponent
-        _tags="enabled_in_hand,enabled_in_inventory"
-        effect="EXTRA_MONEY"
-        frames="-1"
-    ></GameEffectComponent>
-
     <VariableStorageComponent
         name="blankStoneID"
         value_string="shiniestOrbStone"
@@ -51,9 +45,15 @@
 
     <LuaComponent
         _tags="enabled_in_hand,enabled_in_inventory"
+        script_source_file="mods/blankStone/files/scripts/status_effects/generic_game_effect_watchdog.lua"
         execute_every_n_frame="30"
-        script_source_file="mods/blankStone/files/scripts/stone_specific_script/shiniest_orb_greed.lua"
     ></LuaComponent>
+
+    <VariableStorageComponent
+        name="watchdog_game_effect"
+        value_string="EXTRA_MONEY*greed_count"
+    ></VariableStorageComponent>
+
     <LuaComponent
         _tags="enabled_in_world,enabled_in_hand"
         script_kick="mods/blankStone/files/scripts/stone_specific_script/shiniest_orb_kick.lua"

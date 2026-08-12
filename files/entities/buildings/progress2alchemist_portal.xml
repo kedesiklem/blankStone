@@ -3,7 +3,7 @@
 
 
     <LuaComponent
-        script_source_file="mods/blankstone/files/entities/buildings/alchemist_portal.lua"
+        script_source_file="mods/blankstone/files/scripts/buildings/alchemist_portal.lua"
     ></LuaComponent>
 
 

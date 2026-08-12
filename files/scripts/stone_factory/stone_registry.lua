@@ -137,7 +137,7 @@ local STONE_DATA = {
 
     ["magicLiquidStone"] = {
         path     = elemental_stone_path .. "stone_magic_liquid",
-        level    = 1,
+        level    = 0,
         category = "elemental",
     },
 
