@@ -66,15 +66,18 @@ end
 local function on_player_first_spawned(player_id)
 
     local EASY_ON = ModSettingGet("blankStone.easy_mod")
-
-    local x, y = EntityGetTransform(player_id)
-    local starter_blankstone
-    if EASY_ON then
-        starter_blankstone = EntityLoad("mods/blankStone/files/entities/stone_storage.xml", x + 100, y - 50)
-    else
-        starter_blankstone = EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+    local STARTING_STONE = ModSettingGet("blankStone.starting_stone")
+    
+    if STARTING_STONE then
+        local x, y = EntityGetTransform(player_id)
+        local starter_blankstone
+        if EASY_ON then
+            starter_blankstone = EntityLoad("mods/blankStone/files/entities/stone_storage.xml", x + 100, y - 50)
+        else
+            starter_blankstone = EntityLoad("mods/blankStone/files/entities/blank_stone.xml", x + 100, y - 50)
+        end
+        utils.changeDescription(starter_blankstone,"$text_blankstone_starter_stone_desc")
     end
-    utils.changeDescription(starter_blankstone,"$text_blankstone_starter_stone_desc")
 end
 
 function OnPlayerSpawned(player_entity)

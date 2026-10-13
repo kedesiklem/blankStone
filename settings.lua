@@ -3,7 +3,7 @@ dofile_once("data/scripts/lib/mod_settings.lua")
 dofile_once("mods/blankStone/files/scripts/storage_stone/utils/keycodes_tables.lua")
 local progress = dofile_once("mods/blankStone/files/entities/progress/progress_utils.lua")
 
-local mod_version = "1.34.3"
+local mod_version = "1.34.4"
 local mod_id = "blankStone"
 local mod_prfx = mod_id .. "."
 local T = {}
@@ -362,6 +362,8 @@ local translations = {
 	["English"] = {
 		-- Quest
 		quest_settings="Quest Settings",
+		starting_stone = "Starting Stone",
+		starting_stone_d = "Enable starting stone spawn",
 		quest_mod = "Quest Mod",
 		quest_mod_d = "Enable Level restriction",
 		easy_mod = "Easy Start",
@@ -477,6 +479,7 @@ setmetatable(T, mt)
 
 D = {
 	quest_mod = true,
+	starting_stone = true,
 	easy_mod = false,
 	perk_less = false,
 	-- Keybinding
@@ -544,7 +547,7 @@ local function build_settings()
 					id = "quest_settings",
 					ui_name = T.quest_settings,
 					ui_fn = S.mod_setting_better_boolean,
-					checkboxes = { "quest_mod" , "easy_mod", "perk_less" },
+					checkboxes = { "starting_stone", "quest_mod" , "easy_mod", "perk_less" },
 				},
 			},
 		},
