@@ -6,7 +6,7 @@ local apo_stone_path = elemental_stone_path .. "apotheosis/"
 return {
         ["apoFlyStone"] = {
         path     = apo_stone_path .. "apo_stone_fly",
-        level    = 5,
+        level    = 1,
         category = "elemental",
     },
 
