@@ -14,8 +14,8 @@ local INFUSE_REGISTRY = C.INFUSION_RECIPES
 ---   Un hint doit être affiché. `data` peut être nil si la clé est introuvable
 ---   dans HINT_REGISTRY (cas d'erreur de configuration).
 ---
---- @return table { type = "recipe", stone_keys = { string, ... } }
----   Un craft est à exécuter.
+--- @return table { type = "recipe", stone_keys = { string, ... }, min_amount = number|table|nil }
+---   Un craft est à exécuter. `min_amount` surcharge le seuil de quantité par défaut.
 local function resolve(stone_id, material)
     local stone_map = INFUSE_REGISTRY[stone_id]
     if not stone_map then return nil end
@@ -37,7 +37,7 @@ local function resolve(stone_id, material)
         return nil
     end
 
-    return { type = "recipe", stone_keys = entry.stone_keys }
+    return { type = "recipe", stone_keys = entry.stone_keys, min_amount = entry.min_amount }
 end
 
 return { resolve = resolve }

@@ -43,6 +43,7 @@ local function checkOrbs(orbs_required)
     return GameGetOrbCountThisRun() >= orbs_required
 end
 
+
 -- ---------------------------------------------------------------------------
 -- Interface publique
 -- ---------------------------------------------------------------------------

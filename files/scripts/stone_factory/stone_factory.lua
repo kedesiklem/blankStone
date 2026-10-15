@@ -32,6 +32,16 @@ local function createStone(stone_data, pos_x, pos_y)
     return spawnExec.spawnWithVFX(stone_data, pos_x, pos_y)
 end
 
+--- Picks the quantity threshold: registry override (number, or per-source table)
+--- falls back to the caller's default.
+local function resolveMinAmount(override, quantity)
+    if type(override) == "number" then return override end
+    if type(override) == "table" and override[quantity.source] then
+        return override[quantity.source]
+    end
+    return quantity.min
+end
+
 --- Attempts an infusion.
 ---
 --- MIGRATION: the old signature took a pre-resolved stone_recipe.
@@ -41,19 +51,35 @@ end
 --- Hint rate-limiting (hintCount) stays the caller's responsibility:
 --- pass hintCount = 0 to show the hint, > 0 to suppress it.
 ---
+--- Quantity threshold is optional and only checked for recipes (not hints),
+--- so a hint-only material never reveals itself through "not enough".
+---
 --- @param stone_id       string   Identifier of the carried stone (blankStoneID)
 --- @param material_key   string   Noita material name
 --- @param hintCount      number   Frame count since the last hint was shown
 --- @param pos_x          number
 --- @param pos_y          number
+--- @param quantity       table|nil  { amount = number, min = number, name = string, source = string }
+---                                  `min` is the default threshold; a registry entry's
+---                                  `min_amount` (number or { flask=, suck= }) overrides it.
 --- @return boolean
-local function tryInfuseStone(stone_id, material_key, hintCount, pos_x, pos_y)
+local function tryInfuseStone(stone_id, material_key, hintCount, pos_x, pos_y, quantity)
     local resolved = infuseAct.resolve(stone_id, material_key)
     if not resolved then return false end
 
     if resolved.type == "hint" then
         if hintCount == 0 then
             if resolved.data then feedback.onHint(resolved.data, pos_x, pos_y) end
+        end
+        return false
+    end
+
+    local min_amount = quantity and resolveMinAmount(resolved.min_amount, quantity)
+    if quantity and quantity.amount < min_amount then
+        log.debug("tryInfuseStone: " .. material_key .. " insuffisant ("
+            .. quantity.amount .. "/" .. min_amount .. ")")
+        if hintCount == 0 then
+            feedback.onNotEnoughMaterial(quantity.name, pos_x, pos_y)
         end
         return false
     end

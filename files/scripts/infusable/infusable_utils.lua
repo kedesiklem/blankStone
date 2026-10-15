@@ -7,6 +7,16 @@ local I = {}
 
 local reaction_distance_max = 12
 
+-- Quantité minimale (en cellules) de matériau requise pour infuser, par source.
+-- Une fiole pleine = 1000 cellules.
+-- Valeurs par défaut : surchargeables par matériau via `min_amount` dans infuse_registry.
+I.SOURCE_FLASK = "flask"
+I.SOURCE_SUCK  = "suck"
+local MIN_AMOUNT = {
+    [I.SOURCE_FLASK] = 100,
+    [I.SOURCE_SUCK]  = 500,
+}
+
 function I.findMaterialKey(potion_id, stoneKey)
     local material, material_tags = U.getPotionMaterial(potion_id)
     if not material then
@@ -32,14 +42,51 @@ function I.findMaterialKey(potion_id, stoneKey)
     return nil
 end
 
-function I.tryCreateStone(potion_id, pos_x, pos_y, stone_id, infusable_id, entityName)
+--- Somme des cellules du conteneur qui correspondent à la clé de recette
+--- (nom exact du matériau, ou tag "[xxx]").
+function I.getMaterialAmount(container_id, key)
+    local inv = EntityGetFirstComponentIncludingDisabled(container_id, "MaterialInventoryComponent")
+    if not inv then return 0 end
+
+    local total = 0
+    for index, count in ipairs(ComponentGetValue2(inv, "count_per_material_type") or {}) do
+        if count > 0 then
+            local material_id = index - 1
+            if CellFactory_GetName(material_id) == key then
+                total = total + count
+            else
+                for _, tag in ipairs(CellFactory_GetTags(material_id)) do
+                    if tag == key then
+                        total = total + count
+                        break
+                    end
+                end
+            end
+        end
+    end
+    return total
+end
+
+local function getQuantity(container_id, key, source)
+    local main_id = GetMaterialInventoryMainMaterial(container_id)
+    return {
+        amount = I.getMaterialAmount(container_id, key),
+        min    = MIN_AMOUNT[source] or 0,
+        name   = GameTextGetTranslatedOrNot(CellFactory_GetUIName(main_id)),
+        source = source,
+    }
+end
+
+--- @param source string  I.SOURCE_FLASK | I.SOURCE_SUCK (seuil de quantité appliqué)
+function I.tryCreateStone(potion_id, pos_x, pos_y, stone_id, infusable_id, entityName, source)
     local key = I.findMaterialKey(potion_id, entityName)
     if not key then return false end
 
     local hint_id = U.getVariable(infusable_id, "hintEnable")
     local hintCount = U.getValue(hint_id, "value_int", 1)
 
-    local is_success = stone_factory.tryInfuseStone(entityName, key, hintCount, pos_x, pos_y)
+    local quantity = getQuantity(potion_id, key, source)
+    local is_success = stone_factory.tryInfuseStone(entityName, key, hintCount, pos_x, pos_y, quantity)
 
     if is_success then
         EntityKill(stone_id)

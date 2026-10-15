@@ -33,7 +33,7 @@ else
         -- Don't use potion directly from inventory
         if reactives_id[i] == EntityGetRootEntity(reactives_id[i]) then
             log.debug("infusable_effect (classique) : tentative sur réactif " .. tostring(reactives_id[i]))
-            if I.tryCreateStone(reactives_id[i], pos_x, pos_y, stone_id, infusable_id, entityName) then
+            if I.tryCreateStone(reactives_id[i], pos_x, pos_y, stone_id, infusable_id, entityName, I.SOURCE_FLASK) then
                 log.info("infusable_effect (classique) : infusion réussie via réactif " .. tostring(reactives_id[i]))
                 break
             end

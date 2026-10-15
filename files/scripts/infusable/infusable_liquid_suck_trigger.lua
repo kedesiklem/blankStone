@@ -48,7 +48,7 @@ local key = I.findMaterialKey(suck_id, entityName)
 
 if key then
     log.info("infusable_liquid_suck_end : matériau valide (" .. key .. ") pour " .. entityName .. ", tentative d'infusion")
-    local success = I.tryCreateStone(suck_id, pos_x, pos_y, stone_id, infusable_id, entityName)
+    local success = I.tryCreateStone(suck_id, pos_x, pos_y, stone_id, infusable_id, entityName, I.SOURCE_SUCK)
     log.info("infusable_liquid_suck_end : résultat tryCreateStone = " .. tostring(success))
     if inv_comp and success then
         ComponentSetValue2(inv_comp, "on_death_spill", false)

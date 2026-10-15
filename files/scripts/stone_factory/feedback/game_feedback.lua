@@ -21,6 +21,15 @@ function M.onValidationFail(result)
     end
 end
 
+--- Affiche le feedback d'une infusion avec une quantité de matériau insuffisante.
+--- @param material_name string  Nom affichable du matériau (déjà traduit)
+--- @param x             number
+--- @param y             number
+function M.onNotEnoughMaterial(material_name, x, y)
+    GamePrint(GameTextGet("$text_blankstone_not_enough", material_name))
+    GamePlaySound("data/audio/Desktop/ui.bank", "ui/button_click", x, y)
+end
+
 --- Affiche le message de succès d'un stone crafté (infusion).
 --- @param message string  Stone.message (titre seul via GamePrintImportant)
 function M.onStoneSuccess(message)

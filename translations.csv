@@ -162,6 +162,7 @@ reforged_book_blankstone_gods_secrets_desc,"You have walked the Path.\nKnow this
 
 text_blankstone_corrupt,"You're corrupt.",,,,,Vous êtes corrompu.,,,,,,,
 text_blankstone_lies_desc,"You chose to let the lies fool you.",,,,,Vous avez choisi de laisser les mensonges vous tromper.,,,,,,,
+text_blankstone_not_enough,"Not enough $0",,,,,Pas assez de $0,,,,,,,
 text_blankstone_repair_broken_stone_title,"You fixed it.",,,,,Vous l'avez réparé.,,,,,,,
 text_blankstone_repair_broken_stone_desc,"The stone is now strong enough to let you use the magic within.",,,,,La pierre est maintenant assez forte pour vous laisser utiliser la magie qu'elle contient.,,,,,,,
 text_blankstone_repair_book_title,"You fixed it.",,,,,Vous l'avez réparé.,,,,,,,

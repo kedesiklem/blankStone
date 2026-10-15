@@ -1,4 +1,11 @@
 -- Mapping material to keys in STONE_REGISTRY for infusion
+--
+-- Entry fields :
+--   stone_keys = { "key", ... }  -- stones spawned (recipe)
+--   hint_key   = "hint_xxx"      -- hint shown instead (no recipe)
+--   min_amount = 800             -- optional, cells required (flask & suck)
+--   min_amount = { flask = 800, suck = 200 }  -- optional, per source
+--                                 -- missing field/source => default in infusable_utils.lua
 local INFUSION_RECIPES = {
     ["blankStone"] = {
 
