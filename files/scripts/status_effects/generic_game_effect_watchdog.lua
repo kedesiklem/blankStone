@@ -22,7 +22,7 @@ local entity_id = GetUpdatedEntityID()
 local player_id = EntityGetRootEntity(entity_id)
 
 if entity_id ~= player_id and player_id then
-    local list_var = UnlockItem.getVariable(entity_id, "watchdog_game_effect")
+    local list_var = U.getVariable(entity_id, "watchdog_game_effect")
     local effect_list = U.getValue(list_var, "value_string", "")
     local instance_id = U.getOrCreateInstanceId(entity_id, "watchdog_instance_id")
 
