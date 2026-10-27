@@ -13,8 +13,8 @@ local reaction_distance_max = 12
 I.SOURCE_FLASK = "flask"
 I.SOURCE_SUCK  = "suck"
 local MIN_AMOUNT = {
-    [I.SOURCE_FLASK] = 100,
-    [I.SOURCE_SUCK]  = 500,
+    [I.SOURCE_FLASK] = 1,
+    [I.SOURCE_SUCK]  = 50,
 }
 
 function I.findMaterialKey(potion_id, stoneKey)

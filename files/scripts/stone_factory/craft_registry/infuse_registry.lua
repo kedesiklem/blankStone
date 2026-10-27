@@ -17,7 +17,7 @@ local INFUSION_RECIPES = {
         ["spark_electric"] = {stone_keys = {"thunderstone"}},
         ["rock_static"] = {stone_keys = {"stonestone"}},
         ["[grows_grass]"] = {stone_keys = {"stonestone"}},
-        ["water"] = {stone_keys = {"waterstone"}},
+        ["water"] = {stone_keys = {"waterstone"}, min_amount = 1000},
         ["poo"] = {stone_keys = {"poopstone"}},
         ["blood_worm"] = {stone_keys = {"wormBloodStone"}},
         ["magic_liquid_mana_regeneration"] = {stone_keys = {"wandstone"}},
