@@ -40,17 +40,18 @@
 
   <!-- effect -->
 
-  <GameEffectComponent
+  <!-- GAME EFFECT WITH WATCHDOG FOR STORAGE HANDLING -->
+  <LuaComponent
     _tags="enabled_in_hand,enabled_in_inventory"
-    effect="MOVEMENT_FASTER_2X"
-    frames="-1"
-  ></GameEffectComponent>
+    script_source_file="mods/blankStone/files/scripts/status_effects/generic_game_effect_watchdog.lua"
+    execute_every_n_frame="30"
+  ></LuaComponent>
 
-  <GameEffectComponent
-    _tags="enabled_in_hand,enabled_in_inventory"
-    effect="FASTER_LEVITATION"
-    frames="-1"
-  ></GameEffectComponent>
+  <VariableStorageComponent
+    name="watchdog_game_effect"
+    value_string="MOVEMENT_FASTER_2X,FASTER_LEVITATION"
+  ></VariableStorageComponent>
+  <!-- ============================================= -->
 
   <VariableStorageComponent
     name="blankStoneID"

@@ -117,6 +117,7 @@ PS: Also, feel free to contact me if you have any suggestion.
 - Stone factory
    - multiple quest condition
    - multiple crafting system
+
 - stain_effect.lua (thanks GrahamBurger)
 - material immunity / damage_type immunity (thanks Spoopy Magic Boi)
 - Gods Secrets
@@ -139,3 +140,9 @@ PS: Also, feel free to contact me if you have any suggestion.
 - All the noita modding community
 - choco le fidèle parmis les fidèles
 - Pakou pour le coup de main sur la quête
+
+# TODO
+
+- Désactiver un sac devrait override les sacs en dessous et les désactiver aussi imo (mais sans suppr le paramètre comme ça tu peux quand même réactiver le groupe sans tout réactiver ou bouger le sac dans un autre sac)
+- fix : dragon protal location -> example : apotheosis
+- shield stone in storage in storage (one enable, one disable) -> override bug (sound issue)
