@@ -18,6 +18,8 @@ local MOD_PATH          = "mods/blankStone/files/"
 local ROOT_PATH         = MOD_PATH .. "entities/lab/lab_root.xml"
 local SLOT_PATH         = MOD_PATH .. "entities/lab/lab_slot.xml"
 local SLOT_PERMA_PATH   = MOD_PATH .. "entities/lab/lab_slot_perma.xml"
+local SLOT_CYCLE_PATH   = MOD_PATH .. "entities/lab/lab_slot_cycle.xml"
+local CYCLE_BUTTON_PATH = MOD_PATH .. "entities/lab/lab_cycle_button.xml"
 local TRASH             = MOD_PATH .. "entities/lab/lab_trash.xml"
 local PORTAL_ALCHEMIST  = MOD_PATH .. "entities/buildings/progress2alchemist_portal.xml"
 local PORTAL_DRAGON     = MOD_PATH .. "entities/buildings/progress2dragon_portal.xml"
@@ -29,6 +31,9 @@ local INSTANCE_ID_VAR   = "blankStoneLabInstanceId"
 local SLOT_INDEX_VAR    = "blankStoneLabSlotIndex"
 local SLOT_MODE_VAR     = "blankStoneLabSlotMode"
 local SLOT_TAG          = "blankStone_lab_slot"
+local SLOT_CYCLE_TAG    = "blankStone_lab_slot_cycle"
+
+local CYCLE_BUTTON_RADIUS = 48 -- rayon de recherche du slot cycle depuis le bouton
 
 
 -- Présent uniquement sur un slot "permanent" (cf lab_slot_permanent.xml).
@@ -71,6 +76,23 @@ end
 local function spawnSlotPerma(x, y)
     log.debug("lab_factory.spawnSlotPerma @ " .. x .. "," .. y)
     return EntityLoad(SLOT_PERMA_PATH, x, y)
+end
+
+--- Slot de transmutation (cf lab_slot_cycle.xml).
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnSlotCycle(x, y)
+    log.debug("lab_factory.spawnSlotCycle @ " .. x .. "," .. y)
+    return EntityLoad(SLOT_CYCLE_PATH, x, y)
+end
+
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function spawnCycleButton(x, y)
+    log.debug("lab_factory.spawnCycleButton @ " .. x .. "," .. y)
+    return EntityLoad(CYCLE_BUTTON_PATH, x, y)
 end
 
 --- @param x number
@@ -192,14 +214,49 @@ local function getSlotContext(slot_id)
     return root_id, instance_id, slot_index, mode, permanent_key
 end
 
+--- mActualActiveItem reste sur un objet de l'inventaire même main vide (slot
+--- vide sélectionné) : on ne considère l'objet tenu que si un de ses
+--- composants propres à la main (tag enabled_in_hand sans enabled_in_inventory)
+--- est actif.
+--- @param item_entity number
+--- @return boolean
+local function isInHand(item_entity)
+    for _, comp in ipairs(EntityGetAllComponents(item_entity) or {}) do
+        if ComponentHasTag(comp, "enabled_in_hand")
+            and not ComponentHasTag(comp, "enabled_in_inventory")
+            and ComponentGetIsEnabled(comp) then
+            return true
+        end
+    end
+    return false
+end
+
+--- @return number|nil item  objet réellement tenu en main, nil si main vide
+local function getHeldItem()
+    local item = utils.getActiveItem(utils.getPlayer())
+    if item and isInHand(item) then return item end
+    return nil
+end
+
+--- Validateur selon le type de slot (cycle = transmutation, sinon standard).
+--- @param slot_id number
+--- @param held number|nil
+--- @return boolean ok, string|nil reason
+local function canStoreIn(slot_id, held)
+    if EntityHasTag(slot_id, SLOT_CYCLE_TAG) then
+        return validator.canStoreCycle(held)
+    end
+    return validator.canStore(held)
+end
+
 --- Appelée quand le joueur appuie sur la touche d'interaction sur un slot.
 --- @param slot_id number
 local function interactSlot(slot_id)
     local root_id, instance_id, slot_index, mode, permanent_key = getSlotContext(slot_id)
 
     if mode == "place" then
-        local held = utils.getActiveItem(utils.getPlayer())
-        local ok, reason = validator.canStore(held)
+        local held = getHeldItem()
+        local ok, reason = canStoreIn(slot_id, held)
         if not ok then
             feedback.onInvalidItem(slot_id, reason)
             return
@@ -246,18 +303,62 @@ local function updateSlotHint(slot_id)
     local root_id, instance_id, slot_index, mode = getSlotContext(slot_id)
 
     if mode == "place" then
-        local held = utils.getActiveItem(utils.getPlayer())
-        local ok = validator.canStore(held)
-        feedback.onHintPlace(slot_id, ok)
+        local held = getHeldItem()
+        local ok, reason = canStoreIn(slot_id, held)
+        feedback.onHintPlace(slot_id, ok, reason)
     else
         feedback.onHintPickup(slot_id, validator.hasFreeInventorySlot())
     end
+end
+
+-- =============================================================================
+-- Transmutation (appelée depuis lab_cycle_button_interact.lua)
+-- =============================================================================
+
+--- @param button_id number
+--- @return number|nil slot_id  slot cycle le plus proche du bouton
+local function findCycleSlot(button_id)
+    local bx, by = EntityGetTransform(button_id)
+    local best, best_d2 = nil, math.huge
+    for _, slot_id in ipairs(EntityGetInRadiusWithTag(bx, by, CYCLE_BUTTON_RADIUS, SLOT_CYCLE_TAG) or {}) do
+        local sx, sy = EntityGetTransform(slot_id)
+        local d2 = (sx - bx) ^ 2 + (sy - by) ^ 2
+        if d2 < best_d2 then best, best_d2 = slot_id, d2 end
+    end
+    return best
+end
+
+--- Transforme le contenu du slot cycle lié au bouton en l'élément suivant
+--- du cycle (potion vide -> bourse vide -> blank stone -> potion vide).
+--- @param button_id number
+local function pressCycleButton(button_id)
+    local slot_id = findCycleSlot(button_id)
+    if not slot_id then
+        log.warn("lab_factory.pressCycleButton: aucun slot cycle dans un rayon de " .. CYCLE_BUTTON_RADIUS .. " autour du bouton " .. button_id)
+        feedback.onCycleFailed("no_slot")
+        return
+    end
+
+    local _, instance_id, slot_index, mode, permanent_key = getSlotContext(slot_id)
+    local content = mode == "pick_up" and state.getSlotContent(instance_id, slot_index, permanent_key) or nil
+    if not content then
+        feedback.onCycleFailed("slot_empty")
+        return
+    end
+
+    local next_content = item_io.nextCycleContent(content)
+    state.setSlotContent(instance_id, slot_index, next_content, permanent_key)
+    display.killDisplay(slot_id)
+    display.spawnDisplay(slot_id, next_content)
+    feedback.onSlotFilled(slot_id, next_content)
 end
 
 return {
     spawnRoot           = spawnRoot,
     spawnSlot           = spawnSlot,
     spawnSlotPerma      = spawnSlotPerma,
+    spawnSlotCycle      = spawnSlotCycle,
+    spawnCycleButton    = spawnCycleButton,
     spawnTrash          = spawnTrash,
     spawnPortalAlchemist= spawnPortalAlchemist,
     spawnPortalDragon   = spawnPortalDragon,
@@ -266,4 +367,5 @@ return {
     restoreLab          = restoreLab,
     interactSlot        = interactSlot,
     updateSlotHint      = updateSlotHint,
+    pressCycleButton    = pressCycleButton,
     }

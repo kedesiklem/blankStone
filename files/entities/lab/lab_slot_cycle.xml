@@ -1,0 +1,13 @@
+<!-- based on Purgatory by Priskip -->
+
+<!-- Slot de transmutation : n'accepte qu'une potion vide, une bourse vide ou
+     une blank stone (cf lab_validator.canStoreCycle). L'objet stocké est
+     transformé par le bouton lab_cycle_button.xml le plus proche
+     (potion -> bourse -> blank stone -> potion). Garde le tag
+     blankStone_lab_slot pour être indexé/restauré par restoreLab comme les
+     autres slots. -->
+<Entity tags="blankStone_lab_slot,blankStone_lab_slot_cycle" name="blankStone_lab_slot_cycle">
+
+    <Base file="mods/blankStone/files/entities/lab/lab_slot_base.xml"></Base>
+
+</Entity>

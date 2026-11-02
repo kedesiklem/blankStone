@@ -4,7 +4,7 @@ local lab_item_io = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab
 local stone_io    = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_stone_io.lua")
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 
-local DISPLAY_ENTITY_PATH = "mods/blankStone/files/entities/lab/stored_item_display.xml"
+local ITEM_DISPLAY_ENTITY_PATH = "mods/blankStone/files/entities/lab/stored_item_display.xml"
 local STONE_DISPLAY_ENTITY_PATH = "mods/blankStone/files/entities/lab/stored_stone_display.xml"
 
 --- Vitrine pierre = un sprite simple (item_gfx capturé au dump, dans
@@ -27,6 +27,32 @@ local function spawnStoneDisplay(content, x, y)
     return display_id
 end
 
+--- Sprite de la vitrine "liquide" selon content.tag (potion / powder_stash).
+local LIQUID_SPRITES = {
+    potion       = { image_file = "data/items_gfx/potion.png",         offset_y = 4 },
+    powder_stash = { image_file = "data/items_gfx/material_pouch.png", offset_y = 6 },
+}
+
+--- @param content table
+--- @param x number
+--- @param y number
+--- @return number|nil display_entity_id
+local function spawnLiquidDisplay(content, x, y)
+    local display_id = EntityLoad(ITEM_DISPLAY_ENTITY_PATH, x, y)
+    if not display_id then return nil end
+
+    lab_item_io.writeContent(display_id, content)
+
+    local sprite = LIQUID_SPRITES[content.tag] or LIQUID_SPRITES.potion
+    for _, comp_id in ipairs(EntityGetComponentIncludingDisabled(display_id, "SpriteComponent") or {}) do
+        ComponentSetValue2(comp_id, "image_file", sprite.image_file)
+        ComponentSetValue2(comp_id, "offset_y", sprite.offset_y)
+        EntityRefreshSprite(display_id, comp_id)
+    end
+
+    return display_id
+end
+
 --- @param slot_entity number
 --- @param content table
 --- @return number|nil display_entity_id
@@ -37,8 +63,7 @@ local function spawnDisplay(slot_entity, content)
     if content.kind == "stone" then
         display_id = spawnStoneDisplay(content, x, y)
     else
-        display_id = EntityLoad(DISPLAY_ENTITY_PATH, x, y)
-        lab_item_io.writeContent(display_id, content)
+        display_id = spawnLiquidDisplay(content, x, y)
     end
 
     if not display_id then

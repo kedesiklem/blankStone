@@ -29,6 +29,37 @@ local function canStore(item_entity)
     return false, "wrong_item_type"
 end
 
+--- @param item_entity number
+--- @return boolean
+local function isLiquidEmpty(item_entity)
+    local mat_inv_comp = EntityGetFirstComponentIncludingDisabled(item_entity, "MaterialInventoryComponent")
+    if not mat_inv_comp then return true end
+    for _, amount in ipairs(ComponentGetValue2(mat_inv_comp, "count_per_material_type") or {}) do
+        if amount ~= 0 then return false end
+    end
+    return true
+end
+
+--- Slot de transmutation : potion vide, powder_stash vide ou blank stone
+--- uniquement - tout autre objet serait perdu à la conversion.
+--- @param item_entity number|nil
+--- @return boolean ok, string|nil reason
+local function canStoreCycle(item_entity)
+    if not item_entity then return false, "nothing_held" end
+
+    if EntityHasTag(item_entity, "potion") or EntityHasTag(item_entity, "powder_stash") then
+        if not isLiquidEmpty(item_entity) then return false, "not_empty" end
+        return true, nil
+    end
+
+    if stone_io.isStone(item_entity) then
+        if not stone_io.isBlankStone(item_entity) then return false, "not_blank_stone" end
+        return true, nil
+    end
+
+    return false, "wrong_item_type"
+end
+
 --- utils.lua de blankStone n'a pas d'équivalent à getHeldItems() de
 --- purgatory - implémentation autonome ici plutôt que de dépendre d'une
 --- fonction qui n'existe pas (bug précédent : U.getHeldItems plantait au
@@ -52,5 +83,6 @@ end
 
 return {
     canStore = canStore,
+    canStoreCycle = canStoreCycle,
     hasFreeInventorySlot = hasFreeInventorySlot,
 }

@@ -13,7 +13,6 @@
         <count_per_material_type></count_per_material_type>
     </MaterialInventoryComponent>
 
-    <!-- Sprite placeholder vanilla - remplace par ton propre visuel de vitrine -->
     <SpriteComponent
         offset_x="4"
         offset_y="4"

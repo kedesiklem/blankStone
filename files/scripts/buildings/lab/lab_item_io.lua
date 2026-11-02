@@ -95,6 +95,9 @@ local function createLiquidPickup(content, x, y)
     if item_comp then
         ComponentSetValue2(item_comp, "auto_pickup", true)
         ComponentSetValue2(item_comp, "next_frame_pickable", GameGetFrameNum())
+        -- Bloque l'effet de premier pickup vanilla (data/scripts/items/potion_effect.lua) :
+        -- un objet sorti d'un slot n'est jamais une "découverte"
+        ComponentSetValue2(item_comp, "has_been_picked_by_player", true)
     end
 
     EntitySetComponentIsEnabled(id, EntityGetFirstComponentIncludingDisabled(id, "PhysicsBodyComponent"), false)
@@ -106,6 +109,74 @@ local function createLiquidPickup(content, x, y)
         script_item_picked_up = "mods/blankStone/files/scripts/buildings/lab/lab_pickup_finalize.lua",
     })
 
+    return id
+end
+
+-- =============================================================================
+-- Transmutation (slot cycle) : potion vide -> bourse vide -> blank stone -> ...
+-- =============================================================================
+
+local BLANK_STONE_PATH   = "mods/blankStone/files/entities/blank_stone.xml"
+local BLANK_STONE_NAME   = "$stone_blankstone_blankStone_name"
+local BLANK_STONE_SPRITE = "mods/blankStone/files/items_gfx/blank_stone.png"
+
+local CYCLE_ORDER = { "potion", "powder_stash", "blank_stone" }
+
+-- barrel_size vanilla (data/entities/items/pickup/*.xml)
+local VANILLA_BARREL_SIZE = {
+    potion       = 1000,
+    powder_stash = 1500,
+}
+
+--- @param content table
+--- @return string cycle_type  "potion" | "powder_stash" | "blank_stone"
+local function getCycleType(content)
+    if content.kind == "stone" then return "blank_stone" end
+    return content.tag
+end
+
+--- Contenu "généré" d'un type donné, sans entité source. Une blank stone
+--- générée utilise preset="blank_stone" (pas de blob sérialisé) : recréée
+--- par simple EntityLoad au pickup, cf createPickupEntity.
+--- @param cycle_type string
+--- @return table content
+local function makeCycleContent(cycle_type)
+    if cycle_type == "blank_stone" then
+        return {
+            kind      = "stone",
+            preset    = "blank_stone",
+            item_name = stone_io.b64Encode(BLANK_STONE_NAME),
+            sprite    = stone_io.b64Encode(BLANK_STONE_SPRITE),
+        }
+    end
+
+    return {
+        kind        = "liquid",
+        tag         = cycle_type,
+        barrel_size = tostring(VANILLA_BARREL_SIZE[cycle_type] or 1000),
+        materials   = "",
+    }
+end
+
+--- @param content table
+--- @return table next_content
+local function nextCycleContent(content)
+    local current = getCycleType(content)
+    for i, t in ipairs(CYCLE_ORDER) do
+        if t == current then
+            return makeCycleContent(CYCLE_ORDER[i % #CYCLE_ORDER + 1])
+        end
+    end
+    log.warn("lab_item_io.nextCycleContent: type inconnu '" .. tostring(current) .. "', retour au début du cycle")
+    return makeCycleContent(CYCLE_ORDER[1])
+end
+
+--- @param x number
+--- @param y number
+--- @return number entity_id
+local function createBlankStonePickup(x, y)
+    local id = EntityLoad(BLANK_STONE_PATH, x + 4, y + 8)
+    stone_io.setAutoPickup(id)
     return id
 end
 
@@ -164,6 +235,9 @@ end
 --- @return number|nil entity_id  seulement pour le cas "liquid" (synchrone)
 local function createPickupEntity(content, x, y)
     if content.kind == "stone" then
+        if content.preset == "blank_stone" then
+            return createBlankStonePickup(x, y)
+        end
         stone_io.rebuild(content.data, x, y)
         return nil
     end
@@ -175,4 +249,5 @@ return {
     readContent = readContent,
     writeContent = writeContent,
     createPickupEntity = createPickupEntity,
+    nextCycleContent = nextCycleContent,
 }

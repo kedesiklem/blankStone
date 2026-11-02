@@ -1,0 +1,17 @@
+<!-- Bouton de transmutation : agit sur le slot blankStone_lab_slot_cycle le
+     plus proche (cf lab_factory.pressCycleButton). Visuel porté par la scène. -->
+<Entity tags="blankStone_lab_cycle_button" name="blankStone_lab_cycle_button">
+
+    <UIInfoComponent name="$blankstone_lab_cycle_button"></UIInfoComponent>
+
+    <InteractableComponent
+        radius="8"
+        ui_text="$blankstone_lab_cycle_button_interact"
+    ></InteractableComponent>
+
+    <LuaComponent
+        script_interacting="mods/blankStone/files/scripts/buildings/lab/lab_cycle_button_interact.lua"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+</Entity>

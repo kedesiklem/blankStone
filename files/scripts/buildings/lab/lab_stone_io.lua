@@ -52,6 +52,15 @@ local function isStone(entity_id)
     return utils.getVariable(entity_id, "blankStoneID") ~= nil
 end
 
+--- Blank stone "nue" (blank_stone.xml) - seule pierre acceptée par le slot de
+--- transmutation (cf lab_validator.canStoreCycle).
+--- @param entity_id number|nil
+--- @return boolean
+local function isBlankStone(entity_id)
+    if not entity_id then return false end
+    return utils.getValue(utils.getVariable(entity_id, "blankStoneID"), "value_string") == "blankStone"
+end
+
 local MAX_DEPTH = 6 -- garde-fou anti récursion pathologique (storageStone imbriquées) - décision de design, indépendante du backend de sérialisation
 
 --- Profondeur de nesting storageStone-dans-storageStone (0 si aucune, sinon
@@ -438,6 +447,8 @@ end
 
 return {
     isStone             = isStone,
+    isBlankStone        = isBlankStone,
+    b64Encode           = entity_serializer.b64Encode,
     computeNestingDepth = computeNestingDepth,
     MAX_DEPTH           = MAX_DEPTH,
     serialize           = serialize,
