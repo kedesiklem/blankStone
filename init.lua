@@ -19,7 +19,12 @@ function OnModPreInit()
     -- MOD COMPATIBILITY
     local PATCH_APO = dofile_once("mods/blankStone/files/scripts/mod_compatibility/apotheosis_appends.lua")
     local PATCH_COMP_EXPL = dofile_once("mods/blankStone/files/scripts/mod_compatibility/component-explorer_appends.lua")
+    local PATCH_EW = dofile_once("mods/blankStone/files/scripts/mod_compatibility/entangled_worlds_appends.lua")
 
+    if ModIsEnabled("quant.ew") then
+        log.tmp_info("Patch Entangled Worlds")
+        PATCH_EW.ApplyEntangledWorldsPatches()
+    end
     if ModIsEnabled("apotheosis") or ModIsEnabled("Apotheosis") then
         log.tmp_info("Patch Apotheosis")
         PATCH_APO.ApplyApotheosisPatches()

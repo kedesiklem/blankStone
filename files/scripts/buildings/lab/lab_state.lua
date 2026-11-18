@@ -1,58 +1,73 @@
 -- based on Purgatory by Priskip
 
--- Persistance du contenu d'un slot. Deux backends :
+-- Persistence of a lab slot's content: a thin dispatcher over storage backends.
 --
---   - "run"       (comportement d'origine) : GlobalsGetValue/SetValue, clé =
---     préfixe + instance_id du lab_root (généré une fois via
---     utils.getOrCreateInstanceId, aléatoire, régénéré à chaque nouveau spawn
---     du lab_root) + index du slot. Réinitialisé à chaque nouvelle partie
---     (documenté ainsi par le wiki de modding Noita).
+-- lab_factory.lua only talks to this file. This file decides WHERE a slot's
+-- content lives, and never touches Globals / ModSettings directly (that is the
+-- job of the backends in storage/).
 --
---   - "permanent" (nouveau) : ModSettingGet/ModSettingSet, clé = préfixe +
---     un identifiant FIXE porté par le slot lui-même (VariableStorageComponent
---     blankStoneLabPermanentKey, cf lab_slot_permanent.xml). Stocké dans
---     mod_config.xml, à l'intérieur du dossier de sauvegarde (save00/) mais
---     EN DEHORS de l'état de la partie en cours : survit à la mort, à un
---     "new game", ne survit PAS à une suppression du dossier de sauvegarde.
+-- Backends (contract documented in storage/backend_run.lua):
 --
--- Pourquoi une clé fixe et pas instance_id pour le backend permanent :
--- instance_id est généré aléatoirement à la première lecture après CHAQUE
--- spawn du lab_root (cf utils.getOrCreateInstanceId). Un lab qui réapparaît
--- dans une nouvelle partie obtient un nouvel instance_id : l'utiliser comme
--- clé de stockage permanent ferait qu'on ne retrouverait jamais le contenu
--- d'une partie précédente. La clé permanente doit donc être écrite en dur
--- dans le slot lui-même (au niveau de l'entité/XML), pas calculée à l'exécution.
+--   - run       storage/backend_run.lua    - Globals. Reset on every new run.
+--               Used by every non-permanent slot.
 --
--- ModSettingGet/Set acceptent n'importe quel id string sans déclaration
--- préalable dans settings.lua (cette déclaration n'est nécessaire que pour
--- les réglages exposés dans le menu Mod Settings) : à vérifier en jeu une
--- fois si un doute subsiste, mais c'est l'usage établi pour du stockage
--- clé/valeur ad-hoc dans les mods Noita.
+--   - local     storage/backend_local.lua  - ModSetting in this machine's
+--               mod_settings.bin. Survives death and "new game", not the
+--               deletion of the save folder. Default for permanent slots.
+--
+--   - compat    a lab_storage table exposed by a compat module
+--               (stone_factory/compat/<mod>/init.lua, listed in
+--               compat_loader.lua). When the matching mod is
+--               enabled AND the module reports isActive(), it replaces the
+--               local backend for permanent slots (e.g. a multiplayer
+--               compat module making one machine the owner).
+--
+-- A slot is "permanent" when it has a permanent_key (see
+-- lab_factory.computePermanentKey); the key is FIXED by the slot itself, not
+-- computed from instance_id: a lab respawned in a new run gets a new
+-- instance_id, so it could never find a previous run's content with it.
+--
+-- Public API (unchanged by the backend split, except takeSlotContent which is
+-- new):
+--   getSlotContent(instance_id, slot_index, permanent_key)  -> table | nil
+--   setSlotContent(instance_id, slot_index, content, permanent_key)
+--   clearSlotContent(instance_id, slot_index, permanent_key)
+--   takeSlotContent(instance_id, slot_index, permanent_key) -> table | nil, pending
+--   warnIfDuplicateKey(permanent_key, slot_id)
 
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 local log   = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
+local C     = dofile_once("mods/blankStone/files/scripts/stone_factory/compat/compat_utils.lua")
 
-local RUN_PREFIX       = "blankStone_lab_"
-local PERMANENT_PREFIX = "blankStone.lab_permanent_"
+local backend_run   = dofile_once("mods/blankStone/files/scripts/buildings/lab/storage/backend_run.lua")
+local backend_local = dofile_once("mods/blankStone/files/scripts/buildings/lab/storage/backend_local.lua")
 
---- @param instance_id string
---- @param slot_index number
---- @return string
-local function runKey(instance_id, slot_index)
-    return RUN_PREFIX .. instance_id .. "_" .. tostring(slot_index)
+--- Compat modules, listed in one place (compat_loader.lua). This file never
+--- names a specific mod: it only looks for a `lab_storage` field.
+local COMPAT_MODULES = dofile_once("mods/blankStone/files/scripts/stone_factory/compat/compat_loader.lua")
+
+--- @param permanent_key string|nil
+--- @return table backend
+local function selectBackend(permanent_key)
+    if not permanent_key or permanent_key == "" then
+        return backend_run
+    end
+
+    for _, compat in ipairs(COMPAT_MODULES) do
+        if compat.lab_storage
+            and C.isAnyEnabled(compat.mod_ids)
+            and compat.lab_storage.isActive() then
+            return compat.lab_storage
+        end
+    end
+
+    return backend_local
 end
 
---- @param permanent_key string
---- @return string
-local function permanentKey(permanent_key)
-    return PERMANENT_PREFIX .. permanent_key
-end
-
--- Garde-fou (mémoire du process uniquement, pas persisté) : avertit si deux
--- slots permanents différents utilisent la même clé dans la même session -
--- erreur de configuration facile (copier-coller d'un lab_slot_permanent.xml
--- sans changer la clé) et silencieuse sinon (les deux slots partageraient le
--- même contenu sans que rien ne le signale).
+-- Safety net (process memory only, not persisted): warns if two different
+-- permanent slots use the same key in the same session - an easy configuration
+-- mistake (copy-pasting a permanent slot XML without changing the key) that
+-- would otherwise be silent (both slots would share the same content).
 local seen_permanent_keys = {}
 
 --- @param permanent_key string
@@ -68,19 +83,11 @@ end
 
 --- @param instance_id string
 --- @param slot_index number
---- @param permanent_key string|nil  si fourni (non-nil, non-vide), lit dans le
----        stockage permanent (ModSetting) sous cette clé fixe, sinon dans le
----        stockage par run (Globals) sous instance_id+slot_index.
---- @return table|nil content  nil si le slot est vide
+--- @param permanent_key string|nil  non-empty => permanent storage, else per-run
+--- @return table|nil content  nil if the slot is empty
 local function getSlotContent(instance_id, slot_index, permanent_key)
-    if permanent_key and permanent_key ~= "" then
-        local raw = ModSettingGet(permanentKey(permanent_key))
-        if raw == nil or raw == "" then return nil end
-        return utils.deserializeData(raw)
-    end
-
-    local raw = GlobalsGetValue(runKey(instance_id, slot_index), "")
-    if raw == "" then return nil end
+    local raw = selectBackend(permanent_key).read(instance_id, slot_index, permanent_key)
+    if raw == nil or raw == "" then return nil end
     return utils.deserializeData(raw)
 end
 
@@ -89,35 +96,52 @@ end
 --- @param content table
 --- @param permanent_key string|nil
 local function setSlotContent(instance_id, slot_index, content, permanent_key)
-    local raw = utils.serializeData(content)
-
-    if permanent_key and permanent_key ~= "" then
-        ModSettingSet(permanentKey(permanent_key), raw)
-        log.debug("lab_state: slot permanent '" .. permanent_key .. "' rempli")
-        return
-    end
-
-    GlobalsSetValue(runKey(instance_id, slot_index), raw)
-    log.debug("lab_state: slot " .. slot_index .. " de " .. instance_id .. " rempli")
+    selectBackend(permanent_key).write(instance_id, slot_index, permanent_key, utils.serializeData(content))
+    log.debug("lab_state: slot " .. slot_index .. " (key=" .. tostring(permanent_key) .. ") filled")
 end
 
 --- @param instance_id string
 --- @param slot_index number
 --- @param permanent_key string|nil
 local function clearSlotContent(instance_id, slot_index, permanent_key)
-    if permanent_key and permanent_key ~= "" then
-        ModSettingSet(permanentKey(permanent_key), "")
-        log.debug("lab_state: slot permanent '" .. permanent_key .. "' vidé")
-        return
+    selectBackend(permanent_key).erase(instance_id, slot_index, permanent_key)
+    log.debug("lab_state: slot " .. slot_index .. " (key=" .. tostring(permanent_key) .. ") emptied")
+end
+
+--- Atomically reads AND empties a slot. This is the only safe way to hand the
+--- content over to a player: with a shared world two players may try to take
+--- the same item, and a separate get + clear would duplicate it.
+---
+--- Synchronous backends return `content, false`. An asynchronous, arbitrated
+--- backend (e.g. a multiplayer client) returns `nil, true`: the request was
+--- sent, and the content is delivered later by the backend's own module
+--- (see lab_factory.grantPickup).
+--- @param instance_id string
+--- @param slot_index number
+--- @param permanent_key string|nil
+--- @return table|nil content, boolean pending
+local function takeSlotContent(instance_id, slot_index, permanent_key)
+    local backend = selectBackend(permanent_key)
+
+    local raw, pending
+    if backend.take then
+        raw, pending = backend.take(instance_id, slot_index, permanent_key)
+    else
+        raw = backend.read(instance_id, slot_index, permanent_key)
+        if raw ~= nil and raw ~= "" then
+            backend.erase(instance_id, slot_index, permanent_key)
+        end
     end
 
-    GlobalsSetValue(runKey(instance_id, slot_index), "")
-    log.debug("lab_state: slot " .. slot_index .. " de " .. instance_id .. " vidé")
+    if pending then return nil, true end
+    if raw == nil or raw == "" then return nil, false end
+    return utils.deserializeData(raw), false
 end
 
 return {
     getSlotContent      = getSlotContent,
     setSlotContent      = setSlotContent,
     clearSlotContent    = clearSlotContent,
+    takeSlotContent     = takeSlotContent,
     warnIfDuplicateKey  = warnIfDuplicateKey,
 }

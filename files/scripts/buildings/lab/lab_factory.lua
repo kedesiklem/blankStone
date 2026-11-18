@@ -147,6 +147,24 @@ local function computePermanentKey(slot_id, slot_index)
     return "slot_" .. tostring(slot_index)
 end
 
+--- Makes a slot (visuals, interaction mode, hint texts) reflect `content`.
+--- Idempotent: safe to call again on a slot that is already up to date, which
+--- is what lets a storage backend refresh slots when remote state changes.
+--- @param slot_id number
+--- @param content table|nil  nil = empty slot
+local function applyContentToSlot(slot_id, content)
+    display.killDisplay(slot_id)
+
+    if content then
+        display.spawnDisplay(slot_id, content)
+        utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "pick_up")
+        feedback.onSlotFilled(slot_id, content)
+    else
+        utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "place")
+        feedback.onSlotEmptied(slot_id)
+    end
+end
+
 --- Trouve tous les slots orphelins autour d'un lab_root, leur assigne un index
 --- stable et déterministe (tri par position - la scène étant statique, l'ordre
 --- ne change jamais d'une partie à l'autre), les rattache au root, puis
@@ -185,18 +203,81 @@ local function restoreLab(root_entity)
             state.warnIfDuplicateKey(permanent_key, slot_id)
         end
 
-        local content = state.getSlotContent(instance_id, slot_index, permanent_key)
-        if content then
-            display.spawnDisplay(slot_id, content)
-            utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "pick_up")
-            feedback.onSlotFilled(slot_id, content)
-        else
-            utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "place")
-            feedback.onSlotEmptied(slot_id)
-        end
+        applyContentToSlot(slot_id, state.getSlotContent(instance_id, slot_index, permanent_key))
     end
 
     log.info("lab_factory.restoreLab: " .. #nearby .. " slot(s) restauré(s) pour " .. instance_id)
+end
+
+-- =============================================================================
+-- Refresh from outside (used by storage compat modules, e.g. a multiplayer one,
+-- when the content of a permanent slot changes because of another player)
+-- =============================================================================
+
+--- Calls fn(slot_id, slot_index, permanent_key) for every permanent slot that
+--- restoreLab already initialised. A slot is initialised once it has been
+--- attached to its lab_root: before that its slot index is still the XML
+--- default (0), which would make it alias "slot_0".
+--- @param fn fun(slot_id: number, slot_index: number, permanent_key: string)
+local function forEachInitialisedPermanentSlot(fn)
+    for _, slot_id in ipairs(EntityGetWithTag(SLOT_TAG) or {}) do
+        if EntityGetParent(slot_id) ~= 0 then
+            local slot_index = utils.getValue(utils.getVariable(slot_id, SLOT_INDEX_VAR), "value_int") or 0
+            local permanent_key = computePermanentKey(slot_id, slot_index)
+            if permanent_key then
+                fn(slot_id, slot_index, permanent_key)
+            end
+        end
+    end
+end
+
+--- Re-reads the content of permanent slots from the storage and updates them.
+--- @param only_key string|nil  restrict to this permanent key (e.g. "slot_3"); nil = all
+local function refreshPermanentSlots(only_key)
+    forEachInitialisedPermanentSlot(function(slot_id, slot_index, permanent_key)
+        if only_key and permanent_key ~= only_key then return end
+        -- instance_id is irrelevant for permanent storage (the key is fixed)
+        applyContentToSlot(slot_id, state.getSlotContent("", slot_index, permanent_key))
+    end)
+end
+
+--- Finishes a pick-up: spawns the item at the slot and puts the slot back in
+--- "place" mode. The content must already have been removed from the storage
+--- (state.takeSlotContent).
+--- @param slot_id number
+--- @param content table
+local function completePickup(slot_id, content)
+    local x, y = EntityGetTransform(slot_id)
+    item_io.createPickupEntity(content, x, y)
+    display.killDisplay(slot_id)
+
+    utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "place")
+    feedback.onSlotEmptied(slot_id)
+end
+
+--- Delivers an item that an arbitrated storage granted to the local player
+--- later than the interaction itself (asynchronous take, or a refund after a
+--- lost placement race). Falls back to the player's position if the slot is
+--- not loaded any more.
+--- @param permanent_key string
+--- @param content table
+local function grantPickup(permanent_key, content)
+    local delivered = false
+    forEachInitialisedPermanentSlot(function(slot_id, _, key)
+        if key == permanent_key and not delivered then
+            completePickup(slot_id, content)
+            delivered = true
+        end
+    end)
+    if delivered then return end
+
+    local player = utils.getPlayer()
+    if not player then
+        log.error("lab_factory.grantPickup: no slot and no player, item for '" .. permanent_key .. "' lost")
+        return
+    end
+    local x, y = EntityGetTransform(player)
+    item_io.createPickupEntity(content, x, y)
 end
 
 -- =============================================================================
@@ -281,19 +362,17 @@ local function interactSlot(slot_id)
             return
         end
 
-        local content = state.getSlotContent(instance_id, slot_index, permanent_key)
+        -- Atomic read + empty. With an arbitrated storage (a multiplayer client
+        -- backend) the answer is asynchronous: `pending` is true and the item
+        -- is delivered later through grantPickup.
+        local content, pending = state.takeSlotContent(instance_id, slot_index, permanent_key)
+        if pending then return end
         if not content then
             log.warn("lab_factory.interactSlot: mode pick_up sans contenu sauvegardé (slot " .. slot_index .. ")")
             return
         end
 
-        local x, y = EntityGetTransform(slot_id)
-        item_io.createPickupEntity(content, x, y)
-        display.killDisplay(slot_id)
-        state.clearSlotContent(instance_id, slot_index, permanent_key)
-
-        utils.setVariable(slot_id, SLOT_MODE_VAR, "value_string", "place")
-        feedback.onSlotEmptied(slot_id)
+        completePickup(slot_id, content)
     end
 end
 
@@ -365,6 +444,8 @@ return {
     spawnTriggerEnter   = spawnTriggerEnter,
     spawnProgress       = spawnProgress,
     restoreLab          = restoreLab,
+    refreshPermanentSlots = refreshPermanentSlots,
+    grantPickup         = grantPickup,
     interactSlot        = interactSlot,
     updateSlotHint      = updateSlotHint,
     pressCycleButton    = pressCycleButton,
