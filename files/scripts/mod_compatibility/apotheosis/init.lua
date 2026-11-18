@@ -1,7 +1,7 @@
 local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local modName = "apotheosis"
 
-local files_path = "mods/blankStone/files/scripts/stone_factory/compat/"..modName.."/"
+local files_path = "mods/blankStone/files/scripts/mod_compatibility/"..modName.."/"
 
 local function tryLoad(path)
     if ModDoesFileExist(path) then

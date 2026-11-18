@@ -16,7 +16,7 @@
 --               deletion of the save folder. Default for permanent slots.
 --
 --   - compat    a lab_storage table exposed by a compat module
---               (stone_factory/compat/<mod>/init.lua, listed in
+--               (mod_compatibility/<mod>/init.lua, listed in
 --               compat_loader.lua). When the matching mod is
 --               enabled AND the module reports isActive(), it replaces the
 --               local backend for permanent slots (e.g. a multiplayer
@@ -37,14 +37,14 @@
 
 local utils = dofile_once("mods/blankStone/files/scripts/utils.lua")
 local log   = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
-local C     = dofile_once("mods/blankStone/files/scripts/stone_factory/compat/compat_utils.lua")
+local C     = dofile_once("mods/blankStone/files/scripts/mod_compatibility/compat_utils.lua")
 
 local backend_run   = dofile_once("mods/blankStone/files/scripts/buildings/lab/storage/backend_run.lua")
 local backend_local = dofile_once("mods/blankStone/files/scripts/buildings/lab/storage/backend_local.lua")
 
 --- Compat modules, listed in one place (compat_loader.lua). This file never
 --- names a specific mod: it only looks for a `lab_storage` field.
-local COMPAT_MODULES = dofile_once("mods/blankStone/files/scripts/stone_factory/compat/compat_loader.lua")
+local COMPAT_MODULES = dofile_once("mods/blankStone/files/scripts/mod_compatibility/compat_loader.lua")
 
 --- @param permanent_key string|nil
 --- @return table backend

@@ -9,7 +9,7 @@ local log = dofile_once("mods/blankStone/utils/logger.lua") ---@type logger
 local function ApplyEntangledWorldsPatches()
     ModLuaFileAppend(
         "mods/quant.ew/files/api/extra_modules.lua",
-        "mods/blankStone/files/scripts/stone_factory/compat/entangled_worlds/ew_module.lua"
+        "mods/blankStone/files/scripts/mod_compatibility/entangled_worlds/ew_module.lua"
     )
     log.tmp_info("Patch [entangled_worlds] applied: lab storage module registered")
 end

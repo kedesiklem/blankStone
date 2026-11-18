@@ -25,7 +25,7 @@ local ew_api = dofile_once("mods/quant.ew/files/api/ew_api.lua")
 
 local utils       = dofile_once("mods/blankStone/files/scripts/utils.lua")
 local lab_factory = dofile_once("mods/blankStone/files/scripts/buildings/lab/lab_factory.lua")
-local storage     = dofile_once("mods/blankStone/files/scripts/stone_factory/compat/entangled_worlds/lab_storage_host.lua")
+local storage     = dofile_once("mods/blankStone/files/scripts/mod_compatibility/entangled_worlds/lab_storage_host.lua")
 
 local SNAPSHOT_RETRY_FRAMES = 300 -- a client asks again every 5s until it gets one
 

@@ -12,5 +12,5 @@
 return {
     mod_ids = { "quant.ew" },
 
-    lab_storage = dofile_once("mods/blankStone/files/scripts/stone_factory/compat/entangled_worlds/lab_storage_host.lua"),
+    lab_storage = dofile_once("mods/blankStone/files/scripts/mod_compatibility/entangled_worlds/lab_storage_host.lua"),
 }

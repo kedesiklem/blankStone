@@ -7,7 +7,7 @@
 -- This is the default backend for permanent slots. It is only correct when
 -- exactly one machine owns the world (single player). In multiplayer every
 -- machine has its own mod_settings.bin, so a compatibility module may take
--- over (see lab_state.lua and stone_factory/compat/compat_loader.lua).
+-- over (see lab_state.lua and mod_compatibility/compat_loader.lua).
 --
 -- Contract: see backend_run.lua.
 

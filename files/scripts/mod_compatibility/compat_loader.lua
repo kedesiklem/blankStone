@@ -1,4 +1,4 @@
-local files_path = "mods/blankStone/files/scripts/stone_factory/compat/"
+local files_path = "mods/blankStone/files/scripts/mod_compatibility/"
 
 return {
     dofile_once(files_path .. "apotheosis/init.lua"),

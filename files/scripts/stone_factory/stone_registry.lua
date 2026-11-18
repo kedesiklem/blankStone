@@ -549,8 +549,8 @@ local STONE_DATA = {
     -- ##ANCHOR_STONE_MSG_END##
 }
 
-local C = dofile_once(files_path .. "scripts/stone_factory/compat/compat_utils.lua")
-local COMPAT_MODULES = dofile_once(files_path .. "scripts/stone_factory/compat/compat_loader.lua")
+local C = dofile_once(files_path .. "scripts/mod_compatibility/compat_utils.lua")
+local COMPAT_MODULES = dofile_once(files_path .. "scripts/mod_compatibility/compat_loader.lua")
 
 for _, compat in ipairs(COMPAT_MODULES) do
     if C.isAnyEnabled(compat.mod_ids) and compat.stones then
